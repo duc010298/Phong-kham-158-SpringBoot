@@ -1,0 +1,141 @@
+html {
+    font-size: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F0F0F0;
+}
+
+.navtop {
+    position: fixed;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #404040;
+    box-shadow: 0px 0px 1px #404040;
+}
+
+.navtop>div {
+    float: left;
+    color: #E8E8E8;
+    font-size: 1.125rem;
+    text-align: center;
+    width: 14.375rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    transition: 0.7s background-color;
+    -webkit-user-select: none;
+}
+
+.navtop>div:hover {
+    cursor: pointer;
+    color: #FFFFFF !important;
+    background-color: #7F7F7F;
+}
+
+.navtop--active {
+    color: #404040 !important;
+    background-color: #E5E5E5;
+}
+
+.navside {
+    display: none;
+    position: fixed;
+    top: 2.5rem;
+    left: 0;
+    width: 14.375rem;
+    height: 100%;
+    background-color: #404040;
+    -webkit-user-select: none;
+}
+
+.navside>ul>li {
+    font-size: 0.9375rem;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 0.75rem;
+    color: #E8E8E8;
+    transition: 0.7s background-color;
+}
+
+.navside>ul>li:hover{
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: #7F7F7F;
+}
+
+.navside--active {
+    color: #404040 !important;
+    background-color: #E5E5E5;
+}
+
+.tool {
+    display: none;
+    position: fixed;
+    top: 12.5rem;
+    right: 0;
+}
+
+.btn-print, .btn-save, .btn-reload {
+    width: 3.75rem;
+    height: 3.75rem;
+    background-color: #767D7F;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.875rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.625rem;
+    transition: 0.7s background-color;
+}
+
+.btn-print span, .btn-save span, .btn-reload span {
+    margin-top: 1.0625rem;
+    transition: 0.7s background-color;
+}
+
+.btn-print:hover , .btn-save:hover, .btn-reload:hover, .btn-print span:hover, .btn-save span:hover, .btn-reload span:hover {
+    background-color: #3B3F40;
+    cursor: pointer;
+}
+
+main {
+    margin-top: 2.5rem;
+}
+
+.spinner {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+.spinner-content {
+    margin: auto;
+    padding-bottom: 5.625rem;
+}
+
+.spin {
+    content: "";
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    border-top-color: #404040;
+    animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
