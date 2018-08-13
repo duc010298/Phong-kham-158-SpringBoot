@@ -155,3 +155,44 @@ footer {
     width: 15.625rem;
     margin: 1.125rem auto;
 }
+
+.page {
+    width: 46.5625rem;
+    margin: 3.125rem auto 1.25rem auto;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0.3125rem 0.3125rem 0.3125rem #7F7979;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.page-container {
+    margin: 1.875rem 2.8125rem;
+}
+
+.page-container table, td {
+    border: 1px solid #F5E8E8;
+    border-collapse: collapse;
+}
+
+.page-container td {
+    padding: 0.3125rem;
+}
+
+.page-container input {
+    outline: none;
+    border: none;
+    font-size: 1.125rem;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.page-container textarea {
+    outline: none;
+    border:none;
+    resize: none;
+    font-size: 1.125rem;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.print {
+    display: none;
+}

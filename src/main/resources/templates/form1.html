@@ -1,6 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="result">
-    <p>This is content</p>
+<div th:fragment="result" th:remove="tag">
+    <link href="../static/css/form1.css" rel="stylesheet" type="text/css" th:href="@{/css/form1.css}"/>
+    <div class="page">
+        <div class="page-container">
+            <p class="page-h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p>
+            <p class="page-h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p>
+            <p class="page-h2">Điện thoại : 0916483289</p>
+            <p class="page-h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p>
+            <p class="page-h3">ổ bụng, phụ khoa, siêu âm vú</p>
+            <br>
+            <p class="page-h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p>
+            <br>
+            <table class="page-table">
+                <tr>
+                    <td class="page-b1">Họ và tên:</td>
+                    <td><input input="0" type="text" placeholder="Nhập tên"></td>
+                    <td class="page-b2">Tuổi:</td>
+                    <td><input input="1" type="text" value=" tuổi"></td>
+                </tr>
+                <tr>
+                    <td class="page-b3">Địa chỉ:</td>
+                    <td colspan="3"><input input="2" type="text" placeholder="Nhập địa chỉ" size="55"></td>
+                </tr>
+            </table>
+            <p class="page-b4">Yêu cầu kiểm tra: <span th:text="${formContents[0].getClass1()}" th:remove="tag"></span></p>
+            <p class="page-b5">KẾT QUẢ:</p>
+            <table class="page-table">
+                <span th:each="formContent, iter : ${formContents}"
+                      th:if="${iter.index} != 0 and ${iter.index} < ${iter.size-1}" th:remove="tag">
+                    <tr>
+                        <td class="page-b6" th:text="${formContent.getClass1()}"></td>
+                        <td><input th:attr="input=${iter.index+2}" type="text" th:value="${formContent.getClass2()}" size="44"></td>
+                    </tr>
+                </span>
+            </table>
+            <br>
+            <table class="page-table">
+                <tr>
+                    <span th:each="formContent, iter : ${formContents}"
+                          th:if="${iter.index >= iter.size-1}" th:remove="tag">
+                        <td class="page-b7" th:text="${formContent.getClass1()}"></td>
+                        <td><input th:attr="input=${iter.index+2}" class="page-b8" type="text" th:value="${formContent.getClass2()}" size="44"></td>
+                    </span>
+                </tr>
+            </table>
+            <br>
+            <table class="page-table">
+                <tr>
+                    <td class="page-b9">Ảnh</td>
+                    <td>
+                        <div class="page-b10">
+                            <p class="date"></p>
+                            <br>
+                            <p>Người siêu âm</p>
+                        </div>
+                        <br><br><br><br><br><br><br>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <p class="page-h3">Lời dặn</p>
+            <p class="page-b11">- Một tuần sau khám lại</p>
+            <p class="page-b11">- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay</p>
+            <p class="page-b11">- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được >90% dị tật thai nhi</p>
+            <p class="page-h3">( Siêu âm không ảnh hưởng đến thai nhi và bà mẹ)</p>
+        </div>
+    </div>
 </div>
 </html>

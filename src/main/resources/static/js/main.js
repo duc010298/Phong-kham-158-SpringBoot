@@ -1,3 +1,5 @@
+var firstClick = true;
+
 $("#btn-result").click(function () {
     if ($(this).attr("class") === "navtop--active") {
         $(this).removeAttr("class");
@@ -31,6 +33,7 @@ $("#btn-report").click(function () {
     setTimeout(function () {
         $(".spinner").removeAttr("style");
     }, 300);
+    firstClick = true;
 });
 
 $("#navside>ul>li").click(function () {
@@ -53,9 +56,23 @@ $("#navside>ul>li").click(function () {
         }).done(function (result) {
             $(".spinner").attr("style", "display: none");
             $("#container").html(result);
+            setCurrentDate();
             $("html, body").animate({
                 scrollTop: 0
             }, "slow");
+            if (firstClick) {
+                $("footer").attr("style", "position: static; bottom: auto");
+                firstClick = false;
+            }
         });
     }, 300);
 });
+
+function setCurrentDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    var Str = "Ngày " + dd + " tháng " + mm + " năm" + yyyy;
+    $(".date").html(Str);
+}

@@ -21,6 +21,11 @@ public class FormRepository {
         return jdbcTemplate.query(sql, getRowMapper(), id);
     }
 
+    public String getFormId(String id) {
+        String sql = "SELECT FormID FROM UltraSoundResult WHERE ID = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
+    }
+
     private RowMapper<FormEntity> getRowMapper() {
         return new BeanPropertyRowMapper<>(FormEntity.class);
     }
