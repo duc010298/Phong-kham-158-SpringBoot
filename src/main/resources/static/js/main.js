@@ -38,5 +38,24 @@ $("#navside>ul>li").click(function () {
     $(this).attr("class", "navside--active");
     $(".spinner").attr("style", "display: flex");
     var id = $(this).attr("id");
-
+    setTimeout(function () {
+        $.ajax({
+            url: "http://" + window.location.host + "/UltraSoundResult",
+            type: 'GET',
+            dataType: 'html',
+            data: {
+                id: id
+            },
+            error: function(){
+                alert('Không thể tải dữ liệu!');
+                $(".spinner").attr("style", "display: none");
+            }
+        }).done(function (result) {
+            $(".spinner").attr("style", "display: none");
+            $("#container").html(result);
+            $("html, body").animate({
+                scrollTop: 0
+            }, "slow");
+        });
+    }, 300);
 });

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <main>
-        <ul th:each="formContent:${formContents}">
-            <li th:text="${formContent.getClass1()}">...</li>
-        </ul>
-    </main>
-
+<div th:fragment="result">
+    <p>This is content</p>
+</div>
 </html>

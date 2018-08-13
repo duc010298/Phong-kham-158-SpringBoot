@@ -14,8 +14,8 @@
                 <div id="btn-report"><span class="far fa-file-excel"></span> BÁO CÁO SIÊU ÂM</div>
             </div>
             <div id="navside" class="navside">
-                <ul th:each="navSide:${navSides}">
-                    <li id="1" th:id="${navSide.getID()}" th:text="${navSide.getName()}">...</li>
+                <ul>
+                    <li id="1" th:each="navSide:${navSides}" th:id="${navSide.getID()}" th:text="${navSide.getName()}">...</li>
                 </ul>
             </div>
             <div id="tool" class="tool">

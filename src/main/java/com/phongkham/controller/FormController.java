@@ -18,7 +18,7 @@ public class FormController {
     @GetMapping()
     public String getFormContent(@RequestParam("id") String id, ModelMap modelMap) {
         modelMap.addAttribute("formContents", formRepository.getFormContent(id));
-        return "form" + id;
+        return "form" + id + " :: result";
     }
 
 }
