@@ -16,7 +16,7 @@ public class NavsideRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<NavsideEntity> getNavSide() {
-        return jdbcTemplate.query("SELECT ID, Name FROM UsoundResult ORDER BY OrderNumber", getRowMapper());
+        return jdbcTemplate.query("SELECT ID, Name FROM UltraSoundResult ORDER BY OrderNumber", getRowMapper());
     }
 
     private RowMapper<NavsideEntity> getRowMapper() {

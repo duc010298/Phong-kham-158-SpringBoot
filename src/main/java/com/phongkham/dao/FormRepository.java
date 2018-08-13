@@ -17,7 +17,7 @@ public class FormRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<FormEntity> getFormContent(Serializable id) {
-        String sql = "SELECT Class1, Class2 FROM USoundResult_Content WHERE USoundResultId = ? ORDER BY OrderNumber";
+        String sql = "SELECT Class1, Class2 FROM UltraSoundResult_Content WHERE UltraSoundResultId = ? ORDER BY OrderNumber";
         return jdbcTemplate.query(sql, getRowMapper(), id);
     }
 

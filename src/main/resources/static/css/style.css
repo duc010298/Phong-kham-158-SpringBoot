@@ -139,3 +139,19 @@ main {
         transform: rotate(360deg);
     }
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    height: 3.125rem;
+    width: 100%;
+    background-color: #404040;
+    overflow: hidden;
+}
+
+.footer-content p {
+    color: #E8E8E8;
+    font-size: 1.125rem;
+    width: 15.625rem;
+    margin: 1.125rem auto;
+}
