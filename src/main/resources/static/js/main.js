@@ -56,7 +56,6 @@ $("#navside>ul>li").click(function () {
         }).done(function (result) {
             $(".spinner").attr("style", "display: none");
             $("#container").html(result);
-            setCurrentDate();
             $("html, body").animate({
                 scrollTop: 0
             }, "slow");
@@ -68,11 +67,14 @@ $("#navside>ul>li").click(function () {
     }, 300);
 });
 
-function setCurrentDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-    var Str = "Ngày " + dd + " tháng " + mm + " năm" + yyyy;
-    $(".date").html(Str);
-}
+$("#btn-print").click(function () {
+    var totalInput = $(".page input").length;
+    for(var i = 0; i < totalInput; i++) {
+        $("#output" + i).html($("#input" + i).val());
+    }
+    $("#print-container").printThis();
+});
+
+$("#btn-reload").click(function () {
+    $(".navside--active").click();
+});
