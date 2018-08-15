@@ -29,6 +29,40 @@
                     <span class="fas fa-sync-alt"></span>
                 </div>
             </div>
+            <div id="modalSave" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p>Bổ sung thông tin trước khi lưu</p>
+                    </div>
+                    <hr>
+                    <div class="modal-body">
+                        <p>Ngày sinh dự kiến:</p>
+                        <input id="ExpectedDOB" type="text" placeholder="dd/mm/yyyy">
+                        <p>Ghi chú:</p>
+                        <input id="Note" type="text" placeholder="Nhập ghi chú">
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <div id="btn-acept-save" class="btn-acept-save">Lưu</div>
+                        <div class="btn-close">Đóng</div>
+                    </div>
+                </div>
+            </div>
+            <div id="modalNotify" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p id="notify-header"></p>
+                    </div>
+                    <hr>
+                    <div class="modal-body">
+                        <h1 id="notify-content"></h1>
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <div class="btn-close">Đóng</div>
+                    </div>
+                </div>
+            </div>
         </header>
         <main>
             <div id="spinner" class="spinner">
