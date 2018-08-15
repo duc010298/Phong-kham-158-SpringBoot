@@ -68,7 +68,7 @@ $("#navside>ul>li").click(function () {
 });
 
 $("#btn-print").click(function () {
-    var totalInput = $(".page input").length;
+    var totalInput = $(".page input, textarea").length;
     for(var i = 0; i < totalInput; i++) {
         $("#output" + i).html($("#input" + i).val());
     }
