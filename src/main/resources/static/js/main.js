@@ -5,6 +5,9 @@ $("#btn-result").click(function () {
         $(this).removeAttr("class");
         $("#btn-result>span").attr("class", "fas fa-angle-down");
         $("main, .spinner-content, .footer-content").removeAttr("style");
+        if (firstClick) {
+            $(".content-default p").removeAttr("style");
+        }
         $("#tool").fadeOut(500);
     } else {
         $(this).attr("class", "navtop--active");
@@ -13,6 +16,9 @@ $("#btn-result").click(function () {
         $("main").attr("style", "margin-left: 14.375rem");
         $(".spinner-content").attr("style", "padding-right: 14.375rem;");
         $(".footer-content").attr("style", "margin-left: 14.375rem");
+        if (firstClick) {
+            $(".content-default p").attr("style", "padding-right: 14.375rem;");
+        }
         $("#tool").fadeIn(500);
     }
     $("#navside").animate({
@@ -21,6 +27,9 @@ $("#btn-result").click(function () {
 });
 
 $("#btn-report").click(function () {
+    if (firstClick) {
+        $(".content-default p").removeAttr("style");
+    }
     $(this).attr("class", "navtop--active");
     $("#btn-result").removeAttr("class");
     $("#navside>ul>li").removeAttr("class");

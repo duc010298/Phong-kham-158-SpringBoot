@@ -140,6 +140,19 @@ main {
     }
 }
 
+.content-default {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.content-default p {
+    font-size: 1.5625rem;
+    margin: auto;
+    padding-bottom: 5.625rem;
+}
+
 footer {
     position: fixed;
     bottom: 0;
