@@ -1,6 +1,6 @@
-DROP DATABASE phongkham;
-CREATE DATABASE phongkham;
-USE phongkham;
+﻿DROP DATABASE Clinic;
+CREATE DATABASE Clinic;
+USE Clinic;
 CREATE TABLE Customer (
 	Id INT PRIMARY KEY AUTO_INCREMENT,
 	Name VARCHAR(250),
@@ -12,56 +12,56 @@ CREATE TABLE Customer (
 	Note VARCHAR(250),
 	Report MEDIUMTEXT
 );
-CREATE TABLE USoundResult
+CREATE TABLE UltraSoundResult
 (
 	ID INT PRIMARY KEY NOT NULL,
 	Name VARCHAR(100) NOT NULL,
 	OrderNumber INT NOT NULL,
 	FormID INT NOT NULL
 );
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
 	(1, 'Thai dưới 12T', 1, 1);
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
 	(2, 'Thai dưới 12T - Dọa sảy', 2, 1);
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
 	(3, 'Thai 12T - 14T', 3, 2);
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
 	(4, 'Thai 12T - 14T - Dọa sảy', 4, 2);
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
-	(5, 'Thai 15T - 34T', 5, 2);
-INSERT INTO USoundResult
+	(5, 'Thai 15T - 34T', 5, 3);
+INSERT INTO UltraSoundResult
 VALUES
-	(6, 'Thai 34T - 40T', 6, 2);
-INSERT INTO USoundResult
+	(6, 'Thai 34T - 40T', 6, 3);
+INSERT INTO UltraSoundResult
 VALUES
 	(7, 'Túi ối', 7, 1);
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
 	(8, 'Túi ối - Dọa sảy', 8, 1);
-INSERT INTO USoundResult
+INSERT INTO UltraSoundResult
 VALUES
-	(9, 'Siêu âm ổ bụng 4D', 9, 3);
-INSERT INTO USoundResult
+	(9, 'Siêu âm ổ bụng 4D', 9, 4);
+INSERT INTO UltraSoundResult
 VALUES
-	(10, 'Ổ bụng vú', 10, 3);
-INSERT INTO USoundResult
+	(10, 'Ổ bụng vú', 10, 4);
+INSERT INTO UltraSoundResult
 VALUES
-	(11, 'Vú', 11, 4);
-CREATE TABLE USoundResult_Content
+	(11, 'Vú', 11, 5);
+CREATE TABLE UltraSoundResult_Content
 (
 	OrderNumber INT,
 	Class1 VARCHAR(250),
 	Class2 VARCHAR(250),
-	USoundResultId INT,
-	PRIMARY KEY(OrderNumber, USoundResultId),
-	FOREIGN KEY (USoundResultId) REFERENCES USoundResult(ID)
+	UltraSoundResultId INT,
+	PRIMARY KEY(OrderNumber, UltraSoundResultId),
+	FOREIGN KEY (UltraSoundResultId) REFERENCES UltraSoundResult(ID)
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -69,7 +69,7 @@ VALUES
 		NULL,
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -77,7 +77,7 @@ VALUES
 		'Buồng tử cung có 01 thai',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -85,7 +85,7 @@ VALUES
 		'(+)',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -93,7 +93,7 @@ VALUES
 		' lần/phút',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -101,7 +101,7 @@ VALUES
 		'Bình thường',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -109,7 +109,7 @@ VALUES
 		'Bình thường',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -117,7 +117,7 @@ VALUES
 		' mm',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -125,7 +125,7 @@ VALUES
 		NULL,
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -133,7 +133,7 @@ VALUES
 		' tuần',
 		1
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -142,7 +142,7 @@ VALUES
 		1
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -150,7 +150,7 @@ VALUES
 		'01',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -158,7 +158,7 @@ VALUES
 		'01',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -166,7 +166,7 @@ VALUES
 		'(+)',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -174,7 +174,7 @@ VALUES
 		'  lần/phút',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -182,7 +182,7 @@ VALUES
 		'bình thường',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -190,7 +190,7 @@ VALUES
 		'bờ túi ối không đều, có hiện tượng bóc tách',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -198,7 +198,7 @@ VALUES
 		' mm',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -206,7 +206,7 @@ VALUES
 		NULL,
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -214,7 +214,7 @@ VALUES
 		' tuần',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -222,7 +222,7 @@ VALUES
 		'bình thường',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -230,7 +230,7 @@ VALUES
 		'bình thường',
 		2
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -239,7 +239,7 @@ VALUES
 		2
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -247,7 +247,7 @@ VALUES
 		'01',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -255,7 +255,7 @@ VALUES
 		'có 01 túi ối',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -263,7 +263,7 @@ VALUES
 		' mm',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -271,7 +271,7 @@ VALUES
 		'bình thường',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -279,7 +279,7 @@ VALUES
 		'bình thường',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -287,7 +287,7 @@ VALUES
 		NULL,
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -295,7 +295,7 @@ VALUES
 		NULL,
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -303,7 +303,7 @@ VALUES
 		' tuần',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -311,7 +311,7 @@ VALUES
 		'bình thường',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -319,7 +319,7 @@ VALUES
 		'bình thường',
 		7
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -328,7 +328,7 @@ VALUES
 		7
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -336,7 +336,7 @@ VALUES
 		'có 01 túi ối',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -344,7 +344,7 @@ VALUES
 		'có 01 túi ối',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -352,7 +352,7 @@ VALUES
 		' mm',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -360,7 +360,7 @@ VALUES
 		'không đều có hiện tượng bóc tách',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -368,7 +368,7 @@ VALUES
 		'bình thường',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -376,7 +376,7 @@ VALUES
 		NULL,
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -384,7 +384,7 @@ VALUES
 		NULL,
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -392,7 +392,7 @@ VALUES
 		' tuần',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -400,7 +400,7 @@ VALUES
 		'bình thường',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -408,7 +408,7 @@ VALUES
 		'bình thường',
 		8
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -417,7 +417,7 @@ VALUES
 		8
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -425,7 +425,7 @@ VALUES
 		NULL,
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -433,7 +433,7 @@ VALUES
 		'01',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -441,7 +441,7 @@ VALUES
 		' mm',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -449,7 +449,7 @@ VALUES
 		' mm',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -457,7 +457,7 @@ VALUES
 		'rộng',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -465,7 +465,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -473,7 +473,7 @@ VALUES
 		NULL,
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -481,7 +481,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -489,7 +489,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -497,7 +497,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -505,7 +505,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -513,7 +513,7 @@ VALUES
 		'4 buồng',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		13,
@@ -521,7 +521,7 @@ VALUES
 		NULL,
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		14,
@@ -529,7 +529,7 @@ VALUES
 		' lần/phút',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		15,
@@ -537,7 +537,7 @@ VALUES
 		'có',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		16,
@@ -545,7 +545,7 @@ VALUES
 		'1.8mm',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		17,
@@ -553,7 +553,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		18,
@@ -561,7 +561,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		19,
@@ -569,7 +569,7 @@ VALUES
 		'Bình thường',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		20,
@@ -577,7 +577,7 @@ VALUES
 		' (+,- 7 ngày)',
 		3
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		21,
@@ -586,7 +586,7 @@ VALUES
 		3
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -594,7 +594,7 @@ VALUES
 		NULL,
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -602,7 +602,7 @@ VALUES
 		'01',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -610,7 +610,7 @@ VALUES
 		' mm',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -618,7 +618,7 @@ VALUES
 		' mm',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -626,7 +626,7 @@ VALUES
 		'Rau bám rộng, bờ ối có hiện tượng bóc tách',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -634,7 +634,7 @@ VALUES
 		'Tốt',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -642,7 +642,7 @@ VALUES
 		NULL,
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -650,7 +650,7 @@ VALUES
 		'Bình thường',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -658,7 +658,7 @@ VALUES
 		'Bình thường',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -666,7 +666,7 @@ VALUES
 		'Bình thường',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -674,7 +674,7 @@ VALUES
 		'Bình thường',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		13,
@@ -682,7 +682,7 @@ VALUES
 		' lần/phút',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		14,
@@ -690,7 +690,7 @@ VALUES
 		'Bình thường',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		15,
@@ -698,7 +698,7 @@ VALUES
 		'2.0mm',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		16,
@@ -706,7 +706,7 @@ VALUES
 		'có',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		17,
@@ -714,7 +714,7 @@ VALUES
 		' (+,- 7 ngày)',
 		4
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		18,
@@ -723,7 +723,7 @@ VALUES
 		4
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -731,7 +731,7 @@ VALUES
 		NULL,
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -739,7 +739,7 @@ VALUES
 		'01',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -747,7 +747,7 @@ VALUES
 		' mm',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -755,7 +755,7 @@ VALUES
 		' mm',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -763,7 +763,7 @@ VALUES
 		' mm',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -771,7 +771,7 @@ VALUES
 		' mm',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -779,7 +779,7 @@ VALUES
 		' g',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -787,7 +787,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -795,7 +795,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -803,7 +803,7 @@ VALUES
 		NULL,
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -811,7 +811,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -819,7 +819,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		13,
@@ -827,7 +827,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		14,
@@ -835,7 +835,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		15,
@@ -843,7 +843,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		16,
@@ -851,7 +851,7 @@ VALUES
 		'4 buồng',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		17,
@@ -859,7 +859,7 @@ VALUES
 		NULL,
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		18,
@@ -867,7 +867,7 @@ VALUES
 		' lần/phút',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		19,
@@ -875,7 +875,7 @@ VALUES
 		'có',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		20,
@@ -883,7 +883,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		21,
@@ -891,7 +891,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		22,
@@ -899,7 +899,7 @@ VALUES
 		'Bình thường',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		23,
@@ -907,7 +907,7 @@ VALUES
 		' (+;- 7 ngày)',
 		5
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		24,
@@ -916,7 +916,7 @@ VALUES
 		5
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -924,7 +924,7 @@ VALUES
 		NULL,
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -932,7 +932,7 @@ VALUES
 		'01',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -940,7 +940,7 @@ VALUES
 		' mm',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -948,7 +948,7 @@ VALUES
 		' mm',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -956,7 +956,7 @@ VALUES
 		' mm',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -964,7 +964,7 @@ VALUES
 		' mm',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -972,7 +972,7 @@ VALUES
 		' g (+_200g)',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -980,7 +980,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -988,7 +988,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -996,7 +996,7 @@ VALUES
 		NULL,
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -1004,7 +1004,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -1012,7 +1012,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		13,
@@ -1020,7 +1020,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		14,
@@ -1028,7 +1028,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		15,
@@ -1036,7 +1036,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		16,
@@ -1044,7 +1044,7 @@ VALUES
 		'4 buồng',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		17,
@@ -1052,7 +1052,7 @@ VALUES
 		NULL,
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		18,
@@ -1060,7 +1060,7 @@ VALUES
 		' lần/phút',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		19,
@@ -1068,7 +1068,7 @@ VALUES
 		'có',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		20,
@@ -1076,7 +1076,7 @@ VALUES
 		'Đầu',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		21,
@@ -1084,7 +1084,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		22,
@@ -1092,7 +1092,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		23,
@@ -1100,7 +1100,7 @@ VALUES
 		'Bình thường',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		24,
@@ -1108,7 +1108,7 @@ VALUES
 		' (+;- 7 ngày )',
 		6
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		25,
@@ -1117,7 +1117,7 @@ VALUES
 		6
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -1125,7 +1125,7 @@ VALUES
 		NULL,
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -1133,7 +1133,7 @@ VALUES
 		'-  Không to, nhu mô gan đều, không có hình khối khu trú bất thường.',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -1141,7 +1141,7 @@ VALUES
 		'-  Tĩnh mạch cửa không giãn',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -1149,7 +1149,7 @@ VALUES
 		'- Túi mật không căng, thành mỏng, không có sỏi',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -1157,7 +1157,7 @@ VALUES
 		'-  Đường mật trong gan và ống mật chủ không giãn, không có sỏi',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -1165,7 +1165,7 @@ VALUES
 		'- Thận phải: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -1173,7 +1173,7 @@ VALUES
 		'- Thận trái: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -1181,7 +1181,7 @@ VALUES
 		'-  Niệu quản hai bên bình thường',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -1189,7 +1189,7 @@ VALUES
 		'- Tử cung kích bình thường, đường lòng tử cung rõ niêm mạc mỏng, chưa thấy khối bất thường',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -1197,7 +1197,7 @@ VALUES
 		'- Phần phụ trái: bình thường',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -1205,7 +1205,7 @@ VALUES
 		'- Phần phụ phải: bình thường',
 		9
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -1214,7 +1214,7 @@ VALUES
 		9
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -1222,7 +1222,7 @@ VALUES
 		NULL,
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -1230,7 +1230,7 @@ VALUES
 		'-  Không to, nhu mô gan đều, không có hình khối khu trú bất thường.',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -1238,7 +1238,7 @@ VALUES
 		'-  Tĩnh mạch cửa không giãn',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -1246,7 +1246,7 @@ VALUES
 		'- Túi mật không căng, thành mỏng, không có sỏi',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -1254,7 +1254,7 @@ VALUES
 		'-  Đường mật trong gan và ống mât chủ không giãn, không có sỏi',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -1262,7 +1262,7 @@ VALUES
 		'- Thận phải: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -1270,7 +1270,7 @@ VALUES
 		'- Thận trái: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -1278,7 +1278,7 @@ VALUES
 		'-  Niệu quản hai bên bình thường',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -1286,7 +1286,7 @@ VALUES
 		'- Tử cung kích thước bình thường, đường lòng tử cung rõ niêm mạc mỏng, chưa thấy khối bất thường',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -1294,7 +1294,7 @@ VALUES
 		'- Phần phụ trái: bình thường',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
@@ -1302,7 +1302,7 @@ VALUES
 		'- Phần phụ phải: bình thường',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		12,
@@ -1310,7 +1310,7 @@ VALUES
 		'- Vú trái: không thấy khối u khu trú',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		13,
@@ -1318,7 +1318,7 @@ VALUES
 		'- Vú phải: không thấy khối u khu trú',
 		10
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		14,
@@ -1327,7 +1327,7 @@ VALUES
 		10
 );
 --
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		1,
@@ -1335,7 +1335,7 @@ VALUES
 		NULL,
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		2,
@@ -1343,7 +1343,7 @@ VALUES
 		'Nhu mô tuyến vú bình thường',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		3,
@@ -1351,7 +1351,7 @@ VALUES
 		'Mật độ tuyến vú bình thường',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		4,
@@ -1359,7 +1359,7 @@ VALUES
 		'Không có hình ảnh nhân xơ và nang tuyến vú',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		5,
@@ -1367,7 +1367,7 @@ VALUES
 		'Núm vú bình thường',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		6,
@@ -1375,7 +1375,7 @@ VALUES
 		NULL,
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		7,
@@ -1383,7 +1383,7 @@ VALUES
 		'Nhu mô tuyến vú bình thường',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		8,
@@ -1391,7 +1391,7 @@ VALUES
 		'Mật độ tuyến vú bình thường',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		9,
@@ -1399,7 +1399,7 @@ VALUES
 		'Không có hình ảnh nhân xơ và nang tuyến vú',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		10,
@@ -1407,7 +1407,7 @@ VALUES
 		'Núm vú bình thường',
 		11
 );
-INSERT INTO USoundResult_Content
+INSERT INTO UltraSoundResult_Content
 VALUES
 	(
 		11,
