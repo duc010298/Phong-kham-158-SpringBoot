@@ -14,9 +14,9 @@ public class CustomerRepository {
     public boolean addCustomer(CustomerEntity customerEntity) {
         String sql = "INSERT INTO Customer VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
-            int rows = jdbcTemplate.update(sql, customerEntity.getName(), customerEntity.getYOB(), customerEntity.getAddressCus(),
-                    new java.sql.Date(customerEntity.getDayVisit().getTime()),
-                    new java.sql.Date(customerEntity.getExpectedDOB().getTime()),
+            int rows = jdbcTemplate.update(sql, customerEntity.getName(), customerEntity.getYOB(),
+                    customerEntity.getAddressCus(), new java.sql.Date(customerEntity.getDayVisit().getTime()),
+                    customerEntity.getExpectedDOB() == null ? null : new java.sql.Date(customerEntity.getExpectedDOB().getTime()),
                     customerEntity.getResult(), customerEntity.getNote(), customerEntity.getReport());
             return rows == 1;
         } catch (Exception ex) {

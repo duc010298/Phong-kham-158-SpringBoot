@@ -66,7 +66,7 @@ $("#btn-print").click(function () {
 });
 
 function pageToPrint() {
-    var totalInput = $(".page input, textarea").length;
+    var totalInput = $(".page input, .page textarea").length;
     for(var i = 0; i < totalInput; i++) {
         $("#output" + i).html($("#input" + i).val());
     }
@@ -94,7 +94,7 @@ $('.modal-body input').keydown(function (e) {
 $("#btn-acept-save").click(function () {
     notify("Thông báo", "Đang xử lí");
     pageToPrint();
-    var totalInput = $(".page input, textarea").length;
+    var totalInput = $(".page input, .page textarea").length;
     var indexOfResult = Math.floor(totalInput);
     var Name = $("#input0").val();
     if (Name === "") {
