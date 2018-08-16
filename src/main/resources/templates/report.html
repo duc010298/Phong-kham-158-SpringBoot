@@ -168,4 +168,31 @@
         $(".search-body input").val("");
     });
 
+    $("#btn-search").click(function () {
+        var Name = $("#inputName").val();
+        var age = $("#inputAge").val();
+        var YOB = "";
+        if(age != "") {
+            YOB = age < 100 ? (new Date()).getFullYear() - age : age;
+        }
+        var AddressCus = $("#inputAddress").val();
+        var DayVisitstr = $("#inputDayVisit").val();
+        var DayVisit = DayVisitstr == "" || !validateDate(DayVisitstr) ? null : DayVisitstr.replace(/-/g, "/");
+        $.ajax({
+            url: "http://" + window.location.host + "/Customer/Search",
+            type: 'GET',
+            dataType: 'html',
+            data: {
+                Name: Name,
+                YOB: YOB,
+                AddressCus: AddressCus,
+                DayVisit: DayVisit
+            },
+            error: function(){
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            $("#display-result").html(result);
+        });
+    });
 </script>

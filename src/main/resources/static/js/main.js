@@ -46,7 +46,7 @@ $("#navside>ul>li").click(function () {
                 id: id
             },
             error: function(){
-                alert('Không thể tải dữ liệu!');
+                notify("Lỗi", "Không thể tải dữ liệu");
                 $(".spinner").attr("style", "display: none");
             }
         }).done(function (result) {
@@ -152,14 +152,17 @@ $("#btn-acept-save").click(function () {
         result: Result,
         note: Note,
         report: Report
-    }
+    };
 
     $.ajax({
         url: "http://" + window.location.host + "/Customer",
-        type: 'PUT',
+        type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
-        data: JSON.stringify(customer)
+        data: JSON.stringify(customer),
+        error: function(){
+            notify("Lỗi", "Không thể xử lí dự liệu");
+        }
     }).done(function (result) {
         notify("Thông báo", result);
     });
@@ -184,13 +187,9 @@ function notify(Header, Content) {
 }
 
 function validateDate(date) {
-    //input must be dd/MM/yyyy or dd-MM-yyyy
+    date = date.replace(/-/g, "/")
     var arr;
-    if (date.indexOf("/") != -1) {
-        arr = date.split("/");
-    } else {
-        arr = date.split("-");
-    }
+    arr = date.split("/");
     if (arr.length !== 3) {
         return false;
     }

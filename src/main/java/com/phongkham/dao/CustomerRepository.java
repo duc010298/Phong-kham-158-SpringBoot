@@ -2,10 +2,12 @@ package com.phongkham.dao;
 
 import com.phongkham.model.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -40,5 +42,22 @@ public class CustomerRepository {
     public List<String> searchByAddress(String value) {
         String sql = "SELECT AddressCus FROM Customer WHERE AddressCus LIKE ? GROUP BY AddressCus  LIMIT 0, 15";
         return jdbcTemplate.queryForList(sql, String.class, "%" + value + "%");
+    }
+
+    public List<CustomerEntity> searchCustomer(String name, String YOB, String addressCus, Date dayVisit) {
+        String sql = "SELECT DayVisit, Name, YOB, AddressCus, ExpectedDOB, Result, Note FROM Customer " +
+                "WHERE Name LIKE ? AND YOB LIKE ? AND AddressCus LIKE ? ";
+        if (dayVisit == null) {
+            sql += "ORDER BY DayVisit DESC LIMIT 0, 1000";
+            return jdbcTemplate.query(sql, getRowMapper(), "%" + name + "%", "%" + YOB + "%", "%" + addressCus + "%");
+        } else {
+            sql += "AND DayVisit BETWEEN ? AND NOW() ORDER BY DayVisit ASC LIMIT 0, 1000";
+            return jdbcTemplate.query(sql, getRowMapper(), "%" + name + "%", "%" + YOB + "%", "%" + addressCus + "%",
+                    new java.sql.Date(dayVisit.getTime()));
+        }
+    }
+
+    private RowMapper<CustomerEntity> getRowMapper() {
+        return new BeanPropertyRowMapper<>(CustomerEntity.class);
     }
 }

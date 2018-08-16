@@ -3,10 +3,13 @@ package com.phongkham.controller;
 import com.phongkham.dao.CustomerRepository;
 import com.phongkham.model.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -16,7 +19,7 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String addCustomer(@RequestBody CustomerEntity customerEntity) {
         return customerRepository.addCustomer(customerEntity) ? "Lưu thành công" : "Lỗi: Lưu không thành công";
@@ -38,5 +41,14 @@ public class CustomerController {
                 break;
         }
         return ret;
+    }
+
+    @RequestMapping(path = "/Search", method = RequestMethod.GET)
+    public String searchCustomers(@RequestParam("Name") String name, @RequestParam("YOB") String YOB,
+                                  @RequestParam("AddressCus") String addressCus,
+                                  @RequestParam("DayVisit") @DateTimeFormat(pattern = "dd/MM/yyyy") Date dayVisit,
+                                  ModelMap modelMap) {
+        modelMap.addAttribute("Customers", customerRepository.searchCustomer(name, YOB, addressCus, dayVisit));
+        return "result :: result";
     }
 }
