@@ -45,7 +45,7 @@ public class CustomerRepository {
     }
 
     public List<CustomerEntity> searchCustomer(String name, String YOB, String addressCus, Date dayVisit) {
-        String sql = "SELECT DayVisit, Name, YOB, AddressCus, ExpectedDOB, Result, Note FROM Customer " +
+        String sql = "SELECT Id, DayVisit, Name, YOB, AddressCus, ExpectedDOB, Result, Note FROM Customer " +
                 "WHERE Name LIKE ? AND YOB LIKE ? AND AddressCus LIKE ? ";
         if (dayVisit == null) {
             sql += "ORDER BY DayVisit DESC LIMIT 0, 1000";
@@ -55,6 +55,11 @@ public class CustomerRepository {
             return jdbcTemplate.query(sql, getRowMapper(), "%" + name + "%", "%" + YOB + "%", "%" + addressCus + "%",
                     new java.sql.Date(dayVisit.getTime()));
         }
+    }
+
+    public String getReport(int id) {
+        String sql = "SELECT Report FROM Customer WHERE Id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
     }
 
     private RowMapper<CustomerEntity> getRowMapper() {

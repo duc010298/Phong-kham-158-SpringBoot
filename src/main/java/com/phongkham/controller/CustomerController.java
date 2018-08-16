@@ -51,4 +51,10 @@ public class CustomerController {
         modelMap.addAttribute("Customers", customerRepository.searchCustomer(name, YOB, addressCus, dayVisit));
         return "result :: result";
     }
+
+    @RequestMapping(path = "/Report/{id}", method = RequestMethod.GET)
+    public String getReport(@PathVariable("id") int id, ModelMap modelMap) {
+        modelMap.addAttribute("Content", customerRepository.getReport(id));
+        return "resultContent";
+    }
 }

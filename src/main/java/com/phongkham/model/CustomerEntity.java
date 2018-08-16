@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class CustomerEntity {
 
+    private int Id;
     private String Name;
     private int YOB;
     private String AddressCus;
@@ -26,6 +27,26 @@ public class CustomerEntity {
         Result = result;
         Note = note;
         Report = report;
+    }
+
+    public CustomerEntity(int id, String name, int YOB, String addressCus, Date dayVisit, Date expectedDOB, String result, String note, String report) {
+        Id = id;
+        Name = name;
+        this.YOB = YOB;
+        AddressCus = addressCus;
+        DayVisit = dayVisit;
+        ExpectedDOB = expectedDOB;
+        Result = result;
+        Note = note;
+        Report = report;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getName() {

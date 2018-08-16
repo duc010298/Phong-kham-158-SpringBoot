@@ -13,7 +13,8 @@
                 <th class="result">Kết quả</th>
                 <th class="Note">Ghi chú</th>
             </tr>
-            <tr th:each="customer, iter : ${Customers}" th:if="${not #lists.isEmpty(Customers)}">
+            <tr th:each="customer, iter : ${Customers}" th:if="${not #lists.isEmpty(Customers)}"
+                th:id="${customer.getId()}" target="_blank" class="customer">
                 <td th:text="${iter.count}">...</td>
                 <td th:text="${#dates.format(customer.getDayVisit(), 'dd/MM/yyyy')}">...</td>
                 <td th:text="${customer.getName()}">...</td>
@@ -31,6 +32,11 @@
         } else {
             $("footer").removeAttr("style");
         }
+
+        $(".customer").click(function () {
+            var url = "http://" + window.location.host + "/Customer/Report/" + $(this).attr("id");
+            window.open(url, '_blank');
+        });
     </script>
 </div>
 </html>
