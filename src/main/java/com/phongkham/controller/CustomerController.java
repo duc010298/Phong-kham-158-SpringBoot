@@ -5,10 +5,9 @@ import com.phongkham.model.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/Customer")
@@ -20,12 +19,24 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String addCustomer(@RequestBody CustomerEntity customerEntity) {
-        String message;
-        if(customerRepository.addCustomer(customerEntity)) {
-            message = "Lưu thành công";
-        } else {
-            message = "Lỗi: Lưu không thành công";
+        return customerRepository.addCustomer(customerEntity) ? "Lưu thành công" : "Lỗi: Lưu không thành công";
+    }
+
+    @RequestMapping(path = "/SearchContent", method = RequestMethod.GET)
+    public @ResponseBody
+    List<String> searchContent(@RequestParam("search") String search, @RequestParam("value") String value) {
+        List<String> ret = null;
+        switch (search) {
+            case "inputName":
+                ret = customerRepository.searchByName(value);
+                break;
+            case "inputAge":
+                ret = customerRepository.searchByYOB(value);
+                break;
+            case "inputAddress":
+                ret = customerRepository.searchByAddress(value);
+                break;
         }
-        return message;
+        return ret;
     }
 }
