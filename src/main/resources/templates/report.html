@@ -32,8 +32,17 @@
             <div class="btn-search" id="btn-search"><span class="fas fa-search"></span> Tìm kiếm</div>
         </div>
     </div>
-    <div class="display-result" id="display-result">
-
+    <div class="display-result" id="display-result"></div>
+    <div id="display-report" class="display-report">
+        <div class="report-opacity"></div>
+        <div class="report-close" id="report-close"><span class="fas fa-window-close"></span></div>
+        <div class="report-content">
+            <div class="page">
+                <div class="page-container">
+                    <div id="report"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -197,5 +206,14 @@
         }).done(function (result) {
             $("#display-result").html(result);
         });
+    });
+
+    $("#report-close").click(function () {
+        $("#display-report").fadeOut("fast");
+        if ($(".display-result-content tr").length > 10) {
+            $("footer").attr("style", "position: static; bottom: auto");
+        } else {
+            $("footer").removeAttr("style");
+        }
     });
 </script>

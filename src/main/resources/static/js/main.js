@@ -25,10 +25,14 @@ $("#btn-report").click(function () {
         height: 'hide'
     }, 350);
     $(".spinner").attr("style", "display: flex");
-    $("#container").load("http://" + window.location.host + "/Report");
-    setTimeout(function () {
-        $(".spinner").removeAttr("style");
-    }, 300);
+    $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
+        setTimeout(function () {
+            $(".spinner").removeAttr("style");
+        }, 300);
+        if ( status == "error" ) {
+            notify("Lỗi", "Không thể tải dữ liệu");
+        }
+    });
 });
 
 $("#navside>ul>li").click(function () {

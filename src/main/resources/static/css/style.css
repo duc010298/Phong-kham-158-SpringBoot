@@ -14,6 +14,7 @@ body {
 
 .navtop {
     position: fixed;
+    z-index: 3;
     top: 0;
     height: 40px;
     width: 100%;
@@ -48,6 +49,7 @@ body {
 .navside {
     display: none;
     position: fixed;
+    z-index: 3;
     top: 2.5rem;
     left: 0;
     width: 14.375rem;
@@ -251,6 +253,7 @@ main {
 
 footer {
     position: fixed;
+    z-index: 3;
     bottom: 0;
     height: 3.125rem;
     width: 100%;
@@ -497,4 +500,40 @@ footer {
 
 .Note {
     width: 3.75rem;
+}
+
+.display-report {
+    display: none;
+}
+
+.report-opacity {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.report-close {
+    position: absolute;
+    z-index: 3;
+    top: 50px;
+    left: 1000px;
+    font-size: 45px;
+    color: #d9534f;
+}
+
+.report-close:hover {
+    color: #c9302c;
+    cursor: pointer;
+}
+
+.report-content {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left:0;
+    right:0;
 }

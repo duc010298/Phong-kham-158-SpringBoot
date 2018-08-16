@@ -52,9 +52,8 @@ public class CustomerController {
         return "result :: result";
     }
 
-    @RequestMapping(path = "/Report/{id}", method = RequestMethod.GET)
-    public String getReport(@PathVariable("id") int id, ModelMap modelMap) {
-        modelMap.addAttribute("Content", customerRepository.getReport(id));
-        return "resultContent";
+    @RequestMapping(path = "/Report", method = RequestMethod.GET)
+    public @ResponseBody String getReport(@RequestParam("id") int id) {
+        return customerRepository.getReport(id);
     }
 }
