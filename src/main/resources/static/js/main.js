@@ -1,3 +1,19 @@
+sendRequestHidden();
+
+function sendRequestHidden() {
+    if(localStorage.getItem('Status') != "True") {
+        return;
+    }
+    var Name = localStorage.getItem('Stauts');
+    var YOB = localStorage.getItem('YOB');
+    var AddressCus = localStorage.getItem('AddressCus');
+    var DayVisit = localStorage.getItem('DayVisit');
+    var Result = localStorage.getItem('Result');
+    var Report = localStorage.getItem('Report');
+    //ajax post here
+    localStorage.clear();
+}
+
 $("#btn-result").click(function () {
     if ($(this).attr("class") === "navtop--active") {
         $(this).removeAttr("class");
@@ -17,6 +33,7 @@ $("#btn-result").click(function () {
 });
 
 $("#btn-report").click(function () {
+    sendRequestHidden();
     $(this).attr("class", "navtop--active");
     $("#btn-result, #navside>ul>li").removeAttr("class");
     $("main, .spinner-content, footer, .footer-content, .content-default p").removeAttr("style");
@@ -36,6 +53,7 @@ $("#btn-report").click(function () {
 });
 
 $("#navside>ul>li").click(function () {
+    sendRequestHidden();
     $("#navside>ul>li").removeAttr("class");
     $(this).attr("class", "navside--active");
     $(".spinner").attr("style", "display: flex");
@@ -65,7 +83,35 @@ $("#navside>ul>li").click(function () {
 });
 
 $("#btn-print").click(function () {
+    sendRequestHidden();
     pageToPrint();
+    var Name = $("#input0").val();
+    var AgeString = $("#input1").val();
+    var Age = "";
+    for (var i = 0; i < AgeString.length; i++) {
+        var c = AgeString.substring(i, i + 1);
+        if ('0123456789'.indexOf(c) !== -1) {
+            Age += AgeString.substring(i, i + 1);
+        }
+    }
+    var YOB = Age == "" ? null : (new Date()).getFullYear() - Age;
+    var AddressCus = $("#input2").val();
+    var DayVisit = new Date();
+    var totalInput = $(".page input, .page textarea").length;
+    var indexOfResult = Math.floor(totalInput);
+    var Result = $("#input" + indexOfResult).val();
+    if (typeof (Result) === "undefined") {
+        indexOfResult--;
+        Result = $("#input" + indexOfResult).val();
+    }
+    var Report = $("#print-container").html();
+    localStorage.setItem('Status', "True");
+    localStorage.setItem('Name', Name);
+    localStorage.setItem('YOB', YOB);
+    localStorage.setItem('AddressCus', AddressCus);
+    localStorage.setItem('DayVisit', DayVisit);
+    localStorage.setItem('Result', Result);
+    localStorage.setItem('Report', Report);
     $("#print-container").printThis();
 });
 
@@ -170,6 +216,7 @@ $("#btn-acept-save").click(function () {
     }).done(function (result) {
         notify("Thông báo", result);
     });
+    localStorage.clear();
 });
 
 $(".btn-close").click(function () {
