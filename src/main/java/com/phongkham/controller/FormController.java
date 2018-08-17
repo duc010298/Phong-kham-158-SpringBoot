@@ -14,8 +14,12 @@ import java.util.Date;
 @RequestMapping(path = "/UltraSoundResult")
 public class FormController {
 
-    @Autowired
     private FormRepository formRepository;
+
+    @Autowired
+    public FormController(FormRepository formRepository) {
+        this.formRepository = formRepository;
+    }
 
     @GetMapping()
     public String getFormContent(@RequestParam("id") String id, ModelMap modelMap) {

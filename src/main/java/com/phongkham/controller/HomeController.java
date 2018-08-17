@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/Phongkham158")
 public class HomeController {
 
-    @Autowired
     private NavsideRepository navsideRepository;
+
+    @Autowired
+    public HomeController(NavsideRepository navsideRepository) {
+        this.navsideRepository = navsideRepository;
+    }
 
     @GetMapping()
     public String initHome(ModelMap modelMap) {

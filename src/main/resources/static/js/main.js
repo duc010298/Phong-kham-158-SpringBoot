@@ -4,13 +4,27 @@ function sendRequestHidden() {
     if(localStorage.getItem('Status') != "True") {
         return;
     }
-    var Name = localStorage.getItem('Stauts');
+    var Name = localStorage.getItem('Name');
     var YOB = localStorage.getItem('YOB');
     var AddressCus = localStorage.getItem('AddressCus');
     var DayVisit = localStorage.getItem('DayVisit');
     var Result = localStorage.getItem('Result');
     var Report = localStorage.getItem('Report');
-    //ajax post here
+    var customer = {
+        name: Name,
+        yob: YOB,
+        addressCus: AddressCus,
+        dayVisit: DayVisit,
+        result: Result,
+        report: Report
+    };
+    $.ajax({
+        url: "http://" + window.location.host + "/CustomerHidden",
+        type: 'POST',
+        dataType: 'html',
+        contentType: 'application/json',
+        data: JSON.stringify(customer)
+    });
     localStorage.clear();
 }
 
@@ -94,9 +108,9 @@ $("#btn-print").click(function () {
             Age += AgeString.substring(i, i + 1);
         }
     }
-    var YOB = Age == "" ? null : (new Date()).getFullYear() - Age;
+    var YOB = Age == "" ? 0 : (new Date()).getFullYear() - Age;
     var AddressCus = $("#input2").val();
-    var DayVisit = new Date();
+    var DayVisit = formatDate(new Date());
     var totalInput = $(".page input, .page textarea").length;
     var indexOfResult = Math.floor(totalInput);
     var Result = $("#input" + indexOfResult).val();
@@ -114,6 +128,18 @@ $("#btn-print").click(function () {
     localStorage.setItem('Report', Report);
     $("#print-container").printThis();
 });
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 function pageToPrint() {
     var totalInput = $(".page input, .page textarea").length;
