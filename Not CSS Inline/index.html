@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}"/>
+        <link href="../static/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+        <link href="../static/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" th:href="@{/css/fontawesome-all.min.css}"/>
+        <title>Phòng khám 158</title>
+    </head>
+    <body>
+        <header>
+            <div class="navtop">
+                <div id="btn-result"><span class="fas fa-angle-down"></span> KẾT QUẢ SIÊU ÂM</div>
+                <div id="btn-report"><span class="far fa-file-excel"></span> BÁO CÁO SIÊU ÂM</div>
+            </div>
+            <div id="navside" class="navside">
+                <ul>
+                    <li id="1" th:each="navSide:${navSides}" th:id="${navSide.getID()}" th:text="${navSide.getName()}">...</li>
+                </ul>
+            </div>
+            <div id="tool" class="tool">
+                <div id="btn-print" class="btn-print">
+                    <span class="fas fa-print"></span>
+                </div>
+                <div id="btn-save" class="btn-save">
+                    <span class="fas fa-save"></span>
+                </div>
+                <div id="btn-reload" class="btn-reload">
+                    <span class="fas fa-sync-alt"></span>
+                </div>
+            </div>
+            <div id="modalSave" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p>Bổ sung thông tin trước khi lưu</p>
+                    </div>
+                    <hr>
+                    <div class="modal-body">
+                        <p>Ngày sinh dự kiến:</p>
+                        <input id="ExpectedDOB" type="text" placeholder="dd/mm/yyyy">
+                        <p>Ghi chú:</p>
+                        <input id="Note" type="text" placeholder="Nhập ghi chú">
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <div id="btn-acept-save" class="btn-acept-save">Lưu</div>
+                        <div class="btn-close">Đóng</div>
+                    </div>
+                </div>
+            </div>
+            <div id="modalNotify" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p id="notify-header"></p>
+                    </div>
+                    <hr>
+                    <div class="modal-body">
+                        <h1 id="notify-content"></h1>
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <div class="btn-close">Đóng</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="spinner" class="spinner">
+                <div class="spinner-content">
+                    <div class="spin"></div>
+                </div>
+            </div>
+            <div id="container">
+                <div class="content-default">
+                    <p>Chưa có nội dung để hiển thị</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <p>Phát triển bởi: Đỗ Trung Đức</p>
+            </div>
+        </footer>
+        <script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+        <script src="../static/js/main.js" type="text/javascript" th:src="@{/js/main.js}"></script>
+        <script src="../static/js/printThis.js" type="text/javascript" th:src="@{/js/printThis.js}"></script>
+    </body>
+</html>
