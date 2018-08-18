@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <body style="font-family: Arial, Helvetica, sans-serif;background-color: #F0F0F0;">
-        <div class="page" style="width: 46.5625rem;margin: 3.125rem auto 1.25rem auto;background-color: #fff;overflow:
-        hidden;box-shadow: 0.3125rem 0.3125rem 0.3125rem #7F7979;font-family: Times, serif;">
-            <div class="page-container" style="margin: 1.875rem 2.8125rem;">
-                <div th:utext="${Content}"></div>
-            </div>
+    <head>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #F0F0F0;
+            }
+
+            .page {
+                width: 46.5625rem;
+                margin: 3.125rem auto 1.25rem auto;
+                background-color: #fff;
+                overflow: hidden;
+                box-shadow: 0.3125rem 0.3125rem 0.3125rem #7F7979;
+                font-family: "Times New Roman", Times, serif;
+            }
+
+            .page-container {
+                margin: 1.875rem 2.8125rem;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="page">
+        <div class="page-container">
+            <div th:utext="${Content}"></div>
         </div>
+    </div>
     </body>
 </html>
