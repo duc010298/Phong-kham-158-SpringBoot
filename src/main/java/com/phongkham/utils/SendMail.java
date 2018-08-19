@@ -34,7 +34,7 @@ public class SendMail {
 
             IContext context = new Context();
             ((Context) context).setVariable("Content", customerEntity.getReport());
-            String htmlMsg = springTemplateEngine.process("mailForm", context);
+            String htmlMsg = springTemplateEngine.process("mail", context);
 
             mimeMessageHelper.setFrom(fromEmail);
             mimeMessageHelper.setTo(toEmail);
