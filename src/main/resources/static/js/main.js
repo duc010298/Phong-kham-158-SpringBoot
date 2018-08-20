@@ -237,7 +237,7 @@ $("#btn-acept-save").click(function () {
         contentType: 'application/json',
         data: JSON.stringify(customer),
         error: function(){
-            notify("Lỗi", "Không thể xử lí dự liệu");
+            notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
         notify("Thông báo", result);
