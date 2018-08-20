@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}"/>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link href="../static/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"
+          th:href="@{/css/fontawesome-all.min.css}"/>
+    <title>Quản lí phòng khám</title>
+</head>
+<body>
+<header>
+    <div class="navtop">
+        <div>QUẢN LÍ PHÒNG KHÁM</div>
+    </div>
+</header>
+<main>
+    <div class="reportHidden">
+        <div class="searchHidden">
+            <div class="searchHidden-body">
+                <h2>Nhập ngày</h2>
+                <input type="text" id="inputDayVisitHidden" placeholder="dd/MM/yyy" name="inputDayVisit">
+                <h5 class="alert"></h5>
+            </div>
+            <hr>
+            <div class="searchHidden-footer">
+                <div class="btn-reload-searchHidden" id="btn-reload-searchHidden"><span class="fas fa-sync-alt"></span>
+                    Nhập lại
+                </div>
+                <div class="btn-searchHidden" id="btn-searchHidden"><span class="fas fa-search"></span> Tìm kiếm</div>
+            </div>
+        </div>
+        <div class="display-result" id="display-resultHidden"></div>
+        <div id="display-report" class="display-report">
+            <div class="report-opacity"></div>
+            <div class="report-close" id="report-close"><span class="fas fa-window-close"></span></div>
+            <div class="report-content">
+                <div class="page">
+                    <div class="page-container">
+                        <div id="report"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="footer-content">
+        <p>Phát triển bởi: Đỗ Trung Đức</p>
+    </div>
+</footer>
+<script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/main.js" type="text/javascript" th:src="@{/js/main.js}"></script>
+<script>
+    $("#btn-reload-searchHidden").click(function () {
+        $(".searchHidden-body input").val("");
+    });
+
+    $("#btn-searchHidden").click(function () {
+        var dayVisit = $("#inputDayVisitHidden").val();
+        if (dayVisit == "") {
+            $(".alert").html("Chú ý: Không được bỏ trống ô nhập ngày");
+            if ($(window).width() <= 1314) {
+                $(".searchHidden").attr("style", "height: 13rem;");
+            } else {
+                $(".searchHidden").attr("style", "height: 10rem;");
+            }
+            $(".alert").fadeIn();
+            return;
+        }
+        if (!validateDate(dayVisit) && dayVisit != "") {
+            $(".alert").html("Chú ý: Ngày chưa được nhập chính xác");
+            if ($(window).width() <= 1314) {
+                $(".searchHidden").attr("style", "height: 13rem;");
+            } else {
+                $(".searchHidden").attr("style", "height: 10rem;");
+            }
+            $(".alert").fadeIn();
+            return;
+        }
+        if (dayVisit.indexOf("/") != -1) {
+            parts = dayVisit.split("/");
+        } else {
+            parts = dayVisit.split("-");
+        }
+        var dayVisit = new Date(parts[2], parts[1] - 1, parts[0]);
+        $.ajax({
+            url: "http://" + window.location.host + "/CustomerHidden/Search",
+            type: 'GET',
+            dataType: 'html',
+            data: {
+                dayVisit: dayVisit
+            }
+        }).done(function (result) {
+            $("#display-resultHidden").html(result);
+        });
+        $(".alert").fadeOut();
+        $(".searchHidden").removeAttr("style");
+        $("footer").fadeOut();
+    });
+
+    $("#inputDayVisitHidden").keydown(function (e) {
+        if (e.which === 13) {
+            $("#btn-searchHidden").click();
+        }
+    });
+
+    $("#report-close").click(function () {
+        $("#display-report").fadeOut("fast");
+        if ($(".display-result-content tr").length > 10) {
+            $("footer").attr("style", "position: static; bottom: auto");
+        } else {
+            $("footer").removeAttr("style");
+        }
+    });
+</script>
+</body>
+</html>

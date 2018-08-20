@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="result" th:remove="tag">
+    <div class="display-result-content">
+        <table>
+            <tr>
+                <th class="STT"></th>
+                <th class="Name">Họ và tên</th>
+                <th class="Age">Tuổi</th>
+                <th class="Address">Địa chỉ</th>
+                <th class="result">Kết quả</th>
+            </tr>
+            <tr th:each="customer, iter : ${Customers}" th:if="${not #lists.isEmpty(Customers)}"
+                th:id="${customer.getId()}" target="_blank" class="customer">
+                <td th:text="${iter.count}">...</td>
+                <td th:text="${customer.getName()}">...</td>
+                <td th:text="${#dates.year(#dates.createNow()) - customer.getYOB()}">...</td>
+                <td th:text="${customer.getAddressCus()}">...</td>
+                <td th:text="${customer.getResult()}">...</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        if ($(".display-result-content tr").length > 10) {
+            $("footer").attr("style", "position: static; bottom: auto");
+        } else {
+            $("footer").removeAttr("style");
+        }
+
+        $(".customer").click(function () {
+            var id = $(this).attr("id");
+            $.ajax({
+                url: "http://" + window.location.host + "/CustomerHidden/Report",
+                type: 'GET',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+                error: function(){
+                    notify("Lỗi", "Không thể tải dữ liệu");
+                }
+            }).done(function (result) {
+                if(result == "") {
+                    notify("Xin lỗi", "Không có dữ liệu để hiển thị");
+                    return;
+                }
+                $("#report").html(result);
+                $("#display-report").fadeIn("fast");
+                $("footer").fadeOut("fast");
+            });
+        });
+    </script>
+</div>
+</html>

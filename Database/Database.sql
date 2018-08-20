@@ -18,6 +18,7 @@ CREATE TABLE Customer_Hidden (
 	YOB INT,
 	AddressCus VARCHAR(250),
 	DayVisit DATE,
+	Result VARCHAR(250),
 	Report MEDIUMTEXT
 );
 CREATE TABLE UltraSoundResult

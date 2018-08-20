@@ -12,4 +12,9 @@ public class ReportController {
     public String getReportForm() {
         return "report";
     }
+
+    @GetMapping(path = "/Hidden")
+    public String getReportHiddenForm() {
+        return "reportHidden";
+    }
 }
