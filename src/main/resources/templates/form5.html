@@ -25,14 +25,16 @@
                 </tr>
             </table>
 
-            <p class="page-b4">Yêu cầu kiểm tra: <span th:text="${formContents[0].getClass1()}" th:remove="tag"></span></p>
+            <p class="page-b4">Yêu cầu kiểm tra: <span th:text="${formContents[0].getClass1()}" th:remove="tag"></span>
+            </p>
             <p class="page-b5">KẾT QUẢ:</p>
             <table class="page-table">
                 <span th:each="formContent, iter : ${formContents}"
                       th:if="${iter.index} != 0 and ${iter.index} < ${iter.size-1}" th:remove="tag">
                     <tr>
                         <td class="page-b6" th:text="${formContent.getClass1()}"></td>
-                        <td><input th:id="|input${iter.index+2}|" type="text" th:value="${formContent.getClass2()}" size="44"></td>
+                        <td><input th:id="|input${iter.index+2}|" type="text" th:value="${formContent.getClass2()}"
+                                   size="44"></td>
                     </tr>
                 </span>
             </table>
@@ -42,7 +44,8 @@
                     <span th:each="formContent, iter : ${formContents}"
                           th:if="${iter.last}" th:remove="tag">
                         <td class="page-b7" th:text="${formContent.getClass1()}"></td>
-                        <td><input th:id="|input${iter.index+2}|" class="page-b8" type="text" th:value="${formContent.getClass2()}" size="44"></td>
+                        <td><input th:id="|input${iter.index+2}|" class="page-b8" type="text"
+                                   th:value="${formContent.getClass2()}" size="44"></td>
                     </span>
                 </tr>
             </table>
@@ -51,7 +54,8 @@
                 <tr>
                     <td class="page-b9">Ảnh</td>
                     <td>
-                        <p class="page-b10" th:text="|Ngày ${#dates.day(date)} tháng ${#dates.month(date)} năm ${#dates.year(date)}|"></p>
+                        <p class="page-b10"
+                           th:text="|Ngày ${#dates.day(date)} tháng ${#dates.month(date)} năm ${#dates.year(date)}|"></p>
                         <br>
                         <p class="page-b10">Người siêu âm</p>
                         <br><br><br><br><br><br><br>
@@ -63,144 +67,146 @@
         </div>
     </div>
     <div class="print">
-        <div id="print-container" class="print-container">
-            <style>
-                .print-container {
-                    margin-top: 25px;
-                    margin-left: 45px;
-                    margin-right: 45px;
-                    font-family: "Times New Roman", Times, serif;
-                }
+        <div id="print-this">
+            <div class="print-container">
+                <style>
+                    .print-container {
+                        margin-top: 25px;
+                        margin-left: 45px;
+                        margin-right: 45px;
+                        font-family: "Times New Roman", Times, serif;
+                    }
 
-                .print-container * {
-                    margin: 0;
-                    padding: 0;
-                }
+                    .print-container * {
+                        margin: 0;
+                        padding: 0;
+                    }
 
-                .print-h1 {
-                    text-align: center;
-                    font-weight: bold;
-                    font-size: 25px;
-                }
+                    .print-h1 {
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
 
-                .print-h2 {
-                    text-align: center;
-                    font-size: 18px;
-                }
+                    .print-h2 {
+                        text-align: center;
+                        font-size: 18px;
+                    }
 
-                .print-h3 {
-                    text-align: center;
-                    font-size: 18px;
-                    font-style: italic;
-                }
+                    .print-h3 {
+                        text-align: center;
+                        font-size: 18px;
+                        font-style: italic;
+                    }
 
-                .print-h4 {
-                    text-align: center;
-                    font-weight: bold;
-                    font-size: 23px;
-                }
+                    .print-h4 {
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 23px;
+                    }
 
-                .print-table {
-                    width: 100%;
-                    border: none;
-                }
+                    .print-table {
+                        width: 100%;
+                        border: none;
+                    }
 
-                .print-table * {
-                    border: none;
-                }
+                    .print-table * {
+                        border: none;
+                    }
 
-                .print-b1 {
-                    font-size: 18px;
-                    padding: 5px;
-                    width: 80px;
-                }
+                    .print-b1 {
+                        font-size: 18px;
+                        padding: 5px;
+                        width: 80px;
+                    }
 
-                .print-b2 {
-                    font-size: 18px;
-                    padding: 5px;
-                }
+                    .print-b2 {
+                        font-size: 18px;
+                        padding: 5px;
+                    }
 
-                .print-b3 {
-                    font-size: 18px;
-                    padding: 5px;
-                    width: 60px;
-                }
+                    .print-b3 {
+                        font-size: 18px;
+                        padding: 5px;
+                        width: 60px;
+                    }
 
-                .print-b4 {
-                    font-size: 18px;
-                    padding-left: 5px;
-                    font-weight: bold;
-                }
+                    .print-b4 {
+                        font-size: 18px;
+                        padding-left: 5px;
+                        font-weight: bold;
+                    }
 
-                .print-b5 {
-                    text-align: center;
-                    font-weight: bold
-                }
+                    .print-b5 {
+                        text-align: center;
+                        font-weight: bold
+                    }
 
-                .print-b6 {
-                    font-size: 18px;
-                    padding: 5px;
-                    width: 200px;
-                }
+                    .print-b6 {
+                        font-size: 18px;
+                        padding: 5px;
+                        width: 200px;
+                    }
 
-                .print-b7 {
-                    font-size: 18px;
-                    font-weight: bold;
-                    padding: 5px;
-                    width: 200px;
-                }
+                    .print-b7 {
+                        font-size: 18px;
+                        font-weight: bold;
+                        padding: 5px;
+                        width: 200px;
+                    }
 
-                .print-b8 {
-                    font-size: 18px;
-                    font-weight: bold;
-                    padding: 5px;
-                }
+                    .print-b8 {
+                        font-size: 18px;
+                        font-weight: bold;
+                        padding: 5px;
+                    }
 
-                .print-b9 {
-                    width: 300px;
-                    text-align: center;
-                }
+                    .print-b9 {
+                        width: 300px;
+                        text-align: center;
+                    }
 
-                .print-b10 {
-                    font-size: 18px;
-                    font-weight: bold;
-                    font-style: italic;
-                    text-align: center;
-                }
+                    .print-b10 {
+                        font-size: 18px;
+                        font-weight: bold;
+                        font-style: italic;
+                        text-align: center;
+                    }
 
-                .print-b11 {
-                    font-size: 18px;
-                    font-style: italic;
-                }
+                    .print-b11 {
+                        font-size: 18px;
+                        font-style: italic;
+                    }
 
-                .print-b12 {
-                    font-weight: bold;
-                    font-style: normal;
-                    text-decoration: underline;
-                }
-            </style>
-            <p class="print-h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p>
-            <p class="print-h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p>
-            <p class="print-h2">Điện thoại : 0916483289</p>
-            <p class="print-h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p>
-            <p class="print-h3">ổ bụng, phụ khoa, siêu âm vú</p>
-            <br>
-            <p class="print-h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p>
-            <table class="print-table">
-                <tr>
-                    <td class="print-b1">Họ và tên:</td>
-                    <td id="output0" class="print-b2"></td>
-                    <td class="print-b3">Tuổi:</td>
-                    <td id="output1" class="print-b2"></td>
-                </tr>
-                <tr>
-                    <td class="print-b2">Địa chỉ:</td>
-                    <td id="output2" class="print-b2" colspan="3"></td>
-                </tr>
-            </table>
-            <p class="print-b4">Yêu cầu kiểm tra: <span th:text="${formContents[0].getClass1()}" th:remove="tag"></p>
-            <p class="print-b5">KẾT QUẢ:</p>
-            <table class="print-table">
+                    .print-b12 {
+                        font-weight: bold;
+                        font-style: normal;
+                        text-decoration: underline;
+                    }
+                </style>
+                <p class="print-h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p>
+                <p class="print-h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p>
+                <p class="print-h2">Điện thoại : 0916483289</p>
+                <p class="print-h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p>
+                <p class="print-h3">ổ bụng, phụ khoa, siêu âm vú</p>
+                <br>
+                <p class="print-h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p>
+                <table class="print-table">
+                    <tr>
+                        <td class="print-b1">Họ và tên:</td>
+                        <td id="output0" class="print-b2"></td>
+                        <td class="print-b3">Tuổi:</td>
+                        <td id="output1" class="print-b2"></td>
+                    </tr>
+                    <tr>
+                        <td class="print-b2">Địa chỉ:</td>
+                        <td id="output2" class="print-b2" colspan="3"></td>
+                    </tr>
+                </table>
+                <p class="print-b4">Yêu cầu kiểm tra: <span th:text="${formContents[0].getClass1()}" th:remove="tag">
+                </p>
+                <p class="print-b5">KẾT QUẢ:</p>
+                <table class="print-table">
                 <span th:each="formContent, iter : ${formContents}"
                       th:if="${iter.index} != 0 and ${iter.index} < ${iter.size-1}" th:remove="tag">
                     <tr>
@@ -208,31 +214,33 @@
                         <td th:id="|output${iter.index+2}|" class="print-b2"></td>
                     </tr>
                 </span>
-            </table>
-            <br>
-            <table class="print-table">
-                <tr>
+                </table>
+                <br>
+                <table class="print-table">
+                    <tr>
                     <span th:each="formContent, iter : ${formContents}"
                           th:if="${iter.last}" th:remove="tag">
                         <td class="print-b7" th:text="${formContent.getClass1()}"></td>
                         <td th:id="|output${iter.index+2}|" class="print-b8"></td>
                     </span>
-                </tr>
-            </table>
-            <br>
-            <table class="print-table">
-                <tr>
-                    <td class="print-b9">Ảnh</td>
-                    <td>
-                        <div th:text="|Ngày ${#dates.day(date)} tháng ${#dates.month(date)} năm ${#dates.year(date)}|" class="print-b10"></div>
-                        <br>
-                        <div class="print-b10">Người siêu âm</div>
-                        <br><br><br><br><br><br><br><br><br><br>
-                    </td>
-                </tr>
-            </table>
-            <br>
-            <div class="print-b11"><span class="print-b12">Lời dặn:</span> Khi đi siêu âm mang theo phiếu này</div>
+                    </tr>
+                </table>
+                <br>
+                <table class="print-table">
+                    <tr>
+                        <td class="print-b9">Ảnh</td>
+                        <td>
+                            <div th:text="|Ngày ${#dates.day(date)} tháng ${#dates.month(date)} năm ${#dates.year(date)}|"
+                                 class="print-b10"></div>
+                            <br>
+                            <div class="print-b10">Người siêu âm</div>
+                            <br><br><br><br><br><br><br><br><br><br>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <div class="print-b11"><span class="print-b12">Lời dặn:</span> Khi đi siêu âm mang theo phiếu này</div>
+            </div>
         </div>
     </div>
     <script>

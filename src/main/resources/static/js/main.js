@@ -118,7 +118,7 @@ $("#btn-print").click(function () {
         indexOfResult--;
         Result = $("#input" + indexOfResult).val();
     }
-    var Report = $("#print-container").html();
+    var Report = $("#print-this").html();
     localStorage.setItem('Status', "True");
     localStorage.setItem('Name', Name);
     localStorage.setItem('YOB', YOB);
@@ -126,7 +126,7 @@ $("#btn-print").click(function () {
     localStorage.setItem('DayVisit', DayVisit);
     localStorage.setItem('Result', Result);
     localStorage.setItem('Report', Report);
-    $("#print-container").printThis();
+    $("#print-this").printThis();
 });
 
 function formatDate(date) {
@@ -218,7 +218,7 @@ $("#btn-acept-save").click(function () {
         Result = $("#input" + indexOfResult).val();
     }
     var Note = $("#Note").val();
-    var Report = $("#print-container").html();
+    var Report = $("#print-this").html();
     var customer = {
         name: Name,
         yob: YOB,
