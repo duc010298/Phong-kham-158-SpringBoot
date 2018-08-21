@@ -55,6 +55,7 @@
     </div>
 </footer>
 <script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/cleave.min.js" type="text/javascript" th:src="@{/js/cleave.min.js}"></script>
 <script src="../static/js/main.js" type="text/javascript" th:src="@{/js/main.js}"></script>
 <script>
     $("#btn-reload-searchHidden").click(function () {
@@ -73,22 +74,8 @@
             $(".alert").fadeIn();
             return;
         }
-        if (!validateDate(dayVisit) && dayVisit != "") {
-            $(".alert").html("Chú ý: Ngày chưa được nhập chính xác");
-            if ($(window).width() <= 1314) {
-                $(".searchHidden").attr("style", "height: 13rem;");
-            } else {
-                $(".searchHidden").attr("style", "height: 10rem;");
-            }
-            $(".alert").fadeIn();
-            return;
-        }
         $("#MsgDate").html(dayVisit);
-        if (dayVisit.indexOf("/") != -1) {
-            parts = dayVisit.split("/");
-        } else {
-            parts = dayVisit.split("-");
-        }
+        parts = dayVisit.split("/");
         var dayVisit = new Date(parts[2], parts[1] - 1, parts[0]);
         $.ajax({
             url: "http://" + window.location.host + "/CustomerHidden/Search",
@@ -119,6 +106,10 @@
         } else {
             $("footer").removeAttr("style");
         }
+    });
+    new Cleave('#inputDayVisitHidden', {
+        date: true,
+        datePattern: ['d', 'm', 'Y']
     });
 </script>
 </body>

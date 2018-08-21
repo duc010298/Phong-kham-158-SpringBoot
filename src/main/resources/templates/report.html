@@ -23,7 +23,6 @@
             </div>
             <div class="inputDayVisitArea">
                 <input type="text" id="inputDayVisit" placeholder="dd/MM/yyy" name="inputDayVisit">
-                <div id="auto-inputDayVisit" class="autoInput"></div>
             </div>
         </div>
         <hr>
@@ -189,7 +188,7 @@
         }
         var AddressCus = $("#inputAddress").val();
         var DayVisitstr = $("#inputDayVisit").val();
-        var DayVisit = DayVisitstr == "" || !validateDate(DayVisitstr) ? null : DayVisitstr.replace(/-/g, "/");
+        var DayVisit = DayVisitstr == "" ? null : DayVisitstr;
         $.ajax({
             url: "http://" + window.location.host + "/Customer/Search",
             type: 'GET',
@@ -215,5 +214,9 @@
         } else {
             $("footer").removeAttr("style");
         }
+    });
+    new Cleave('#inputDayVisit', {
+        date: true,
+        datePattern: ['d', 'm', 'Y']
     });
 </script>

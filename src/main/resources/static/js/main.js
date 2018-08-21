@@ -200,17 +200,8 @@ $("#btn-acept-save").click(function () {
     }
     var DayVisit = new Date();
     var ExpectedDOBstr = $("#ExpectedDOB").val();
-    if (!validateDate(ExpectedDOBstr) && ExpectedDOBstr != "") {
-        $("#modalSave").fadeOut();
-        notify("Lỗi", "Ngày sinh dự kiến không được nhập chính xác");
-        return;
-    }
     var parts;
-    if (ExpectedDOBstr.indexOf("/") != -1) {
-        parts = ExpectedDOBstr.split("/");
-    } else {
-        parts = ExpectedDOBstr.split("-");
-    }
+    parts = ExpectedDOBstr.split("/");
     var ExpectedDOB = new Date(parts[2], parts[1] - 1, parts[0]);
     var Result = $("#input" + indexOfResult).val();
     if (typeof (Result) === "undefined") {
@@ -263,40 +254,7 @@ function notify(Header, Content) {
     $("#modalNotify").fadeIn("fast");
 }
 
-function validateDate(date) {
-    date = date.replace(/-/g, "/")
-    var arr;
-    arr = date.split("/");
-    if (arr.length !== 3) {
-        return false;
-    }
-
-    var day = arr[0];
-    var month = arr[1];
-    var year = arr[2];
-
-    var isLeapYear = false;
-    if ((year % 4 == 0) && (year % 100 != 0)) {
-        isLeapYear = true;
-    }
-    if (month < 1 || month > 12) {
-        return false;
-    }
-    if ((month == 4 || month == 6 || month == 9 || month == 11) && (day < 0 || day > 30)) {
-        return false;
-    }
-    if ((month != 2) && (day < 0 || day > 31)) {
-        return false;
-    }
-    if (isLeapYear && month == 2 && (day < 0 || day > 29)) {
-        return false;
-    }
-    if (!isLeapYear && month == 2 && (day < 0 || day > 28)) {
-        return false;
-    }
-    if (year < 1500 || year > 2100) {
-        return false;
-    }
-
-    return true;
-}
+new Cleave('#ExpectedDOB', {
+    date: true,
+    datePattern: ['d', 'm', 'Y']
+});
