@@ -31,7 +31,10 @@
             </div>
         </div>
         <br>
-        <h3 class="messageDate">Danh sách các ca đã in nhưng không được lưu ngày: <span id="MsgDate">...</span></h3>
+        <div class="message">
+            <h3>Danh sách các ca đã in nhưng không được lưu ngày: <span id="MsgDate">...</span></h3>
+            <h3>Tổng số ca: <span id="MsgTotal">...</span></h3>
+        </div>
         <div class="display-result" id="display-resultHidden"></div>
         <div id="display-report" class="display-report">
             <div class="report-opacity"></div>
@@ -97,7 +100,7 @@
         }).done(function (result) {
             $("#display-resultHidden").html(result);
         });
-        $(".messageDate").fadeIn("fast");
+        $(".message").fadeIn("fast");
         $(".alert").fadeOut();
         $(".searchHidden").removeAttr("style");
         $("footer").fadeOut();

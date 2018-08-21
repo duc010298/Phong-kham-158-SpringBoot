@@ -21,6 +21,9 @@
         </table>
     </div>
     <script>
+        var MsgTotal = $(".display-result-content tr").length - 1;
+        $("#MsgTotal").html(MsgTotal);
+
         if ($(".display-result-content tr").length > 10) {
             $("footer").attr("style", "position: static; bottom: auto");
         } else {
