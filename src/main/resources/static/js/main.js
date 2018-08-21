@@ -200,6 +200,10 @@ $("#btn-acept-save").click(function () {
     }
     var DayVisit = new Date();
     var ExpectedDOBstr = $("#ExpectedDOB").val();
+    if(ExpectedDOBstr.length != 10) {
+        notify("Lỗi", "Ngày sinh dự kiến được nhập không chính xác");
+        return;
+    }
     var parts;
     parts = ExpectedDOBstr.split("/");
     var ExpectedDOB = new Date(parts[2], parts[1] - 1, parts[0]);
