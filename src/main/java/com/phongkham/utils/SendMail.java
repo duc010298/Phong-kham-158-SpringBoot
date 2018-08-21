@@ -18,11 +18,14 @@ public class SendMail {
 
     private JavaMailSender javaMailSender;
     private SpringTemplateEngine springTemplateEngine;
+    private CSSInline cssInline;
 
     @Autowired
-    public SendMail(JavaMailSender javaMailSender, SpringTemplateEngine springTemplateEngine) {
+    public SendMail(JavaMailSender javaMailSender, SpringTemplateEngine springTemplateEngine,
+                    CSSInline cssInline) {
         this.javaMailSender = javaMailSender;
         this.springTemplateEngine = springTemplateEngine;
+        this.cssInline = cssInline;
     }
 
     public boolean sendMailHtml(CustomerEntity customerEntity, String fromEmail, String toEmail, String subject) {
@@ -35,6 +38,7 @@ public class SendMail {
             IContext context = new Context();
             ((Context) context).setVariable("Content", customerEntity.getReport());
             String htmlMsg = springTemplateEngine.process("mail", context);
+            htmlMsg = cssInline.convert(htmlMsg);
 
             mimeMessageHelper.setFrom(fromEmail);
             mimeMessageHelper.setTo(toEmail);
