@@ -31,6 +31,10 @@ public class CSSInline {
             }
             e.remove();
         }
+        els = doc.getAllElements();
+        for (Element e : els) {
+            e.removeAttr("class");
+        }
         return doc.html();
     }
 
