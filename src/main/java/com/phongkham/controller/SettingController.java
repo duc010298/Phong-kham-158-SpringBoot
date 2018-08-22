@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping(path = "/Setting")
 public class SettingController {
@@ -33,9 +35,18 @@ public class SettingController {
         return b1 && b2 ? "Xóa thành công" : "Xóa không thành công";
     }
 
-    @RequestMapping(path = "/Edit")
-    public String edit() {
+    @RequestMapping(path = "/Edit", method = RequestMethod.GET)
+    public String edit(@RequestParam("id") String id, ModelMap modelMap) {
+        modelMap.addAttribute("id", id);
+        modelMap.addAttribute("formContents", formRepository.getFormContent(id));
+        modelMap.addAttribute("date", new Date());
         return "edit";
+    }
+
+    @RequestMapping(path = "/Add", method = RequestMethod.GET)
+    public String add(ModelMap modelMap) {
+        modelMap.addAttribute("date", new Date());
+        return "add";
     }
 
 }

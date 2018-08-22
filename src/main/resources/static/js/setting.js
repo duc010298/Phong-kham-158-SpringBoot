@@ -1,5 +1,13 @@
-$("#home").on("click", function () {
-   window.location.href = "/Phongkham158";
+var b = true;
+
+$(".home").on("click", function () {
+    if(b) {
+        window.location.href = "/Phongkham158";
+    } else {
+        b = true;
+        window.location.reload(false);
+        $("footer").removeAttr("style");
+    }
 });
 
 $(".grid-item").on("click", function () {
@@ -30,5 +38,35 @@ $(".btn-delete").on("click", function () {
 });
 
 $(".btn-edit").on("click", function () {
-    $("#container").load("http://localhost:8080/Setting/Edit")
+    var id = $(this).parent().parent().attr("id");
+    $.ajax({
+        url: "http://" + window.location.host + "/Setting/Edit",
+        type: 'GET',
+        dataType: 'html',
+        data: {
+            id: id
+        },
+        error: function(){
+            notify("Lỗi", "Không thể xử lí dữ liệu");
+        }
+    }).done(function (result) {
+        $("#container").html(result);
+        $("footer").attr("style", "position: static; bottom: auto");
+        b = false;
+    });
+});
+
+$(".item-add").on("click", function () {
+    $.ajax({
+        url: "http://" + window.location.host + "/Setting/Add",
+        type: 'GET',
+        dataType: 'html',
+        error: function(){
+            notify("Lỗi", "Không thể xử lí dữ liệu");
+        }
+    }).done(function (result) {
+        $("#container").html(result);
+        $("footer").attr("style", "position: static; bottom: auto");
+        b = false;
+    });
 });

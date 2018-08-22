@@ -45,7 +45,8 @@
 .page-b4 {
     font-size: 1.125rem;
     padding-left: 0.3125rem;
-    font-weight: bold
+    font-weight: bold;
+    float: left;
 }
 
 .page-b5 {
@@ -55,9 +56,6 @@
 }
 
 .page-b6 {
-    font-size: 1.125rem;
-    padding: 0.3125rem;
-
     width: 12.5rem;
 }
 
@@ -65,7 +63,6 @@
     font-size: 1.125rem;
     font-weight: bold;
     padding: 0.3125rem;
-
     width: 12.5rem;
 }
 
@@ -87,10 +84,35 @@
 
 .page-b11 {
     font-size: 1.125rem;
-
     font-style: italic;
+}
+
+.no-edit {
+    color: gray;
 }
 
 .no-edit * {
     color: gray;
+}
+
+.add {
+    text-align: center;
+    font-size: 1.125rem;
+    padding: 0.3125rem;
+    width: 12.5rem;
+}
+
+.table-add, .add {
+    border: 2px solid #000000;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.add {
+    transition: 0.7s background-color;
+}
+
+.add:hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
 }
