@@ -276,7 +276,7 @@
         </div>
     </div>
     <script>
-        $('.page input').keydown(function (e) {
+        $('.page input').on("keydown", function (e) {
             if (e.which === 13 || e.which === 40) {
                 var i = $('.page input').index(this) + 1;
                 $('.page input').eq(i).focus();

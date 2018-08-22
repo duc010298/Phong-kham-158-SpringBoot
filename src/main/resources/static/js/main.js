@@ -28,7 +28,7 @@ function sendRequestHidden() {
     localStorage.clear();
 }
 
-$("#btn-result").click(function () {
+$("#btn-result").on("click", function () {
     if ($(this).attr("class") === "navtop--active") {
         $(this).removeAttr("class");
         $("#btn-result>span").attr("class", "fas fa-angle-down");
@@ -46,7 +46,7 @@ $("#btn-result").click(function () {
     }, 350);
 });
 
-$("#btn-report").click(function () {
+$("#btn-report").on("click", function () {
     sendRequestHidden();
     $(this).attr("class", "navtop--active");
     $("#btn-result, #navside>ul>li").removeAttr("class");
@@ -66,7 +66,7 @@ $("#btn-report").click(function () {
     });
 });
 
-$("#navside>ul>li").click(function () {
+$("#navside>ul>li").on("click", function () {
     sendRequestHidden();
     $("#navside>ul>li").removeAttr("class");
     $(this).attr("class", "navside--active");
@@ -96,7 +96,7 @@ $("#navside>ul>li").click(function () {
     }, 300);
 });
 
-$("#btn-print").click(function () {
+$("#btn-print").on("click", function () {
     sendRequestHidden();
     pageToPrint();
     var Name = $("#input0").val();
@@ -148,15 +148,15 @@ function pageToPrint() {
     }
 }
 
-$("#btn-save").click(function () {
+$("#btn-save").on("click", function () {
     $("#modalSave").fadeIn();
 });
 
-$("#btn-reload").click(function () {
+$("#btn-reload").on("click", function () {
     $(".navside--active").click();
 });
 
-$('.modal-body input').keydown(function (e) {
+$('.modal-body input').on("keydown", function (e) {
     if (e.which === 13 || e.which === 40) {
         var i = $('.modal-body input').index(this) + 1;
         $('.modal-body input').eq(i).focus();
@@ -167,7 +167,7 @@ $('.modal-body input').keydown(function (e) {
     }
 });
 
-$("#btn-acept-save").click(function () {
+$("#btn-acept-save").on("click", function () {
     notify("Thông báo", "Đang xử lí");
     pageToPrint();
     var totalInput = $(".page input, .page textarea").length;
@@ -200,7 +200,7 @@ $("#btn-acept-save").click(function () {
     }
     var DayVisit = new Date();
     var ExpectedDOBstr = $("#ExpectedDOB").val();
-    if(ExpectedDOBstr.length != 10) {
+    if(ExpectedDOBstr.length != 10 && ExpectedDOBstr != "") {
         notify("Lỗi", "Ngày sinh dự kiến được nhập không chính xác");
         return;
     }
@@ -240,7 +240,7 @@ $("#btn-acept-save").click(function () {
     localStorage.clear();
 });
 
-$(".btn-close").click(function () {
+$(".btn-close").on("click", function () {
     $("#modalSave, #modalNotify").fadeOut();
     $(".modal-body>input").val("");
     setTimeout(function () {
@@ -263,6 +263,6 @@ new Cleave('#ExpectedDOB', {
     datePattern: ['d', 'm', 'Y']
 });
 
-$("#setting").click(function () {
+$("#setting").on("click", function () {
     window.location.href = "http://" + window.location.host + "/Setting";
 });

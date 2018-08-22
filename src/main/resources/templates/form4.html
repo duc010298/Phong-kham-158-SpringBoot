@@ -244,7 +244,7 @@
         </div>
     </div>
     <script>
-        $('.page input, textarea').keydown(function (e) {
+        $('.page input, textarea').on("keydown", function (e) {
             if (e.which === 13 || e.which === 40) {
                 var i = $('.page input, textarea').index(this) + 1;
                 $('.page input, textarea').eq(i).focus();

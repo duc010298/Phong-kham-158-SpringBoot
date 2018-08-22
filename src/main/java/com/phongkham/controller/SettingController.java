@@ -33,4 +33,9 @@ public class SettingController {
         return b1 && b2 ? "Xóa thành công" : "Xóa không thành công";
     }
 
+    @RequestMapping(path = "/Edit")
+    public String edit() {
+        return "edit";
+    }
+
 }

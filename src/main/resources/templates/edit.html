@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="result" th:remove="tag">
+    <link href="../static/css/edit.css" rel="stylesheet" type="text/css" th:href="@{/css/edit.css}"/>
+    <div class="page">
+        <div class="page-container">
+            <div class="no-edit">
+                <p class="page-h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p>
+                <p class="page-h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p>
+                <p class="page-h2">Điện thoại : 0916483289</p>
+                <p class="page-h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p>
+                <p class="page-h3">ổ bụng, phụ khoa, siêu âm vú</p>
+                <br>
+                <p class="page-h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p>
+                <br>
+                <table class="page-table">
+                    <tr>
+                        <td class="page-b1">Họ và tên:</td>
+                        <td><input id="input0" type="text" placeholder="Nhập tên" disabled></td>
+                        <td class="page-b2">Tuổi:</td>
+                        <td><input id="input1" type="text" value=" tuổi" disabled></td>
+                    </tr>
+                    <tr>
+                        <td class="page-b3">Địa chỉ:</td>
+                        <td colspan="3"><input id="input2" type="text" placeholder="Nhập địa chỉ" size="55" disabled></td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nulla quam reprehenderit? Alias cupiditate eius molestias numquam officia pariatur sint vel! Adipisci consequuntur eos esse impedit libero reprehenderit saepe?</p>
+
+            <div class="no-edit">
+                <br>
+                <table class="page-table">
+                    <tr>
+                        <td class="page-b9">Ảnh</td>
+                        <td>
+                            <div class="page-b10">
+                                <p>Ngày  tháng  năm  </p>
+                                <br>
+                                <p>Người siêu âm</p>
+                            </div>
+                            <br><br><br><br><br><br><br>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <p class="page-h3">Lời dặn</p>
+                <p class="page-b11">- Một tuần sau khám lại</p>
+                <p class="page-b11">- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay</p>
+                <p class="page-b11">- Nếu siêu âm đầy đủ các chu kì sẽ sớm phát hiện được >90% dị tật thai nhi</p>
+                <p class="page-h3">( Siêu âm không ảnh hưởng đến thai nhi và bà mẹ)</p>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

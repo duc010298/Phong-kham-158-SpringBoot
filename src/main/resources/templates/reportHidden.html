@@ -72,11 +72,11 @@
 <script src="../static/js/cleave.min.js" type="text/javascript" th:src="@{/js/cleave.min.js}"></script>
 <script src="../static/js/main.js" type="text/javascript" th:src="@{/js/main.js}"></script>
 <script>
-    $("#btn-reload-searchHidden").click(function () {
+    $("#btn-reload-searchHidden").on("click", function () {
         $(".searchHidden-body input").val("");
     });
 
-    $("#btn-searchHidden").click(function () {
+    $("#btn-searchHidden").on("click", function () {
         var dayVisit = $("#inputDayVisitHidden").val();
         if (dayVisit == "") {
             notify("Thông báo", "Không được bỏ trống ô nhập ngày");
@@ -108,13 +108,13 @@
         });
     });
 
-    $("#inputDayVisitHidden").keydown(function (e) {
+    $("#inputDayVisitHidden").on("keydown", function (e) {
         if (e.which === 13) {
             $("#btn-searchHidden").click();
         }
     });
 
-    $("#report-close").click(function () {
+    $("#report-close").on("click", function () {
         $("#display-report").fadeOut("fast");
         if ($(".display-result-content tr").length > 10) {
             $("footer").attr("style", "position: static; bottom: auto");

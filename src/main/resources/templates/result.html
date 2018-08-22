@@ -33,7 +33,7 @@
             $("footer").removeAttr("style");
         }
 
-        $(".customer").click(function () {
+        $(".customer").on("click", function () {
             var id = $(this).attr("id");
             $.ajax({
                 url: "http://" + window.location.host + "/Customer/Report",

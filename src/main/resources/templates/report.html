@@ -114,7 +114,7 @@
             count++;
         }
         $(autoId).html(str);
-        $(".input-item").click(function () {
+        $(".input-item").on("click", function () {
             var parentId = $(this).parent().attr("id");
             var value = $(this).attr("name");
             var inpId = parentId.substring(5, parentId.length);
@@ -122,7 +122,7 @@
         });
     }
 
-    $(".search-body input").keydown(function (event) {
+    $(".search-body input").on("keydown", function (event) {
         var thisId = $(this).attr("id");
         var autoId = "#auto-" + thisId;
         var autoItemLength = $(autoId + " div").length;
@@ -175,11 +175,11 @@
         }
     });
 
-    $("#btn-reload-search").click(function () {
+    $("#btn-reload-search").on("click", function () {
         $(".search-body input").val("");
     });
 
-    $("#btn-search").click(function () {
+    $("#btn-search").on("click", function () {
         var Name = $("#inputName").val();
         var age = $("#inputAge").val();
         var YOB = "";
@@ -211,7 +211,7 @@
         });
     });
 
-    $("#report-close").click(function () {
+    $("#report-close").on("click", function () {
         $("#display-report").fadeOut("fast");
         if ($(".display-result-content tr").length > 10) {
             $("footer").attr("style", "position: static; bottom: auto");
