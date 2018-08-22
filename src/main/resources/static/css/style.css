@@ -627,3 +627,18 @@ footer {
 .message {
     display: none;
 }
+
+.setting {
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    color: #E8E8E8;
+    font-size: 1.3rem;
+    margin: 0.75rem;
+}
+
+.setting span:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

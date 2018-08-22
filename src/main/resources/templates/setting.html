@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}"/>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link href="../static/css/setting.css" rel="stylesheet" type="text/css" th:href="@{/css/setting.css}"/>
+    <link href="../static/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"
+          th:href="@{/css/fontawesome-all.min.css}"/>
+    <title>Phòng khám 158</title>
+</head>
+<body>
+<header>
+    <div class="navtop">
+        <div id="home"><span class="fas fa-home"></span> QUAY LẠI</div>
+    </div>
+    <div id="modalNotify" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p id="notify-header"></p>
+            </div>
+            <hr>
+            <div class="modal-body">
+                <h1 id="notify-content"></h1>
+            </div>
+            <hr>
+            <div class="modal-footer">
+                <div class="btn-close">Đóng</div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div id="container">
+        <div class="grid-container">
+            <div class="grid-item" th:each="navSide:${navSides}" th:id="${navSide.getID()}">
+                <p th:text="${navSide.getName()}">Thai dưới 12T</p>
+                <div class="setting-bar">
+                    <div class="btn-delete">Xóa</div>
+                    <div class="btn-edit">Sửa</div>
+                </div>
+            </div>
+            <div class="grid-item item-add">
+                <span class="fas fa-plus-circle"></span>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="footer-content">
+        <p>Phát triển bởi: Đỗ Trung Đức</p>
+    </div>
+</footer>
+<script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/main.js" type="text/javascript" th:src="@{/js/main.js}"></script>
+<script src="../static/js/setting.js" type="text/javascript" th:src="@{/js/setting.js}"></script>
+</body>
+</html>

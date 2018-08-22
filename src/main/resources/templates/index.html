@@ -13,6 +13,9 @@
                 <div id="btn-result"><span class="fas fa-angle-down"></span> KẾT QUẢ SIÊU ÂM</div>
                 <div id="btn-report"><span class="far fa-file-excel"></span> BÁO CÁO SIÊU ÂM</div>
             </div>
+            <div class="setting">
+                <span id="setting" class="fas fa-cog"></span>
+            </div>
             <div id="navside" class="navside">
                 <ul>
                     <li id="1" th:each="navSide:${navSides}" th:id="${navSide.getID()}" th:text="${navSide.getName()}">...</li>

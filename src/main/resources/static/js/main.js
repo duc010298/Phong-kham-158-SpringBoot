@@ -262,3 +262,7 @@ new Cleave('#ExpectedDOB', {
     date: true,
     datePattern: ['d', 'm', 'Y']
 });
+
+$("#setting").click(function () {
+    window.location.href = "http://" + window.location.host + "/Setting";
+});

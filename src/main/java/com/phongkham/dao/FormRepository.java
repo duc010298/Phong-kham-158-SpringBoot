@@ -30,6 +30,16 @@ public class FormRepository {
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
     }
 
+    public boolean deleteForm(String id) {
+        String sql = "DELETE FROM UltraSoundResult_Content WHERE UltraSoundResultId = ?";
+        try {
+            int rows = jdbcTemplate.update(sql, id);
+            return rows != 0;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     private RowMapper<FormEntity> getRowMapper() {
         return new BeanPropertyRowMapper<>(FormEntity.class);
     }

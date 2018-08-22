@@ -23,6 +23,16 @@ public class NavsideRepository {
         return jdbcTemplate.query("SELECT ID, Name FROM UltraSoundResult ORDER BY OrderNumber", getRowMapper());
     }
 
+    public boolean deleteNavSide(String id) {
+        String sql = "DELETE FROM UltraSoundResult WHERE ID = ?";
+        try {
+            int rows = jdbcTemplate.update(sql, id);
+            return rows == 1;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     private RowMapper<NavsideEntity> getRowMapper() {
         return new BeanPropertyRowMapper<>(NavsideEntity.class);
     }
