@@ -30,6 +30,11 @@ public class FormRepository {
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
     }
 
+    public String getMaxUltraSouldResultId() {
+        String sql = "SELECT MAX(ID) FROM UltraSoundResult";
+        return jdbcTemplate.queryForObject(sql, String.class);
+    }
+
     public boolean deleteForm(String id) {
         String sql = "DELETE FROM UltraSoundResult_Content WHERE UltraSoundResultId = ?";
         try {
@@ -38,6 +43,18 @@ public class FormRepository {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    public boolean updateForm(String id, List<FormEntity> formEntities) {
+        int count = 0;
+        int OrderNumber = 1;
+        String sql = "INSERT INTO UltraSoundResult_Content VALUES (?, ?, ?, ?)";
+        for(FormEntity formEntity : formEntities) {
+            int rows = jdbcTemplate.update(sql, OrderNumber, formEntity.getClass1(), formEntity.getClass2(), id);
+            if(rows == 1) count++;
+            OrderNumber++;
+        }
+        return count == formEntities.size();
     }
 
     private RowMapper<FormEntity> getRowMapper() {

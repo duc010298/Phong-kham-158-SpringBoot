@@ -13,6 +13,7 @@
 <header>
     <div class="navtop">
         <div class="home"><span class="fas fa-undo"></span> QUAY LẠI</div>
+        <div class="save" id="save"><span class="far fa-save"></span> LƯU</div>
     </div>
     <div id="modalNotify" class="modal">
         <div class="modal-content">
@@ -31,6 +32,11 @@
     </div>
 </header>
 <main>
+    <div id="spinner" class="spinner">
+        <div class="spinner-content">
+            <div class="spin"></div>
+        </div>
+    </div>
     <div id="container">
         <div class="grid-container">
             <div class="grid-item" th:each="navSide:${navSides}" th:id="${navSide.getID()}">

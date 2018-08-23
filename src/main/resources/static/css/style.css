@@ -642,3 +642,7 @@ footer {
     opacity: 0.5;
     cursor: pointer;
 }
+
+.save {
+    display: none;
+}

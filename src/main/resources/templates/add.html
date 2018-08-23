@@ -22,12 +22,13 @@
                     </tr>
                     <tr>
                         <td class="page-b3">Địa chỉ:</td>
-                        <td colspan="3"><input id="input2" type="text" placeholder="Nhập địa chỉ" size="55" disabled></td>
+                        <td colspan="3"><input id="input2" type="text" placeholder="Nhập địa chỉ" size="55" disabled>
+                        </td>
                     </tr>
                 </table>
             </div>
             <p class="page-b4 no-edit">Yêu cầu kiểm tra: </p>
-            <input>
+            <input id="c1-0">
             <p class="page-b5 no-edit">KẾT QUẢ:</p>
             <table class="page-table" id="table-content"></table>
             <table class="table-add">
@@ -35,6 +36,7 @@
                     <td id="add" class="add"><span class="fas fa-plus-circle"></span></td>
                 </tr>
             </table>
+            <br>
             <div class="no-edit">
                 <br>
                 <table class="page-table">
@@ -61,10 +63,65 @@
     </div>
     <script>
         $("#add").on("click", function () {
-            var oldHtml = $("#table-content").html();
-            oldHtml += "<tr><td class=\"page-b6\"><input></td>" +
-                "<td><input size=\"40\"/></td></tr>";
-            $("#table-content").html(oldHtml);
+            var id = $("#table-content tr").length + 1;
+            var array = [];
+            for(var i = 1; i < id; i++) {
+                var class1 = $("#c1-" + i).val();
+                class1 = typeof (class1) === "undefined" ? "" : class1;
+                var class2 = $("#c2-" + i).val();
+                class2 = typeof (class2) === "undefined" ? "" : class2;
+                var form = {
+                    Class1: class1,
+                    Class2: class2
+                };
+                array.push(form);
+            }
+            var orHtml = $("#table-content").html();
+            orHtml += "<tr><td class=\"page-b6\"><input id=\"c1-" + id +"\"></td>" +
+                "<td><input id=\"c2-" + id + "\" size=\"40\"/></td></tr>";
+            $("#table-content").html(orHtml);
+            for(var i = 1; i < id; i++) {
+                $("#c1-" + i).val(array[i-1].Class1);
+                $("#c2-" + i).val(array[i-1].Class2);
+            }
+        });
+
+        $("#save").on("click", function () {
+            var name = prompt("Nhập tên cho file này:", "Nhập tên");
+            if(name == null) return;
+            if(name == "") {
+                notify("Lỗi", "Chưa nhập tên file");
+                return;
+            }
+            $(".spinner").attr("style", "display: flex");
+            var totalId = $("#table-content tr").length;
+            var array = [];
+            for(var i = 0; i <= totalId; i++) {
+                var class1 = $("#c1-" + i).val();
+                class1 = typeof (class1) === "undefined" ? "" : class1;
+                var class2 = $("#c2-" + i).val();
+                class2 = typeof (class2) === "undefined" ? "" : class2;
+                var form = {
+                    Class1: class1,
+                    Class2: class2
+                };
+                array.push(form);
+            }
+            $.ajax({
+                url: "http://" + window.location.host + "/Setting/Add",
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    name: name,
+                    data: JSON.stringify(array)
+                },
+                error: function(){
+                    notify("Lỗi", "Không thể xử lí dữ liệu");
+                }
+            }).done(function (result) {
+                $(".spinner").removeAttr("style");
+                notify("Thông báo", result);
+            });
         });
     </script>
 </div>

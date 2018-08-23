@@ -27,14 +27,15 @@
                 </table>
             </div>
             <p class="page-b4 no-edit">Yêu cầu kiểm tra: </p>
-            <input th:value="${formContents[0].getClass1()}">
+            <input th:value="${formContents[0].getClass1()}" id="c1-0">
             <p class="page-b5 no-edit">KẾT QUẢ:</p>
             <table class="page-table" id="table-content">
                 <span th:each="formContent, iter : ${formContents}"
                       th:if="${iter.index} != 0 and ${iter.index} < ${iter.size-1}" th:remove="tag">
                     <tr>
-                        <td class="page-b6"><input th:value="${formContent.getClass1()}"></td>
-                        <td><input th:value="${formContent.getClass2()}" size="40"/></td>
+                        <td class="page-b6"><input th:value="${formContent.getClass1()}"
+                                                   th:id="|c1-${iter.index}|"></td>
+                        <td><input th:value="${formContent.getClass2()}" th:id="|c2-${iter.index}|" size="40"/></td>
                     </tr>
                 </span>
             </table>
@@ -44,12 +45,13 @@
                 </tr>
             </table>
             <br>
-            <table class="page-table">
+            <table class="page-table" id="table-content-2">
                 <tr>
                     <span th:each="formContent, iter : ${formContents}"
                           th:if="${iter.last}" th:remove="tag">
-                        <td class="page-b7"><input th:value="${formContent.getClass1()}"></td>
-                        <td><input class="page-b8" th:value="${formContent.getClass2()}" size="40"></td>
+                        <td class="page-b7"><input th:value="${formContent.getClass1()}" th:id="|c1-${iter.index}|"></td>
+                        <td><input class="page-b8" th:value="${formContent.getClass2()}"
+                                   th:id="|c2-${iter.index}|" size="40"></td>
                     </span>
                 </tr>
             </table>
@@ -79,10 +81,63 @@
     </div>
     <script>
         $("#add").on("click", function () {
-            var oldHtml = $("#table-content").html();
-            oldHtml += "<tr><td class=\"page-b6\"><input></td>" +
-                "<td><input size=\"40\"/></td></tr>";
-            $("#table-content").html(oldHtml);
+            var id = $("#table-content tr").length + 1;
+            var array = [];
+            for(var i = 1; i < id; i++) {
+                var class1 = $("#c1-" + i).val();
+                class1 = typeof (class1) === "undefined" ? "" : class1;
+                var class2 = $("#c2-" + i).val();
+                class2 = typeof (class2) === "undefined" ? "" : class2;
+                var form = {
+                    Class1: class1,
+                    Class2: class2
+                };
+                array.push(form);
+            }
+            var orHtml = $("#table-content").html();
+            orHtml += "<tr><td class=\"page-b6\"><input id=\"c1-" + id +"\"></td>" +
+                "<td><input id=\"c2-" + id + "\" size=\"40\"/></td></tr>";
+            $("#table-content").html(orHtml);
+            for(var i = 1; i < id; i++) {
+                $("#c1-" + i).val(array[i-1].Class1);
+                $("#c2-" + i).val(array[i-1].Class2);
+            }
+            id = id +1;
+            $("#table-content-2 input:first").attr("id", "c1-"+id);
+            $("#table-content-2 input:last").attr("id", "c2-"+id);
+        });
+
+        $("#save").on("click", function () {
+            $(".spinner").attr("style", "display: flex");
+            var id = $(".page").attr("id");
+            var totalId = $("#table-content tr, #table-content-2 tr").length;
+            var array = [];
+            for(var i = 0; i <= totalId; i++) {
+                var class1 = $("#c1-" + i).val();
+                class1 = typeof (class1) === "undefined" ? "" : class1;
+                var class2 = $("#c2-" + i).val();
+                class2 = typeof (class2) === "undefined" ? "" : class2;
+                var form = {
+                    Class1: class1,
+                    Class2: class2
+                };
+                array.push(form);
+            }
+            $.ajax({
+                url: "http://" + window.location.host + "/Setting/Edit",
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id,
+                    data: JSON.stringify(array)
+                },
+                error: function(){
+                    notify("Lỗi", "Không thể xử lí dữ liệu");
+                }
+            }).done(function (result) {
+                $(".spinner").removeAttr("style");
+                notify("Thông báo", result);
+            });
         });
     </script>
 </div>

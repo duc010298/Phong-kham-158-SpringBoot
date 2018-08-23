@@ -264,5 +264,6 @@ new Cleave('#ExpectedDOB', {
 });
 
 $("#setting").on("click", function () {
+    sendRequestHidden();
     window.location.href = "http://" + window.location.host + "/Setting";
 });

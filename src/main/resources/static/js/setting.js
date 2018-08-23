@@ -7,6 +7,7 @@ $(".home").on("click", function () {
         b = true;
         window.location.reload(false);
         $("footer").removeAttr("style");
+        $(".save").fadeOut("fast");
     }
 });
 
@@ -32,8 +33,10 @@ $(".btn-delete").on("click", function () {
             notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
-        alert(result);
-        window.location.reload(false);
+        notify("Thông báo", result);
+        $(".btn-close").on("click", function () {
+            window.location.reload(false);
+        });
     });
 });
 
@@ -52,6 +55,7 @@ $(".btn-edit").on("click", function () {
     }).done(function (result) {
         $("#container").html(result);
         $("footer").attr("style", "position: static; bottom: auto");
+        $(".save").fadeIn("fast");
         b = false;
     });
 });
@@ -67,6 +71,7 @@ $(".item-add").on("click", function () {
     }).done(function (result) {
         $("#container").html(result);
         $("footer").attr("style", "position: static; bottom: auto");
+        $(".save").fadeIn("fast");
         b = false;
     });
 });

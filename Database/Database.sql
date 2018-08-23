@@ -23,44 +23,44 @@ CREATE TABLE Customer_Hidden (
 );
 CREATE TABLE UltraSoundResult
 (
-	ID INT PRIMARY KEY NOT NULL,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	Name VARCHAR(100) NOT NULL,
 	OrderNumber INT NOT NULL,
 	FormID INT NOT NULL
 );
 INSERT INTO UltraSoundResult
 VALUES
-	(1, 'Thai dưới 12T', 1, 1);
+	(null, 'Thai dưới 12T', 1, 1);
 INSERT INTO UltraSoundResult
 VALUES
-	(2, 'Thai dưới 12T - Dọa sảy', 2, 1);
+	(null, 'Thai dưới 12T - Dọa sảy', 2, 1);
 INSERT INTO UltraSoundResult
 VALUES
-	(3, 'Thai 12T - 14T', 3, 2);
+	(null, 'Thai 12T - 14T', 3, 2);
 INSERT INTO UltraSoundResult
 VALUES
-	(4, 'Thai 12T - 14T - Dọa sảy', 4, 2);
+	(null, 'Thai 12T - 14T - Dọa sảy', 4, 2);
 INSERT INTO UltraSoundResult
 VALUES
-	(5, 'Thai 15T - 34T', 5, 3);
+	(null, 'Thai 15T - 34T', 5, 3);
 INSERT INTO UltraSoundResult
 VALUES
-	(6, 'Thai 34T - 40T', 6, 3);
+	(null, 'Thai 34T - 40T', 6, 3);
 INSERT INTO UltraSoundResult
 VALUES
-	(7, 'Túi ối', 7, 1);
+	(null, 'Túi ối', 7, 1);
 INSERT INTO UltraSoundResult
 VALUES
-	(8, 'Túi ối - Dọa sảy', 8, 1);
+	(null, 'Túi ối - Dọa sảy', 8, 1);
 INSERT INTO UltraSoundResult
 VALUES
-	(9, 'Siêu âm ổ bụng 4D', 9, 4);
+	(null, 'Siêu âm ổ bụng 4D', 9, 4);
 INSERT INTO UltraSoundResult
 VALUES
-	(10, 'Ổ bụng vú', 10, 4);
+	(null, 'Ổ bụng vú', 10, 4);
 INSERT INTO UltraSoundResult
 VALUES
-	(11, 'Vú', 11, 5);
+	(null, 'Vú', 11, 5);
 CREATE TABLE UltraSoundResult_Content
 (
 	OrderNumber INT,

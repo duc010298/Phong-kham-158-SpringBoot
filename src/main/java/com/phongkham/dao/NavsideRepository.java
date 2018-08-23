@@ -33,6 +33,19 @@ public class NavsideRepository {
         }
     }
 
+    public boolean addNavSide(String name) {
+        String sqlGetMaxOrderNumber = "SELECT MAX(OrderNumber) FROM UltraSoundResult";
+        int maxOrderNumber = jdbcTemplate.queryForObject(sqlGetMaxOrderNumber, Integer.class);
+        maxOrderNumber++;
+        String sqlAdd = "INSERT INTO UltraSoundResult VALUES (null, ?, ?, 1)";
+        try {
+            int rows = jdbcTemplate.update(sqlAdd, name, maxOrderNumber);
+            return rows == 1;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     private RowMapper<NavsideEntity> getRowMapper() {
         return new BeanPropertyRowMapper<>(NavsideEntity.class);
     }
