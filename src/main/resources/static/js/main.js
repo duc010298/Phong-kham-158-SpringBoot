@@ -19,7 +19,7 @@ function sendRequestHidden() {
         report: Report
     };
     $.ajax({
-        url: "http://" + window.location.host + "/CustomerHidden",
+        url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -56,7 +56,7 @@ $("#btn-report").on("click", function () {
         height: 'hide'
     }, 350);
     $(".spinner").attr("style", "display: flex");
-    $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
+    $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
         setTimeout(function () {
             $(".spinner").removeAttr("style");
         }, 300);
@@ -75,7 +75,7 @@ $("#navside>ul>li").on("click", function () {
     var id = $(this).attr("id");
     setTimeout(function () {
         $.ajax({
-            url: "http://" + window.location.host + "/UltraSoundResult",
+            url: "http://" + window.location.host + "/Phongkham158/UltraSoundResult",
             type: 'GET',
             dataType: 'html',
             data: {
@@ -226,7 +226,7 @@ $("#btn-acept-save").on("click", function () {
     };
 
     $.ajax({
-        url: "http://" + window.location.host + "/Customer",
+        url: "http://" + window.location.host + "/Phongkham158/Customer",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -265,5 +265,5 @@ new Cleave('#ExpectedDOB', {
 
 $("#setting").on("click", function () {
     sendRequestHidden();
-    window.location.href = "http://" + window.location.host + "/Setting";
+    window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
 });

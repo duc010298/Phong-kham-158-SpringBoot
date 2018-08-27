@@ -54,7 +54,7 @@
         var autoId = "#auto-" + thisId;
         var value = $(this).val();
         $.ajax({
-            url: "http://" + window.location.host + "/Customer/SearchContent",
+            url: "http://" + window.location.host + "/Phongkham158/Customer/SearchContent",
             type: 'GET',
             dataType: 'json',
             data: {
@@ -194,7 +194,7 @@
         }
         var DayVisit = DayVisitstr == "" ? null : DayVisitstr;
         $.ajax({
-            url: "http://" + window.location.host + "/Customer/Search",
+            url: "http://" + window.location.host + "/Phongkham158/Customer/Search",
             type: 'GET',
             dataType: 'html',
             data: {

@@ -23,7 +23,7 @@ $(".btn-delete").on("click", function () {
     if(cf == false) return;
     var id = $(this).parent().parent().attr("id");
     $.ajax({
-        url: "http://" + window.location.host + "/Setting/Delete",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Delete",
         type: 'POST',
         dataType: 'html',
         data: {
@@ -43,7 +43,7 @@ $(".btn-delete").on("click", function () {
 $(".btn-edit").on("click", function () {
     var id = $(this).parent().parent().attr("id");
     $.ajax({
-        url: "http://" + window.location.host + "/Setting/Edit",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Edit",
         type: 'GET',
         dataType: 'html',
         data: {
@@ -62,7 +62,7 @@ $(".btn-edit").on("click", function () {
 
 $(".item-add").on("click", function () {
     $.ajax({
-        url: "http://" + window.location.host + "/Setting/Add",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Add",
         type: 'GET',
         dataType: 'html',
         error: function(){
