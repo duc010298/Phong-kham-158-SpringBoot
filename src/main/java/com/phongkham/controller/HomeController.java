@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = "/")
+//@RequestMapping(path = "/")
+@RequestMapping(path = "/Phongkham158")
 public class HomeController {
 
     private NavsideRepository navsideRepository;

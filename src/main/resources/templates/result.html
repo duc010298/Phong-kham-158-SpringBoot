@@ -36,7 +36,9 @@
         $(".customer").on("click", function () {
             var id = $(this).attr("id");
             $.ajax({
-                url: "http://" + window.location.host + "/Phongkham158/Customer/Report",
+                //For test
+                // url: "http://" + window.location.host + "/Phongkham158/Customer/Report",
+                url: "http://" + window.location.host + "/Customer/Report",
                 type: 'GET',
                 dataType: 'html',
                 data: {

@@ -19,7 +19,9 @@ function sendRequestHidden() {
         report: Report
     };
     $.ajax({
-        url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
+        // For test
+        // url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
+        url: "http://" + window.location.host + "/CustomerHidden",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -56,7 +58,9 @@ $("#btn-report").on("click", function () {
         height: 'hide'
     }, 350);
     $(".spinner").attr("style", "display: flex");
-    $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
+    // For test
+    // $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
+    $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
         setTimeout(function () {
             $(".spinner").removeAttr("style");
         }, 300);
@@ -75,7 +79,9 @@ $("#navside>ul>li").on("click", function () {
     var id = $(this).attr("id");
     setTimeout(function () {
         $.ajax({
-            url: "http://" + window.location.host + "/Phongkham158/UltraSoundResult",
+            //For test
+            // url: "http://" + window.location.host + "/Phongkham158/UltraSoundResult",
+            url: "http://" + window.location.host + "/UltraSoundResult",
             type: 'GET',
             dataType: 'html',
             data: {
@@ -226,7 +232,9 @@ $("#btn-acept-save").on("click", function () {
     };
 
     $.ajax({
-        url: "http://" + window.location.host + "/Phongkham158/Customer",
+        //For test
+        // url: "http://" + window.location.host + "/Phongkham158/Customer",
+        url: "http://" + window.location.host + "/Customer",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -265,5 +273,7 @@ new Cleave('#ExpectedDOB', {
 
 $("#setting").on("click", function () {
     sendRequestHidden();
-    window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
+    //For test
+    // window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
+    window.location.href = "http://" + window.location.host + "/Setting";
 });
