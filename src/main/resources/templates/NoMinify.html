@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}"/>
+    <link href="../static/css/add.css" rel="stylesheet" type="text/css" th:href="@{/css/add.css}"/>
+    <link href="../static/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"
+          th:href="@{/css/fontawesome-all.min.css}"/>
+    <title>Báo cáo mới</title>
+</head>
+<body>
+<header>
+    <div class="navtop">
+        <div id="back"><span class="fas fa-undo"></span> QUAY LẠI</div>
+        <div id="save"><span class="far fa-save"></span> LƯU</div>
+        <div id="btn-print"><span class="fas fa-print"></span> IN</div>
+    </div>
+    <div id="modalNotify" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p id="notify-header"></p>
+            </div>
+            <hr>
+            <div class="modal-body">
+                <h1 id="notify-content"></h1>
+            </div>
+            <hr>
+            <div class="modal-footer">
+                <div class="btn-close">Đóng</div>
+            </div>
+        </div>
+    </div>
+    <div class="tool-edit">
+        <h3><span class="fas fa-edit"></span> Chỉnh sửa</h3>
+        <hr>
+        <div class="tool-edit-title" id="add-row"><span class="fas fa-plus-square"></span> Chèn hàng</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí hàng cần thêm</p>
+            <input/>
+            <div class="acept-add" id="acept-add-row">Thêm hàng</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title" id="add-col"><span class="fas fa-plus-square"></span> Chèn cột</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí cột cần thêm</p>
+            <input/>
+            <div class="acept-add" id="acept-add-col">Thêm cột</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-trash-alt"></span> Xóa hàng</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí hàng cần xóa</p>
+            <input/>
+            <div class="acept-delete" id="delete-row">Xóa</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-trash-alt"></span> Xóa cột</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí cột cần xóa</p>
+            <input/>
+            <div class="acept-delete" id="delete-col">Xóa</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-table"></span> Gộp hàng</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí của ô cần gộp</p>
+            <div class="merge">
+                <input placeholder="Hàng">
+                <input placeholder="Cột" style="margin-left: 0">
+            </div>
+            <p>Số ô gộp</p>
+            <input id="inp-tRow">
+            <div class="acept-add" id="merge-row">Gộp hàng</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-table"></span> Gộp cột</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí của ô cần gộp</p>
+            <div class="merge">
+                <input placeholder="Hàng">
+                <input placeholder="Cột" style="margin-left: 0">
+            </div>
+            <p>Số ô gộp</p>
+            <input id="inp-tCol">
+            <div class="acept-add" id="merge-col">Gộp cột</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-times-circle"></span> Vô hiệu hóa ô</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí ô cần vô hiệu hóa</p>
+            <div class="merge">
+                <input placeholder="Hàng">
+                <input placeholder="Cột" style="margin-left: 0">
+            </div>
+            <div class="acept-add" id="disable">Vô hiệu hóa</div>
+        </div>
+    </div>
+</header>
+<main>
+    <div id="spinner" class="spinner">
+        <div class="spinner-content">
+            <div class="spin"></div>
+        </div>
+    </div>
+    <div id="content" class="content">
+        <div class="page">
+            <div class="page-container" id="page">
+                <style>.page-container {
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 1.125rem;
+                    margin: 1.875rem 2.8125rem;
+                    background-color: #fff
+                }
+
+                .page-container p {
+                    margin: 0
+                }
+
+                textarea {
+                    outline: 0;
+                    border: none;
+                    resize: none;
+                    font-size: 1.125rem;
+                    font-family: "Times New Roman", Times, serif;
+                    width: 100%;
+                    white-space: pre-line
+                }
+
+                textarea:disabled {
+                    color: #000;
+                    background-color: #fff
+                }
+
+                .h1 {
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 1.5625rem
+                }
+
+                .h2 {
+                    text-align: center;
+                    font-size: 1.125rem
+                }
+
+                .h3 {
+                    text-align: center;
+                    font-size: 1.125rem;
+                    font-style: italic
+                }
+
+                .h4 {
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 1.4375rem;
+                    margin: 16px 0 !important
+                }
+
+                .h5 {
+                    text-align: center;
+                    font-size: 1.125rem;
+                    font-weight: bold
+                }
+
+                .table {
+                    width: 100%;
+                    margin-top: 5px
+                }
+
+                .table, .table td {
+                    border: 1px dotted #000;
+                    border-collapse: collapse
+                }
+
+                .table td {
+                    padding: 1px 2px
+                }
+
+                #table-content td {
+                    padding-bottom: 0 !important
+                }
+
+                .b1 {
+                    padding: .3125rem;
+                    width: 5rem
+                }
+
+                .b2 {
+                    padding: .3125rem;
+                    width: 3.75rem
+                }
+
+                .b3 {
+                    padding: .3125rem
+                }
+
+                .b4 {
+                    padding-left: .3125rem;
+                    font-weight: 700;
+                    float: left;
+                    margin-top: 10px !important
+                }
+
+                .b5 {
+                    font-weight: 700;
+                    width: auto !important;
+                    margin-top: 10px;
+                    padding: 0 !important
+                }
+
+                .b6 {
+                    padding: .3125rem;
+                    width: 12.5rem
+                }
+
+                .b7 {
+                    font-weight: 700
+                }
+
+                .b8 {
+                    font-weight: 700
+                }
+
+                .table-none {
+                    width: 100%
+                }
+
+                .table-none, .table-none td {
+                    border: none !important
+                }
+
+                .b9 {
+                    width: 12rem;
+                    text-align: center
+                }
+
+                .b10 {
+                    font-size: 18px;
+                    font-weight: 700;
+                    font-style: italic;
+                    text-align: center;
+                    margin-top: 10px
+                }
+
+                .b11 {
+                    font-style: italic
+                }
+
+                .table-header {
+                    visibility: hidden
+                }
+
+                .table-header td {
+                    height: 1px !important;
+                    font-size: 1px !important
+                }
+
+                #print .table td {
+                    padding: 1px 6px
+                }
+
+                #print #table-content pre {
+                    font-size: 15px;
+                }
+
+                #print #table-content-2 pre {
+                    font-size: 15px;
+                }
+
+                pre {
+                    margin: 0;
+                    padding: 0;
+                    font-family: "Times New Roman", Times, serif
+                }</style>
+                <p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p>
+                <p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p>
+                <p class="h5">Điện thoại : 0916483289</p>
+                <p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p>
+                <p class="h3">ổ bụng, phụ khoa, siêu âm vú</p>
+                <p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p>
+                <table class="table">
+                    <tr>
+                        <td class="b1">Họ và tên:</td>
+                        <td><textarea rows="1" placeholder="Nhập tên" id="name"></textarea></td>
+                        <td class="b2">Tuổi:</td>
+                        <td><textarea rows="1" id="age"> tuổi</textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="b3">Địa chỉ:</td>
+                        <td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address"></textarea></td>
+                    </tr>
+                </table>
+                <p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5"></textarea>
+                <table class="table" id="table-content">
+                    <tr class="table-header">
+                        <td>.</td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td><textarea rows="1"></textarea></td>
+                        <td><textarea rows="1"></textarea></td>
+                    </tr>
+                </table>
+                <table class="table" id="table-content-2">
+                    <tr>
+                        <td class="b6"><textarea rows="1" class="b7">Kết quả:</textarea></td>
+                        <td><textarea rows="1" class="b8" id="result"></textarea></td>
+                    </tr>
+                </table>
+                <table class="table-none">
+                    <tr>
+                        <td><p class="b9">.</p></td>
+                        <td valign="top">
+                            <div class="b10" id="date">Ngày tháng năm</div>
+                            <div class="b10">Người siêu âm</div>
+                            <br><br></td>
+                    </tr>
+                </table>
+                <textarea rows="1" class="b11">Lưu ý: Ba tuần sau khám lại
+- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay
+( Siêu âm không ảnh hưởng đến thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được >90% dị tật thai nhi</textarea></div>
+            <div class="page-container" id="print">.</div>
+        </div>
+    </div>
+</main>
+<script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/colResizable-1.6.min.js" type="text/javascript"
+        th:src="@{/js/colResizable-1.6.min.js}"></script>
+<script src="../static/js/printThis.js" type="text/javascript" th:src="@{/js/printThis.js}"></script>
+<script src="../static/js/add.js" type="text/javascript" th:src="@{/js/add.js}"></script>
+</body>
+</html>

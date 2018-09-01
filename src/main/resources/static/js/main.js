@@ -51,6 +51,7 @@ $("#btn-result").on("click", function () {
 $("#btn-report").on("click", function () {
     sendRequestHidden();
     $(this).attr("class", "navtop--active");
+    $("#btn-result>span").attr("class", "fas fa-angle-down");
     $("#btn-result, #navside>ul>li").removeAttr("class");
     $("main, .spinner-content, footer, .footer-content, .content-default p").removeAttr("style");
     $("#tool").fadeOut(500);
@@ -80,8 +81,7 @@ $("#navside>ul>li").on("click", function () {
     setTimeout(function () {
         $.ajax({
             //For test
-            // url: "http://" + window.location.host + "/Phongkham158/UltraSoundResult",
-            url: "http://" + window.location.host + "/UltraSoundResult",
+            url: "http://" + window.location.host + "/Phongkham158/Form",
             type: 'GET',
             dataType: 'html',
             data: {
@@ -94,19 +94,33 @@ $("#navside>ul>li").on("click", function () {
         }).done(function (result) {
             $(".spinner").attr("style", "display: none");
             $("#container").html(result);
+            var d = new Date(),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+            $("#date").html("Ngày " + day + " tháng " + month + " năm " + year);
             $("html, body").animate({
                 scrollTop: 0
             }, "slow");
             $("footer").attr("style", "position: static; bottom: auto");
+            $('.page input, .page textarea').on("keydown", function (e) {
+                if (e.which === 13 || e.which === 40) {
+                    var i = $('.page input, .page textarea').index(this) + 1;
+                    $('.page input, .page textarea').eq(i).focus();
+                }
+                if (e.which === 38) {
+                    var i = $('.page input, .page textarea').index(this) - 1;
+                    $('.page input, .page textarea').eq(i).focus();
+                }
+            });
         });
     }, 300);
 });
 
 $("#btn-print").on("click", function () {
     sendRequestHidden();
-    pageToPrint();
-    var Name = $("#input0").val();
-    var AgeString = $("#input1").val();
+    var Name = $("#name").val();
+    var AgeString = $("#age").val();
     var Age = "";
     for (var i = 0; i < AgeString.length; i++) {
         var c = AgeString.substring(i, i + 1);
@@ -115,16 +129,17 @@ $("#btn-print").on("click", function () {
         }
     }
     var YOB = Age == "" ? 0 : (new Date()).getFullYear() - Age;
-    var AddressCus = $("#input2").val();
+    var AddressCus = $("#address").val();
     var DayVisit = formatDate(new Date());
-    var totalInput = $(".page input, .page textarea").length;
-    var indexOfResult = Math.floor(totalInput);
-    var Result = $("#input" + indexOfResult).val();
-    if (typeof (Result) === "undefined") {
-        indexOfResult--;
-        Result = $("#input" + indexOfResult).val();
-    }
-    var Report = $("#print-this").html();
+    var Result = $("#result").val();
+    $.each($('textarea'), function () {
+        var value = $(this).val();
+        $(this).html(value);
+    });
+    var content = $("#page").html();
+    content = content.replace(/textarea/g, 'pre');
+    $("#print").html(content);
+    var Report = $("#print").html();
     localStorage.setItem('Status', "True");
     localStorage.setItem('Name', Name);
     localStorage.setItem('YOB', YOB);
@@ -132,7 +147,10 @@ $("#btn-print").on("click", function () {
     localStorage.setItem('DayVisit', DayVisit);
     localStorage.setItem('Result', Result);
     localStorage.setItem('Report', Report);
-    $("#print-this").printThis();
+    $("#print").printThis({importCSS: false});
+    setTimeout(function () {
+        $("#print").html("");
+    }, 500);
 });
 
 function formatDate(date) {
@@ -145,13 +163,6 @@ function formatDate(date) {
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
-}
-
-function pageToPrint() {
-    var totalInput = $(".page input, .page textarea").length;
-    for(var i = 0; i < totalInput; i++) {
-        $("#output" + i).html($("#input" + i).val());
-    }
 }
 
 $("#btn-save").on("click", function () {
@@ -175,16 +186,20 @@ $('.modal-body input').on("keydown", function (e) {
 
 $("#btn-acept-save").on("click", function () {
     notify("Thông báo", "Đang xử lí");
-    pageToPrint();
-    var totalInput = $(".page input, .page textarea").length;
-    var indexOfResult = Math.floor(totalInput);
-    var Name = $("#input0").val();
+    $.each($('textarea'), function () {
+        var value = $(this).val();
+        $(this).html(value);
+    });
+    var content = $("#page").html();
+    content = content.replace(/textarea/g, 'pre');
+    $("#print").html(content);
+    var Name = $("#name").val();
     if (Name === "") {
         $("#modalSave").fadeOut();
         notify("Lỗi", "Chưa nhập tên");
         return;
     }
-    var AgeString = $("#input1").val();
+    var AgeString = $("#age").val();
     var Age = "";
     for (var i = 0; i < AgeString.length; i++) {
         var c = AgeString.substring(i, i + 1);
@@ -198,7 +213,7 @@ $("#btn-acept-save").on("click", function () {
         return;
     }
     var YOB = (new Date()).getFullYear() - Age;
-    var AddressCus = $("#input2").val();
+    var AddressCus = $("#address").val();
     if (AddressCus === "") {
         $("#modalSave").fadeOut();
         notify("Lỗi", "Chưa nhập địa chỉ");
@@ -213,13 +228,9 @@ $("#btn-acept-save").on("click", function () {
     var parts;
     parts = ExpectedDOBstr.split("/");
     var ExpectedDOB = new Date(parts[2], parts[1] - 1, parts[0]);
-    var Result = $("#input" + indexOfResult).val();
-    if (typeof (Result) === "undefined") {
-        indexOfResult--;
-        Result = $("#input" + indexOfResult).val();
-    }
+    var Result = $("#result").val();
     var Note = $("#Note").val();
-    var Report = $("#print-this").html();
+    var Report = $("#print").html();
     var customer = {
         name: Name,
         yob: YOB,
@@ -246,6 +257,7 @@ $("#btn-acept-save").on("click", function () {
         notify("Thông báo", result);
     });
     localStorage.clear();
+    $("#print").html("");
 });
 
 $(".btn-close").on("click", function () {

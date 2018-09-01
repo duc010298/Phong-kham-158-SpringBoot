@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Repository
@@ -20,41 +19,51 @@ public class FormRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<FormEntity> getFormContent(Serializable id) {
-        String sql = "SELECT Class1, Class2 FROM UltraSoundResult_Content WHERE UltraSoundResultId = ? ORDER BY OrderNumber";
-        return jdbcTemplate.query(sql, getRowMapper(), id);
+    public List<FormEntity> getForm() {
+        return jdbcTemplate.query("SELECT ID, Name FROM UltraSoundResult ORDER BY OrderNumber", getRowMapper());
     }
 
-    public String getFormId(String id) {
-        String sql = "SELECT FormID FROM UltraSoundResult WHERE ID = ?";
+    public String getFormContent(String id) {
+        String sql = "SELECT Content FROM UltraSoundResult WHERE ID = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, String.class);
     }
 
-    public String getMaxUltraSouldResultId() {
-        String sql = "SELECT MAX(ID) FROM UltraSoundResult";
-        return jdbcTemplate.queryForObject(sql, String.class);
-    }
-
-    public boolean deleteForm(String id) {
-        String sql = "DELETE FROM UltraSoundResult_Content WHERE UltraSoundResultId = ?";
+    public boolean addForm(String name, String content) {
+        String sqlGetMaxOrderNumber = "SELECT MAX(OrderNumber) FROM UltraSoundResult";
+        int maxOrderNumber;
         try {
-            int rows = jdbcTemplate.update(sql, id);
-            return rows != 0;
+            maxOrderNumber = jdbcTemplate.queryForObject(sqlGetMaxOrderNumber, Integer.class);
+            maxOrderNumber++;
+        } catch(NullPointerException ex) {
+            maxOrderNumber = 0;
+        }
+        String sqlAdd = "INSERT INTO UltraSoundResult VALUES (null, ?, ?, ?)";
+        try {
+            int rows = jdbcTemplate.update(sqlAdd, name, maxOrderNumber, content);
+            return rows == 1;
         } catch (Exception ex) {
             return false;
         }
     }
 
-    public boolean updateForm(String id, List<FormEntity> formEntities) {
-        int count = 0;
-        int OrderNumber = 1;
-        String sql = "INSERT INTO UltraSoundResult_Content VALUES (?, ?, ?, ?)";
-        for(FormEntity formEntity : formEntities) {
-            int rows = jdbcTemplate.update(sql, OrderNumber, formEntity.getClass1(), formEntity.getClass2(), id);
-            if(rows == 1) count++;
-            OrderNumber++;
+    public boolean deleteForm(String id) {
+        String sql = "DELETE FROM UltraSoundResult WHERE ID = ?";
+        try {
+            int rows = jdbcTemplate.update(sql, id);
+            return rows == 1;
+        } catch (Exception ex) {
+            return false;
         }
-        return count == formEntities.size();
+    }
+
+    public boolean updateForm(String id, String content) {
+        String sql = "UPDATE UltraSoundResult SET Content = ? WHERE ID = ?";
+        try {
+            int rows = jdbcTemplate.update(sql, content, id);
+            return rows == 1;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 
     private RowMapper<FormEntity> getRowMapper() {

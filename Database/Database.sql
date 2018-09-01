@@ -26,1402 +26,227 @@ CREATE TABLE UltraSoundResult
 	ID INT PRIMARY KEY AUTO_INCREMENT,
 	Name VARCHAR(100) NOT NULL,
 	OrderNumber INT NOT NULL,
-	FormID INT NOT NULL
+	Content MEDIUMTEXT
 );
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Thai dưới 12T', 1, 1);
+	(null, 'Thai dưới 12T', 1, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:bold}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:4px 6px}pre{margin:0;padding:4px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 227px;">.</td><td style="width: 425px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tử cung:</textarea></td><td><textarea rows="1" style="height: 21px;">Buồng tử cung có 01 thai</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Cử động thai:</textarea></td><td><textarea rows="1" style="height: 21px;">(+)</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tim thai:</textarea></td><td><textarea rows="1" style="height: 21px;"> lần/phút</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Rau thai:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Túi ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;">- Chiều dài đầu mông:</textarea></td><td><textarea rows="1" style="height: 21px;"> mm</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Đường kính lưỡng đỉnh:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tuổi thai:</textarea></td><td><textarea rows="1" style="height: 21px;"> tuần</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 227px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 425px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Thai  tuần </textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 294px;" disabled="">
+
+
+
+
+
+
+
+
+
+
+Lưu ý: Ba tuần sau khám lại
+- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay 
+( Siêu âm không ảnh hưởng đến thai nhi và bà mẹ) 
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Thai dưới 12T - Dọa sảy', 2, 1);
+	(null, 'Thai dưới 12T - Dọa sảy', 2, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:bold}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:4px 6px}pre{margin:0;padding:4px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 211px;">.</td><td style="width: 441px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Số lượng thai:</textarea></td><td><textarea rows="1" style="height: 21px;">01</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Cử động thai:</textarea></td><td><textarea rows="1" style="height: 21px;">(+)</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tim thai:</textarea></td><td><textarea rows="1" style="height: 21px;">  lần/phút</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Rau thai:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Túi ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bờ túi ối không đều, có hiện tượng bóc tách</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Chiều dài đầu mông:</textarea></td><td><textarea rows="1" style="height: 21px;">  mm</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tuổi thai:</textarea></td><td><textarea rows="1" style="height: 21px;">  tuần</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">               </textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">                </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phần phụ phải:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phần phụ trái:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 211px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 441px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Thai  tuần - Doạ sảy </textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 252px;" disabled="">
+
+
+
+
+
+
+
+
+Lưu ý: Một tuần sau khám lại
+- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay 
+( Siêu âm không ảnh hưởng đến thai nhi và bà mẹ) 
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Thai 12T - 14T', 3, 2);
+	(null, 'Thai 12T - 14T', 3, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:bold}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:4px 6px}pre{margin:0;padding:0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 187px;">.</td><td style="width: 65px;">.</td><td style="width: 61px;">.</td><td style="width: 151px;">.</td><td style="width: 34px;">.</td><td style="width: 154px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Số lượng thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">01</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Thành bụng trước:</textarea></td><td><textarea rows="1" style="height: 21px;">Kín</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cử động thai nhi:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Hình ảnh dạ dày:</textarea></td><td><textarea rows="1" style="height: 21px;">Đúng vị trí</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Bờ hộp sọ:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Bàng quang:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Đk lưỡng đỉnh:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Cột sống:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chu vi đầu:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Các chi (3 đoạn)</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Khoảng sáng sau gáy:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Vị trí rau bám:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Thân TC mặt </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Xương sống mũi:</textarea></td><td><textarea rows="1" style="height: 21px;">  (+)</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Nước ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">PI đm TC (P)</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK ngang bụng:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">PI đm TC (T)</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK trước sau:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">   </textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">   </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài đầu mông:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 42px;" disabled="">Vị trí dây rốn bám vào bánh rau:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài xương đùi:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Nhịp tim thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;"> lần/phút</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">   </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">              </textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Dự kiến ngày sinh:</textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;">     (± 10 ngày)</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 170px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 482px;"><textarea rows="1" class="b8" id="result" style="height: 42px;">Thai tương đương   tuần   ngày 
+Hiện chưa thấy bất thường hình thái thai nhi</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 189px;" disabled="">
+
+
+
+
+
+Lưu ý :  Khám lại sau 3 tuần.
+- Nếu thấy bất thường( Đau bụng, ra máu ...) đến khám ngay.
+( siêu âm không ảnh hưởng đến sức khoẻ thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Thai 12T - 14T - Dọa sảy', 4, 2);
+	(null, 'Thai 15T - 30T', 4, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:bold}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 163px;">.</td><td style="width: 73px;">.</td><td style="width: 71px;">.</td><td style="width: 155px;">.</td><td style="width: 17px;">.</td><td style="width: 169px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Số lượng thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">01</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Thành bụng trước:</textarea></td><td><textarea rows="1" style="height: 21px;">Kín</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Ngôi thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">CXĐ</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Hình ảnh dạ dày:</textarea></td><td><textarea rows="1" style="height: 21px;">Đúng vị trí</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cử động thai nhi:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Thận:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Bờ hộp sọ:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Bàng quang:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Đk lưỡng đỉnh:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Cột sống:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chu vi đầu:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Các chi:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KT tiểu não:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Vị trí rau bám:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Thân TC mặt </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KT của hố sau:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Tính chất bánh rau:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vách trong suốt:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Nước ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KC hai hố mắt:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" disabled=""></textarea></td><td><textarea rows="1" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Não thất bên:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Dây rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">3 mạch máu</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Xương sống mũi:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" disabled=""></textarea></td><td><textarea rows="1" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK ngang bụng:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Vị trí dây rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK trước sau:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" disabled=""></textarea></td><td><textarea rows="1" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài xương đùi:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">PI động mạch TC:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài bàn chân:</textarea></td><td><textarea rows="1"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" disabled=""></textarea></td><td><textarea rows="1" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;">Cấu trúc của tim:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">4 buồng</textarea></td><td colspan="2"><textarea rows="1" disabled="" style="height: 21px;">Trọng lượng thai: </textarea></td><td><textarea rows="1" style="height: 21px;">  gram</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vách liên thất:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" disabled=""></textarea></td><td><textarea rows="1" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Nhịp tim thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;"> lần/phút</textarea></td><td colspan="2"><textarea rows="1" disabled=""></textarea></td><td><textarea rows="1" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Dự kiến ngày sinh:</textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;"> (± 10 ngày)</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 148px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 504px;"><textarea rows="1" class="b8" id="result" style="height: 42px;">Thai tương đương    tuần    ngày
+Hiện chưa thấy bất thường hình thái thai nhi</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 147px;" disabled="">
+
+
+Lưu ý:  khám lại sau 3 tuần
+- Nếu thấy bất thường (Đau bụng, ra máu, không thấy cử động thai ...) đến khám ngay.
+( siêu âm không ảnh hưởng đến thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi.</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Thai 15T - 34T', 5, 3);
+	(null, 'Thai 30T - 35T', 5, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:bold}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 196px;">.</td><td style="width: 62px;">.</td><td style="width: 69px;">.</td><td style="width: 155px;">.</td><td style="width: 36px;">.</td><td style="width: 134px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Số lượng thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">01</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Thành bụng trước:</textarea></td><td><textarea rows="1" style="height: 21px;">Kín</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Ngôi thai: </textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Đầu</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Hình ảnh dạ dày:</textarea></td><td><textarea rows="1" style="height: 21px;">Đúng vị trí</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cử động thai nhi:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Thận:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Bờ hộp sọ:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Bàng quang:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Đk lưỡng đỉnh:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Cột sống:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chu vi đầu:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Các chi:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KT tiểu não:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Vị trí rau bám:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Thân TC mặt </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KT của hố sau:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Tính chất bánh rau:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vách trong suốt:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Chỉ số ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KC hai hố mắt:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Độ cản âm ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">KT não thất bên:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Dây rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">3 mạch máu</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Xương sống mũi:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Dây rau quấn cổ:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK ngang bụng:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK trước sau:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">S/D đm rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài xương đùi:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm não giữa:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài bàn chân:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm tử cung:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cấu trúc của tim: </textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">4 buồng</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vách liên thất: </textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Trọng lượng thai:</textarea></td><td><textarea rows="1" style="height: 21px;"> gram</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Nhịp tim thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;"> lần/phút</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Dự kiến ngày sinh:</textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;">  (± 10 ngày)</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 176px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 476px;"><textarea rows="1" class="b8" id="result" style="height: 42px;">Thai tương đương   tuần   ngày
+Chưa thấy bất thường hình thái thai nhi</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 126px;" disabled="">
+
+
+Lưu ý :  Khám lại sau 3 tuần.
+- Nếu thấy bất thường( Đau bụng, ra máu ...) đến khám ngay.
+( siêu âm không ảnh hưởng đến sức khoẻ thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Thai 34T - 40T', 6, 3);
+	(null, 'Thai 35T - 40T', 6, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:bold}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 191px;">.</td><td style="width: 63px;">.</td><td style="width: 69px;">.</td><td style="width: 157px;">.</td><td style="width: 28px;">.</td><td style="width: 140px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Số lượng thai:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">01</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Bàng quang:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Ngôi thai: </textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Đầu</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Cột sống:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cử động thai nhi:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Các chi:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Bờ hộp sọ:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Chỉ số ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Đk lưỡng đỉnh:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Độ cản âm ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chu vi đầu:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Dây rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">3 mạch máu</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vách trong suốt:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Vị trí rau bám:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Thân TC mặt </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK ngang bụng:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Tính chất bánh rau:</textarea></td><td><textarea rows="1" style="height: 21px;">TT độ </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK trước sau:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Dây rau quấn cổ:</textarea></td><td><textarea rows="1" style="height: 21px;">Không</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">C.dài xương đùi:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">mm</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cấu trúc của tim:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">4 buồng</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">S/D đm rốn:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vách liên thất:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm não:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Nhịp tim thai:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">lần/phút</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm tử cung (P):</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Thành bụng trước:</textarea></td><td><textarea rows="1" style="height: 21px;">Kín</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">RI đm tử cung (T):</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Hình ảnh dạ dày:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Đúng vị trí</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Thận:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">Bình thường</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;" disabled="">Trọng lượng thai:</textarea></td><td><textarea rows="1" style="height: 21px;"> gram</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Dự kiến ngày sinh:</textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;">   (± 10 ngày)</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 171px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 481px;"><textarea rows="1" class="b8" id="result" style="height: 42px;">Một thai ngôi đầu , ước con    gr 
+Tuần hoàn thai nhi bình thường </textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 189px;" disabled="">
+
+
+
+
+Lưu ý :  Khám lại sau 3 tuần.
+- Nếu thấy bất thường( Đau bụng, ra máu ...) đến khám ngay.
+( siêu âm không ảnh hưởng đến sức khoẻ thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Túi ối', 7, 1);
+	(null, 'Song thai', 7, '<div class="page"><div class="page-container" id="page"><style>.page{width:50rem}.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:1px 6px}#print #table-content pre{font-size:15px}#print #table-content-2 pre{font-size:15px}pre{margin:0;padding:0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 238px;">.</td><td style="width: 60px;">.</td><td style="width: 57px;">.</td><td style="width: 199px;">.</td><td style="width: 75px;">.</td><td style="width: 74px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Số lượng thai:</textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;">02</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="font-weight: bold; height: 21px;" disabled="">Thai 1</textarea></td><td><textarea rows="1" style="font-weight: bold; height: 21px;" disabled="">Thai 2</textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="font-weight: bold; height: 21px;" disabled="">Thai 1</textarea></td><td><textarea rows="1" style="font-weight: bold; height: 21px;" disabled="">Thai 2</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Cử động thai:</textarea></td><td><textarea rows="1" style="height: 21px;">(+)</textarea></td><td><textarea rows="1" style="height: 21px;">(+)</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Tim 4 buồng:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Ngôi thai:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Nhịp tim thai (lần/phút):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Đường kính lưỡng đỉnh(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Phổi 2 bên:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chu vi đầu(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Hình ảnh dạ dày:</textarea></td><td><textarea rows="1" style="height: 21px;">(+)</textarea></td><td><textarea rows="1" style="height: 21px;">(+)</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Bờ hộp sọ:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Thận 2 bên:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Kích thước tiểu não(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Bàng quang:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Kích thước hố sau(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Cột sống:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Não thất bên(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Môi, mũi:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Khoảng cách 2 hốc mắt(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Vị trí bánh rau:</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;">bám mặt sau TC</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Xương sống mũi(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Tính chất bánh rau:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Đường kính ngang bụng(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Tình trạng ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">ĐK trước sau(mm)</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">RI (ĐM rốn):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Các chi (3 đoạn):</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;">Bt</textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">RI (ĐM  não giữa):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chiều dài xương đùi(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">RI (ĐM tử cung):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Chiều dài bàn chân(mm):</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">Dây rau quấn cổ</textarea></td><td colspan="2"><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Trọng lượng thai (gram)</textarea></td><td><textarea rows="1" style="height: 21px;"> gr</textarea></td><td><textarea rows="1" style="height: 21px;"> gr</textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td><td><textarea rows="1" style="height: 21px;" disabled=""></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Hình ảnh khác:</textarea></td><td colspan="5"><textarea rows="1" style="height: 21px;"></textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 210px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 497px;"><textarea rows="1" class="b8" id="result" style="height: 63px;">Song thai, 01 bánh rau,  02 buồng ối. 
+Tương đương  tuần  ngày
+Chưa thấy bất thường hình thái ở tuổi thai này</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 168px;" disabled="">
+
+
+
+Lưu ý :  Khám lại sau 3 tuần.
+- Nếu thấy bất thường( Đau bụng, ra máu ...) đến khám ngay.
+( siêu âm không ảnh hưởng đến sức khoẻ thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Túi ối - Dọa sảy', 8, 1);
+	(null, 'Túi ối', 8, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:2px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 209px;">.</td><td style="width: 443px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tử cung :</textarea></td><td><textarea rows="1" style="height: 21px;">Có 01 túi ối</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Đường kính túi ối:</textarea></td><td><textarea rows="1" style="height: 21px;"> mm</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Bờ túi ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Nước ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phôi thai:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tim thai :</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tương đương thai:</textarea></td><td><textarea rows="1" style="height: 21px;"> tuần</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">         </textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">             </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phần phụ phải:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phần phụ trái:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 210px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 442px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Thai  tuần - Doạ sảy</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 273px;" disabled="">
+
+
+
+
+
+
+
+
+Lưu ý: Một tuần sau khám lại
+- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay
+( Siêu âm không ảnh hưởng đến thai nhi và người mẹ) 
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Siêu âm ổ bụng 4D', 9, 4);
+	(null, 'Túi ối - Dọa sảy', 9, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:2px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> tình trạng thai</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 209px;">.</td><td style="width: 443px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tử cung :</textarea></td><td><textarea rows="1" style="height: 21px;">Có 01 túi ối</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Đường kính túi ối:</textarea></td><td><textarea rows="1" style="height: 21px;"> mm</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Bờ túi ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Không đều có hiện tượng bóc tách</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Nước ối:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phôi thai:</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tim thai :</textarea></td><td><textarea rows="1" style="height: 21px;"></textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Tương đương thai:</textarea></td><td><textarea rows="1" style="height: 21px;"> tuần</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">         </textarea></td><td><textarea rows="1" style="height: 21px;" disabled="">             </textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phần phụ phải:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">- Phần phụ trái:</textarea></td><td><textarea rows="1" style="height: 21px;">Bình thường</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 210px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 442px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Thai  tuần - Doạ sảy</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 273px;" disabled="">
+
+
+
+
+
+
+
+
+Lưu ý: Một tuần sau khám lại
+- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay
+( Siêu âm không ảnh hưởng đến thai nhi và người mẹ) 
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được &gt;90% dị tật thai nhi</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Ổ bụng vú', 10, 4);
+	(null, 'Ổ bụng', 10, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:2px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""></textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 162px;">.</td><td style="width: 490px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Gan</textarea></td><td><textarea rows="1" style="height: 63px;">-  Không to, nhu mô gan đều, không có hình khối khu trú bất
+ thường.
+-  Tĩnh mạch cửa không giãn</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Mật</textarea></td><td><textarea rows="1" style="height: 63px;">- Túi mật không căng, thành mỏng, không có sỏi
+-  Đường mật trong gan và ống mât chủ không giãn, không 
+có sỏi</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Thận</textarea></td><td><textarea rows="1" style="height: 105px;">- Thận phải: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi
+- Thận trái: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi
+-  Niệu quản hai bên bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 42px;" disabled="">Tử cung phần phụ</textarea></td><td><textarea rows="1" style="height: 84px;">- Tử cung kích bình thường, đường lòng tử cung rõ niêm mạc mỏng, chưa thấy khối bất thường
+- Phần phụ trái: bình thường
+- Phần phụ phải: bình thường</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 163px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 489px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Hiện tại gan, mật, thận, tử cung, phần phụ, bình thường</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 210px;" disabled="">
+
+
+
+
+
+
+
+
+Lưu ý : Khi đi siêu âm mang theo kết quả này</textarea></div><div class="page-container" id="print"></div></div>');
 INSERT INTO UltraSoundResult
 VALUES
-	(null, 'Vú', 11, 5);
-CREATE TABLE UltraSoundResult_Content
-(
-	OrderNumber INT,
-	Class1 VARCHAR(250),
-	Class2 VARCHAR(250),
-	UltraSoundResultId INT,
-	PRIMARY KEY(OrderNumber, UltraSoundResultId),
-	FOREIGN KEY (UltraSoundResultId) REFERENCES UltraSoundResult(ID)
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		'tình trạng thai',
-		NULL,
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Tử cung:',
-		'Buồng tử cung có 01 thai',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- Cử động thai:',
-		'(+)',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Tim thai:',
-		' lần/phút',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Rau thai:',
-		'Bình thường',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Túi ối:',
-		'Bình thường',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Chiều dài đầu mông:',
-		' mm',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Đường kính lưỡng đỉnh:',
-		NULL,
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Tuổi thai:',
-		' tuần',
-		1
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'Kết luận:',
-		'Thai  tuần ',
-		1
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		'tình trạng thai',
-		'01',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Số lượng thai:',
-		'01',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- Cử động thai:',
-		'(+)',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Tim thai:',
-		'  lần/phút',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Rau thai:',
-		'bình thường',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Túi ối:',
-		'bờ túi ối không đều, có hiện tượng bóc tách',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Chiều dài đầu mông:',
-		' mm',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Đường kính lưỡng đỉnh:',
-		NULL,
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Tuổi thai:',
-		' tuần',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'- Phần phụ phải:',
-		'bình thường',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'- Phần phụ trái:',
-		'bình thường',
-		2
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'Kết luận:',
-		'Thai  tuần - Doạ sảy',
-		2
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		NULL,
-		'01',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Tử cung:',
-		'có 01 túi ối',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- Đường kính túi ối:',
-		' mm',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Bờ túi ối:',
-		'bình thường',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Nước ối:',
-		'bình thường',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Phôi thai:',
-		NULL,
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Tim thai:',
-		NULL,
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Tương đương thai:',
-		' tuần',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Phần phụ phải:',
-		'bình thường',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'- Phần phụ trái:',
-		'bình thường',
-		7
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'Kết luận:',
-		'Thai  tuần',
-		7
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		NULL,
-		'có 01 túi ối',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Tử cung:',
-		'có 01 túi ối',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- Đường kính túi ối:',
-		' mm',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Bờ túi ối:',
-		'không đều có hiện tượng bóc tách',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Nước ối:',
-		'bình thường',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Phôi thai:',
-		NULL,
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Tim thai ',
-		NULL,
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Tương đương thai:',
-		' tuần',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Phần phụ phải:',
-		'bình thường',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'- Phần phụ trái:',
-		'bình thường',
-		8
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'Kết luận:',
-		'Thai  tuần - Doạ sảy',
-		8
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		'Kiểm tra tình trạng thai',
-		NULL,
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Số lượng thai:',
-		'01',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- ĐK lưỡng đỉnh:',
-		' mm',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Chiều dài đầu mông:',
-		' mm',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Vị trí rau:',
-		'rộng',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Cử động thai:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'Bờ hộp sọ:',
-		NULL,
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Cấu trúc đường giữa(vách trong suốt):',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Hình ảnh siêu âm tiểu não:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'- Não thất 2 bên:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'- Kích thước hố sau:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'- Cấu trúc tim:',
-		'4 buồng',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		13,
-		'- Dây rốn(3 mạch máu)',
-		NULL,
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		14,
-		'- Nhịp tim thai:',
-		' lần/phút',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		15,
-		'- Hình ảnh dạ dày:',
-		'có',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		16,
-		'- Dày da gáy:',
-		'1.8mm',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		17,
-		'- Bàng quang:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		18,
-		'- Tình trạng ối:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		19,
-		'- Cột sống:',
-		'Bình thường',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		20,
-		'- Dự kiến ngày sinh:',
-		' (+,- 7 ngày)',
-		3
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		21,
-		'- Kết luận:',
-		'01 thai, Thai   tuần, cử động thai bình thường',
-		3
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		'Kiểm tra tình trạng thai',
-		NULL,
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Số lượng thai:',
-		'01',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- ĐK lưỡng đỉnh:',
-		' mm',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Chiều dài đầu mông:',
-		' mm',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Vị trí rau:',
-		'Rau bám rộng, bờ ối có hiện tượng bóc tách',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Cử động thai:',
-		'Tốt',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'Bờ hộp sọ:',
-		NULL,
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Cấu trúc đường giữa(vách trong suốt):',
-		'Bình thường',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'- Hình ảnh siêu âm tiểu não:',
-		'Bình thường',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'- Não thất 2 bên:',
-		'Bình thường',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'- Kích thước hố sau:',
-		'Bình thường',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		13,
-		'- Nhịp tim thai:',
-		' lần/phút',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		14,
-		'- Cột sống:',
-		'Bình thường',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		15,
-		'- Dầy da gáy:',
-		'2.0mm',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		16,
-		'- Tình trạng ối:',
-		'có',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		17,
-		'- Dự kiến ngày sinh:',
-		' (+,- 7 ngày)',
-		4
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		18,
-		'- Kết luận:',
-		'01 thai, Thai  tuần  ngày - Doạ sảy',
-		4
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		'Kiểm tra tình trạng thai',
-		NULL,
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Số lượng thai:',
-		'01',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- ĐK lưỡng đỉnh:',
-		' mm',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Chiều dài xương đùi:',
-		' mm',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Đường kình ngang bụng:',
-		' mm',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Đường kính trước sau:',
-		' mm',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Trọng lượng thai:',
-		' g',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Vị trí rau:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Cử động thai:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'Bờ hộp sọ:',
-		NULL,
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'- Cấu trúc đường giữa(vách trong suốt):',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'- Hình ảnh siêu âm tiểu não:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		13,
-		'- Não thất 2 bên:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		14,
-		'- Kích thước hố sau:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		15,
-		'- Hai thận:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		16,
-		'- Cấu trúc tim:',
-		'4 buồng',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		17,
-		'- Dây rốn(3 mạch máu)',
-		NULL,
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		18,
-		'- Nhịp tim thai:',
-		' lần/phút',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		19,
-		'- Hình ảnh dạ dày:',
-		'có',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		20,
-		'- Bàng quang:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		21,
-		'- Tình trạng ối:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		22,
-		'- Cột sống:',
-		'Bình thường',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		23,
-		'- Dự kiến ngày sinh:',
-		' (+;- 7 ngày)',
-		5
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		24,
-		'- Kết luận:',
-		'01 thai, Thai  tuần  ngày. Cử động thai bình thường.',
-		5
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		'Kiểm tra tình trạng thai',
-		NULL,
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'- Số lượng thai:',
-		'01',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		'- ĐK lưỡng đỉnh:',
-		' mm',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'- Chiều dài xương đùi:',
-		' mm',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		'- Đường kình ngang bụng:',
-		' mm',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'- Đường kính trước sau:',
-		' mm',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'- Trọng lượng thai:',
-		' g (+_200g)',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		'- Vị trí rau:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'- Cử động thai:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		'Bờ hộp sọ:',
-		NULL,
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'- Cấu trúc đường giữa(vách trong suốt):',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'- Hình ảnh siêu âm tiểu não:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		13,
-		'- Não thất 2 bên:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		14,
-		'- Kích thước hố sau:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		15,
-		'- Hai thận:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		16,
-		'- Cấu trúc tim:',
-		'4 buồng',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		17,
-		'- Dây rốn(3 mạch máu)',
-		NULL,
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		18,
-		'- Nhịp tim thai:',
-		' lần/phút',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		19,
-		'- Hình ảnh dạ dày:',
-		'có',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		20,
-		'- Ngôi thai:',
-		'Đầu',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		21,
-		'- Bàng quang:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		22,
-		'- Tình trạng ối:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		23,
-		'- Cột sống:',
-		'Bình thường',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		24,
-		'- Dự kiến ngày sinh:',
-		' (+;- 7 ngày )',
-		6
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		25,
-		'- Kết luận:',
-		'01 thai, Thai  tuần  ngày. Cử động thai bình thường.',
-		6
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		NULL,
-		NULL,
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'Gan',
-		'-  Không to, nhu mô gan đều, không có hình khối khu trú bất thường.',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		NULL,
-		'-  Tĩnh mạch cửa không giãn',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'Mật',
-		'- Túi mật không căng, thành mỏng, không có sỏi',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		NULL,
-		'-  Đường mật trong gan và ống mật chủ không giãn, không có sỏi',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'Thận',
-		'- Thận phải: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		NULL,
-		'- Thận trái: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		NULL,
-		'-  Niệu quản hai bên bình thường',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'Tử cung phần phụ',
-		'- Tử cung kích bình thường, đường lòng tử cung rõ niêm mạc mỏng, chưa thấy khối bất thường',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		NULL,
-		'- Phần phụ trái: bình thường',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		NULL,
-		'- Phần phụ phải: bình thường',
-		9
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'Kết luận',
-		'Hiện tại gan, mật, thận, tử cung, phần phụ, bình thường',
-		9
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		NULL,
-		NULL,
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'Gan',
-		'-  Không to, nhu mô gan đều, không có hình khối khu trú bất thường.',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		NULL,
-		'-  Tĩnh mạch cửa không giãn',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		'Mật',
-		'- Túi mật không căng, thành mỏng, không có sỏi',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		NULL,
-		'-  Đường mật trong gan và ống mât chủ không giãn, không có sỏi',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		'Thận',
-		'- Thận phải: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		NULL,
-		'- Thận trái: Kích thước bình thường, nhu mô đều, đài bể thận không giãn, không có sỏi',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		NULL,
-		'-  Niệu quản hai bên bình thường',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		'Tử cung phần phụ',
-		'- Tử cung kích thước bình thường, đường lòng tử cung rõ niêm mạc mỏng, chưa thấy khối bất thường',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		NULL,
-		'- Phần phụ trái: bình thường',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		NULL,
-		'- Phần phụ phải: bình thường',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		12,
-		'Vú',
-		'- Vú trái: không thấy khối u khu trú',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		13,
-		NULL,
-		'- Vú phải: không thấy khối u khu trú',
-		10
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		14,
-		'Kết luận',
-		'Hiện tại gan, mật, thận, tử cung, phần phụ, vú bình thường',
-		10
-);
---
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		1,
-		NULL,
-		NULL,
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		2,
-		'1. Vú phải',
-		'Nhu mô tuyến vú bình thường',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		3,
-		NULL,
-		'Mật độ tuyến vú bình thường',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		4,
-		NULL,
-		'Không có hình ảnh nhân xơ và nang tuyến vú',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		5,
-		NULL,
-		'Núm vú bình thường',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		6,
-		NULL,
-		NULL,
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		7,
-		'2. Vú trái',
-		'Nhu mô tuyến vú bình thường',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		8,
-		NULL,
-		'Mật độ tuyến vú bình thường',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		9,
-		NULL,
-		'Không có hình ảnh nhân xơ và nang tuyến vú',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		10,
-		NULL,
-		'Núm vú bình thường',
-		11
-);
-INSERT INTO UltraSoundResult_Content
-VALUES
-	(
-		11,
-		'Kết luận',
-		'Hiện tại 2 vú chưa thấy hình ảnh bất thường',
-		11
-);
+	(null, 'Ổ bụng vú', 11, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:2px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""></textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 155px;">.</td><td style="width: 497px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Gan</textarea></td><td><textarea rows="1" style="height: 84px;">-  Không to, nhu mô gan đều, không có hình khối khu trú bất thường.
+-  Tĩnh mạch cửa không giãn
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Mật</textarea></td><td><textarea rows="1" style="height: 84px;">- Túi mật không căng, thành mỏng, không có sỏi
+-  Đường mật trong gan và ống mât chủ không giãn, không 
+có sỏi
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Thận</textarea></td><td><textarea rows="1" style="height: 126px;">- Thận phải: Kích thước bình thường, nhu mô đều, đài bể thận 
+không giãn, không có sỏi
+- Thận trái: Kích thước bình thường, nhu mô đều, đài bể thận 
+không giãn, không có sỏi
+-  Niệu quản hai bên bình thường
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Tử cung- phần phụ</textarea></td><td><textarea rows="1" style="height: 105px;">- Tử cung kích thước bình thường, đường lòng tử cung rõ niêm 
+mạc mỏng, chưa thấy khối bất thường
+- Phần phụ trái: bình thường
+- Phần phụ phải: bình thường
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">Vú</textarea></td><td><textarea rows="1" style="height: 63px;">- Vú trái: không thấy khối u khu trú
+- Vú phải: không thấy khối u khu trú
+</textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 155px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 497px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Hiện tại gan, mật, thận, tử cung, phần phụ, vú bình thường</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 126px;" disabled="">
+
+
+
+
+Lưu ý : Khi đi siêu âm mang theo kết quả này</textarea></div><div class="page-container" id="print"></div></div>.
+');
+INSERT INTO UltraSoundResult
+VALUES
+	(null, 'Vú', 12, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:2px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""> vú</textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 133px;">.</td><td style="width: 519px;">.</td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">1. Vú Phải</textarea></td><td><textarea rows="1" style="height: 126px;">Nhu mô tuyến vú bình thường
+Mật độ tuyến vú bình thường
+Không thấy hình ảnh nhân xơ và nang tuyến vú
+Núm bình thường
+Hạch nách(-)
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;" disabled="">2. Vú trái</textarea></td><td><textarea rows="1" style="height: 126px;">Nhu mô tuyến vú bình thường
+Mật độ tuyến vú bình thường
+Không thấy hình ảnh nhân xơ và nang tuyến vú
+Núm vú bình thường
+Hạch nách(-)
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;">Hẹn khám</textarea></td><td><textarea rows="1"></textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 133px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 519px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Hình ảnh SA tuyến vú chưa thấy khối bất thường</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 210px;" disabled="">
+
+
+
+
+
+
+
+
+Lưu ý: Khi khám lần sau mang theo kết quả này</textarea></div><div class="page-container" id="print"></div></div>');
+INSERT INTO UltraSoundResult
+VALUES
+	(null, 'Phần phụ', 13, '<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:2px 6px}pre{margin:0;padding:2px 0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tbody><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name" style="height: 21px;"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age" style="height: 21px;"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address" style="height: 21px;"></textarea></td></tr></tbody></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5" style="height: 21px;" disabled=""></textarea><table class="table" id="table-content"><tbody><tr class="table-header"><td style="width: 192px;">.</td><td style="width: 460px;">.</td></tr><tr><td><textarea rows="1" style="height: 147px;">1. Tử cung:
+- Hình dạng:
+- Tính chất cơ tử cung:
+- Kích thước tử cung:
+- Đường kính trước sau:
+- Niêm mạc tử cung:
+</textarea></td><td><textarea rows="1" style="height: 147px;">
+bình thường 
+đều chưa thấy khối bất thường
+bình thường
+  mm
+  mm
+</textarea></td></tr><tr><td><textarea rows="1" style="height: 105px;">2. Phần phụ:
+- Buồng trứng phải:
+- Buồng trứng trái:
+- Cùng đồ sau:
+</textarea></td><td><textarea rows="1" style="height: 63px;">Bình thường
+Bình thường
+Bình thường</textarea></td></tr><tr><td><textarea rows="1" style="height: 21px;">         </textarea></td><td><textarea rows="1" style="height: 21px;">          </textarea></td></tr></tbody></table><table class="table" id="table-content-2"><tbody><tr><td class="b6" style="width: 193px;"><textarea rows="1" class="b7" style="height: 21px;" disabled="">Kết quả:</textarea></td><td style="width: 459px;"><textarea rows="1" class="b8" id="result" style="height: 21px;">Hiện tại tử cung, phần phụ bình thường</textarea></td></tr></tbody></table><table class="table-none"><tbody><tr><td><p class="b9">.</p></td><td valign="top"><div class="b10" id="date">Ngày tháng năm</div><div class="b10">Người siêu âm</div><br><br></td></tr></tbody></table><textarea rows="1" class="b11" style="height: 315px;" disabled="">
+
+
+
+
+
+
+
+
+
+
+
+
+Lưu ý: Khi khám lần sau mang theo kết quả này
+( Siêu âm không ảnh hưởng đến thai nhi và người mẹ)</textarea></div><div class="page-container" id="print"></div></div>');
 --

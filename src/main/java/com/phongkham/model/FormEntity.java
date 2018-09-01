@@ -2,28 +2,43 @@ package com.phongkham.model;
 
 public class FormEntity {
 
-    private String Class1;
-    private String Class2;
+    private int ID;
+    private String Name;
+    private String Content;
 
-    public String getClass1() {
-        return Class1;
+    public int getID() {
+        return ID;
     }
 
-    public void setClass1(String class1) {
-        Class1 = class1;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public String getClass2() {
-        return Class2;
+    public String getName() {
+        return Name;
     }
 
-    public void setClass2(String class2) {
-        Class2 = class2;
+    public String getContent() {
+        return Content;
     }
 
-    public FormEntity(String class1, String class2) {
-        Class1 = class1;
-        Class2 = class2;
+    public void setContent(String content) {
+        Content = content;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public FormEntity(int ID, String name) {
+        this.ID = ID;
+        Name = name;
+    }
+
+    public FormEntity(int ID, String name, String content) {
+        this.ID = ID;
+        Name = name;
+        Content = content;
     }
 
     public FormEntity() {

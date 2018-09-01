@@ -22,7 +22,12 @@ public class CSSInline {
             while (st.countTokens() > 1) {
                 String selector = st.nextToken();
                 String properties = st.nextToken();
-                Elements selectedElements = doc.select(selector);
+                Elements selectedElements;
+                try {
+                    selectedElements = doc.select(selector);
+                } catch (Exception ex) {
+                    continue;
+                }
                 for (Element selElem : selectedElements) {
                     String oldProperties = selElem.attr(style);
                     selElem.attr(style, oldProperties.length() > 0 ?
@@ -33,7 +38,10 @@ public class CSSInline {
         }
         els = doc.getAllElements();
         for (Element e : els) {
+            e.removeAttr("id");
+            e.removeAttr("rows");
             e.removeAttr("class");
+            e.removeAttr("disabled");
         }
         return doc.html();
     }

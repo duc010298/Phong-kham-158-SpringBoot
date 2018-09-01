@@ -1,146 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="result" th:remove="tag">
-    <link href="../static/css/edit.css" rel="stylesheet" type="text/css" th:href="@{/css/edit.css}"/>
-    <div class="page" th:id="${id}">
-        <div class="page-container">
-            <div class="no-edit">
-                <p class="page-h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p>
-                <p class="page-h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p>
-                <p class="page-h2">Điện thoại : 0916483289</p>
-                <p class="page-h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p>
-                <p class="page-h3">ổ bụng, phụ khoa, siêu âm vú</p>
-                <br>
-                <p class="page-h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p>
-                <br>
-                <table class="page-table">
-                    <tr>
-                        <td class="page-b1">Họ và tên:</td>
-                        <td><input id="input0" type="text" placeholder="Nhập tên" disabled></td>
-                        <td class="page-b2">Tuổi:</td>
-                        <td><input id="input1" type="text" value=" tuổi" disabled></td>
-                    </tr>
-                    <tr>
-                        <td class="page-b3">Địa chỉ:</td>
-                        <td colspan="3"><input id="input2" type="text" placeholder="Nhập địa chỉ" size="55" disabled></td>
-                    </tr>
-                </table>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}"/>
+    <link href="../static/css/add.css" rel="stylesheet" type="text/css" th:href="@{/css/add.css}"/>
+    <link href="../static/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"
+          th:href="@{/css/fontawesome-all.min.css}"/>
+    <title>Sửa báo cáo</title>
+</head>
+<body>
+<header>
+    <div class="navtop">
+        <div id="back"><span class="fas fa-undo"></span> QUAY LẠI</div>
+        <div id="save2"><span class="far fa-save"></span> LƯU</div>
+        <div id="btn-print"><span class="fas fa-print"></span> IN</div>
+    </div>
+    <div id="modalNotify" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p id="notify-header"></p>
             </div>
-            <p class="page-b4 no-edit">Yêu cầu kiểm tra: </p>
-            <input th:value="${formContents[0].getClass1()}" id="c1-0">
-            <p class="page-b5 no-edit">KẾT QUẢ:</p>
-            <table class="page-table" id="table-content">
-                <span th:each="formContent, iter : ${formContents}"
-                      th:if="${iter.index} != 0 and ${iter.index} < ${iter.size-1}" th:remove="tag">
-                    <tr>
-                        <td class="page-b6"><input th:value="${formContent.getClass1()}"
-                                                   th:id="|c1-${iter.index}|"></td>
-                        <td><input th:value="${formContent.getClass2()}" th:id="|c2-${iter.index}|" size="40"/></td>
-                    </tr>
-                </span>
-            </table>
-            <table class="table-add">
-                <tr>
-                    <td id="add" class="add"><span class="fas fa-plus-circle"></span></td>
-                </tr>
-            </table>
-            <br>
-            <table class="page-table" id="table-content-2">
-                <tr>
-                    <span th:each="formContent, iter : ${formContents}"
-                          th:if="${iter.last}" th:remove="tag">
-                        <td class="page-b7"><input th:value="${formContent.getClass1()}" th:id="|c1-${iter.index}|"></td>
-                        <td><input class="page-b8" th:value="${formContent.getClass2()}"
-                                   th:id="|c2-${iter.index}|" size="40"></td>
-                    </span>
-                </tr>
-            </table>
-            <div class="no-edit">
-                <br>
-                <table class="page-table">
-                    <tr>
-                        <td class="page-b9">Ảnh</td>
-                        <td>
-                            <div class="page-b10">
-                                <p th:text="|Ngày ${#dates.day(date)} tháng ${#dates.month(date)} năm ${#dates.year(date)}|"></p>
-                                <br>
-                                <p>Người siêu âm</p>
-                            </div>
-                            <br><br><br><br><br><br><br>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <p class="page-h3">Lời dặn</p>
-                <p class="page-b11">- Một tuần sau khám lại</p>
-                <p class="page-b11">- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay</p>
-                <p class="page-b11">- Nếu siêu âm đầy đủ các chu kì sẽ sớm phát hiện được >90% dị tật thai nhi</p>
-                <p class="page-h3">( Siêu âm không ảnh hưởng đến thai nhi và bà mẹ)</p>
+            <hr>
+            <div class="modal-body">
+                <h1 id="notify-content"></h1>
+            </div>
+            <hr>
+            <div class="modal-footer">
+                <div class="btn-close">Đóng</div>
             </div>
         </div>
     </div>
-    <script>
-        $("#add").on("click", function () {
-            var id = $("#table-content tr").length + 1;
-            var array = [];
-            for(var i = 1; i < id; i++) {
-                var class1 = $("#c1-" + i).val();
-                class1 = typeof (class1) === "undefined" ? "" : class1;
-                var class2 = $("#c2-" + i).val();
-                class2 = typeof (class2) === "undefined" ? "" : class2;
-                var form = {
-                    Class1: class1,
-                    Class2: class2
-                };
-                array.push(form);
-            }
-            var orHtml = $("#table-content").html();
-            orHtml += "<tr><td class=\"page-b6\"><input id=\"c1-" + id +"\"></td>" +
-                "<td><input id=\"c2-" + id + "\" size=\"40\"/></td></tr>";
-            $("#table-content").html(orHtml);
-            for(var i = 1; i < id; i++) {
-                $("#c1-" + i).val(array[i-1].Class1);
-                $("#c2-" + i).val(array[i-1].Class2);
-            }
-            id = id +1;
-            $("#table-content-2 input:first").attr("id", "c1-"+id);
-            $("#table-content-2 input:last").attr("id", "c2-"+id);
-        });
-
-        $("#save").on("click", function () {
-            $(".spinner").attr("style", "display: flex");
-            var id = $(".page").attr("id");
-            var totalId = $("#table-content tr, #table-content-2 tr").length;
-            var array = [];
-            for(var i = 0; i <= totalId; i++) {
-                var class1 = $("#c1-" + i).val();
-                class1 = typeof (class1) === "undefined" ? "" : class1;
-                var class2 = $("#c2-" + i).val();
-                class2 = typeof (class2) === "undefined" ? "" : class2;
-                var form = {
-                    Class1: class1,
-                    Class2: class2
-                };
-                array.push(form);
-            }
-            $.ajax({
-                //For test
-                // url: "http://" + window.location.host + "/Phongkham158/Setting/Edit",
-                url: "http://" + window.location.host + "/Setting/Edit",
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    id: id,
-                    data: JSON.stringify(array)
-                },
-                error: function(){
-                    notify("Lỗi", "Không thể xử lí dữ liệu");
-                }
-            }).done(function (result) {
-                $(".spinner").removeAttr("style");
-                notify("Thông báo", result);
-            });
-        });
-    </script>
-</div>
+    <div class="tool-edit">
+        <h3><span class="fas fa-edit"></span> Chỉnh sửa</h3>
+        <hr>
+        <div class="tool-edit-title" id="add-row"><span class="fas fa-plus-square"></span> Chèn hàng</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí hàng cần thêm</p>
+            <input/>
+            <div class="acept-add" id="acept-add-row">Thêm hàng</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title" id="add-col"><span class="fas fa-plus-square"></span> Chèn cột</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí cột cần thêm</p>
+            <input/>
+            <div class="acept-add" id="acept-add-col">Thêm cột</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-trash-alt"></span> Xóa hàng</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí hàng cần xóa</p>
+            <input/>
+            <div class="acept-delete" id="delete-row">Xóa</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-trash-alt"></span> Xóa cột</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí cột cần xóa</p>
+            <input/>
+            <div class="acept-delete" id="delete-col">Xóa</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-table"></span> Gộp hàng</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí của ô cần gộp</p>
+            <div class="merge">
+                <input placeholder="Hàng">
+                <input placeholder="Cột" style="margin-left: 0">
+            </div>
+            <p>Số ô gộp</p>
+            <input id="inp-tRow">
+            <div class="acept-add" id="merge-row">Gộp hàng</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-table"></span> Gộp cột</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí của ô cần gộp</p>
+            <div class="merge">
+                <input placeholder="Hàng">
+                <input placeholder="Cột" style="margin-left: 0">
+            </div>
+            <p>Số ô gộp</p>
+            <input id="inp-tCol">
+            <div class="acept-add" id="merge-col">Gộp cột</div>
+        </div>
+        <hr>
+        <div class="tool-edit-title"><span class="fas fa-times-circle"></span> Vô hiệu hóa ô</div>
+        <div class="tool-edit-content">
+            <p>Nhập vị trí ô cần vô hiệu hóa</p>
+            <div class="merge">
+                <input placeholder="Hàng">
+                <input placeholder="Cột" style="margin-left: 0">
+            </div>
+            <div class="acept-add" id="disable">Vô hiệu hóa</div>
+        </div>
+    </div>
+</header>
+<main th:id="${id}">
+    <div id="spinner" class="spinner">
+        <div class="spinner-content">
+            <div class="spin"></div>
+        </div>
+    </div>
+    <div id="content" class="content" th:utext="${content}">content</div>
+</main>
+<script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/colResizable-1.6.min.js" type="text/javascript" th:src="@{/js/colResizable-1.6.min.js}"></script>
+<script src="../static/js/printThis.js" type="text/javascript" th:src="@{/js/printThis.js}"></script>
+<script src="../static/js/add.js" type="text/javascript" th:src="@{/js/add.js}"></script>
+</body>
 </html>
