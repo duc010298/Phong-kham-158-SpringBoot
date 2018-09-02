@@ -29,8 +29,8 @@ $(".btn-delete").on("click", function () {
     var id = $(this).parent().parent().attr("id");
     $.ajax({
         //For test
-        // url: "http://" + window.location.host + "/Phongkham158/Setting/Delete",
-        url: "http://" + window.location.host + "/Setting/Delete",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Delete",
+        // url: "http://" + window.location.host + "/Setting/Delete",
         type: 'POST',
         dataType: 'html',
         data: {
@@ -49,9 +49,9 @@ $(".btn-delete").on("click", function () {
 
 $(".btn-edit").on("click", function () {
     var id = $(this).parent().parent().attr("id");
-    window.location.href = "Setting/Edit/" + id;
+    window.location.href = "/Phongkham158/Setting/Edit/" + id;
 });
 
 $(".item-add").on("click", function () {
-    window.location.href = "/Setting/Add";
+    window.location.href = "/Phongkham158/Setting/Add";
 });

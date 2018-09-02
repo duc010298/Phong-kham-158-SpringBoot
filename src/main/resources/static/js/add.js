@@ -157,7 +157,7 @@ $("#acept-add-col").on("click", function () {
 });
 
 $("#back").on("click", function () {
-    window.location.href = "/Setting";
+    window.location.href = "/Phongkham158/Setting";
 });
 
 $(".tool-edit-title").on("click", function () {
@@ -413,8 +413,8 @@ $("#save").on("click", function () {
     $(".spinner").attr("style", "display: flex");
     $.ajax({
         //For test
-        // url: "http://" + window.location.host + "/Phongkham158/Setting/Add",
-        url: "http://" + window.location.host + "/Setting/Add",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Add",
+        // url: "http://" + window.location.host + "/Setting/Add",
         type: 'POST',
         dataType: 'html',
         data: {
@@ -446,8 +446,8 @@ $("#save2").on("click", function () {
     $(".spinner").attr("style", "display: flex");
     $.ajax({
         //For test
-        // url: "http://" + window.location.host + "/Phongkham158/Setting/Add",
-        url: "http://" + window.location.host + "/Setting/Edit",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Edit",
+        // url: "http://" + window.location.host + "/Setting/Edit",
         type: 'POST',
         dataType: 'html',
         data: {
