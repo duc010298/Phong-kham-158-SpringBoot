@@ -14,7 +14,12 @@
                 th:id="${customer.getId()}" target="_blank" class="customer">
                 <td th:text="${iter.count}">...</td>
                 <td th:text="${customer.getName()}">...</td>
-                <td th:text="${#dates.year(#dates.createNow()) - customer.getYOB()}">...</td>
+                <span th:remove="tag" th:if="${customer.getYOB() != 0}">
+                    <td th:text="${#dates.year(#dates.createNow()) - customer.getYOB()}">...</td>
+                </span>
+                <span th:remove="tag" th:unless="${customer.getYOB() != 0}">
+                    <td></td>
+                </span>
                 <td th:text="${customer.getAddressCus()}">...</td>
                 <td th:text="${customer.getResult()}">...</td>
             </tr>
