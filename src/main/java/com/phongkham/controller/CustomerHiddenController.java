@@ -30,7 +30,7 @@ public class CustomerHiddenController {
         customerHiddenRepository.addCustomer(customerEntity);
 
         String From = "phongkham158@gmail.com";
-        String To = "ducpanzer@gmail.com";
+        String To = "duc010298@gmail.com";
         String Subject = "Vào ngày ";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String date = simpleDateFormat.format(customerEntity.getDayVisit());

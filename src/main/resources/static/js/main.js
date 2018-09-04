@@ -20,8 +20,8 @@ function sendRequestHidden() {
     };
     $.ajax({
         // For test
-        url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
-        // url: "http://" + window.location.host + "/CustomerHidden",
+        // url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
+        url: "http://" + window.location.host + "/CustomerHidden",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -60,8 +60,8 @@ $("#btn-report").on("click", function () {
     }, 350);
     $(".spinner").attr("style", "display: flex");
     // For test
-    $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
-    // $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
+    // $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
+    $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
         setTimeout(function () {
             $(".spinner").removeAttr("style");
         }, 300);
@@ -80,6 +80,7 @@ $("#navside>ul>li").on("click", function () {
     var id = $(this).attr("id");
     setTimeout(function () {
         $.ajax({
+            //For test
             url: "http://" + window.location.host + "/Phongkham158/Form",
             type: 'GET',
             dataType: 'html',
@@ -118,7 +119,7 @@ $("#navside>ul>li").on("click", function () {
 
 $("#btn-print").on("click", function () {
     sendRequestHidden();
-    var Name = $("#name").val().trim();
+    var Name = $("#name").val();
     var AgeString = $("#age").val();
     var Age = "";
     for (var i = 0; i < AgeString.length; i++) {
@@ -128,7 +129,7 @@ $("#btn-print").on("click", function () {
         }
     }
     var YOB = Age == "" ? 0 : (new Date()).getFullYear() - Age;
-    var AddressCus = $("#address").val().trim();
+    var AddressCus = $("#address").val();
     var DayVisit = formatDate(new Date());
     var Result = $("#result").val();
     $.each($('textarea'), function () {
@@ -192,7 +193,7 @@ $("#btn-acept-save").on("click", function () {
     var content = $("#page").html();
     content = content.replace(/textarea/g, 'pre');
     $("#print").html(content);
-    var Name = $("#name").val().trim();
+    var Name = $("#name").val();
     if (Name === "") {
         $("#modalSave").fadeOut();
         notify("Lỗi", "Chưa nhập tên");
@@ -212,7 +213,7 @@ $("#btn-acept-save").on("click", function () {
         return;
     }
     var YOB = (new Date()).getFullYear() - Age;
-    var AddressCus = $("#address").val().trim();
+    var AddressCus = $("#address").val();
     if (AddressCus === "") {
         $("#modalSave").fadeOut();
         notify("Lỗi", "Chưa nhập địa chỉ");
@@ -243,8 +244,8 @@ $("#btn-acept-save").on("click", function () {
 
     $.ajax({
         //For test
-        url: "http://" + window.location.host + "/Phongkham158/Customer",
-        // url: "http://" + window.location.host + "/Customer",
+        // url: "http://" + window.location.host + "/Phongkham158/Customer",
+        url: "http://" + window.location.host + "/Customer",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -285,8 +286,6 @@ new Cleave('#ExpectedDOB', {
 $("#setting").on("click", function () {
     sendRequestHidden();
     //For test
-    window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
-    // window.location.href = "http://" + window.location.host + "/Setting";
+    // window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
+    window.location.href = "http://" + window.location.host + "/Setting";
 });
-
-$("#btn-result").click();

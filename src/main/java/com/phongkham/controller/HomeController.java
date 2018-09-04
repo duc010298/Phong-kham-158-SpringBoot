@@ -7,8 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(path = "/")
-//@RequestMapping(path = "/Phongkham158")
+//@RequestMapping(path = "/")
+@RequestMapping(path = "/Phongkham158")
 public class HomeController {
 
     private FormRepository formRepository;
