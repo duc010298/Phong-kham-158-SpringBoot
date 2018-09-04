@@ -21,10 +21,11 @@ public class CustomerRepository {
     }
 
     public boolean addCustomer(CustomerEntity customerEntity) {
-        String sql = "INSERT INTO Customer VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Customer VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
-            int rows = jdbcTemplate.update(sql, customerEntity.getName(), customerEntity.getYOB(),
-                    customerEntity.getAddressCus(), new java.sql.Date(customerEntity.getDayVisit().getTime()),
+            int rows = jdbcTemplate.update(sql, customerEntity.getName(), customerEntity.getNameS(),
+                    customerEntity.getYOB(), customerEntity.getAddressCus(), customerEntity.getAddressCusS(),
+                    new java.sql.Date(customerEntity.getDayVisit().getTime()),
                     customerEntity.getExpectedDOB() == null ? null : new java.sql.Date(customerEntity.getExpectedDOB().getTime()),
                     customerEntity.getResult(), customerEntity.getNote(), customerEntity.getReport());
             return rows == 1;
@@ -34,7 +35,7 @@ public class CustomerRepository {
     }
 
     public List<String> searchByName(String value) {
-        String sql = "SELECT Name FROM Customer WHERE Name LIKE ? GROUP BY Name LIMIT 0, 15";
+        String sql = "SELECT Name FROM Customer WHERE NameS LIKE ? GROUP BY Name LIMIT 0, 15";
         return jdbcTemplate.queryForList(sql, String.class, "%" + value + "%");
     }
 
@@ -44,13 +45,13 @@ public class CustomerRepository {
     }
 
     public List<String> searchByAddress(String value) {
-        String sql = "SELECT AddressCus FROM Customer WHERE AddressCus LIKE ? GROUP BY AddressCus  LIMIT 0, 15";
+        String sql = "SELECT AddressCus FROM Customer WHERE AddressCusS LIKE ? GROUP BY AddressCus  LIMIT 0, 15";
         return jdbcTemplate.queryForList(sql, String.class, "%" + value + "%");
     }
 
     public List<CustomerEntity> searchCustomer(String name, String YOB, String addressCus, Date dayVisit) {
         String sql = "SELECT Id, DayVisit, Name, YOB, AddressCus, ExpectedDOB, Result, Note FROM Customer " +
-                "WHERE Name LIKE ? AND YOB LIKE ? AND AddressCus LIKE ? ";
+                "WHERE NameS LIKE ? AND YOB LIKE ? AND AddressCusS LIKE ? ";
         if (dayVisit == null) {
             sql += "ORDER BY DayVisit DESC LIMIT 0, 1000";
             return jdbcTemplate.query(sql, getRowMapper(), "%" + name + "%", "%" + YOB + "%", "%" + addressCus + "%");

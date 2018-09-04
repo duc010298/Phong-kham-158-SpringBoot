@@ -7,8 +7,10 @@ public class CustomerEntity {
 
     private int Id;
     private String Name;
+    private String NameS;
     private int YOB;
     private String AddressCus;
+    private String AddressCusS;
     private Date DayVisit;
     private Date ExpectedDOB;
     private String Result;
@@ -18,10 +20,13 @@ public class CustomerEntity {
     public CustomerEntity() {
     }
 
-    public CustomerEntity(String name, int YOB, String addressCus, Date dayVisit, Date expectedDOB, String result, String note, String report) {
+    public CustomerEntity(int id, String name, String nameS, int YOB, String addressCus, String addressCusS, Date dayVisit, Date expectedDOB, String result, String note, String report) {
+        Id = id;
         Name = name;
+        NameS = nameS;
         this.YOB = YOB;
         AddressCus = addressCus;
+        AddressCusS = addressCusS;
         DayVisit = dayVisit;
         ExpectedDOB = expectedDOB;
         Result = result;
@@ -29,15 +34,33 @@ public class CustomerEntity {
         Report = report;
     }
 
-    public CustomerEntity(int id, String name, int YOB, String addressCus, Date dayVisit, Date expectedDOB, String result, String note, String report) {
-        Id = id;
+    public String getNameS() {
+        return NameS;
+    }
+
+    public void setNameS(String nameS) {
+        NameS = nameS;
+    }
+
+    public String getAddressCusS() {
+        return AddressCusS;
+    }
+
+    public void setAddressCusS(String addressCusS) {
+        AddressCusS = addressCusS;
+    }
+
+    public CustomerEntity(String name, String nameS, int YOB, String addressCus, String addressCusS, Date dayVisit, Date expectedDOB, String result, String note, String report) {
         Name = name;
+        NameS = nameS;
         this.YOB = YOB;
         AddressCus = addressCus;
+        AddressCusS = addressCusS;
         DayVisit = dayVisit;
         ExpectedDOB = expectedDOB;
         Result = result;
         Note = note;
+
         Report = report;
     }
 

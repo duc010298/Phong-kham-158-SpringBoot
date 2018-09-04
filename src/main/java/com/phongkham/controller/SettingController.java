@@ -51,7 +51,6 @@ public class SettingController {
     @RequestMapping(path = "/Edit", method = RequestMethod.POST)
     public @ResponseBody String editForm(@RequestParam("id") String id,
                            @RequestParam("content") String content) {
-        System.out.println(content);
         return formRepository.updateForm(id, content) ? "Sửa thành công" : "Sửa không thành công";
     }
 }

@@ -48,11 +48,11 @@ public class CustomerController {
     }
 
     @RequestMapping(path = "/Search", method = RequestMethod.GET)
-    public String searchCustomers(@RequestParam("Name") String name, @RequestParam("YOB") String YOB,
-                                  @RequestParam("AddressCus") String addressCus,
+    public String searchCustomers(@RequestParam("NameS") String nameS, @RequestParam("YOB") String YOB,
+                                  @RequestParam("AddressCusS") String addressCusS,
                                   @RequestParam("DayVisit") @DateTimeFormat(pattern = "dd/MM/yyyy") Date dayVisit,
                                   ModelMap modelMap) {
-        modelMap.addAttribute("Customers", customerRepository.searchCustomer(name, YOB, addressCus, dayVisit));
+        modelMap.addAttribute("Customers", customerRepository.searchCustomer(nameS, YOB, addressCusS, dayVisit));
         return "result :: result";
     }
 
