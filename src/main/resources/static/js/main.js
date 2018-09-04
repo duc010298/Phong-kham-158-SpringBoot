@@ -38,8 +38,8 @@ function sendRequestHidden() {
     };
     $.ajax({
         // For test
-        // url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
-        url: "http://" + window.location.host + "/CustomerHidden",
+        url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
+        // url: "http://" + window.location.host + "/CustomerHidden",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -78,8 +78,8 @@ $("#btn-report").on("click", function () {
     }, 350);
     $(".spinner").attr("style", "display: flex");
     // For test
-    // $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
-    $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
+    $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
+    // $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
         setTimeout(function () {
             $(".spinner").removeAttr("style");
         }, 300);
@@ -310,6 +310,8 @@ new Cleave('#ExpectedDOB', {
 $("#setting").on("click", function () {
     sendRequestHidden();
     //For test
-    // window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
-    window.location.href = "http://" + window.location.host + "/Setting";
+    window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
+    // window.location.href = "http://" + window.location.host + "/Setting";
 });
+
+$("#btn-result").click();
