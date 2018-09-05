@@ -32,7 +32,6 @@ public class SettingController {
     public @ResponseBody
     String addForm(@RequestParam("name") String name,
                @RequestParam("content") String content) {
-        System.out.println(content);
         return formRepository.addForm(name, content) ? "Lưu thành công" : "Lưu không thành công";
     }
 

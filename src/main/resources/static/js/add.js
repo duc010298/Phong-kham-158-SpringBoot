@@ -446,7 +446,7 @@ $("#save2").on("click", function () {
     $(".spinner").attr("style", "display: flex");
     $.ajax({
         //For test
-        url: "http://" + window.location.host + "/Phongkham158/Setting/Add",
+        url: "http://" + window.location.host + "/Phongkham158/Setting/Edit",
         // url: "http://" + window.location.host + "/Setting/Edit",
         type: 'POST',
         dataType: 'html',

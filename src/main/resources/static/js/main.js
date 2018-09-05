@@ -268,8 +268,8 @@ $("#btn-acept-save").on("click", function () {
 
     $.ajax({
         //For test
-        // url: "http://" + window.location.host + "/Phongkham158/Customer",
-        url: "http://" + window.location.host + "/Customer",
+        url: "http://" + window.location.host + "/Phongkham158/Customer",
+        // url: "http://" + window.location.host + "/Customer",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
