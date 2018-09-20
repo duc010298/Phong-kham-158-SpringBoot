@@ -1,0 +1,17 @@
+.page {
+    width: 46.5625rem;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0.3125rem 0.3125rem 0.3125rem #7F7979;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.page-container {
+    margin: 1.875rem 2.8125rem;
+}
+
+textarea {
+    line-height: normal;
+    padding: 0 !important;
+}
