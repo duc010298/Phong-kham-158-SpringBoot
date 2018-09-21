@@ -23,7 +23,7 @@ alter table user_role add constraint user_role_uk unique (user_id, role_id);
 alter table user_role add constraint user_role_fk1 foreign key (user_id) references app_user (user_id);
 alter table user_role add constraint user_role_fk2 foreign key (role_id) references app_role (role_id);
 
----------------------------
+--
 insert into app_user (user_id, user_name, encryted_password, enabled)
 values (1, 'dbadmin1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
 
@@ -44,7 +44,7 @@ values (2, 1, 2);
 
 insert into user_role (id, user_id, role_id)
 values (3, 2, 2);
-----------------------------
+--
 
 -- manager clinic
 CREATE TABLE Customer (

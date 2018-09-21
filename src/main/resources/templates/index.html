@@ -13,7 +13,54 @@
     <title th:text="${title}">...</title>
 </head>
 <body>
-
+<div class="modal fade" id="notifyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">...</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tool" th:if="${title} != 'Phòng khám 158'">
+    <div id="btn-print" class="btn-print">
+        <span class="fas fa-print"></span>
+    </div>
+    <div id="btn-save" class="btn-save">
+        <span class="fas fa-save"></span>
+    </div>
+    <div id="btn-reload" class="btn-reload">
+        <span class="fas fa-sync-alt"></span>
+    </div>
+</div>
+<div class="modal fade" id="acceptSaveNotify">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Bổ sung thông tin trước khi lưu</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="ExpectedDOB">Ngày sinh dự kiến:</label>
+                    <input type="text" class="form-control" id="ExpectedDOB" placeholder="dd/mm/yyyy">
+                </div>
+                <div class="form-group">
+                    <label for="Note">Ghi chú:</label>
+                    <input type="text" class="form-control" id="Note" placeholder="Nhập ghi chú">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-modal btn btn-danger" data-dismiss="modal">Đóng</button>
+                <button id="BtnAcceptSave" type="button" class="btn-modal btn btn-primary" data-dismiss="modal">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -27,10 +74,15 @@
     </div>
     <div id="navbar-content-wrapper">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="navbar-offcanvas offcanvas">
+            <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
                     <li id="menu-toggle"><a class="nav-link"><i class="fas fa-arrow-left"></i> Kết quả siêu âm</a></li>
-                    <li id="report"><a class="nav-link" href="#"><i class="fas fa-file-excel"></i> Báo cáo siêu âm</a></li>
+                    <li id="report"><a class="nav-link" href="#"><i class="fas fa-file-excel"></i> Báo cáo siêu âm</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+                    <li><a class="nav-link" href="#"><i class="fas fa-cog"></i> Cài đặt</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,7 +92,9 @@
     </div>
 </div>
 </body>
-<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/printThis.js}"></script>
+<script th:src="@{/resources/js/cleave.min.js}"></script>
 <script th:src="@{/resources/js/main.js}"></script>
 </html>
