@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 
 @Controller
-@RequestMapping(path = "/CustomerHidden")
+@RequestMapping(path = "/customerHidden")
 public class CustomerHiddenController {
 
     private CustomerHiddenRepository customerHiddenRepository;

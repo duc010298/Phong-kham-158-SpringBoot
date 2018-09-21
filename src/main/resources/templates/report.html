@@ -10,7 +10,7 @@
     <link th:href="@{/resources/css/style.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/resources/css/form.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
-    <title th:text="${title}">...</title>
+    <title>Báo cáo siêu âm</title>
 </head>
 <body>
 <div class="modal fade" id="notifyModal">
@@ -23,40 +23,6 @@
             <div class="modal-body">...</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="tool" th:if="${title} != 'Phòng khám 158'">
-    <div id="btn-print" class="btn-print">
-        <span class="fas fa-print"></span>
-    </div>
-    <div id="btn-save" class="btn-save">
-        <span class="fas fa-save"></span>
-    </div>
-    <div id="btn-reload" class="btn-reload">
-        <span class="fas fa-sync-alt"></span>
-    </div>
-</div>
-<div class="modal fade" id="acceptSaveNotify">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Bổ sung thông tin trước khi lưu</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="ExpectedDOB">Ngày sinh dự kiến:</label>
-                    <input type="text" class="form-control" id="ExpectedDOB" placeholder="dd/mm/yyyy">
-                </div>
-                <div class="form-group">
-                    <label for="Note">Ghi chú:</label>
-                    <input type="text" class="form-control" id="Note" placeholder="Nhập ghi chú">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-modal btn btn-danger" data-dismiss="modal">Đóng</button>
-                <button id="BtnAcceptSave" type="button" class="btn-modal btn btn-primary" data-dismiss="modal">Lưu</button>
             </div>
         </div>
     </div>
@@ -76,8 +42,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li id="menu-toggle"><a class="nav-link"><i class="fas fa-arrow-left"></i> Kết quả siêu âm</a></li>
-                    <li id="report"><a class="nav-link" href="/report"><i class="fas fa-file-excel"></i> Báo cáo siêu âm</a>
+                    <li id="menu-toggle"><a class="nav-link"><i class="fas fa-arrow-right"></i> Kết quả siêu âm</a></li>
+                    <li id="report" class="active"><a class="nav-link" href="/report">
+                        <i class="fas fa-file-excel"></i> Báo cáo siêu âm</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -88,20 +55,47 @@
         </nav>
     </div>
     <div id="page-content-wrapper">
-        <div class="container-fluid" th:utext="${content}">...</div>
+        <div class="container-fluid">
+            <div class="jumbotron jumbotron-custom">
+                <h1>Tìm kiếm</h1>
+                <hr>
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="inputName">Họ và tên:</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Nhập họ và tên">
+                        <div id="auto-inputName" class="autoInput"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAge">Năm sinh / Tuổi</label>
+                        <input type="text" class="form-control" id="inputAge" placeholder="Nhập tuổi">
+                        <div id="auto-inputAge" class="autoInput"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Họ và tên:</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Nhập địa chỉ">
+                        <div id="auto-inputAddress" class="autoInput"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDayVisit">Họ và tên:</label>
+                        <input type="text" class="form-control" id="inputDayVisit" placeholder="dd/MM/yyyy">
+                    </div>
+                </div>
+                <hr>
+                <button type="button" class="btn btn-hidden">.</button>
+                <button type="button" id="btn-reload" class="btn btn-danger btn-custom float-right"><i
+                        class="fas fa-sync-alt"></i> Nhập lại
+                </button>
+                <button type="button" id="btn-search" class="btn btn-primary btn-custom  float-right"><i
+                        class="fas fa-search"></i> Tìm kiếm
+                </button>
+            </div>
+            <div class="table-result" id="display-result"></div>
+        </div>
     </div>
 </div>
 </body>
 <script th:src="@{/jquery/jquery.min.js}"></script>
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/resources/js/printThis.js}"></script>
 <script th:src="@{/resources/js/cleave.min.js}"></script>
-<script th:src="@{/resources/js/main.js}"></script>
-<script th:if="${title} != 'Phòng khám 158'">
-    var d = new Date(),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-    $("#date").html("Ngày " + day + " tháng " + month + " năm " + year);
-</script>
+<script th:src="@{/resources/js/report.js}"></script>
 </html>

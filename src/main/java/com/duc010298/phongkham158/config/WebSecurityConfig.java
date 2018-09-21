@@ -38,8 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests().antMatchers("/login").anonymous();
-        http.authorizeRequests().antMatchers("/", "/form/**", "/Customer",
-                "/Customer/**", "/CustomerHidden", "/CustomerHidden/**").hasRole("MEMBER");
+//        http.authorizeRequests().antMatchers("/", "/form/**", "/customer",
+//                "/customer/**", "/customerHidden", "/customerHidden/**").hasRole("MEMBER");
 
         http.authorizeRequests().and().formLogin()
                 .loginPage("/login")

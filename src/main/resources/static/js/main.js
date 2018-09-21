@@ -44,7 +44,7 @@ function sendRequestHidden() {
         report: Report
     };
     $.ajax({
-        url: document.location.origin + "/CustomerHidden",
+        url: document.location.origin + "/customerHidden",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -195,7 +195,7 @@ $("#BtnAcceptSave").on("click", function () {
         report: Report
     };
     $.ajax({
-        url: document.location.origin + "/Customer",
+        url: document.location.origin + "/customer",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',

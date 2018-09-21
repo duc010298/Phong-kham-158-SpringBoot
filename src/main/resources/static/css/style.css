@@ -167,3 +167,76 @@ body {
 .btn-modal {
     width: 100px;
 }
+
+.jumbotron-custom {
+    padding: 10px 30px 20px 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 10px;
+}
+
+.btn-hidden {
+    visibility: hidden;
+}
+
+.btn-custom {
+    margin-left: 10px;
+}
+
+.autoInput {
+    position: absolute;
+    display: none;
+    font-family: Arial;
+    background-color: #FFFFFF;
+    width: 300px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+}
+
+.input-item {
+    padding: 5px;
+    border-bottom: 1px solid #d4d4d4;
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+
+.input-item:hover {
+    background-color: #e9e9e9;
+}
+
+.input-item-active {
+    background-color: #1E90FF;
+    color: #fff;
+}
+
+.input-item-active:hover {
+    background-color: #1E90FF;
+    color: #fff;
+}
+
+.table-result {
+    background-color: #ffffff;
+}
+
+tbody>tr:hover {
+    cursor: pointer;
+}
+
+.STT {
+    width: 30px;
+}
+
+.dayVisit {
+    width: 150px;
+}
+
+.Age {
+    width: 30px;
+}
+
+.ExpectedDOB {
+    width: 170px;
+}
