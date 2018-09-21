@@ -25,9 +25,4 @@ public class HomeController {
         modelMap.addAttribute("content", "<h1>Chưa có nội dung để hiển thị</h1>");
         return "index";
     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
 }
