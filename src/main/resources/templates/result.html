@@ -32,7 +32,7 @@
         $(".customer").on("click", function () {
             var id = $(this).attr("id");
             var url = document.location.origin + "/customer/Report/" + id;
-            window.open(url, '_blank');
+            PopupCenter(url, 'Báo cáo chi tiết', '800', '2000');
         });
     </script>
 </div>

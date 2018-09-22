@@ -59,7 +59,7 @@ public class CustomerController {
 
     @RequestMapping(path = "/Report/{id}")
     public String getReport(@PathVariable("id") String id, ModelMap modelMap) {
-        int idInt = 0;
+        int idInt;
         try {
             idInt = Integer.parseInt(id);
         } catch(Exception e) {
