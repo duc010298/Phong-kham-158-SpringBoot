@@ -1,0 +1,30 @@
+.container-custom{
+    margin: 20px 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-column-gap: 15px;
+}
+
+.jumbotron-custom {
+    padding: 10px 20px;
+}
+
+.jumbotron-custom:hover {
+    background: #a09a9a;
+    cursor: pointer;
+}
+
+.button-control {
+    visibility: hidden;
+}
+
+.btn-custom {
+    margin-left: 15px;
+}
+
+.jumbotron-custom h1 {
+    text-align: center;
+}

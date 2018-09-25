@@ -29,13 +29,13 @@ values (1, 'dbadmin1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.T
 
 insert into app_user (user_id, user_name, encryted_password, enabled)
 values (2, 'dbuser1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
----
+--
 insert into app_role (role_id, role_name)
 values (1, 'ROLE_ADMIN');
 
 insert into app_role (role_id, role_name)
 values (2, 'ROLE_MEMBER');
----
+--
 insert into user_role (id, user_id, role_id)
 values (1, 1, 1);
 
