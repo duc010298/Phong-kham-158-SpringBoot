@@ -36,4 +36,39 @@
         });
     </script>
 </div>
+<div th:fragment="resulthidden" th:remove="tag">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th class="STT">STT</th>
+            <th>Họ và tên</th>
+            <th class="Age">Tuổi</th>
+            <th>Địa chỉ</th>
+            <th>Kết quả</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer, iter : ${Customers}" th:if="${not #lists.isEmpty(Customers)}"
+            th:id="${customer.getId()}" class="customer">
+            <td th:text="${iter.count}">...</td>
+            <td th:text="${customer.getName()}">...</td>
+            <span th:remove="tag" th:if="${customer.getYOB() != 0}">
+                    <td th:text="${#dates.year(#dates.createNow()) - customer.getYOB()}">...</td>
+            </span>
+            <span th:remove="tag" th:unless="${customer.getYOB() != 0}">
+                    <td></td>
+            </span>
+            <td th:text="${customer.getAddressCus()}">...</td>
+            <td th:text="${customer.getResult()}">...</td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        $(".customer").on("click", function () {
+            var id = $(this).attr("id");
+            var url = document.location.origin + "/customerHidden/Report/" + id;
+            PopupCenter(url, 'Báo cáo chi tiết', '800', '2000');
+        });
+    </script>
+</div>
 </html>

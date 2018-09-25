@@ -32,7 +32,7 @@ public class SettingController {
         return formRepository.deleteForm(id) ? "Xóa thành công" : "Xóa không thành công";
     }
 
-    @GetMapping
+    @GetMapping(path = "/manger-form/add")
     public String getFormAdd() {
         return "add";
     }
@@ -40,6 +40,11 @@ public class SettingController {
     @PostMapping(path = "/manager-form/add", produces = "text/plain;charset=UTF-8")
     public @ResponseBody String addForm(@RequestParam("name") String name, @RequestParam("content") String content) {
         return "";
+    }
+
+    @GetMapping(path = "/manager-clinic")
+    public String getFormManagerClinic() {
+        return "managerclinic";
     }
 
 }

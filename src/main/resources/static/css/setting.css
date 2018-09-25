@@ -28,3 +28,43 @@
 .jumbotron-custom h1 {
     text-align: center;
 }
+
+.jumbotron-custom-2 {
+    padding: 10px 20px;
+}
+
+.btn-hidden {
+    visibility: hidden;
+}
+
+.btn-custom {
+    margin-left: 10px;
+}
+
+.table-result {
+    background-color: #ffffff;
+}
+
+tbody>tr:hover {
+    cursor: pointer;
+}
+
+.STT {
+    width: 30px;
+}
+
+.dayVisit {
+    width: 150px;
+}
+
+.Age {
+    width: 30px;
+}
+
+.ExpectedDOB {
+    width: 170px;
+}
+
+.message {
+    display: none;
+}
