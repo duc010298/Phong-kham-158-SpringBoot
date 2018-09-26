@@ -1,6 +1,9 @@
 package com.duc010298.phongkham158.controller;
 
+import com.duc010298.phongkham158.dao.AppRoleRepository;
+import com.duc010298.phongkham158.dao.AppUserRepository;
 import com.duc010298.phongkham158.dao.FormRepository;
+import com.duc010298.phongkham158.entity.AppRoleEntity;
 import com.duc010298.phongkham158.entity.FormEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +17,15 @@ import java.util.List;
 public class SettingController {
 
     private FormRepository formRepository;
+    private AppRoleRepository appRoleRepository;
+    private AppUserRepository appUserRepository;
 
     @Autowired
-    public SettingController(FormRepository formRepository) {
+    public SettingController(FormRepository formRepository, AppRoleRepository appRoleRepository,
+                             AppUserRepository appUserRepository) {
         this.formRepository = formRepository;
+        this.appRoleRepository = appRoleRepository;
+        this.appUserRepository = appUserRepository;
     }
 
     @GetMapping("/manager-form")
@@ -45,6 +53,29 @@ public class SettingController {
     @GetMapping(path = "/manager-clinic")
     public String getFormManagerClinic() {
         return "managerclinic";
+    }
+
+    @GetMapping(path = "/manager-user")
+    public String getFormManagerUser(ModelMap modelMap) {
+        List<AppRoleEntity> appRoleEntities = appRoleRepository.getAllRole();
+        modelMap.addAttribute("appRoleEntities", appRoleEntities);
+        return "manageruser";
+    }
+
+    @PostMapping(path = "/manager-user/add-user", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String addUser(@RequestParam("username") String username, @RequestParam("password") String password,
+                   @RequestParam("role[]") String[] role) {
+        if(!appUserRepository.addUser(username, password)) {
+            return "Thêm tài khoản không thành công";
+        }
+        String userId = appUserRepository.findUserAccount(username).getUserId().toString();
+        for(String roleId : role) {
+            if(!appRoleRepository.addRoleToUser(roleId, userId)) {
+                return "Phân quyền cho tài khoản không thành công";
+            }
+        }
+        return "Thêm tài khoản thành công";
     }
 
 }

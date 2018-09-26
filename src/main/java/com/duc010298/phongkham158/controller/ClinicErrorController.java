@@ -30,6 +30,9 @@ public class ClinicErrorController implements ErrorController {
             } else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 errorCode = "500 Error: Internal Server Error";
                 message = "Server bất ngờ bị lỗi";
+            } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
+                errorCode = "405 Error: Method not allowed";
+                message = "Truy cập không được phép";
             } else {
                 errorCode = statusCode.toString();
             }
