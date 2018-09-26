@@ -69,7 +69,6 @@ public class SettingController {
             listMap.put(appUserEntity.getUserName(), appRoleRepository.getRoleNames(appUserEntity.getUserId()));
         }
         modelMap.addAttribute("listMap", listMap);
-
         return "manageruser";
     }
 
@@ -87,6 +86,31 @@ public class SettingController {
             }
         }
         return "Thêm tài khoản thành công";
+    }
+
+    @PostMapping(path = "/manager-user/edit-user", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String editUser(@RequestParam("username") String username, @RequestParam("role[]") String[] role) {
+        String userId = appUserRepository.findUserAccount(username).getUserId().toString();
+        if(!appRoleRepository.deleteRoleofUser(userId)) {
+            return "Sửa quyền truy cập không thành công";
+        }
+        for(String roleId : role) {
+            if(!appRoleRepository.addRoleToUser(roleId, userId)) {
+                return "Phân quyền cho tài khoản không thành công";
+            }
+        }
+        return "Sửa đổi quyền truy cập thành công";
+    }
+
+    @PostMapping(path = "/manager-user/delete-user", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String deleteUser(@RequestParam("username") String username) {
+        String userId = appUserRepository.findUserAccount(username).getUserId().toString();
+        if(!appRoleRepository.deleteRoleofUser(userId)) {
+            return "Xóa quyền truy cập không thành công";
+        }
+        return appUserRepository.deleteUser(userId) ? "Xóa tài khoản thành công" : "Xóa tài khoản không thành công";
     }
 
 }

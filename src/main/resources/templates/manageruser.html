@@ -67,7 +67,7 @@
             <hr>
             <button type="button" class="btn btn-hidden">.</button>
             <button type="button" id="btn-reload" class="btn btn-danger btn-custom float-right">Nhập lại</button>
-            <button type="button" id="btn-add" class="btn btn-primary btn-custom  float-right">Thêm tài khoản</button>
+            <button type="button" id="btn-add" class="btn btn-primary btn-custom float-right">Thêm tài khoản</button>
         </div>
         <div class="jumbotron">
             <h4>Danh sách tài khoản</h4>
@@ -87,11 +87,43 @@
                 </tbody>
             </table>
         </div>
-        <div class="jumbotron"></div>
-        <div class="jumbotron"></div>
+        <div class="jumbotron">
+            <h4>Sửa quyền truy cập tài khoản</h4>
+            <hr>
+            <div class="form-group">
+                <label for="user">Chọn tài khoản cần sửa</label>
+                <select class="form-control" id="user">
+                    <option th:each="element : ${listMap}" th:text="${element.key}"></option>
+                </select>
+            </div>
+            <label>Chọn quyền truy cập cho tài khoản:</label>
+            <br>
+            <div id="edituser">
+                <div class="form-check-inline" th:each="appRole : ${appRoleEntities}">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" th:name="${appRole.getRoleId()}">
+                        <span th:remove="tag" th:text="${appRole.getRoleName()}"></span>
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-edit" class="btn btn-primary btn-custom float-right">Sửa đổi</button>
+        </div>
+        <div class="jumbotron">
+            <h4>Xóa tài khoản</h4>
+            <hr>
+            <div class="form-group">
+                <label for="user">Chọn tài khoản cần xóa</label>
+                <select class="form-control" id="user2">
+                    <option th:each="element : ${listMap}" th:text="${element.key}"></option>
+                </select>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-delete" class="btn btn-danger btn-custom float-right">Xóa tài khoản</button>
+        </div>
     </div>
-    //thêm user     hiển thị tất cả
-    //sửa user      xóa user
 </div>
 </body>
 <script th:src="@{/jquery/jquery.min.js}"></script>
@@ -106,20 +138,33 @@
     $("#btn-reload").on('click', function () {
         $("#username").val("");
         $("#password").val("");
-        $("#adduser :checkbox").prop( "checked", false );
+        $("#adduser :checkbox").prop("checked", false);
     });
 
     $("#btn-add").on('click', function () {
         notify("Thông báo", "Đang xử lí");
         var username = $("#username").val();
         var password = $("#password").val();
-        var role = new Array();
 
+        var role = new Array();
         var length = $("#adduser :checked").length;
-        for(var i = 0; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             var data = $("#adduser :checked").eq(i).attr("name");
             role.push(data);
         }
+        if (username == "") {
+            notify("Thông báo", "Chưa nhập tên đăng nhập");
+            return;
+        }
+        if (password == "") {
+            notify("Thông báo", "Chưa nhập mật khẩu");
+            return;
+        }
+        if (role.length == 0) {
+            notify("Thông báo", "Chưa chọn quyền truy cập");
+            return;
+        }
+
         $.ajax({
             url: document.location.origin + "/setting/manager-user/add-user",
             type: 'POST',
@@ -129,11 +174,71 @@
                 password: password,
                 role: role
             },
-            error: function(){
+            error: function () {
                 notify("Lỗi", "Không thể xử lí dữ liệu");
             }
         }).done(function (result) {
             notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+
+    $("#btn-edit").on('click', function () {
+        notify("Thông báo", "Đang xử lí");
+        var username = $("#user option:selected").text();
+        var role = new Array();
+        var length = $("#edituser :checked").length;
+        for (var i = 0; i < length; i++) {
+            var data = $("#edituser :checked").eq(i).attr("name");
+            role.push(data);
+        }
+        if (role.length == 0) {
+            notify("Thông báo", "Chưa chọn quyền truy cập");
+            return;
+        }
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/edit-user",
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                username: username,
+                role: role
+            },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+
+    $("#btn-delete").on('click', function () {
+        var c = confirm("Bạn có muốn xóa tài khoản này?");
+        if (c == false) {
+            return;
+        }
+        notify("Thông báo", "Đang xử lí");
+        var username = $("#user2 option:selected").text();
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/delete-user",
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                username: username
+            },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
         });
     });
 </script>

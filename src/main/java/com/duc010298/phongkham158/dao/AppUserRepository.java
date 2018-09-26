@@ -45,6 +45,16 @@ public class AppUserRepository {
         }
     }
 
+    public Boolean deleteUser(String userId) {
+        String sql = "delete from app_user where user_id=?";
+        try {
+            int rows = jdbcTemplate.update(sql, userId);
+            return rows == 1;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     private RowMapper<AppUserEntity> getRowMapper() {
         return new BeanPropertyRowMapper<>(AppUserEntity.class);
     }

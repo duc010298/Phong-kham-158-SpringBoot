@@ -39,6 +39,16 @@ public class AppRoleRepository {
         }
     }
 
+    public Boolean deleteRoleofUser(String userId) {
+        String sql = "delete from user_role where user_id=?";
+        try {
+            jdbcTemplate.update(sql, userId);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     private RowMapper<AppRoleEntity> getRowMapper() {
         return new BeanPropertyRowMapper<>(AppRoleEntity.class);
     }
