@@ -4,13 +4,16 @@ import com.duc010298.phongkham158.dao.AppRoleRepository;
 import com.duc010298.phongkham158.dao.AppUserRepository;
 import com.duc010298.phongkham158.dao.FormRepository;
 import com.duc010298.phongkham158.entity.AppRoleEntity;
+import com.duc010298.phongkham158.entity.AppUserEntity;
 import com.duc010298.phongkham158.entity.FormEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(path = "/setting")
@@ -59,6 +62,14 @@ public class SettingController {
     public String getFormManagerUser(ModelMap modelMap) {
         List<AppRoleEntity> appRoleEntities = appRoleRepository.getAllRole();
         modelMap.addAttribute("appRoleEntities", appRoleEntities);
+
+        List<AppUserEntity> appUserEntities = appUserRepository.getAllUser();
+        Map<String, List<String>> listMap = new HashMap<>();
+        for(AppUserEntity appUserEntity: appUserEntities) {
+            listMap.put(appUserEntity.getUserName(), appRoleRepository.getRoleNames(appUserEntity.getUserId()));
+        }
+        modelMap.addAttribute("listMap", listMap);
+
         return "manageruser";
     }
 

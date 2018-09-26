@@ -20,6 +20,11 @@ public class AppUserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public List<AppUserEntity> getAllUser() {
+        String sql = "select user_id, user_name, encryted_password from app_user";
+        return jdbcTemplate.query(sql, getRowMapper());
+    }
+
     public AppUserEntity findUserAccount(String userName) {
         String sql = "select user_id, user_name, encryted_password from app_user where user_name=?";
         List<AppUserEntity> appUserEntities = jdbcTemplate.query(sql, getRowMapper(), userName);
@@ -31,7 +36,7 @@ public class AppUserRepository {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         password = encoder.encode(password);
 
-        String sql = "insert into app_user (user_id, user_name, encryted_password, enabled) values (null, ?, ?, 1)";
+        String sql = "insert into app_user (user_id, user_name, encryted_password) values (null, ?, ?)";
         try {
             int rows = jdbcTemplate.update(sql, username, password);
             return rows == 1;

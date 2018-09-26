@@ -69,7 +69,24 @@
             <button type="button" id="btn-reload" class="btn btn-danger btn-custom float-right">Nhập lại</button>
             <button type="button" id="btn-add" class="btn btn-primary btn-custom  float-right">Thêm tài khoản</button>
         </div>
-        <div class="jumbotron"></div>
+        <div class="jumbotron">
+            <h4>Danh sách tài khoản</h4>
+            <hr>
+            <table class="table table-bordered table-hover table-custom">
+                <thead class="thead-light">
+                <tr>
+                    <th>Tên đăng nhập</th>
+                    <th>Quyền được cấp</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="element : ${listMap}">
+                    <td th:text="${element.key}"></td>
+                    <td><span th:remove="tag" th:each="role : ${element.value}" th:text="|${role}, |"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="jumbotron"></div>
         <div class="jumbotron"></div>
     </div>

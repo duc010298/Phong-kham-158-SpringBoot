@@ -74,3 +74,7 @@ tbody>tr:hover {
     grid-template-columns: auto auto;
     grid-column-gap: 20px;
 }
+
+.table-custom {
+    background-color: #ffffff;
+}

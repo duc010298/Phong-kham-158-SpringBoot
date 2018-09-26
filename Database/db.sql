@@ -7,8 +7,7 @@ use clinic;
 create table app_user (
   user_id           BIGINT not null primary key AUTO_INCREMENT,
   user_name         VARCHAR(36) not null unique,
-  encryted_password VARCHAR(128) not null,
-  enabled           BIT not null
+  encryted_password VARCHAR(128) not null
 );
 create table app_role (
   role_id   BIGINT not null primary key,
@@ -24,8 +23,8 @@ alter table user_role add constraint user_role_fk1 foreign key (user_id) referen
 alter table user_role add constraint user_role_fk2 foreign key (role_id) references app_role (role_id);
 
 --
-insert into app_user (user_id, user_name, encryted_password, enabled)
-values (null, 'duc010298', '$2a$10$hjBz774Yg4Fff44DYseK4.w4p27w2enR0W.QxSxlIXA.TcxS2bYV.', 1);
+insert into app_user (user_id, user_name, encryted_password)
+values (null, 'duc010298', '$2a$10$hjBz774Yg4Fff44DYseK4.w4p27w2enR0W.QxSxlIXA.TcxS2bYV.');
 --
 insert into app_role (role_id, role_name)
 values (1, 'ROLE_ADMIN');
