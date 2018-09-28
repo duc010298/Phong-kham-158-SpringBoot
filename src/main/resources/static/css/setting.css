@@ -1,67 +1,80 @@
-.grid-container {
-    width: 90%;
+.container-custom{
+    margin: 20px 20px;
+}
+
+.grid {
     display: grid;
-    grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
-    grid-gap: 25px;
-    margin: 4rem auto 1.25rem auto;
+    grid-template-columns: auto auto auto auto auto;
+    grid-column-gap: 15px;
 }
 
-.grid-item {
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    font-size: 20px;
-    transition: 0.7s background-color;
-    -webkit-user-select: none;
+.jumbotron-custom {
+    padding: 10px 20px;
 }
 
-.grid-item:hover {
-    background-color: #F0F0F0;
+.jumbotron-custom:hover {
+    background: #a09a9a;
     cursor: pointer;
 }
 
-.item-add {
-    font-size: 50px;
+.button-control {
+    visibility: hidden;
+}
+
+.btn-custom {
+    margin-left: 15px;
+}
+
+.jumbotron-custom h1 {
     text-align: center;
 }
 
-.item-add span {
-    line-height: 1;
+.jumbotron-custom-2 {
+    padding: 10px 20px;
 }
 
-.setting-bar {
+.btn-hidden {
+    visibility: hidden;
+}
+
+.btn-custom {
+    margin-left: 10px;
+}
+
+.table-result {
+    background-color: #ffffff;
+}
+
+tbody>tr:hover {
+    cursor: pointer;
+}
+
+.STT {
+    width: 30px;
+}
+
+.dayVisit {
+    width: 150px;
+}
+
+.Age {
+    width: 30px;
+}
+
+.ExpectedDOB {
+    width: 170px;
+}
+
+.message {
     display: none;
 }
 
-.btn-delete, .btn-edit {
-    float: right;
-    width: 6rem;
-    padding: 0.3125rem 0;
-    margin: 0px 0.9375rem 0.9375rem 0px;
-    font-size: 1.125rem;
-    text-align: center;
-    color: #fff;
-    border-radius: 0.3125rem;
-    -webkit-user-select: none;
+.grid-2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 20px;
 }
 
-.btn-delete:hover, .btn-edit:hover {
-    cursor: pointer;
-}
-
-.btn-edit {
-    background-color: #337ab7;
-}
-
-.btn-edit:hover {
-    background-color: #286090;
-}
-
-.btn-delete {
-    background-color: #d9534f;
-}
-
-.btn-delete:hover {
-    background-color: #c9302c;
+.table-custom {
+    background-color: #ffffff;
 }

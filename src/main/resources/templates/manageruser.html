@@ -1,0 +1,245 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/resources/images/favicon.ico}" rel="icon" type="image/png"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/setting.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
+    <title>Quản lí đăng nhập</title>
+</head>
+<body>
+<div class="modal fade" id="notifyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">...</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" href="/">Phòng khám 158</a>
+            <li><a class="nav-link" href="/setting/manager-form"><i class="fas fa-file-word"></i> Quản lí
+                kết quả</a></li>
+            <li><a class="nav-link" href="/setting/manager-clinic"><i class="fas fa-table"></i> Quản lí
+                phòng khám</a></li>
+            <li class="active"><a class="nav-link" href="/setting/manager-user"><i class="fas fa-user"></i> Quản lí đăng
+                nhập</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+            <li><a class="nav-link" href="/"><i class="fas fa-undo"></i> Quay lại</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container-custom">
+    <div class="grid-2">
+        <div class="jumbotron" id="adduser">
+            <h4>Thêm tài khoản mới</h4>
+            <hr>
+            <div class="form-group">
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" class="form-control" id="username" placeholder="Tên đăng nhập">
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
+            </div>
+            <label>Chọn quyền truy cập cho tài khoản:</label>
+            <br>
+            <div class="form-check-inline" th:each="appRole : ${appRoleEntities}">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" th:name="${appRole.getRoleId()}">
+                    <span th:remove="tag" th:text="${appRole.getRoleName()}"></span>
+                </label>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-reload" class="btn btn-danger btn-custom float-right">Nhập lại</button>
+            <button type="button" id="btn-add" class="btn btn-primary btn-custom float-right">Thêm tài khoản</button>
+        </div>
+        <div class="jumbotron">
+            <h4>Danh sách tài khoản</h4>
+            <hr>
+            <table class="table table-bordered table-hover table-custom">
+                <thead class="thead-light">
+                <tr>
+                    <th>Tên đăng nhập</th>
+                    <th>Quyền được cấp</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="element : ${listMap}">
+                    <td th:text="${element.key}"></td>
+                    <td><span th:remove="tag" th:each="role : ${element.value}" th:text="|${role}, |"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="jumbotron">
+            <h4>Sửa quyền truy cập tài khoản</h4>
+            <hr>
+            <div class="form-group">
+                <label for="user">Chọn tài khoản cần sửa</label>
+                <select class="form-control" id="user">
+                    <option th:each="element : ${listMap}" th:text="${element.key}"></option>
+                </select>
+            </div>
+            <label>Chọn quyền truy cập cho tài khoản:</label>
+            <br>
+            <div id="edituser">
+                <div class="form-check-inline" th:each="appRole : ${appRoleEntities}">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" th:name="${appRole.getRoleId()}">
+                        <span th:remove="tag" th:text="${appRole.getRoleName()}"></span>
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-edit" class="btn btn-primary btn-custom float-right">Sửa đổi</button>
+        </div>
+        <div class="jumbotron">
+            <h4>Xóa tài khoản</h4>
+            <hr>
+            <div class="form-group">
+                <label for="user">Chọn tài khoản cần xóa</label>
+                <select class="form-control" id="user2">
+                    <option th:each="element : ${listMap}" th:text="${element.key}"></option>
+                </select>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-delete" class="btn btn-danger btn-custom float-right">Xóa tài khoản</button>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script>
+    function notify(title, message) {
+        $("#notifyModal .modal-title").html(title);
+        $("#notifyModal .modal-body").html(message);
+        $("#notifyModal").modal({backdrop: "static"});
+    }
+
+    $("#btn-reload").on('click', function () {
+        $("#username").val("");
+        $("#password").val("");
+        $("#adduser :checkbox").prop("checked", false);
+    });
+
+    $("#btn-add").on('click', function () {
+        notify("Thông báo", "Đang xử lí");
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        var role = new Array();
+        var length = $("#adduser :checked").length;
+        for (var i = 0; i < length; i++) {
+            var data = $("#adduser :checked").eq(i).attr("name");
+            role.push(data);
+        }
+        if (username == "") {
+            notify("Thông báo", "Chưa nhập tên đăng nhập");
+            return;
+        }
+        if (password == "") {
+            notify("Thông báo", "Chưa nhập mật khẩu");
+            return;
+        }
+        if (role.length == 0) {
+            notify("Thông báo", "Chưa chọn quyền truy cập");
+            return;
+        }
+
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/add-user",
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                username: username,
+                password: password,
+                role: role
+            },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+
+    $("#btn-edit").on('click', function () {
+        notify("Thông báo", "Đang xử lí");
+        var username = $("#user option:selected").text();
+        var role = new Array();
+        var length = $("#edituser :checked").length;
+        for (var i = 0; i < length; i++) {
+            var data = $("#edituser :checked").eq(i).attr("name");
+            role.push(data);
+        }
+        if (role.length == 0) {
+            notify("Thông báo", "Chưa chọn quyền truy cập");
+            return;
+        }
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/edit-user",
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                username: username,
+                role: role
+            },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+
+    $("#btn-delete").on('click', function () {
+        var c = confirm("Bạn có muốn xóa tài khoản này?");
+        if (c == false) {
+            return;
+        }
+        notify("Thông báo", "Đang xử lí");
+        var username = $("#user2 option:selected").text();
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/delete-user",
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                username: username
+            },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+</script>
+</html>

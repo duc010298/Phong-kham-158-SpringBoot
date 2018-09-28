@@ -1,4 +1,11 @@
-sendRequestHidden();
+new Cleave('#ExpectedDOB', {
+    date: true,
+    datePattern: ['d', 'm', 'Y']
+});
+
+$("html, body").animate({
+    scrollTop: 0
+}, 'slow');
 
 function removeSign(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
@@ -37,9 +44,7 @@ function sendRequestHidden() {
         report: Report
     };
     $.ajax({
-        // For test
-        url: "http://" + window.location.host + "/Phongkham158/CustomerHidden",
-        // url: "http://" + window.location.host + "/CustomerHidden",
+        url: document.location.origin + "/customerHidden",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -48,92 +53,38 @@ function sendRequestHidden() {
     localStorage.clear();
 }
 
-$("#btn-result").on("click", function () {
-    if ($(this).attr("class") === "navtop--active") {
-        $(this).removeAttr("class");
-        $("#btn-result>span").attr("class", "fas fa-angle-down");
-        $("main, .spinner-content, .footer-content, .content-default p").removeAttr("style");
+sendRequestHidden();
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+function notify(title, message) {
+    $("#notifyModal .modal-title").html(title);
+    $("#notifyModal .modal-body").html(message);
+    $("#notifyModal").modal({backdrop: "static"});
+}
+
+$("#menu-toggle").on("click", function () {
+    if($("#menu-toggle").attr("class") == "active") {
+        $("#menu-toggle").removeAttr("class");
+        $("#menu-toggle").html("<a class=\"nav-link\"><i class=\"fas fa-arrow-right\"></i> Kết quả siêu âm</a>");
     } else {
-        $(this).attr("class", "navtop--active");
-        $("#btn-report").removeAttr("class");
-        $("#btn-result>span").attr("class", "fas fa-angle-up");
-        $("main, .footer-content").attr("style", "margin-left: 14.375rem");
-        $(".spinner-content").attr("style", "padding-right: 14.375rem;");
-        $(".content-default p").attr("style", "padding-right: 14.375rem;");
+        $("#menu-toggle").attr("class", "active");
+        $("#menu-toggle").html("<a class=\"nav-link\"><i class=\"fas fa-arrow-left\"></i> Kết quả siêu âm</a>");
     }
-    $("#navside").animate({
-        height: 'toggle'
-    }, 350);
+    $("#wrapper").toggleClass("toggled");
 });
 
-$("#btn-report").on("click", function () {
-    sendRequestHidden();
-    $(this).attr("class", "navtop--active");
-    $("#btn-result>span").attr("class", "fas fa-angle-down");
-    $("#btn-result, #navside>ul>li").removeAttr("class");
-    $("main, .spinner-content, footer, .footer-content, .content-default p").removeAttr("style");
-    $("#tool").fadeOut(500);
-    $("#navside").animate({
-        height: 'hide'
-    }, 350);
-    $(".spinner").attr("style", "display: flex");
-    // For test
-    $("#container").load("http://" + window.location.host + "/Phongkham158/Report", function(response, status) {
-    // $("#container").load("http://" + window.location.host + "/Report", function(response, status) {
-        setTimeout(function () {
-            $(".spinner").removeAttr("style");
-        }, 300);
-        if ( status == "error" ) {
-            notify("Lỗi", "Không thể tải dữ liệu");
-        }
-    });
-});
-
-$("#navside>ul>li").on("click", function () {
-    sendRequestHidden();
-    $("#navside>ul>li").removeAttr("class");
-    $(this).attr("class", "navside--active");
-    $(".spinner").attr("style", "display: flex");
-    $("#tool").fadeIn(500);
-    var id = $(this).attr("id");
-    setTimeout(function () {
-        $.ajax({
-            //For test
-            url: "http://" + window.location.host + "/Phongkham158/Form",
-            type: 'GET',
-            dataType: 'html',
-            data: {
-                id: id
-            },
-            error: function(){
-                notify("Lỗi", "Không thể tải dữ liệu");
-                $(".spinner").attr("style", "display: none");
-            }
-        }).done(function (result) {
-            $(".spinner").attr("style", "display: none");
-            $("#container").html(result);
-            var d = new Date(),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
-            $("#date").html("Ngày " + day + " tháng " + month + " năm " + year);
-            $("html, body").animate({
-                scrollTop: 0
-            }, "slow");
-            $("footer").attr("style", "position: static; bottom: auto");
-            $('.page input, .page textarea').on("keydown", function (e) {
-                if (e.which === 13 || e.which === 40) {
-                    var i = $('.page input, .page textarea').index(this) + 1;
-                    $('.page input, .page textarea').eq(i).focus();
-                }
-                if (e.which === 38) {
-                    var i = $('.page input, .page textarea').index(this) - 1;
-                    $('.page input, .page textarea').eq(i).focus();
-                }
-            });
-        });
-    }, 300);
-});
+$("#menu-toggle").click();
 
 $("#btn-print").on("click", function () {
     sendRequestHidden();
@@ -157,6 +108,7 @@ $("#btn-print").on("click", function () {
     var content = $("#page").html();
     content = content.replace(/textarea/g, 'pre');
     $("#print").html(content);
+    $("#print").printThis({importCSS: false});
     var Report = $("#print").html();
     localStorage.setItem('Status', "True");
     localStorage.setItem('Name', Name);
@@ -165,44 +117,20 @@ $("#btn-print").on("click", function () {
     localStorage.setItem('DayVisit', DayVisit);
     localStorage.setItem('Result', Result);
     localStorage.setItem('Report', Report);
-    $("#print").printThis({importCSS: false});
     setTimeout(function () {
         $("#print").html("");
     }, 500);
 });
 
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-}
-
 $("#btn-save").on("click", function () {
-    $("#modalSave").fadeIn();
+    $("#acceptSaveNotify").modal({backdrop: "static"});
 });
 
 $("#btn-reload").on("click", function () {
-    $(".navside--active").click();
+    location.reload();
 });
 
-$('.modal-body input').on("keydown", function (e) {
-    if (e.which === 13 || e.which === 40) {
-        var i = $('.modal-body input').index(this) + 1;
-        $('.modal-body input').eq(i).focus();
-    }
-    if (e.which === 38) {
-        var i = $('.modal-body input').index(this) - 1;
-        $('.modal-body input').eq(i).focus();
-    }
-});
-
-$("#btn-acept-save").on("click", function () {
+$("#BtnAcceptSave").on("click", function () {
     notify("Thông báo", "Đang xử lí");
     $.each($('textarea'), function () {
         var value = $(this).val();
@@ -211,6 +139,7 @@ $("#btn-acept-save").on("click", function () {
     var content = $("#page").html();
     content = content.replace(/textarea/g, 'pre');
     $("#print").html(content);
+
     var Name = $("#name").val();
     if (Name === "") {
         $("#modalSave").fadeOut();
@@ -265,11 +194,8 @@ $("#btn-acept-save").on("click", function () {
         note: Note,
         report: Report
     };
-
     $.ajax({
-        //For test
-        url: "http://" + window.location.host + "/Phongkham158/Customer",
-        // url: "http://" + window.location.host + "/Customer",
+        url: document.location.origin + "/customer",
         type: 'POST',
         dataType: 'html',
         contentType: 'application/json',
@@ -283,35 +209,3 @@ $("#btn-acept-save").on("click", function () {
     localStorage.clear();
     $("#print").html("");
 });
-
-$(".btn-close").on("click", function () {
-    $("#modalSave, #modalNotify").fadeOut();
-    $(".modal-body>input").val("");
-    setTimeout(function () {
-        $(".modal-body h1").removeAttr("style");
-    }, 500);
-});
-
-function notify(Header, Content) {
-    $("#notify-header").html(Header);
-    //Độ dài vượt quá 22 gây tràn modal
-    if (Content.length > 22) {
-        $(".modal-body h1").attr("style", "font-size: 1.6rem");
-    }
-    $("#notify-content").html(Content);
-    $("#modalNotify").fadeIn("fast");
-}
-
-new Cleave('#ExpectedDOB', {
-    date: true,
-    datePattern: ['d', 'm', 'Y']
-});
-
-$("#setting").on("click", function () {
-    sendRequestHidden();
-    //For test
-    window.location.href = "http://" + window.location.host + "/Phongkham158/Setting";
-    // window.location.href = "http://" + window.location.host + "/Setting";
-});
-
-$("#btn-result").click();

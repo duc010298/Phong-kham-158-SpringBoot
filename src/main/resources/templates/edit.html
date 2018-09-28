@@ -1,112 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}"/>
-    <link href="../static/css/add.css" rel="stylesheet" type="text/css" th:href="@{/css/add.css}"/>
-    <link href="../static/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"
-          th:href="@{/css/fontawesome-all.min.css}"/>
-    <title>Sửa báo cáo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/resources/images/favicon.ico}" rel="icon" type="image/png"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/form.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/add.css}" rel="stylesheet" media="screen"/>
+    <title>Thêm báo cáo</title>
 </head>
 <body>
-<header>
-    <div class="navtop">
-        <div id="back"><span class="fas fa-undo"></span> QUAY LẠI</div>
-        <div id="save2"><span class="far fa-save"></span> LƯU</div>
-        <div id="btn-print"><span class="fas fa-print"></span> IN</div>
-    </div>
-    <div id="modalNotify" class="modal">
+<div class="modal fade" id="notifyModal">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <p id="notify-header"></p>
+                <h4 class="modal-title">...</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <hr>
-            <div class="modal-body">
-                <h1 id="notify-content"></h1>
-            </div>
-            <hr>
+            <div class="modal-body">...</div>
             <div class="modal-footer">
-                <div class="btn-close">Đóng</div>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
+</div>
+<div class="tool">
+    <button id="btn-print" type="button" class="btn btn-primary btn-lg btn-custom"><i class="fas fa-print"></i> In thử</button>
+    <br><br>
+    <button id="btn-save-2" type="button" class="btn btn-success btn-lg btn-custom"><i class="fas fa-save"></i> Lưu</button>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" href="/">Phòng khám 158</a>
+            <li class="active"><a class="nav-link" href="/setting/manager-form"><i class="fas fa-file-word"></i> Quản lí
+                kết quả</a></li>
+            <li><a class="nav-link" href="/setting/manager-clinic"><i class="fas fa-table"></i> Quản lí phòng khám</a></li>
+            <li><a class="nav-link" href="/setting/manager-user"><i class="fas fa-user"></i> Quản lí đăng nhập</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+            <li><a class="nav-link" href="/setting/manager-form"><i class="fas fa-undo"></i> Quay lại</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="navside">
+    <h3 class="brand">Phòng khám 158</h3>
+    <hr>
     <div class="tool-edit">
-        <h3><span class="fas fa-edit"></span> Chỉnh sửa</h3>
-        <hr>
-        <div class="tool-edit-title" id="add-row"><span class="fas fa-plus-square"></span> Chèn hàng</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí hàng cần thêm</p>
-            <input/>
-            <div class="acept-add" id="acept-add-row">Thêm hàng</div>
-        </div>
-        <hr>
-        <div class="tool-edit-title" id="add-col"><span class="fas fa-plus-square"></span> Chèn cột</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí cột cần thêm</p>
-            <input/>
-            <div class="acept-add" id="acept-add-col">Thêm cột</div>
-        </div>
-        <hr>
-        <div class="tool-edit-title"><span class="fas fa-trash-alt"></span> Xóa hàng</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí hàng cần xóa</p>
-            <input/>
-            <div class="acept-delete" id="delete-row">Xóa</div>
-        </div>
-        <hr>
-        <div class="tool-edit-title"><span class="fas fa-trash-alt"></span> Xóa cột</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí cột cần xóa</p>
-            <input/>
-            <div class="acept-delete" id="delete-col">Xóa</div>
-        </div>
-        <hr>
-        <div class="tool-edit-title"><span class="fas fa-table"></span> Gộp hàng</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí của ô cần gộp</p>
-            <div class="merge">
-                <input placeholder="Hàng">
-                <input placeholder="Cột" style="margin-left: 0">
+        <div class="input-group mb-3">
+            <input id="number-add-row" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="add-row" class="btn btn-primary tool-btn" type="button">Chèn hàng</button>
             </div>
-            <p>Số ô gộp</p>
-            <input id="inp-tRow">
-            <div class="acept-add" id="merge-row">Gộp hàng</div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="number-add-col" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="add-col" class="btn btn-primary tool-btn" type="button">Chèn cột</button>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="number-delete-row" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="delete-row" class="btn btn-danger tool-btn" type="button">Xóa hàng</button>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="number-delete-col" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="delete-col" class="btn btn-danger tool-btn" type="button">Xóa cột</button>
+            </div>
         </div>
         <hr>
-        <div class="tool-edit-title"><span class="fas fa-table"></span> Gộp cột</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí của ô cần gộp</p>
-            <div class="merge">
-                <input placeholder="Hàng">
-                <input placeholder="Cột" style="margin-left: 0">
-            </div>
-            <p>Số ô gộp</p>
-            <input id="inp-tCol">
-            <div class="acept-add" id="merge-col">Gộp cột</div>
+        <h6>Gộp hàng</h6>
+        <div class="grid">
+            <input id="number-merge-row-row" type="text" class="form-control" placeholder="Hàng">
+            <input id="number-merge-row-col" type="text" class="form-control" placeholder="Cột">
         </div>
+        <input id="number-merge-row-total" type="text" class="form-control input-custom" placeholder="Số ô gộp">
+        <button id="merge-row" class="btn btn-primary tool-btn-2" type="button">Gộp hàng</button>
         <hr>
-        <div class="tool-edit-title"><span class="fas fa-times-circle"></span> Vô hiệu hóa ô</div>
-        <div class="tool-edit-content">
-            <p>Nhập vị trí ô cần vô hiệu hóa</p>
-            <div class="merge">
-                <input placeholder="Hàng">
-                <input placeholder="Cột" style="margin-left: 0">
-            </div>
-            <div class="acept-add" id="disable">Vô hiệu hóa</div>
+        <h6>Gộp cột</h6>
+        <div class="grid">
+            <input id="number-merge-col-row" type="text" class="form-control" placeholder="Hàng">
+            <input id="number-merge-col-col" type="text" class="form-control" placeholder="Cột">
         </div>
+        <input id="number-merge-col-total" type="text" class="form-control input-custom" placeholder="Số ô gộp">
+        <button id="merge-col" class="btn btn-primary tool-btn-2" type="button">Gộp cột</button>
     </div>
-</header>
-<main th:id="${id}">
-    <div id="spinner" class="spinner">
-        <div class="spinner-content">
-            <div class="spin"></div>
-        </div>
-    </div>
-    <div id="content" class="content" th:utext="${content}">content</div>
-</main>
-<script src="../static/js/jquery.min.js" type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
-<script src="../static/js/colResizable-1.6.min.js" type="text/javascript" th:src="@{/js/colResizable-1.6.min.js}"></script>
-<script src="../static/js/printThis.js" type="text/javascript" th:src="@{/js/printThis.js}"></script>
-<script src="../static/js/add.js" type="text/javascript" th:src="@{/js/add.js}"></script>
+</div>
+<div id="content" class="content" th:name="${id}" th:utext="${content}">content</div>
 </body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/colResizable-1.6.min.js}"></script>
+<script th:src="@{/resources/js/printThis.js}"></script>
+<script th:src="@{/resources/js/addedit.js}"></script>
 </html>
