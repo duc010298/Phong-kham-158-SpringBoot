@@ -142,26 +142,8 @@ body {
     right: 0;
 }
 
-.btn-print, .btn-save, .btn-reload {
-    width: 60px;
-    height: 60px;
-    background-color: #767D7F;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 30px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: 0.7s background-color;
-}
-
-.btn-print span, .btn-save span, .btn-reload span {
-    margin-top: 17px;
-    transition: 0.7s background-color;
-}
-
-.btn-print:hover , .btn-save:hover, .btn-reload:hover, .btn-print span:hover, .btn-save span:hover, .btn-reload span:hover {
-    background-color: #3B3F40;
-    cursor: pointer;
+.btn-tool-custom {
+    width: 125px;
 }
 
 .btn-modal {

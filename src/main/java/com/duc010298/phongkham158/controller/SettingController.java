@@ -43,14 +43,36 @@ public class SettingController {
         return formRepository.deleteForm(id) ? "Xóa thành công" : "Xóa không thành công";
     }
 
-    @GetMapping(path = "/manger-form/add")
+    @GetMapping(path = "/manager-form/add")
     public String getFormAdd() {
         return "add";
     }
 
     @PostMapping(path = "/manager-form/add", produces = "text/plain;charset=UTF-8")
     public @ResponseBody String addForm(@RequestParam("name") String name, @RequestParam("content") String content) {
-        return "";
+        return formRepository.addForm(name, content) ? "Lưu thành công" : "Lưu không thành công";
+    }
+
+    @GetMapping(path = "/manager-form/edit/{id}")
+    public String edit(@PathVariable("id") String id, ModelMap modelMap) {
+        String content;
+        try {
+            content = formRepository.getFormContent(id);
+        } catch (Exception ex) {
+            String errorCode = "404 Error: Page not found";
+            String message = "Không tìm thấy trang";
+            modelMap.addAttribute("errorCode", errorCode);
+            modelMap.addAttribute("message", message);
+            return "error";
+        }
+        modelMap.addAttribute("id", id);
+        modelMap.addAttribute("content", content);
+        return "edit";
+    }
+
+    @PostMapping(path = "/manager-form/edit", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody String editForm(@RequestParam("id") String id, @RequestParam("content") String content) {
+        return formRepository.updateForm(id, content) ? "Sửa thành công" : "Sửa không thành công";
     }
 
     @GetMapping(path = "/manager-clinic")

@@ -28,15 +28,11 @@
     </div>
 </div>
 <div class="tool" th:if="${title} != 'Phòng khám 158'">
-    <div id="btn-print" class="btn-print">
-        <span class="fas fa-print"></span>
-    </div>
-    <div id="btn-save" class="btn-save">
-        <span class="fas fa-save"></span>
-    </div>
-    <div id="btn-reload" class="btn-reload">
-        <span class="fas fa-sync-alt"></span>
-    </div>
+    <button type="button" id="btn-print" class="btn btn-primary btn-lg btn-tool-custom"><i class="fas fa-print"></i> In</button>
+    <br><br>
+    <button type="button" id="btn-save" class="btn btn-success btn-lg btn-tool-custom"><i class="fas fa-save"></i> Lưu</button>
+    <br><br>
+    <button type="button" id="btn-reload" class="btn btn-warning btn-lg btn-tool-custom"><i class="fas fa-sync-alt"></i> Nhập lại</button>
 </div>
 <div class="modal fade" id="acceptSaveNotify">
     <div class="modal-dialog">
@@ -102,6 +98,6 @@
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-    $("#date").html("Ngày " + day + " tháng " + month + " năm " + year);
+    $("#date").val("Ngày " + day + " tháng " + month + " năm " + year);
 </script>
 </html>
