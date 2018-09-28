@@ -23,14 +23,13 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = "text/plain;charset=UTF-8")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String addCustomer(@RequestBody CustomerEntity customerEntity) {
         return customerRepository.addCustomer(customerEntity) ? "Lưu thành công" : "Lỗi: Lưu không thành công";
     }
 
-    @RequestMapping(path = "/SearchContent", method = RequestMethod.GET)
+    @GetMapping(path = "/SearchContent")
     public @ResponseBody
     List<String> searchContent(@RequestParam("search") String search, @RequestParam("value") String value) {
         List<String> ret = null;
@@ -48,7 +47,7 @@ public class CustomerController {
         return ret;
     }
 
-    @RequestMapping(path = "/Search", method = RequestMethod.GET)
+    @GetMapping(path = "/Search")
     public String searchCustomers(@RequestParam("NameS") String nameS, @RequestParam("YOB") String YOB,
                                   @RequestParam("AddressCusS") String addressCusS,
                                   @RequestParam("DayVisit") @DateTimeFormat(pattern = "dd/MM/yyyy") Date dayVisit,
@@ -57,7 +56,7 @@ public class CustomerController {
         return "result :: result";
     }
 
-    @RequestMapping(path = "/Report/{id}")
+    @GetMapping(path = "/Report/{id}")
     public String getReport(@PathVariable("id") String id, ModelMap modelMap) {
         int idInt;
         try {

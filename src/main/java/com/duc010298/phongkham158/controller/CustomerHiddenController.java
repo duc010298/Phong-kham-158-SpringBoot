@@ -25,7 +25,7 @@ public class CustomerHiddenController {
         this.sendMail = sendMail;
     }
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody void addCustomer(@RequestBody CustomerEntity customerEntity) {
         customerHiddenRepository.addCustomer(customerEntity);
 
@@ -39,13 +39,13 @@ public class CustomerHiddenController {
         sendMail.sendMailHtml(customerEntity, From, To, Subject);
     }
 
-    @RequestMapping(path = "/Search", method = RequestMethod.GET)
+    @GetMapping(path = "/Search")
     public String getResultSearchHidden(@RequestParam("dayVisit") Date dayVisit, ModelMap modelMap) {
         modelMap.addAttribute("Customers", customerHiddenRepository.searchCustomer(dayVisit));
         return "result :: resulthidden";
     }
 
-    @RequestMapping(path = "/Report/{id}")
+    @GetMapping(path = "/Report/{id}")
     public String getReport(@PathVariable("id") String id, ModelMap modelMap) {
         int idInt;
         try {
