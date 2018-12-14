@@ -1,0 +1,108 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/resources/images/favicon.ico}" rel="icon" type="image/png"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/form.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/add.css}" rel="stylesheet" media="screen"/>
+    <title>Thêm báo cáo</title>
+</head>
+<body>
+<div class="modal fade" id="notifyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">...</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tool">
+    <button id="btn-print" type="button" class="btn btn-primary btn-lg btn-custom"><i class="fas fa-print"></i> In thử</button>
+    <br><br>
+    <button id="btn-save" type="button" class="btn btn-success btn-lg btn-custom"><i class="fas fa-save"></i> Lưu</button>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" href="/">Phòng khám 158</a>
+            <li class="active"><a class="nav-link" href="/setting/manager-form"><i class="fas fa-file-word"></i> Quản lí
+                kết quả</a></li>
+            <li><a class="nav-link" href="/setting/manager-clinic"><i class="fas fa-table"></i> Quản lí phòng khám</a></li>
+            <li><a class="nav-link" href="/setting/manager-user"><i class="fas fa-user"></i> Quản lí đăng nhập</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+            <li><a class="nav-link" href="/setting/manager-form"><i class="fas fa-undo"></i> Quay lại</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="navside">
+    <h3 class="brand">Phòng khám 158</h3>
+    <hr>
+    <div class="tool-edit">
+        <div class="input-group mb-3">
+            <input id="number-add-row" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="add-row" class="btn btn-primary tool-btn" type="button">Chèn hàng</button>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="number-add-col" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="add-col" class="btn btn-primary tool-btn" type="button">Chèn cột</button>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="number-delete-row" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="delete-row" class="btn btn-danger tool-btn" type="button">Xóa hàng</button>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input id="number-delete-col" type="text" class="form-control" placeholder="Nhập vị trí">
+            <div class="input-group-append">
+                <button id="delete-col" class="btn btn-danger tool-btn" type="button">Xóa cột</button>
+            </div>
+        </div>
+        <hr>
+        <h6>Gộp hàng</h6>
+        <div class="grid">
+            <input id="number-merge-row-row" type="text" class="form-control" placeholder="Hàng">
+            <input id="number-merge-row-col" type="text" class="form-control" placeholder="Cột">
+        </div>
+        <input id="number-merge-row-total" type="text" class="form-control input-custom" placeholder="Số ô gộp">
+        <button id="merge-row" class="btn btn-primary tool-btn-2" type="button">Gộp hàng</button>
+        <hr>
+        <h6>Gộp cột</h6>
+        <div class="grid">
+            <input id="number-merge-col-row" type="text" class="form-control" placeholder="Hàng">
+            <input id="number-merge-col-col" type="text" class="form-control" placeholder="Cột">
+        </div>
+        <input id="number-merge-col-total" type="text" class="form-control input-custom" placeholder="Số ô gộp">
+        <button id="merge-col" class="btn btn-primary tool-btn-2" type="button">Gộp cột</button>
+    </div>
+</div>
+<div id="content" class="content">
+<div class="page"><div class="page-container" id="page"><style>.page-container{font-family:"Times New Roman",Times,serif;font-size:1.125rem;margin:1.875rem 2.8125rem;background-color:#fff}.page-container p{margin:0}textarea{outline:0;border:none;resize:none;font-size:1.125rem;font-family:"Times New Roman",Times,serif;width:100%;white-space:pre-line}textarea:disabled{color:#000;background-color:#fff}.h1{text-align:center;font-weight:700;font-size:1.5625rem}.h2{text-align:center;font-size:1.125rem}.h3{text-align:center;font-size:1.125rem;font-style:italic}.h4{text-align:center;font-weight:700;font-size:1.4375rem;margin:16px 0!important}.h5{text-align:center;font-size:1.125rem;font-weight:700}.table{width:100%;margin-top:5px}.table,.table td{border:1px dotted #000;border-collapse:collapse}.table td{padding:1px 2px}#table-content td{padding-bottom:0!important}.b1{padding:.3125rem;width:5rem}.b2{padding:.3125rem;width:3.75rem}.b3{padding:.3125rem}.b4{padding-left:.3125rem;font-weight:700;float:left;margin-top:10px!important}.b5{font-weight:700;width:auto!important;margin-top:10px;padding:0!important}.b6{padding:.3125rem;width:12.5rem}.b7{font-weight:700}.b8{font-weight:700}.table-none{width:100%}.table-none,.table-none td{border:none!important}.b9{width:12rem;text-align:center}.b10{font-size:18px;font-weight:700;font-style:italic;text-align:center;margin-top:10px}.b11{font-style:italic}.table-header{visibility:hidden}.table-header td{height:1px!important;font-size:1px!important}#print .table td{padding:1px 6px}#print #table-content pre{font-size:15px}#print #table-content-2 pre{font-size:15px}pre{margin:0;padding:0;font-family:"Times New Roman",Times,serif}</style><p class="h1">PHÒNG KHÁM SẢN - PHỤ KHOA</p><p class="h2">Địa chỉ : 158 Ngô quyền - Hoàng Xá - Thị Trấn An Lão - Hải phòng</p><p class="h5">Điện thoại : 0916483289</p><p class="h3">Siêu âm màu 4 chiều, siêu âm đầu dò âm đạo, siêu âm thai</p><p class="h3">ổ bụng, phụ khoa, siêu âm vú</p><p class="h4">KẾT QUẢ SIÊU ÂM MÀU 4 CHIỀU</p><table class="table"><tr><td class="b1">Họ và tên:</td><td><textarea rows="1" placeholder="Nhập tên" id="name"></textarea></td><td class="b2">Tuổi:</td><td><textarea rows="1" id="age"> tuổi</textarea></td></tr><tr><td class="b3">Địa chỉ:</td><td colspan="3"><textarea rows="1" placeholder="Nhập địa chỉ" id="address"></textarea></td></tr></table><p class="b4">Yêu cầu kiểm tra :</p><textarea rows="1" class="b5"></textarea><table class="table" id="table-content"><tr class="table-header"><td>.</td><td>.</td></tr><tr><td><textarea rows="1"></textarea></td><td><textarea rows="1"></textarea></td></tr></table><table class="table" id="table-content-2"><tr><td class="b6"><textarea rows="1" class="b7">Kết quả:</textarea></td><td><textarea rows="1" class="b8" id="result"></textarea></td></tr></table><table class="table-none"><tr><td><p class="b9">.</p></td><td valign="top"><textarea rows="1" class="b10" id="date">Ngày tháng năm</textarea><div class="b10">Người siêu âm</div><br><br></td></tr></table><textarea rows="1" class="b11">Lưu ý: Ba tuần sau khám lại
+- Nếu thấy bất thường( đau bụng, ra máu...) đến khám ngay
+( Siêu âm không ảnh hưởng đến thai nhi và người mẹ)
+- Nếu siêu âm đầy đủ các chu kì  sẽ sớm phát hiện được >90% dị tật thai nhi</textarea></div><div class="page-container" id="print">.</div></div>
+</div>
+</body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/colResizable-1.6.min.js}"></script>
+<script th:src="@{/resources/js/printThis.js}"></script>
+<script th:src="@{/resources/js/addedit.js}"></script>
+</html>
