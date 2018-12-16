@@ -1,17 +1,17 @@
-package com.duc010298.phongkham158.entity;
+package com.duc010298.clinic158.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "appuser", schema = "clinic", catalog = "")
-public class AppuserEntity {
+@Table(name = "app_user", schema = "clinic", catalog = "")
+public class AppUserEntity {
     private long userId;
     private String userName;
-    private String encrytedPassword;
+    private String encryptedPassword;
 
     @Id
-    @Column(name = "userId")
+    @Column(name = "user_id")
     public long getUserId() {
         return userId;
     }
@@ -21,7 +21,7 @@ public class AppuserEntity {
     }
 
     @Basic
-    @Column(name = "userName")
+    @Column(name = "user_name")
     public String getUserName() {
         return userName;
     }
@@ -31,27 +31,27 @@ public class AppuserEntity {
     }
 
     @Basic
-    @Column(name = "encrytedPassword")
-    public String getEncrytedPassword() {
-        return encrytedPassword;
+    @Column(name = "encrypted_password")
+    public String getEncryptedPassword() {
+        return encryptedPassword;
     }
 
-    public void setEncrytedPassword(String encrytedPassword) {
-        this.encrytedPassword = encrytedPassword;
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AppuserEntity that = (AppuserEntity) o;
+        AppUserEntity that = (AppUserEntity) o;
         return userId == that.userId &&
                 Objects.equals(userName, that.userName) &&
-                Objects.equals(encrytedPassword, that.encrytedPassword);
+                Objects.equals(encryptedPassword, that.encryptedPassword);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, encrytedPassword);
+        return Objects.hash(userId, userName, encryptedPassword);
     }
 }

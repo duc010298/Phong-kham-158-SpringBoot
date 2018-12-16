@@ -1,4 +1,4 @@
-package com.duc010298.phongkham158;
+package com.duc010298.clinic158;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Phongkham158ApplicationTests {
+public class Clinic158ApplicationTests {
 
     @Test
     public void contextLoads() {

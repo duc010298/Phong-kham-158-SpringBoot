@@ -1,16 +1,16 @@
-package com.duc010298.phongkham158.entity;
+package com.duc010298.clinic158.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "approle", schema = "clinic", catalog = "")
-public class ApproleEntity {
+@Table(name = "app_role", schema = "clinic", catalog = "")
+public class AppRoleEntity {
     private long roleId;
     private String roleName;
 
     @Id
-    @Column(name = "roleId")
+    @Column(name = "role_id")
     public long getRoleId() {
         return roleId;
     }
@@ -20,7 +20,7 @@ public class ApproleEntity {
     }
 
     @Basic
-    @Column(name = "roleName")
+    @Column(name = "role_name")
     public String getRoleName() {
         return roleName;
     }
@@ -33,7 +33,7 @@ public class ApproleEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ApproleEntity that = (ApproleEntity) o;
+        AppRoleEntity that = (AppRoleEntity) o;
         return roleId == that.roleId &&
                 Objects.equals(roleName, that.roleName);
     }

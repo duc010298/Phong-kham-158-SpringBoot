@@ -1,4 +1,4 @@
-package com.duc010298.phongkham158.entity;
+package com.duc010298.clinic158.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -8,7 +8,7 @@ import java.util.Objects;
 @Table(name = "customer", schema = "clinic", catalog = "")
 public class CustomerEntity {
     private int id;
-    private String name;
+    private String customerName;
     private String nameSearch;
     private Integer yob;
     private String address;
@@ -30,17 +30,17 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "customer_name")
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     @Basic
-    @Column(name = "nameSearch")
+    @Column(name = "name_search")
     public String getNameSearch() {
         return nameSearch;
     }
@@ -70,7 +70,7 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "addressSearch")
+    @Column(name = "address_search")
     public String getAddressSearch() {
         return addressSearch;
     }
@@ -80,7 +80,7 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "dayVisit")
+    @Column(name = "day_visit")
     public Date getDayVisit() {
         return dayVisit;
     }
@@ -135,7 +135,7 @@ public class CustomerEntity {
         if (o == null || getClass() != o.getClass()) return false;
         CustomerEntity that = (CustomerEntity) o;
         return id == that.id &&
-                Objects.equals(name, that.name) &&
+                Objects.equals(customerName, that.customerName) &&
                 Objects.equals(nameSearch, that.nameSearch) &&
                 Objects.equals(yob, that.yob) &&
                 Objects.equals(address, that.address) &&
@@ -149,6 +149,6 @@ public class CustomerEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, nameSearch, yob, address, addressSearch, dayVisit, expectedDob, result, note, report);
+        return Objects.hash(id, customerName, nameSearch, yob, address, addressSearch, dayVisit, expectedDob, result, note, report);
     }
 }

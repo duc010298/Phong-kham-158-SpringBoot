@@ -1,13 +1,13 @@
-package com.duc010298.phongkham158.entity;
+package com.duc010298.clinic158.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "reportform", schema = "clinic", catalog = "")
-public class ReportformEntity {
+@Table(name = "report_form", schema = "clinic", catalog = "")
+public class ReportFormEntity {
     private int id;
-    private String name;
+    private String reportName;
     private int orderNumber;
     private String content;
 
@@ -22,17 +22,17 @@ public class ReportformEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "report_name")
+    public String getReportName() {
+        return reportName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setReportName(String reportName) {
+        this.reportName = reportName;
     }
 
     @Basic
-    @Column(name = "orderNumber")
+    @Column(name = "order_number")
     public int getOrderNumber() {
         return orderNumber;
     }
@@ -55,15 +55,15 @@ public class ReportformEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReportformEntity that = (ReportformEntity) o;
+        ReportFormEntity that = (ReportFormEntity) o;
         return id == that.id &&
                 orderNumber == that.orderNumber &&
-                Objects.equals(name, that.name) &&
+                Objects.equals(reportName, that.reportName) &&
                 Objects.equals(content, that.content);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, orderNumber, content);
+        return Objects.hash(id, reportName, orderNumber, content);
     }
 }

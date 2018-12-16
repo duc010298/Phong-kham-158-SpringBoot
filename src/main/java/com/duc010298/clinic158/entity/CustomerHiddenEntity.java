@@ -1,14 +1,14 @@
-package com.duc010298.phongkham158.entity;
+package com.duc010298.clinic158.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "customerhidden", schema = "clinic", catalog = "")
-public class CustomerhiddenEntity {
+@Table(name = "customer_hidden", schema = "clinic", catalog = "")
+public class CustomerHiddenEntity {
     private int id;
-    private String name;
+    private String customerName;
     private Integer yob;
     private String address;
     private Date dayVisit;
@@ -26,13 +26,13 @@ public class CustomerhiddenEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "customer_name")
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     @Basic
@@ -56,7 +56,7 @@ public class CustomerhiddenEntity {
     }
 
     @Basic
-    @Column(name = "dayVisit")
+    @Column(name = "day_visit")
     public Date getDayVisit() {
         return dayVisit;
     }
@@ -89,9 +89,9 @@ public class CustomerhiddenEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CustomerhiddenEntity that = (CustomerhiddenEntity) o;
+        CustomerHiddenEntity that = (CustomerHiddenEntity) o;
         return id == that.id &&
-                Objects.equals(name, that.name) &&
+                Objects.equals(customerName, that.customerName) &&
                 Objects.equals(yob, that.yob) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(dayVisit, that.dayVisit) &&
@@ -101,6 +101,6 @@ public class CustomerhiddenEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, yob, address, dayVisit, result, report);
+        return Objects.hash(id, customerName, yob, address, dayVisit, result, report);
     }
 }
