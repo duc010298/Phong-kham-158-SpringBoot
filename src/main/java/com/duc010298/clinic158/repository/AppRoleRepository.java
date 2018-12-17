@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface AppRoleRepository extends JpaRepository<AppRoleEntity, Long> {
 
-    @Query("SELECT r.roleName FROM AppRoleEntity r JOIN AppUserEntity u WHERE u.userId = ?1")
+    @Query("SELECT r.roleName FROM AppRoleEntity r JOIN r.appUserEntities u WHERE u.userId = ?1")
     List<String> getRoleNames(Long userId);
 }

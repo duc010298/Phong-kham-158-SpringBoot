@@ -1,5 +1,4 @@
 -- MySQL
------------------------------------------------------------------------------------
 
 -- create database
 drop database if exists clinic;
@@ -17,13 +16,12 @@ create table if not exists app_role (
   role_name varchar(30) not null unique
 );
 create table if not exists user_role (
-  id bigint not null primary key auto_increment,
   user_id bigint not null,
-  role_id bigint not null
+  role_id bigint not null,
+  primary key (user_id, role_id),
+  constraint user_role_fk1 foreign key (user_id) references app_user (user_id),
+  constraint user_role_fk2 foreign key (role_id) references app_role (role_id)
 );
-alter table user_role add constraint user_role_uk unique (user_id, role_id);
-alter table user_role add constraint user_role_fk1 foreign key (user_id) references app_user (user_id);
-alter table user_role add constraint user_role_fk2 foreign key (role_id) references app_role (role_id);
 
 --
 insert into app_user (user_id, user_name, encrypted_password)
@@ -38,14 +36,11 @@ values (2, 'ROLE_MASTER');
 insert into app_role (role_id, role_name)
 values (3, 'ROLE_MEMBER');
 --
-insert into user_role (id, user_id, role_id)
-values (null, 1, 1);
+insert into user_role values (1, 1);
 
-insert into user_role (id, user_id, role_id)
-values (null, 1, 2);
+insert into user_role values (1, 2);
 
-insert into user_role (id, user_id, role_id)
-values (null, 1, 3);
+insert into user_role values (1, 3);
 --
 
 -- manager clinic
