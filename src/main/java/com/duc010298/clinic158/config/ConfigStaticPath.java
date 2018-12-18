@@ -15,8 +15,6 @@ public class ConfigStaticPath implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/bootstrap/4.1.3/");
         registry.addResourceHandler("/jquery/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/jquery/3.3.1-1/");
-        registry.addResourceHandler("/font-awesome/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/font-awesome/5.5.0/");
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("classpath:/static/");
     }

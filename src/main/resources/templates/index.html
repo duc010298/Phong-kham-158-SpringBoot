@@ -9,7 +9,7 @@
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/resources/css/style.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/resources/css/form.css}" rel="stylesheet" media="screen"/>
-    <link th:href="@{/font-awesome/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
     <title th:text="${title}">...</title>
 </head>
 <body>
@@ -61,10 +61,10 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="/">Phòng khám 158</a>
+                <a th:href="@{/}">Phòng khám 158</a>
             </li>
-            <li th:each="form:${forms}" th:class="(${form.getName()} == ${title}) ? 'active' : ''">
-                <a th:href="|/form/${form.getID()}|" th:text="${form.getName()}">...</a>
+            <li th:each="reportForm:${reportForms}" th:class="(${reportForm.getReportName()} == ${title}) ? 'active' : ''">
+                <a th:href="|/reportForm/${reportForm.getId()}|" th:text="${reportForm.getReportName()}">...</a>
             </li>
         </ul>
     </div>
@@ -73,12 +73,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
                     <li id="menu-toggle"><a class="nav-link"><i class="fas fa-arrow-left"></i> Kết quả siêu âm</a></li>
-                    <li><a class="nav-link" href="/report"><i class="fas fa-file-excel"></i> Báo cáo siêu âm</a>
+                    <li><a class="nav-link" th:href="@{/report}"><i class="fas fa-file-excel"></i> Báo cáo siêu âm</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-                    <li><a class="nav-link" href="/setting/manager-form"><i class="fas fa-cog"></i> Cài đặt</a></li>
+                    <li><a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+                    <li><a class="nav-link" th:href="@{/setting/manager-form}"><i class="fas fa-cog"></i> Cài đặt</a></li>
                 </ul>
             </div>
         </nav>

@@ -37,11 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-        http.authorizeRequests().antMatchers("/login").anonymous();
-        http.authorizeRequests().antMatchers("/", "/customer/**", "/form/**",
-                "/report/**", "/setting/manager-form/**").hasRole("MEMBER");
-        http.authorizeRequests().antMatchers("/setting/manager-clinic/**", "/customerHidden/**").hasRole("MASTER");
-        http.authorizeRequests().antMatchers("/setting/manager-user/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/**").anonymous();
+//        http.authorizeRequests().antMatchers("/login").anonymous();
+//        http.authorizeRequests().antMatchers("/", "/customer/**", "/form/**",
+//                "/report/**", "/setting/manager-form/**").hasRole("MEMBER");
+//        http.authorizeRequests().antMatchers("/setting/manager-clinic/**", "/customerHidden/**").hasRole("MASTER");
+//        http.authorizeRequests().antMatchers("/setting/manager-user/**").hasRole("ADMIN");
 
         http.authorizeRequests().and().formLogin()
                 .loginPage("/login")
