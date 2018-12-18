@@ -8,4 +8,8 @@ import java.util.List;
 public interface ReportFormRepository extends JpaRepository<ReportFormEntity, Integer> {
 
     List<ReportFormEntity> findAllByOrderByOrderNumberAsc();
+
+    ReportFormEntity findById(int id);
+
+
 }
