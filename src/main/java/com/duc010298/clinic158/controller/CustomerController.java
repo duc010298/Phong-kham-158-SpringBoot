@@ -5,10 +5,10 @@ import com.duc010298.clinic158.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/customer")
@@ -27,5 +27,26 @@ public class CustomerController {
         return customerEntity.equals(customerRepository.save(customerEntity)) ? "Lưu thành công" : "Lỗi: Lưu không thành công";
     }
 
+    @GetMapping(path = "/SearchContent")
+    public @ResponseBody
+    List<String> searchContent(@RequestParam("search") String search, @RequestParam("value") String value) {
+        List<String> ret = null;
+        switch (search) {
+            case "inputName":
+                ret = customerRepository.searchByName('%' + value + '%');
+                break;
+            case "inputAge":
+                ret = new ArrayList<>();
+                List<Integer> integerList = customerRepository.searchByYob('%' + value + '%');
+                for(Integer integer: integerList) {
+                    ret.add(integer.toString());
+                }
+                break;
+            case "inputAddress":
+                ret = customerRepository.searchByAddress('%' + value + '%');
+                break;
+        }
+        return ret;
+    }
 
 }
