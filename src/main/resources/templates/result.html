@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th class="STT">STT</th>
+        <th class="dayVisit">Ngày đến khám</th>
+        <th>Họ và tên</th>
+        <th class="Age">Tuổi</th>
+        <th>Địa chỉ</th>
+        <th class="ExpectedDOB">Ngày sinh dự kiến</th>
+        <th>Kết quả</th>
+        <th>Ghi chú</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer, iter : ${customers}" th:if="${not #lists.isEmpty(customers)}"
+        th:id="${customer.getId()}" class="customer">
+        <td th:text="${iter.count}">...</td>
+        <td th:text="${#dates.format(customer.getDayVisit(), 'dd/MM/yyyy')}">...</td>
+        <td th:text="${customer.getCustomerName()}">...</td>
+        <td th:text="${#dates.year(#dates.createNow()) - customer.getYob()}">...</td>
+        <td th:text="${customer.getAddress()}">...</td>
+        <td th:text="${#dates.format(customer.getExpectedDob(), 'dd/MM/yyyy')}">...</td>
+        <td th:text="${customer.getResult()}">...</td>
+        <td th:text="${customer.getNote()}">...</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    $(".customer").on("click", function () {
+        var id = $(this).attr("id");
+        var url = document.location.origin + "/customer/Report/" + id;
+        PopupCenter(url, 'Báo cáo chi tiết', '800', '2000');
+    });
+</script>
+<!--<div th:fragment="resulthidden" th:remove="tag">-->
+<!--<table class="table table-bordered table-hover">-->
+<!--<thead class="thead-light">-->
+<!--<tr>-->
+<!--<th class="STT">STT</th>-->
+<!--<th>Họ và tên</th>-->
+<!--<th class="Age">Tuổi</th>-->
+<!--<th>Địa chỉ</th>-->
+<!--<th>Kết quả</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr th:each="customer, iter : ${customers}" th:if="${not #lists.isEmpty(customers)}"-->
+<!--th:id="${customer.getId()}" class="customer">-->
+<!--<td th:text="${iter.count}">...</td>-->
+<!--<td th:text="${customer.getCustomerName()}">...</td>-->
+<!--<span th:remove="tag" th:if="${customer.getYob() != 0}">-->
+<!--<td th:text="${#dates.year(#dates.createNow()) - customer.getYob()}">...</td>-->
+<!--</span>-->
+<!--<span th:remove="tag" th:unless="${customer.getYob() != 0}">-->
+<!--<td></td>-->
+<!--</span>-->
+<!--<td th:text="${customer.getAddress()}">...</td>-->
+<!--<td th:text="${customer.getResult()}">...</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--<script>-->
+<!--$(".customer").on("click", function () {-->
+<!--var id = $(this).attr("id");-->
+<!--var url = document.location.origin + "/customerHidden/Report/" + id;-->
+<!--PopupCenter(url, 'Báo cáo chi tiết', '800', '2000');-->
+<!--});-->
+<!--</script>-->
+<!--</div>-->
+<!--</html>-->

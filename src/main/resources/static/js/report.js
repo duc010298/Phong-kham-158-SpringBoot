@@ -181,10 +181,10 @@ $("#btn-search").on("click", function () {
         type: 'GET',
         dataType: 'html',
         data: {
-            NameS: NameS,
-            YOB: YOB,
-            AddressCusS: AddressCusS,
-            DayVisit: DayVisit
+            nameSearch: NameS,
+            yob: YOB,
+            addressSearch: AddressCusS,
+            dayVisit: DayVisit
         },
         error: function(){
             notify("Lỗi", "Không thể xử lí dữ liệu");

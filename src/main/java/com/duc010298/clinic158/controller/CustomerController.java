@@ -3,11 +3,14 @@ package com.duc010298.clinic158.controller;
 import com.duc010298.clinic158.entity.CustomerEntity;
 import com.duc010298.clinic158.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -33,20 +36,42 @@ public class CustomerController {
         List<String> ret = null;
         switch (search) {
             case "inputName":
-                ret = customerRepository.searchByName('%' + value + '%');
+                ret = customerRepository.searchTop10ByName(value);
                 break;
             case "inputAge":
-                ret = new ArrayList<>();
-                List<Integer> integerList = customerRepository.searchByYob('%' + value + '%');
-                for(Integer integer: integerList) {
-                    ret.add(integer.toString());
-                }
+                ret = customerRepository.searchTop10ByYob(value);
                 break;
             case "inputAddress":
-                ret = customerRepository.searchByAddress('%' + value + '%');
+                ret = customerRepository.searchTop10ByAddress(value);
                 break;
         }
         return ret;
+    }
+
+    @GetMapping(path = "/Search")
+    public String searchCustomers(@RequestParam("nameSearch") String nameSearch, @RequestParam("yob") String yobStr,
+                                  @RequestParam("addressSearch") String addressSearch,
+                                  @RequestParam("dayVisit") @DateTimeFormat(pattern = "dd/MM/yyyy") Date dayVisit,
+                                  ModelMap modelMap) {
+        int yob;
+        try {
+            yob = Integer.parseInt(yobStr);
+        } catch (NumberFormatException e) {
+            yob = 0;
+        }
+        List<CustomerEntity> customerEntities;
+        if (dayVisit == null && yob != 0) {
+            customerEntities = customerRepository.searchTop100CustomerWithoutDayVisit(nameSearch, yob, addressSearch);
+        } else if (dayVisit == null && yob == 0) {
+            customerEntities = customerRepository.searchTop100CustomerWithoutYobAndDayVisit(nameSearch, addressSearch);
+            System.out.println("abc:" + customerEntities.get(0).toString());
+        } else if (dayVisit != null && yob != 0) {
+            customerEntities = customerRepository.searchTop100Customer(nameSearch, yob, addressSearch, dayVisit);
+        } else {
+            customerEntities = customerRepository .searchTop100CustomerWithoutYob(nameSearch, addressSearch, dayVisit);
+        }
+        modelMap.addAttribute("customers", customerEntities);
+        return "result";
     }
 
 }

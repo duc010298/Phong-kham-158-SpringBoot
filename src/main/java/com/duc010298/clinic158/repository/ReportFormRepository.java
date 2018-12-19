@@ -11,5 +11,4 @@ public interface ReportFormRepository extends JpaRepository<ReportFormEntity, In
 
     ReportFormEntity findById(int id);
 
-
 }
