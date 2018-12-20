@@ -66,4 +66,7 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
         return searchCustomer('%' + nameSearch + '%', '%' + yob.toString() + '%','%' + addressSearch + '%', startDate, new Date(), new PageRequest(0, 100));
     }
 
+    @Query("SELECT c.report FROM CustomerEntity c WHERE c.id = ?1")
+    String getReport(Integer id);
+
 }

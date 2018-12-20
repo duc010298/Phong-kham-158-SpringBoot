@@ -1,0 +1,95 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/resources/images/favicon.ico}" rel="icon" type="image/png"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/setting.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
+    <title>Quản lí kết quả</title>
+</head>
+<body>
+<div class="modal fade" id="notifyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">...</h4>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" th:href="@{/}">Phòng khám 158</a>
+            <li class="active"><a class="nav-link" th:href="@{/setting/manager-form}"><i class="fas fa-file-word"></i> Quản lí
+                kết quả</a></li>
+            <li><a class="nav-link" th:href="@{/setting/manager-clinic}"><i class="fas fa-table"></i> Quản lí phòng khám</a></li>
+            <li><a class="nav-link" th:href="@{/setting/manager-user}"><i class="fas fa-user"></i> Quản lí đăng nhập</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+            <li><a class="nav-link" th:href="@{/}"><i class="fas fa-undo"></i> Quay lại</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container-custom">
+    <div class="grid">
+        <div th:each="reportForm : ${reportForms}" class="jumbotron jumbotron-custom">
+            <h5 th:text="${reportForm.getReportName()}">...</h5>
+            <div class="button-control">
+                <a class="btn btn-primary btn-custom" th:href="|/setting/manager-form/edit/${reportForm.getId()}|">
+                    <i class="far fa-edit"></i> Sửa</a>
+                <button type="button" th:id="${reportForm.getId()}" class="btn btn-danger btn-custom"><i class="fas fa-trash-alt"></i> Xóa</button>
+            </div>
+        </div>
+        <div class="jumbotron jumbotron-custom" id="add">
+            <a th:href="@{/setting/manager-form/add}"><h1><i class="fas fa-plus-circle"></i></h1></a>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script>
+    function notify(title, message) {
+        $("#notifyModal .modal-title").html(title);
+        $("#notifyModal .modal-body").html(message);
+        $("#notifyModal").modal({backdrop: "static"});
+    }
+
+    $(".grid>div").on('click', function () {
+        $(".button-control").css('visibility', 'hidden');
+        $(this).find(".button-control").css('visibility', 'visible');
+    });
+    $(".button-control button").on('click', function () {
+        var id = $(this).attr("id");
+        var c = confirm("Bạn muốn xóa file này không?");
+        if (c == true) {
+            notify("Thông báo", "Đang xử lí");
+            $.ajax({
+                url: document.location.origin + "/setting/manager-form/delete",
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                error: function () {
+                    notify("Lỗi", "Không thể xử lí dữ liệu");
+                }
+            }).done(function (result) {
+                notify("Thông báo", result);
+                $(".btn-danger").on('click', function () {
+                    location.reload();
+                });
+            });
+        }
+    });
+</script>
+</html>

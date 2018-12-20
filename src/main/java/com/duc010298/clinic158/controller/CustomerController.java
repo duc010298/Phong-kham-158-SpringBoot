@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +26,12 @@ public class CustomerController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String addCustomer(@RequestBody CustomerEntity customerEntity) {
-        return customerEntity.equals(customerRepository.save(customerEntity)) ? "Lưu thành công" : "Lỗi: Lưu không thành công";
+        try {
+            customerRepository.save(customerEntity);
+            return "Lưu thành công";
+        } catch (Exception e) {
+            return "Lỗi: Lưu không thành công";
+        }
     }
 
     @GetMapping(path = "/SearchContent")
@@ -68,10 +72,30 @@ public class CustomerController {
         } else if (dayVisit != null && yob != 0) {
             customerEntities = customerRepository.searchTop100Customer(nameSearch, yob, addressSearch, dayVisit);
         } else {
-            customerEntities = customerRepository .searchTop100CustomerWithoutYob(nameSearch, addressSearch, dayVisit);
+            customerEntities = customerRepository.searchTop100CustomerWithoutYob(nameSearch, addressSearch, dayVisit);
         }
         modelMap.addAttribute("customers", customerEntities);
         return "result";
+    }
+
+    @GetMapping(path = "/report/{id}")
+    public String getReport(@PathVariable("id") String idStr, ModelMap modelMap) {
+        int id;
+        try {
+            id = Integer.parseInt(idStr);
+        } catch(Exception e) {
+            modelMap.addAttribute("errorCode", "404 Error: Page not found");
+            modelMap.addAttribute("message", "Không tìm thấy trang");
+            return "error";
+        }
+        String content = customerRepository.getReport(id);
+        if(content == null) {
+            modelMap.addAttribute("errorCode", "404 Error: Page not found");
+            modelMap.addAttribute("message", "Không tìm thấy dữ liệu để hiển thị");
+            return "error";
+        }
+        modelMap.addAttribute("content", content);
+        return "reportDetail";
     }
 
 }

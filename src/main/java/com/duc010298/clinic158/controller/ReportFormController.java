@@ -21,7 +21,7 @@ public class ReportFormController {
     }
 
     @GetMapping(value = "/{id}")
-    public String getFormContent(@PathVariable("id") String id, ModelMap modelMap) {
+    public String getReportFormContent(@PathVariable("id") String id, ModelMap modelMap) {
         ReportFormEntity reportFormEntity;
         try {
             int idInt = Integer.parseInt(id);
