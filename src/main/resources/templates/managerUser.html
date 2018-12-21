@@ -142,6 +142,8 @@
     });
 
     $("#btn-add").on('click', function () {
+        // TODO nhập lại mật khẩu
+
         notify("Thông báo", "Đang xử lí");
         var username = $("#username").val();
         var password = $("#password").val();
@@ -199,7 +201,7 @@
             return;
         }
         $.ajax({
-            url: document.location.origin + "/setting/manager-user/edit-user",
+            url: document.location.origin + "/setting/manager-user/edit-user-role",
             type: 'POST',
             dataType: 'html',
             data: {

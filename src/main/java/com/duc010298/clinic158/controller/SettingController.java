@@ -121,14 +121,45 @@ public class SettingController {
         password = encoder.encode(password);
         newUserEntity.setEncryptedPassword(password);
 
-        Set<AppRoleEntity> appRoleEntities = new HashSet<>(0);
-        for(String roleId : role) {
-            appRoleEntities.add(appRoleRepository.getOne(Long.parseLong(roleId)));
-        }
+        Set<AppRoleEntity> appRoleEntities = processRoleArray(role);
         newUserEntity.setAppRoleEntities(appRoleEntities);
 
         newUserEntity = appUserRepository.save(newUserEntity);
 
         return newUserEntity.getUserId() == 0 ? "Thêm tài khoản không thành công" : "Thêm tài khoản thành công";
     }
+
+    @PostMapping(path = "/manager-user/edit-user-role", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String editRoleOfUser(@RequestParam("username") String username, @RequestParam("role[]") String[] role) {
+        AppUserEntity appUserEntity = appUserRepository.findByUserName(username);
+        Set<AppRoleEntity> appRoleEntities = processRoleArray(role);
+        appUserEntity.setAppRoleEntities(appRoleEntities);
+
+        return appUserEntity.equals(appUserRepository.save(appUserEntity)) ? "Sửa đổi quyền truy cập thành công" : "Sửa quyền truy cập không thành công";
+    }
+
+    @PostMapping(path = "/manager-user/delete-user", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String deleteUser(@RequestParam("username") String username) {
+        AppUserEntity appUserEntity = appUserRepository.findByUserName(username);
+        if (appUserEntity == null) return "Xóa tài khoản không thành công";
+        try {
+            appUserRepository.deleteById(appUserEntity.getUserId());
+            return "Xóa tài khoản thành công";
+        } catch (Exception e) {
+            return "Xóa tài khoản không thành công";
+        }
+    }
+
+//    TODO add function change password
+
+    private Set<AppRoleEntity> processRoleArray(@RequestParam("role[]") String[] role) {
+        Set<AppRoleEntity> appRoleEntities = new HashSet<>(0);
+        for (String roleId : role) {
+            appRoleEntities.add(appRoleRepository.getOne(Long.parseLong(roleId)));
+        }
+        return appRoleEntities;
+    }
+
 }
