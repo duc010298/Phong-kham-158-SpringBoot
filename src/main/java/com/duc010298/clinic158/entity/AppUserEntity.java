@@ -16,6 +16,7 @@ public class AppUserEntity {
 
     @Id
     @Column(name = "user_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public long getUserId() {
         return userId;
     }
@@ -44,7 +45,10 @@ public class AppUserEntity {
         this.encryptedPassword = encryptedPassword;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "appUserEntities")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", nullable = false)})
     public Set<AppRoleEntity> getAppRoleEntities() {
         return this.appRoleEntities;
     }

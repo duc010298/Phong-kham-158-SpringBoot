@@ -26,12 +26,8 @@ public class CustomerController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String addCustomer(@RequestBody CustomerEntity customerEntity) {
-        try {
-            customerRepository.save(customerEntity);
-            return "Lưu thành công";
-        } catch (Exception e) {
-            return "Lỗi: Lưu không thành công";
-        }
+        customerEntity = customerRepository.save(customerEntity);
+        return customerEntity.getId() != 0 ? "Lưu thành công" : "Lỗi: Lưu không thành công";
     }
 
     @GetMapping(path = "/SearchContent")
@@ -83,13 +79,13 @@ public class CustomerController {
         int id;
         try {
             id = Integer.parseInt(idStr);
-        } catch(Exception e) {
+        } catch (Exception e) {
             modelMap.addAttribute("errorCode", "404 Error: Page not found");
             modelMap.addAttribute("message", "Không tìm thấy trang");
             return "error";
         }
         String content = customerRepository.getReport(id);
-        if(content == null) {
+        if (content == null) {
             modelMap.addAttribute("errorCode", "404 Error: Page not found");
             modelMap.addAttribute("message", "Không tìm thấy dữ liệu để hiển thị");
             return "error";

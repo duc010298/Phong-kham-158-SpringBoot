@@ -1,23 +1,32 @@
 package com.duc010298.clinic158.controller;
 
+import com.duc010298.clinic158.entity.AppRoleEntity;
+import com.duc010298.clinic158.entity.AppUserEntity;
 import com.duc010298.clinic158.entity.ReportFormEntity;
+import com.duc010298.clinic158.repository.AppRoleRepository;
+import com.duc010298.clinic158.repository.AppUserRepository;
 import com.duc010298.clinic158.repository.ReportFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping(path = "/setting")
 public class SettingController {
 
     private ReportFormRepository reportFormRepository;
+    private AppRoleRepository appRoleRepository;
+    private AppUserRepository appUserRepository;
 
     @Autowired
-    public SettingController(ReportFormRepository reportFormRepository) {
+    public SettingController(ReportFormRepository reportFormRepository, AppRoleRepository appRoleRepository, AppUserRepository appUserRepository) {
         this.reportFormRepository = reportFormRepository;
+        this.appRoleRepository = appRoleRepository;
+        this.appUserRepository = appUserRepository;
     }
 
     @GetMapping("/manager-form")
@@ -52,12 +61,10 @@ public class SettingController {
         reportFormEntity.setOrderNumber(maxOrderNumber);
         reportFormEntity.setContent(content);
         reportFormEntity.setReportName(name);
-        try {
-            reportFormRepository.save(reportFormEntity);
-            return "Lưu thành công";
-        } catch (Exception e) {
-            return "Lưu không thành công";
-        }
+
+        reportFormEntity = reportFormRepository.save(reportFormEntity);
+
+        return reportFormEntity.getId() != 0 ? "Lưu thành công" : "Lưu không thành công";
     }
 
     @GetMapping(path = "/manager-form/edit/{id}")
@@ -80,13 +87,48 @@ public class SettingController {
     @PostMapping(path = "/manager-form/edit", produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String editForm(@RequestParam("id") String id, @RequestParam("content") String content) {
-        try {
-            ReportFormEntity reportFormEntity = reportFormRepository.findById(Integer.parseInt(id));
-            reportFormEntity.setContent(content);
-            reportFormRepository.save(reportFormEntity);
-            return "Sửa thành công";
-        } catch (Exception e) {
-            return "Sửa không thành công";
+        ReportFormEntity reportFormEntity = reportFormRepository.findById(Integer.parseInt(id));
+        reportFormEntity.setContent(content);
+        return reportFormEntity.equals(reportFormRepository.save(reportFormEntity)) ? "Sửa thành công" : "Sửa không thành công";
+    }
+
+//    @GetMapping(path = "/manager-clinic")
+//    public String getFormManagerClinic() {
+//        return "managerclinic";
+//    }
+
+    @GetMapping(path = "/manager-user")
+    public String getFormManagerUser(ModelMap modelMap) {
+        List<AppRoleEntity> appRoleEntities = appRoleRepository.findAll();
+        modelMap.addAttribute("appRoleEntities", appRoleEntities);
+
+        List<AppUserEntity> appUserEntities = appUserRepository.findAll();
+        Map<String, List<String>> listMap = new HashMap<>();
+        for (AppUserEntity appUserEntity : appUserEntities) {
+            listMap.put(appUserEntity.getUserName(), appRoleRepository.getRoleNames(appUserEntity.getUserId()));
         }
+        modelMap.addAttribute("listMap", listMap);
+        return "managerUser";
+    }
+
+    @PostMapping(path = "/manager-user/add-user", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String addUser(@RequestParam("username") String username, @RequestParam("password") String password,
+                   @RequestParam("role[]") String[] role) {
+        AppUserEntity newUserEntity = new AppUserEntity();
+        newUserEntity.setUserName(username);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        password = encoder.encode(password);
+        newUserEntity.setEncryptedPassword(password);
+
+        Set<AppRoleEntity> appRoleEntities = new HashSet<>(0);
+        for(String roleId : role) {
+            appRoleEntities.add(appRoleRepository.getOne(Long.parseLong(roleId)));
+        }
+        newUserEntity.setAppRoleEntities(appRoleEntities);
+
+        newUserEntity = appUserRepository.save(newUserEntity);
+
+        return newUserEntity.getUserId() == 0 ? "Thêm tài khoản không thành công" : "Thêm tài khoản thành công";
     }
 }

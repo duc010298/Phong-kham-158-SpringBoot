@@ -33,10 +33,7 @@ public class AppRoleEntity {
         this.appUserEntities = appUserEntities;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role",
-            joinColumns = {@JoinColumn(name = "role_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)})
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "appRoleEntities")
     public Set<AppUserEntity> getAppUserEntities() {
         return this.appUserEntities;
     }

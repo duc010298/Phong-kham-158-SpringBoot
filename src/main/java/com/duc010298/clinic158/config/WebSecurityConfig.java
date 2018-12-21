@@ -37,6 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
+//        TODO chỉnh lại đường dẫn viết hoa thường
+
         http.authorizeRequests().antMatchers("/**").anonymous();
 //        http.authorizeRequests().antMatchers("/login").anonymous();
 //        http.authorizeRequests().antMatchers("/", "/customer/**", "/form/**",
