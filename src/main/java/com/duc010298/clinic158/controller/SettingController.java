@@ -152,7 +152,16 @@ public class SettingController {
         }
     }
 
-//    TODO add function change password
+    @PostMapping(path = "/manager-user/change-user-password", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String changePassword(@RequestParam("username") String username, @RequestParam("password") String password) {
+        AppUserEntity appUserEntity = appUserRepository.findByUserName(username);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        password = encoder.encode(password);
+        appUserEntity.setEncryptedPassword(password);
+
+        return appUserEntity.equals(appUserRepository.save(appUserEntity)) ? "Đổi mật khẩu thành công" : "Đổi mật khẩu không thành công";
+    }
 
     private Set<AppRoleEntity> processRoleArray(@RequestParam("role[]") String[] role) {
         Set<AppRoleEntity> appRoleEntities = new HashSet<>(0);

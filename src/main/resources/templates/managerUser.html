@@ -56,6 +56,10 @@
                 <label for="password">Mật khẩu:</label>
                 <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
             </div>
+            <div class="form-group">
+                <label for="rePassword">Nhập lại mật khẩu:</label>
+                <input type="password" class="form-control" id="rePassword" placeholder="Nhập lại mật khẩu">
+            </div>
             <label>Chọn quyền truy cập cho tài khoản:</label>
             <br>
             <div class="form-check-inline" th:each="appRole : ${appRoleEntities}">
@@ -114,7 +118,7 @@
             <h4>Xóa tài khoản</h4>
             <hr>
             <div class="form-group">
-                <label for="user">Chọn tài khoản cần xóa</label>
+                <label for="user2">Chọn tài khoản cần xóa</label>
                 <select class="form-control" id="user2">
                     <option th:each="element : ${listMap}" th:text="${element.key}"></option>
                 </select>
@@ -122,6 +126,29 @@
             <hr>
             <button type="button" class="btn btn-hidden">.</button>
             <button type="button" id="btn-delete" class="btn btn-danger btn-custom float-right">Xóa tài khoản</button>
+        </div>
+        <div class="jumbotron">
+            <h4>Đổi mật khẩu</h4>
+            <hr>
+            <div class="form-group">
+                <label for="user3">Chọn tài khoản cần đổi mật khẩu</label>
+                <select class="form-control" id="user3">
+                    <option th:each="element : ${listMap}" th:text="${element.key}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="password2">Mật khẩu mới:</label>
+                    <input type="password" class="form-control" id="password2" placeholder="Mật khẩu mới">
+                </div>
+                <div class="form-group">
+                    <label for="rePassword2">Nhập lại mật khẩu:</label>
+                    <input type="password" class="form-control" id="rePassword2" placeholder="Nhập lại mật khẩu">
+                </div>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-change-password" class="btn btn-primary btn-custom float-right">Đổi mật khẩu</button>
         </div>
     </div>
 </div>
@@ -142,8 +169,6 @@
     });
 
     $("#btn-add").on('click', function () {
-        // TODO nhập lại mật khẩu
-
         notify("Thông báo", "Đang xử lí");
         var username = $("#username").val();
         var password = $("#password").val();
@@ -162,6 +187,13 @@
             notify("Thông báo", "Chưa nhập mật khẩu");
             return;
         }
+
+        var rePassword = $("#rePassword").val();
+        if(password !== rePassword) {
+            notify("Lỗi", "Mật khẩu nhập lại không đúng");
+            return;
+        }
+
         if (role.length == 0) {
             notify("Thông báo", "Chưa chọn quyền truy cập");
             return;
@@ -232,6 +264,39 @@
             dataType: 'html',
             data: {
                 username: username
+            },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+
+    $("#btn-change-password").on('click', function () {
+        var username = $("#user3 option:selected").text();
+        var password = $("#password2").val();
+        if (password == "") {
+            notify("Thông báo", "Chưa nhập mật khẩu");
+            return;
+        }
+
+        var rePassword = $("#rePassword2").val();
+        if(password !== rePassword) {
+            notify("Lỗi", "Mật khẩu nhập lại không đúng");
+            return;
+        }
+
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/change-user-password",
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                username: username,
+                password: password
             },
             error: function () {
                 notify("Lỗi", "Không thể xử lí dữ liệu");
