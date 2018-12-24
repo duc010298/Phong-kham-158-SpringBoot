@@ -11,7 +11,7 @@
     <groupId>com.duc010298</groupId>
     <artifactId>clinic158</artifactId>
     <version>3.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <!--<packaging>war</packaging>-->
     <name>clinic158</name>
     <description>The project was built for management UltraSound Clinic</description>
 
@@ -82,6 +82,7 @@
     </dependencies>
 
     <build>
+        <finalName>phongkham158</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
