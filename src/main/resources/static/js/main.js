@@ -36,9 +36,9 @@ function sendRequestHidden() {
     var Result = localStorage.getItem('Result');
     var Report = localStorage.getItem('Report');
     var customer = {
-        name: Name,
+        customerName: Name,
         yob: YOB,
-        addressCus: AddressCus,
+        address: AddressCus,
         dayVisit: DayVisit,
         result: Result,
         report: Report
@@ -183,13 +183,13 @@ $("#BtnAcceptSave").on("click", function () {
     var Note = $("#Note").val();
     var Report = $("#print").html();
     var customer = {
-        name: Name,
-        nameS : NameS,
+        customerName: Name,
+        nameSearch : NameS,
         yob: YOB,
-        addressCus: AddressCus,
-        addressCusS: AddressCusS,
+        address: AddressCus,
+        addressSearch: AddressCusS,
         dayVisit: DayVisit,
-        expectedDOB: ExpectedDOB,
+        expectedDob: ExpectedDOB,
         result: Result,
         note: Note,
         report: Report
@@ -201,9 +201,11 @@ $("#BtnAcceptSave").on("click", function () {
         contentType: 'application/json',
         data: JSON.stringify(customer),
         error: function(){
+            // TODO red alert if not successfully
             notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
+        // TODO red alert if not successfully
         notify("Thông báo", result);
     });
     localStorage.clear();

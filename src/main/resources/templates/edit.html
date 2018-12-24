@@ -10,7 +10,7 @@
     <link th:href="@{/resources/css/fontawesome-all.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/resources/css/form.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/resources/css/add.css}" rel="stylesheet" media="screen"/>
-    <title>Thêm báo cáo</title>
+    <title>Sửa báo cáo</title>
 </head>
 <body>
 <div class="modal fade" id="notifyModal">
@@ -35,15 +35,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand" href="/">Phòng khám 158</a>
-            <li class="active"><a class="nav-link" href="/setting/manager-form"><i class="fas fa-file-word"></i> Quản lí
+            <a class="navbar-brand" th:href="@{/}">Phòng khám 158</a>
+            <li class="active"><a class="nav-link" th:href="@{/setting/manager-form}"><i class="fas fa-file-word"></i> Quản lí
                 kết quả</a></li>
-            <li><a class="nav-link" href="/setting/manager-clinic"><i class="fas fa-table"></i> Quản lí phòng khám</a></li>
-            <li><a class="nav-link" href="/setting/manager-user"><i class="fas fa-user"></i> Quản lí đăng nhập</a></li>
+            <li><a class="nav-link" th:href="@{/setting/manager-clinic}"><i class="fas fa-table"></i> Quản lí phòng khám</a></li>
+            <li><a class="nav-link" th:href="@{/setting/manager-user}"><i class="fas fa-user"></i> Quản lí đăng nhập</a></li>
         </ul>
         <ul class="navbar-nav">
-            <li><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-            <li><a class="nav-link" href="/setting/manager-form"><i class="fas fa-undo"></i> Quay lại</a></li>
+            <li><a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+            <li><a class="nav-link" th:href="@{/setting/manager-form}"><i class="fas fa-undo"></i> Quay lại</a></li>
         </ul>
     </div>
 </nav>
