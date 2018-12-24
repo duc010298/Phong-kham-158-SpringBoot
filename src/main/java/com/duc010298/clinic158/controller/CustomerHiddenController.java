@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -29,16 +28,7 @@ public class CustomerHiddenController {
     public @ResponseBody
     void addCustomer(@RequestBody CustomerHiddenEntity customerHiddenEntity) {
         customerHiddenRepository.save(customerHiddenEntity);
-
-        // TODO move setting to config file
-        String From = "phongkham158@gmail.com";
-        String To = "duc010298@gmail.com";
-        String Subject = "Vào ngày ";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String date = simpleDateFormat.format(customerHiddenEntity.getDayVisit());
-        Subject += date;
-        Subject += " đã có 1 ca đã được in nhưng chưa được lưu";
-        sendMail.sendMailHtml(customerHiddenEntity, From, To, Subject);
+        sendMail.sendMailHtml(customerHiddenEntity);
     }
 
     @GetMapping(path = "/Search")
