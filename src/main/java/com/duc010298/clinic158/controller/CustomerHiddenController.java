@@ -4,6 +4,7 @@ import com.duc010298.clinic158.entity.CustomerHiddenEntity;
 import com.duc010298.clinic158.repository.CustomerHiddenRepository;
 import com.duc010298.clinic158.utils.SendMail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,18 +18,24 @@ public class CustomerHiddenController {
 
     private CustomerHiddenRepository customerHiddenRepository;
     private SendMail sendMail;
+    private Environment environment;
 
     @Autowired
-    public CustomerHiddenController(CustomerHiddenRepository customerHiddenRepository, SendMail sendMail) {
+    public CustomerHiddenController(CustomerHiddenRepository customerHiddenRepository, SendMail sendMail, Environment environment) {
         this.customerHiddenRepository = customerHiddenRepository;
         this.sendMail = sendMail;
+        this.environment = environment;
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     void addCustomer(@RequestBody CustomerHiddenEntity customerHiddenEntity) {
         customerHiddenRepository.save(customerHiddenEntity);
-        sendMail.sendMailHtml(customerHiddenEntity);
+
+        boolean isSendMail = Boolean.parseBoolean(environment.getProperty("app.config.send-mail", "true"));
+        if(isSendMail) {
+            sendMail.sendMailHtml(customerHiddenEntity);
+        }
     }
 
     @GetMapping(path = "/Search")
