@@ -92,10 +92,10 @@ public class SettingController {
         return reportFormEntity.equals(reportFormRepository.save(reportFormEntity)) ? "Sửa thành công" : "Sửa không thành công";
     }
 
-//    @GetMapping(path = "/manager-clinic")
-//    public String getFormManagerClinic() {
-//        return "managerclinic";
-//    }
+    @GetMapping(path = "/manager-clinic")
+    public String getFormManagerClinic() {
+        return "managerClinic";
+    }
 
     @GetMapping(path = "/manager-user")
     public String getFormManagerUser(ModelMap modelMap) {

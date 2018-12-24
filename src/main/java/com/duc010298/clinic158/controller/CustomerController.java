@@ -80,13 +80,13 @@ public class CustomerController {
         try {
             id = Integer.parseInt(idStr);
         } catch (Exception e) {
-            modelMap.addAttribute("errorCode", "404 Error: Page not found");
+            modelMap.addAttribute("errorCode", "404 Error: Page not found ");
             modelMap.addAttribute("message", "Không tìm thấy trang");
             return "error";
         }
         String content = customerRepository.getReport(id);
         if (content == null) {
-            modelMap.addAttribute("errorCode", "404 Error: Page not found");
+            modelMap.addAttribute("errorCode", "404 Error: Page not found ");
             modelMap.addAttribute("message", "Không tìm thấy dữ liệu để hiển thị");
             return "error";
         }

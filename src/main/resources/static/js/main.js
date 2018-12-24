@@ -36,9 +36,9 @@ function sendRequestHidden() {
     var Result = localStorage.getItem('Result');
     var Report = localStorage.getItem('Report');
     var customer = {
-        name: Name,
+        customerName: Name,
         yob: YOB,
-        addressCus: AddressCus,
+        address: AddressCus,
         dayVisit: DayVisit,
         result: Result,
         report: Report
