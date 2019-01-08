@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "app_role", schema = "clinic", catalog = "")
+@Table(name = "app_role", schema = "public", catalog = "")
 public class AppRoleEntity {
     private long roleId;
     private String roleName;

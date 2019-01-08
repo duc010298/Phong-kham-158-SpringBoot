@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "customer_hidden", schema = "clinic", catalog = "")
+@Table(name = "customer_hidden", schema = "public", catalog = "")
 public class CustomerHiddenEntity {
     private int id;
     private String customerName;

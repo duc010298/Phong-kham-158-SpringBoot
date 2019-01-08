@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "app_user", schema = "clinic", catalog = "")
+@Table(name = "app_user", schema = "public", catalog = "")
 public class AppUserEntity {
     private long userId;
     private String userName;
