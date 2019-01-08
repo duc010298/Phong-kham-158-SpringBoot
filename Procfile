@@ -1,1 +1,0 @@
-java -Dserver.port=$PORT $JAVA_0PTS -jar target/phongkham158.jar
