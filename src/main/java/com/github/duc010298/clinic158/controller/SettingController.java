@@ -104,11 +104,8 @@ public class SettingController {
 
         List<AppUserEntity> appUserEntities = appUserRepository.findAll();
         Map<String, List<String>> listMap = new HashMap<>();
-        String userName;
         for (AppUserEntity appUserEntity : appUserEntities) {
-            userName = appUserEntity.getUserName();
-            if(appUserEntity.getUserId() == 1) userName += " (root)";
-            listMap.put(userName, appRoleRepository.getRoleNames(appUserEntity.getUserId()));
+            listMap.put(appUserEntity.getUserName(), appRoleRepository.getRoleNames(appUserEntity.getUserId()));
         }
         modelMap.addAttribute("listMap", listMap);
         return "managerUser";
