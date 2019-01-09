@@ -169,9 +169,13 @@ public class SettingController {
 
     @PostMapping(path = "/manager-user/change-user-password", produces = "text/plain;charset=UTF-8")
     public @ResponseBody
-    String changePassword(@RequestParam("username") String username, @RequestParam("password") String password) {
+    String changePassword(@RequestParam("username") String username, @RequestParam("oldPassword") String oldPassword, @RequestParam("password") String password) {
         AppUserEntity appUserEntity = appUserRepository.findByUserName(username);
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        if(!encoder.matches(oldPassword, appUserEntity.getEncryptedPassword())) return "Mật khẩu cũ không đúng";
+        
         password = encoder.encode(password);
         appUserEntity.setEncryptedPassword(password);
 

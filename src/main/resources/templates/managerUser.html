@@ -34,7 +34,8 @@
                 kết quả</a></li>
             <li><a class="nav-link" th:href="@{/setting/manager-clinic}"><i class="fas fa-table"></i> Quản lí
                 phòng khám</a></li>
-            <li class="active"><a class="nav-link" th:href="@{/setting/manager-user}"><i class="fas fa-user"></i> Quản lí đăng
+            <li class="active"><a class="nav-link" th:href="@{/setting/manager-user}"><i class="fas fa-user"></i> Quản
+                lí đăng
                 nhập</a></li>
         </ul>
         <ul class="navbar-nav">
@@ -137,18 +138,21 @@
                 </select>
             </div>
             <div class="form-group">
-                <div class="form-group">
-                    <label for="password2">Mật khẩu mới:</label>
-                    <input type="password" class="form-control" id="password2" placeholder="Mật khẩu mới">
-                </div>
-                <div class="form-group">
-                    <label for="rePassword2">Nhập lại mật khẩu:</label>
-                    <input type="password" class="form-control" id="rePassword2" placeholder="Nhập lại mật khẩu">
-                </div>
+                <label for="password3">Mật khẩu cũ:</label>
+                <input type="password" class="form-control" id="password3" placeholder="Mật khẩu cũ">
+            </div>
+            <div class="form-group">
+                <label for="password2">Mật khẩu mới:</label>
+                <input type="password" class="form-control" id="password2" placeholder="Mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label for="rePassword2">Nhập lại mật khẩu:</label>
+                <input type="password" class="form-control" id="rePassword2" placeholder="Nhập lại mật khẩu">
             </div>
             <hr>
             <button type="button" class="btn btn-hidden">.</button>
-            <button type="button" id="btn-change-password" class="btn btn-primary btn-custom float-right">Đổi mật khẩu</button>
+            <button type="button" id="btn-change-password" class="btn btn-primary btn-custom float-right">Đổi mật khẩu
+            </button>
         </div>
     </div>
 </div>
@@ -189,7 +193,7 @@
         }
 
         var rePassword = $("#rePassword").val();
-        if(password !== rePassword) {
+        if (password !== rePassword) {
             notify("Lỗi", "Mật khẩu nhập lại không đúng");
             return;
         }
@@ -278,14 +282,15 @@
 
     $("#btn-change-password").on('click', function () {
         var username = $("#user3 option:selected").text();
+        var oldPassword = $("#password3").val()
         var password = $("#password2").val();
-        if (password == "") {
+        if (password == "" || oldPassword == "") {
             notify("Thông báo", "Chưa nhập mật khẩu");
             return;
         }
 
         var rePassword = $("#rePassword2").val();
-        if(password !== rePassword) {
+        if (password !== rePassword) {
             notify("Lỗi", "Mật khẩu nhập lại không đúng");
             return;
         }
@@ -296,6 +301,7 @@
             dataType: 'html',
             data: {
                 username: username,
+                oldPassword: oldPassword,
                 password: password
             },
             error: function () {
