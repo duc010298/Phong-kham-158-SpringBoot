@@ -35,18 +35,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-
-//        TODO chỉnh lại đường dẫn viết hoa thường
-
-        http.authorizeRequests().antMatchers("/**").anonymous();
-//        http.authorizeRequests().antMatchers("/login").anonymous();
-//        http.authorizeRequests().antMatchers("/", "/customer/**", "/form/**",
-//                "/report/**", "/setting/manager-form/**").hasRole("MEMBER");
-//        http.authorizeRequests().antMatchers("/setting/manager-clinic/**", "/customerHidden/**").hasRole("MASTER");
-//        http.authorizeRequests().antMatchers("/setting/manager-user/**").hasRole("ADMIN");
-
-        http.authorizeRequests().and().formLogin()
+        http
+                .authorizeRequests()
+                .antMatchers("/resources/**", "/bootstrap/**", "/jquery/**").permitAll()
+                .antMatchers("/login").anonymous()
+                .antMatchers("/setting/manager-clinic/**", "/customerHidden/**").hasAnyRole("MASTER", "ADMIN")
+                .antMatchers("/setting/manager-user/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")

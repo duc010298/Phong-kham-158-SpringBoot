@@ -104,8 +104,11 @@ public class SettingController {
 
         List<AppUserEntity> appUserEntities = appUserRepository.findAll();
         Map<String, List<String>> listMap = new HashMap<>();
+        String userName;
         for (AppUserEntity appUserEntity : appUserEntities) {
-            listMap.put(appUserEntity.getUserName(), appRoleRepository.getRoleNames(appUserEntity.getUserId()));
+            userName = appUserEntity.getUserName();
+            if(appUserEntity.getUserId() == 1) userName += " (root)";
+            listMap.put(userName, appRoleRepository.getRoleNames(appUserEntity.getUserId()));
         }
         modelMap.addAttribute("listMap", listMap);
         return "managerUser";
@@ -115,6 +118,10 @@ public class SettingController {
     public @ResponseBody
     String addUser(@RequestParam("username") String username, @RequestParam("password") String password,
                    @RequestParam("role[]") String[] role) {
+        if (appUserRepository.findByUserName(username) != null) {
+            return "Tên tài khoản đã tồn tại";
+        }
+
         AppUserEntity newUserEntity = new AppUserEntity();
         newUserEntity.setUserName(username);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -133,6 +140,11 @@ public class SettingController {
     public @ResponseBody
     String editRoleOfUser(@RequestParam("username") String username, @RequestParam("role[]") String[] role) {
         AppUserEntity appUserEntity = appUserRepository.findByUserName(username);
+
+        //The first account added is Root Account
+        if(appUserEntity.getUserId() == 1) {
+            return "Không thể sửa tài khoản root";
+        }
         Set<AppRoleEntity> appRoleEntities = processRoleArray(role);
         appUserEntity.setAppRoleEntities(appRoleEntities);
 
@@ -143,6 +155,12 @@ public class SettingController {
     public @ResponseBody
     String deleteUser(@RequestParam("username") String username) {
         AppUserEntity appUserEntity = appUserRepository.findByUserName(username);
+
+        //The first account added is Root Account
+        if(appUserEntity.getUserId() == 1) {
+            return "Không thể xóa tài khoản root";
+        }
+
         if (appUserEntity == null) return "Xóa tài khoản không thành công";
         try {
             appUserRepository.deleteById(appUserEntity.getUserId());
