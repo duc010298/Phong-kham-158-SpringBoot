@@ -13,4 +13,7 @@ public interface CustomerHiddenRepository extends JpaRepository<CustomerHiddenEn
 
     @Query("SELECT c.report FROM CustomerHiddenEntity c WHERE c.id = ?1")
     String getReport(Integer id);
+
+    @Query("DELETE FROM CustomerEntity c WHERE c.dayVisit <= ?1")
+    void deleteCustomerBeforeDay(Date date);
 }

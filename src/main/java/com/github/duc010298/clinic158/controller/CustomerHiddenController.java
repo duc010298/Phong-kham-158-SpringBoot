@@ -63,4 +63,6 @@ public class CustomerHiddenController {
         modelMap.addAttribute("content", content);
         return "reportDetail";
     }
+
+//    TODO search by month and search by day to day
 }
