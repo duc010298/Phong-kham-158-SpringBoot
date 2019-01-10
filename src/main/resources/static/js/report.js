@@ -7,7 +7,7 @@ $("html, body").animate({
     scrollTop: 0
 }, 'slow');
 
-function removeSign(str) {
+function removeSignAndLowerCase(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
     str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
@@ -22,6 +22,7 @@ function removeSign(str) {
     str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "u");
     str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "y");
     str = str.replace(/Đ/g, "d");
+    str = str.toLowerCase();
     return str;
 }
 
@@ -47,11 +48,10 @@ document.addEventListener("click", function () {
 });
 
 $(".grid input").on('input', function () {
-    console.log("insd");
     var thisId = $(this).attr("id");
     var autoId = "#auto-" + thisId;
     var value = $(this).val();
-    value = removeSign(value.trim());
+    value = removeSignAndLowerCase(value.trim());
     $.ajax({
         url: document.location.origin + "/customer/SearchContent",
         type: 'GET',
@@ -61,7 +61,6 @@ $(".grid input").on('input', function () {
             value: value
         }
     }).done(function (result) {
-        console.log(result);
         importIntoAuto(result, value, autoId);
     });
     $(autoId).attr("style", "display: block");
@@ -69,7 +68,7 @@ $(".grid input").on('input', function () {
 
 function importIntoAuto(json, value, autoId) {
     var length = json.length;
-    value = removeSign(value);
+    value = removeSignAndLowerCase(value);
     var count = 0;
     var str = "";
     while (true) {
@@ -78,7 +77,7 @@ function importIntoAuto(json, value, autoId) {
         }
         var jsonContent = json[count];
         var strTemp = jsonContent.toLowerCase();
-        strTemp = removeSign(strTemp);
+        strTemp = removeSignAndLowerCase(strTemp);
         var indexStart = strTemp.indexOf(value);
         var indexEnd = indexStart + value.length;
         str += "<div id=\"input-item-";
@@ -162,20 +161,20 @@ $("#btn-reload").on('click', function () {
 
 $("#btn-search").on("click", function () {
     var Name = $("#inputName").val();
-    var NameS = removeSign(Name.trim());
+    var NameS = removeSignAndLowerCase(Name.trim());
     var age = $("#inputAge").val();
     var YOB = "";
     if(age != "") {
         YOB = age < 100 ? (new Date()).getFullYear() - age : age;
     }
     var AddressCus = $("#inputAddress").val();
-    var AddressCusS = removeSign(AddressCus.trim());
-    var DayVisitstr = $("#inputDayVisit").val();
-    if(DayVisitstr != "" && DayVisitstr.length != 10) {
+    var AddressCusS = removeSignAndLowerCase(AddressCus.trim());
+    var DayVisitStr = $("#inputDayVisit").val();
+    if(DayVisitStr != "" && DayVisitStr.length != 10) {
         notify("Lỗi", "Ngày không được nhập chính xác");
         return;
     }
-    var DayVisit = DayVisitstr == "" ? null : DayVisitstr;
+    var DayVisit = DayVisitStr == "" ? null : DayVisitstr;
     $.ajax({
         url: document.location.origin + "/customer/Search",
         type: 'GET',

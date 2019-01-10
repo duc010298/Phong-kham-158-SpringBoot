@@ -64,7 +64,6 @@ public class CustomerController {
             customerEntities = customerRepository.searchTop100CustomerWithoutDayVisit(nameSearch, yob, addressSearch);
         } else if (dayVisit == null && yob == 0) {
             customerEntities = customerRepository.searchTop100CustomerWithoutYobAndDayVisit(nameSearch, addressSearch);
-            System.out.println("abc:" + customerEntities.get(0).toString());
         } else if (dayVisit != null && yob != 0) {
             customerEntities = customerRepository.searchTop100Customer(nameSearch, yob, addressSearch, dayVisit);
         } else {

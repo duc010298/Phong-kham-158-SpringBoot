@@ -7,7 +7,7 @@ $("html, body").animate({
     scrollTop: 0
 }, 'slow');
 
-function removeSign(str) {
+function removeSignAndLowerCase(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
     str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
@@ -22,6 +22,7 @@ function removeSign(str) {
     str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "u");
     str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "y");
     str = str.replace(/Đ/g, "d");
+    str = str.toLowerCase();
     return str;
 }
 
@@ -147,7 +148,7 @@ $("#BtnAcceptSave").on("click", function () {
         return;
     }
     Name = Name.trim();
-    var NameS = removeSign(Name);
+    var NameS = removeSignAndLowerCase(Name);
     var AgeString = $("#age").val();
     var Age = "";
     for (var i = 0; i < AgeString.length; i++) {
@@ -169,7 +170,7 @@ $("#BtnAcceptSave").on("click", function () {
         return;
     }
     AddressCus = AddressCus.trim();
-    var AddressCusS = removeSign(AddressCus);
+    var AddressCusS = removeSignAndLowerCase(AddressCus);
     var DayVisit = new Date();
     var ExpectedDOBstr = $("#ExpectedDOB").val();
     if(ExpectedDOBstr.length != 10 && ExpectedDOBstr != "") {
