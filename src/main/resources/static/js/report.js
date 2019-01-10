@@ -174,7 +174,7 @@ $("#btn-search").on("click", function () {
         notify("Lỗi", "Ngày không được nhập chính xác");
         return;
     }
-    var DayVisit = DayVisitStr == "" ? null : DayVisitstr;
+    var DayVisit = DayVisitStr == "" ? null : DayVisitStr;
     $.ajax({
         url: document.location.origin + "/customer/Search",
         type: 'GET',
