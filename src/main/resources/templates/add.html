@@ -35,7 +35,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand" th:href="@{/}">Phòng khám 158</a>
+            <a class="navbar-brand" th:href="@{/}" th:text="|Xin chào, ${username}|">...</a>
             <li class="active"><a class="nav-link" th:href="@{/setting/manager-form}"><i class="fas fa-file-word"></i> Quản lí
                 kết quả</a></li>
             <li><a class="nav-link" th:href="@{/setting/manager-clinic}"><i class="fas fa-table"></i> Quản lí phòng khám</a></li>

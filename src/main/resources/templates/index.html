@@ -61,7 +61,7 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a th:href="@{/}">Phòng khám 158</a>
+                <a th:href="@{/}" th:text="|Xin chào, ${username}|">...</a>
             </li>
             <li th:each="reportForm:${reportForms}" th:class="(${reportForm.getReportName()} == ${title}) ? 'active' : ''">
                 <a th:href="|/reportForm/${reportForm.getId()}|" th:text="${reportForm.getReportName()}">...</a>

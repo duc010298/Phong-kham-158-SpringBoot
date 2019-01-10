@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping(path = "/reportForm")
 public class ReportFormController {
@@ -21,7 +23,9 @@ public class ReportFormController {
     }
 
     @GetMapping(value = "/{id}")
-    public String getReportFormContent(@PathVariable("id") String id, ModelMap modelMap) {
+    public String getReportFormContent(@PathVariable("id") String id, ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
+
         ReportFormEntity reportFormEntity;
         try {
             int idInt = Integer.parseInt(id);

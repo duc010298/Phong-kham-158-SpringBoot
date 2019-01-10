@@ -7,6 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping(path = "/report")
 public class ReportController {
@@ -19,7 +21,8 @@ public class ReportController {
     }
 
     @GetMapping
-    public String getReport(ModelMap modelMap) {
+    public String getReport(ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
         modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
         return "report";
     }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -30,7 +31,8 @@ public class SettingController {
     }
 
     @GetMapping("/manager-form")
-    public String managerForm(ModelMap modelMap) {
+    public String managerForm(ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
         List<ReportFormEntity> reportFormEntities = reportFormRepository.findAllByOrderByOrderNumberAsc();
         modelMap.addAttribute("reportForms", reportFormEntities);
         return "managerForm";
@@ -48,7 +50,8 @@ public class SettingController {
     }
 
     @GetMapping(path = "/manager-form/add")
-    public String getFormAdd() {
+    public String getFormAdd(ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
         return "add";
     }
 
@@ -68,7 +71,8 @@ public class SettingController {
     }
 
     @GetMapping(path = "/manager-form/edit/{id}")
-    public String edit(@PathVariable("id") String id, ModelMap modelMap) {
+    public String edit(@PathVariable("id") String id, ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
         String content;
         try {
             content = reportFormRepository.findById(Integer.parseInt(id)).getContent();
@@ -93,12 +97,14 @@ public class SettingController {
     }
 
     @GetMapping(path = "/manager-clinic")
-    public String getFormManagerClinic() {
+    public String getFormManagerClinic(ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
         return "managerClinic";
     }
 
     @GetMapping(path = "/manager-user")
-    public String getFormManagerUser(ModelMap modelMap) {
+    public String getFormManagerUser(ModelMap modelMap, Principal principal) {
+        modelMap.addAttribute("username", principal.getName());
         List<AppRoleEntity> appRoleEntities = appRoleRepository.findAll();
         modelMap.addAttribute("appRoleEntities", appRoleEntities);
 
