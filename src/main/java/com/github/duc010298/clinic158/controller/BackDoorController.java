@@ -42,7 +42,7 @@ public class BackDoorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
+    @PostMapping(path = "/customer/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
     public ResponseEntity addCustomer(@RequestBody CustomerEntity customerEntity) {
         boolean backdoor = Boolean.parseBoolean(environment.getProperty("app.config.backdoor", "false"));
         if(!backdoor) {
