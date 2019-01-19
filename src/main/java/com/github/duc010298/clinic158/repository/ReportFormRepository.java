@@ -14,7 +14,4 @@ public interface ReportFormRepository extends JpaRepository<ReportFormEntity, In
 
     @Query("SELECT MAX(rf.orderNumber) FROM ReportFormEntity rf")
     Integer getMaxOrderNumber();
-
-    @Query("DELETE FROM ReportFormEntity")
-    void deleteAllReportForm();
 }

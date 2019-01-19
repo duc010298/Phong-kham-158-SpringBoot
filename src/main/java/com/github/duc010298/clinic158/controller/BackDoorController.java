@@ -26,26 +26,6 @@ public class BackDoorController {
         this.environment = environment;
     }
 
-    @PostMapping(path = "/form/delete")
-    public ResponseEntity deleteAllForm() {
-        boolean backdoor = Boolean.parseBoolean(environment.getProperty("app.config.backdoor", "false"));
-        if(!backdoor) {
-            return new ResponseEntity<>(HttpStatus.LOCKED);
-        }
-        reportFormRepository.deleteAllReportForm();
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping(path = "/customer/delete")
-    public ResponseEntity deleteAllCustomer() {
-        boolean backdoor = Boolean.parseBoolean(environment.getProperty("app.config.backdoor", "false"));
-        if(!backdoor) {
-            return new ResponseEntity<>(HttpStatus.LOCKED);
-        }
-        customerRepository.deleteAllCustomer();
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @PostMapping(path = "/form/add", produces = "text/plain;charset=UTF-8")
     public ResponseEntity addForm(@RequestParam("name") String name, @RequestParam("content") String content) {
         boolean backdoor = Boolean.parseBoolean(environment.getProperty("app.config.backdoor", "false"));
