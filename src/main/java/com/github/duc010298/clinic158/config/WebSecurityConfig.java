@@ -39,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
+                .antMatchers("/backdoor/**").anonymous()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/setting/manager-clinic/**", "/customerHidden/**").hasAnyRole("MASTER", "ADMIN")

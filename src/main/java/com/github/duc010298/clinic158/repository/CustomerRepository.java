@@ -69,4 +69,7 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
     @Query("SELECT c.report FROM CustomerEntity c WHERE c.id = ?1")
     String getReport(Integer id);
 
+    @Query("DELETE FROM CustomerEntity ")
+    void deleteAllCustomer();
+
 }
