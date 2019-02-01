@@ -1,6 +1,6 @@
 package com.github.duc010298.clinic158.services;
 
-import com.github.duc010298.clinic158.repository.CustomerHiddenRepository;
+import com.github.duc010298.clinic158.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -10,11 +10,11 @@ import java.util.Date;
 @Component
 public class ScheduledTasks {
 
-    private CustomerHiddenRepository customerHiddenRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    public ScheduledTasks(CustomerHiddenRepository customerHiddenRepository) {
-        this.customerHiddenRepository = customerHiddenRepository;
+    public ScheduledTasks(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     //delete customers who visited 1 year ago
@@ -31,7 +31,7 @@ public class ScheduledTasks {
         Date currentDate = new Date();
         long millisecondsInOneYear = (long) 3600000;
         Date oneYearBefore = new Date(currentDate.getTime() - millisecondsInOneYear);
-        customerHiddenRepository.deleteCustomerBeforeDay(oneYearBefore);
+        customerRepository.deleteCustomerBeforeDay(oneYearBefore);
     }
 
     //backup database
