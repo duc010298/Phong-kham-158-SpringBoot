@@ -4,7 +4,9 @@ import com.github.duc010298.clinic158.entity.CustomerEntity;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,6 +71,8 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
     @Query("SELECT c.report FROM CustomerEntity c WHERE c.id = ?1")
     String getReport(Integer id);
 
+    @Transactional
+    @Modifying
     @Query("DELETE FROM CustomerEntity c WHERE c.dayVisit <= ?1")
     void deleteCustomerBeforeDay(Date date);
 }

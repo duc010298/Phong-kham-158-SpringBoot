@@ -21,7 +21,7 @@ public class ScheduledTasks {
     //At 23:00:00pm, on every Tuesday, every month
     //@Scheduled(cron = "0 0 23 ? * TUE")
     //TODO: for test delete on server
-    @Scheduled(cron = "0 30 9 ? * FRI")
+    @Scheduled(cron = "0 38 23 ? * FRI")
     public void deleteOldCustomer() {
 //        Date currentDate = new Date();
 //        long millisecondsInOneYear = (long) 365 * 24 * 60 * 60 * 1000;
