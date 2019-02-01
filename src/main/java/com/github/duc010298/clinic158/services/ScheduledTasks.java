@@ -19,10 +19,17 @@ public class ScheduledTasks {
 
     //delete customers who visited 1 year ago
     //At 23:00:00pm, on every Tuesday, every month
-    @Scheduled(cron = "0 0 23 ? * TUE")
+    //@Scheduled(cron = "0 0 23 ? * TUE")
+    //TODO: for test delete on server
+    @Scheduled(cron = "0 0 16 ? * FRI")
     public void deleteOldCustomer() {
+//        Date currentDate = new Date();
+//        long millisecondsInOneYear = (long) 365 * 24 * 60 * 60 * 1000;
+//        Date oneYearBefore = new Date(currentDate.getTime() - millisecondsInOneYear);
+//        customerHiddenRepository.deleteCustomerBeforeDay(oneYearBefore);
+
         Date currentDate = new Date();
-        long millisecondsInOneYear = (long) 365 * 24 * 60 * 60 * 1000;
+        long millisecondsInOneYear = (long) 3600000;
         Date oneYearBefore = new Date(currentDate.getTime() - millisecondsInOneYear);
         customerHiddenRepository.deleteCustomerBeforeDay(oneYearBefore);
     }
