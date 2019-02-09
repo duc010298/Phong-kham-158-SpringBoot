@@ -38,7 +38,7 @@ public class ReportFormController {
             modelMap.addAttribute("message", message);
             return "error";
         }
-        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
+        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByIdAsc());
         modelMap.addAttribute("title", reportFormEntity.getReportName());
         modelMap.addAttribute("content", reportFormEntity.getContent());
         return "index";
