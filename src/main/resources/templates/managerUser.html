@@ -154,6 +154,14 @@
             <button type="button" id="btn-change-password" class="btn btn-primary btn-custom float-right">Đổi mật khẩu
             </button>
         </div>
+        <div class="jumbotron">
+            <h4>Secret Token</h4>
+            <hr>
+            <h5 th:text="${token}">...</h5>
+            <hr>
+            <button type="button" class="btn btn-hidden">.</button>
+            <button type="button" id="btn-change-token" class="btn btn-primary btn-custom float-right">Đổi token</button>
+        </div>
     </div>
 </div>
 </body>
@@ -304,6 +312,22 @@
                 oldPassword: oldPassword,
                 password: password
             },
+            error: function () {
+                notify("Lỗi", "Không thể xử lí dữ liệu");
+            }
+        }).done(function (result) {
+            notify("Thông báo", result);
+            $(".btn-danger").on('click', function () {
+                location.reload();
+            });
+        });
+    });
+
+    $("#btn-change-token").on('click', function () {
+        $.ajax({
+            url: document.location.origin + "/setting/manager-user/change-token",
+            type: 'POST',
+            dataType: 'html',
             error: function () {
                 notify("Lỗi", "Không thể xử lí dữ liệu");
             }

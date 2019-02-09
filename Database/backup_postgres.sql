@@ -1,15 +1,10 @@
--- Database: clinic
-
--- DROP DATABASE clinic;
-
-CREATE DATABASE clinic
-  WITH
-  OWNER = postgres
-  ENCODING = 'UTF8'
-  LC_COLLATE = 'Vietnamese_Vietnam.1258'
-  LC_CTYPE = 'Vietnamese_Vietnam.1258'
-  TABLESPACE = pg_default
-  CONNECTION LIMIT = -1;
+-- secret token
+create table if not exists token
+(
+  id serial not null primary key,
+  token varchar(32) not null
+);
+insert into token (token) values ('030f3e598bc34fbc81a8e472bf89e4b6');
 
 -- user manager
 create table if not exists app_user

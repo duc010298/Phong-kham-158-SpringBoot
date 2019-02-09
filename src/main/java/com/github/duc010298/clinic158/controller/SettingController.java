@@ -3,9 +3,11 @@ package com.github.duc010298.clinic158.controller;
 import com.github.duc010298.clinic158.entity.AppRoleEntity;
 import com.github.duc010298.clinic158.entity.AppUserEntity;
 import com.github.duc010298.clinic158.entity.ReportFormEntity;
+import com.github.duc010298.clinic158.entity.TokenEntity;
 import com.github.duc010298.clinic158.repository.AppRoleRepository;
 import com.github.duc010298.clinic158.repository.AppUserRepository;
 import com.github.duc010298.clinic158.repository.ReportFormRepository;
+import com.github.duc010298.clinic158.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,12 +21,14 @@ import java.util.*;
 @RequestMapping(path = "/setting")
 public class SettingController {
 
+    private TokenRepository tokenRepository;
     private ReportFormRepository reportFormRepository;
     private AppRoleRepository appRoleRepository;
     private AppUserRepository appUserRepository;
 
     @Autowired
-    public SettingController(ReportFormRepository reportFormRepository, AppRoleRepository appRoleRepository, AppUserRepository appUserRepository) {
+    public SettingController(TokenRepository tokenRepository, ReportFormRepository reportFormRepository, AppRoleRepository appRoleRepository, AppUserRepository appUserRepository) {
+        this.tokenRepository = tokenRepository;
         this.reportFormRepository = reportFormRepository;
         this.appRoleRepository = appRoleRepository;
         this.appUserRepository = appUserRepository;
@@ -104,6 +108,9 @@ public class SettingController {
 
     @GetMapping(path = "/manager-user")
     public String getFormManagerUser(ModelMap modelMap, Principal principal) {
+        TokenEntity tokenEntity = tokenRepository.findById(1);
+        modelMap.addAttribute("token", tokenEntity.getToken());
+
         modelMap.addAttribute("username", principal.getName());
         List<AppRoleEntity> appRoleEntities = appRoleRepository.findAll();
         modelMap.addAttribute("appRoleEntities", appRoleEntities);
@@ -186,6 +193,15 @@ public class SettingController {
         appUserEntity.setEncryptedPassword(password);
 
         return appUserEntity.equals(appUserRepository.save(appUserEntity)) ? "Đổi mật khẩu thành công" : "Đổi mật khẩu không thành công";
+    }
+
+    @PostMapping(path = "/manager-user/change-token", produces = "text/plain;charset=UTF-8")
+    public @ResponseBody
+    String changeToken() {
+        TokenEntity tokenEntity = tokenRepository.findById(1);
+        String newToken = UUID.randomUUID().toString().replace("-", "");
+        tokenEntity.setToken(newToken);
+        return tokenEntity.equals(tokenRepository.save(tokenEntity)) ? "Đổi token thành công" : "Đổi token không thành công";
     }
 
     private Set<AppRoleEntity> processRoleArray(@RequestParam("role[]") String[] role) {
