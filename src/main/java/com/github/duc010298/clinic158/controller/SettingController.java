@@ -37,7 +37,7 @@ public class SettingController {
     @GetMapping("/manager-form")
     public String managerForm(ModelMap modelMap, Principal principal) {
         modelMap.addAttribute("username", principal.getName());
-        List<ReportFormEntity> reportFormEntities = reportFormRepository.findAllByOrderByOrderNumberAsc();
+        List<ReportFormEntity> reportFormEntities = reportFormRepository.findAllByOrderByIdAsc();
         modelMap.addAttribute("reportForms", reportFormEntities);
         return "managerForm";
     }
