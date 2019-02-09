@@ -103,10 +103,12 @@
     $("#btn-search").on('click', function () {
         var dayVisit = $("#date").val();
         if (dayVisit == "") {
+            $(".modal-body").css("background-color", "red");
             notify("Thông báo", "Không được bỏ trống ô nhập ngày");
             return;
         }
         if (dayVisit.length != 10) {
+            $(".modal-body").css("background-color", "red");
             notify("Thông báo", "Ngày không được nhập chính xác");
             return;
         }
@@ -121,6 +123,7 @@
                 dayVisit: dayVisit
             },
             error: function () {
+                $(".modal-body").css("background-color", "red");
                 notify("Lỗi", "Không thể xử lí dữ liệu");
             }
         }).done(function (result) {

@@ -171,6 +171,7 @@ $("#btn-search").on("click", function () {
     var AddressCusS = removeSignAndLowerCase(AddressCus.trim());
     var DayVisitStr = $("#inputDayVisit").val();
     if(DayVisitStr != "" && DayVisitStr.length != 10) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Ngày không được nhập chính xác");
         return;
     }
@@ -186,9 +187,15 @@ $("#btn-search").on("click", function () {
             dayVisit: DayVisit
         },
         error: function(){
+            $(".modal-body").css("background-color", "red");
             notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
+        if(result.includes("Lỗi")) {
+            $(".modal-body").css("background-color", "red");
+        } else {
+            $(".modal-body").css("background-color", "");
+        }
         $("#display-result").html(result);
     });
 });

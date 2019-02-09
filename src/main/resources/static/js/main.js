@@ -124,6 +124,7 @@ $("#btn-print").on("click", function () {
 });
 
 $("#btn-save").on("click", function () {
+    $(".modal-body").css("background-color", "");
     $("#acceptSaveNotify").modal({backdrop: "static"});
 });
 
@@ -132,6 +133,7 @@ $("#btn-reload").on("click", function () {
 });
 
 $("#BtnAcceptSave").on("click", function () {
+    $(".modal-body").css("background-color", "");
     notify("Thông báo", "Đang xử lí");
     $.each($('textarea'), function () {
         var value = $(this).val();
@@ -144,6 +146,7 @@ $("#BtnAcceptSave").on("click", function () {
     var Name = $("#name").val();
     if (Name === "") {
         $("#modalSave").fadeOut();
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Chưa nhập tên");
         return;
     }
@@ -159,6 +162,7 @@ $("#BtnAcceptSave").on("click", function () {
     }
     if (Age === "") {
         $("#modalSave").fadeOut();
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Chưa nhập tuổi");
         return;
     }
@@ -166,6 +170,7 @@ $("#BtnAcceptSave").on("click", function () {
     var AddressCus = $("#address").val();
     if (AddressCus === "") {
         $("#modalSave").fadeOut();
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Chưa nhập địa chỉ");
         return;
     }
@@ -174,6 +179,7 @@ $("#BtnAcceptSave").on("click", function () {
     var DayVisit = new Date();
     var ExpectedDOBstr = $("#ExpectedDOB").val();
     if(ExpectedDOBstr.length != 10 && ExpectedDOBstr != "") {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Ngày sinh dự kiến được nhập không chính xác");
         return;
     }
@@ -202,11 +208,15 @@ $("#BtnAcceptSave").on("click", function () {
         contentType: 'application/json',
         data: JSON.stringify(customer),
         error: function(){
-            // TODO red alert if not successfully
+            $(".modal-body").css("background-color", "red");
             notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
-        // TODO red alert if not successfully
+        if(result.includes("Lỗi")) {
+            $(".modal-body").css("background-color", "red");
+        } else {
+            $(".modal-body").css("background-color", "");
+        }
         notify("Thông báo", result);
     });
     localStorage.clear();

@@ -81,9 +81,15 @@
                     id: id
                 },
                 error: function () {
+                    $(".modal-body").css("background-color", "");
                     notify("Lỗi", "Không thể xử lí dữ liệu");
                 }
             }).done(function (result) {
+                if(result.includes("Lỗi")) {
+                    $(".modal-body").css("background-color", "red");
+                } else {
+                    $(".modal-body").css("background-color", "");
+                }
                 notify("Thông báo", result);
                 $(".btn-danger").on('click', function () {
                     location.reload();

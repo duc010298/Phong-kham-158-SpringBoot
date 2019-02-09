@@ -100,14 +100,17 @@ $("#add-row").on('click', function () {
         }
     }
     if(value == "") {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng chưa được nhập");
         return;
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng phải là số");
         return;
     }
     if(value <= 0 || value > totalRow) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng nhập không đúng");
         return;
     }
@@ -126,14 +129,17 @@ $("#add-col").on('click', function () {
         }
     }
     if(value == "") {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí cột chưa được nhập");
         return;
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí cột phải là số");
         return;
     }
     if(value <= 0 || value > totalCol+1) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng cột không đúng");
         return;
     }
@@ -146,6 +152,7 @@ $("#delete-row").on("click", function () {
     var value = $("#number-delete-row").val();
     var totalRow = $('#table-content tr').length;
     if (totalRow == 2) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Không thể xóa toàn bộ hàng");
         return;
     }
@@ -157,14 +164,17 @@ $("#delete-row").on("click", function () {
         }
     }
     if(value == "") {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng chưa được nhập");
         return;
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng phải là số");
         return;
     }
     if(value <= 0 || value >= totalRow) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí hàng nhập không đúng");
         return;
     }
@@ -194,6 +204,7 @@ $("#delete-col").on("click", function () {
     var value = $("#number-delete-col").val();
     var totalCell = $('#table-content tr:first td').length;
     if(totalCell == 1) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Không thể xóa toàn bộ cột");
         return;
     }
@@ -205,14 +216,17 @@ $("#delete-col").on("click", function () {
         }
     }
     if(value == "") {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí cột chưa được nhập");
         return;
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí cột phải là số");
         return;
     }
     if(value <= 0 || value > totalCell) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Vị trí cột nhập không đúng");
         return;
     }
@@ -234,6 +248,7 @@ $("#merge-row").on("click", function () {
         }
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số hàng phải là số");
         return;
     }
@@ -244,6 +259,7 @@ $("#merge-row").on("click", function () {
         }
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số cột phải là số");
         return;
     }
@@ -254,20 +270,24 @@ $("#merge-row").on("click", function () {
         }
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số ô gộp phải là số");
         return;
     }
     var totalRow = $('#table-content tr').length;;
     var totalCol = $('#table-content tr:first td').length;
     if(row <= 0 || row >= totalRow) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số hàng được nhập không đúng");
         return;
     }
     if(col <= 0 || col >= totalCol) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số cột được nhập không đúng");
         return;
     }
     if(n <= 0 || n > (totalCol - col + 1)) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số ô gộp được nhập không đúng");
         return;
     }
@@ -301,6 +321,7 @@ $("#merge-col").on("click", function () {
         }
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số hàng phải là số");
         return;
     }
@@ -311,6 +332,7 @@ $("#merge-col").on("click", function () {
         }
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số cột phải là số");
         return;
     }
@@ -321,20 +343,24 @@ $("#merge-col").on("click", function () {
         }
     }
     if(b) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số ô gộp phải là số");
         return;
     }
     var totalRow = $('#table-content tr').length;
     var totalCol = $('#table-content tr:first td').length;
     if(row <= 0 || row >= totalRow) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số hàng được nhập không đúng");
         return;
     }
     if(col <= 0 || col >= totalCol) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số cột được nhập không đúng");
         return;
     }
     if(n <= 0 || n > (totalRow - row + 1)) {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Số ô gộp được nhập không đúng");
         return;
     }
@@ -381,8 +407,10 @@ $("#btn-save").on("click", function () {
     disableInput();
     var name = prompt("Nhập tên cho file này:", "Nhập tên");
     if(name == null) return;
+    $(".modal-body").css("background-color", "");
     notify("Thông báo", "Đang xử lí");
     if(name == "") {
+        $(".modal-body").css("background-color", "red");
         notify("Lỗi", "Chưa nhập tên file");
         return;
     }
@@ -403,15 +431,22 @@ $("#btn-save").on("click", function () {
             content: content
         },
         error: function(){
+            $(".modal-body").css("background-color", "red");
             notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
+        if(result.includes("Lỗi")) {
+            $(".modal-body").css("background-color", "red");
+        } else {
+            $(".modal-body").css("background-color", "");
+        }
         notify("Thông báo", result);
     });
     applyResizeable();
 });
 
 $("#btn-save-2").on("click", function () {
+    $(".modal-body").css("background-color", "");
     notify("Thông báo", "Đang xử lí");
     disabledResizeable();
     disableInput();
@@ -433,9 +468,15 @@ $("#btn-save-2").on("click", function () {
             content: content
         },
         error: function(){
+            $(".modal-body").css("background-color", "red");
             notify("Lỗi", "Không thể xử lí dữ liệu");
         }
     }).done(function (result) {
+        if(result.includes("Lỗi")) {
+            $(".modal-body").css("background-color", "red");
+        } else {
+            $(".modal-body").css("background-color", "");
+        }
         notify("Thông báo", result);
     });
     applyResizeable();
