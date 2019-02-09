@@ -45,8 +45,8 @@ public class BackDoorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(path = "/customer/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
-    public ResponseEntity addCustomer(@RequestParam("token") String token, @RequestBody CustomerEntity customerEntity) {
+    @PostMapping(path = "/customer/add/{token}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/plain;charset=UTF-8")
+    public ResponseEntity addCustomer(@PathVariable("token") String token, @RequestBody CustomerEntity customerEntity) {
         TokenEntity tokenEntity = tokenRepository.findById(1);
         if(!token.equals(tokenEntity.getToken())) {
             return new ResponseEntity<>(HttpStatus.LOCKED);
