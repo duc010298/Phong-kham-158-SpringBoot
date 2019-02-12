@@ -36,7 +36,7 @@ public class BackDoorController {
         }
 
         Integer maxOrderNumber = reportFormRepository.getMaxOrderNumber();
-        maxOrderNumber = maxOrderNumber == null ? 0 : maxOrderNumber++;
+        maxOrderNumber = maxOrderNumber == null ? 0 : (maxOrderNumber + 1);
         ReportFormEntity reportFormEntity = new ReportFormEntity();
         reportFormEntity.setOrderNumber(maxOrderNumber);
         reportFormEntity.setContent(content);

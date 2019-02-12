@@ -63,7 +63,7 @@ public class SettingController {
     public @ResponseBody
     String addForm(@RequestParam("name") String name, @RequestParam("content") String content) {
         Integer maxOrderNumber = reportFormRepository.getMaxOrderNumber();
-        maxOrderNumber = maxOrderNumber == null ? 0 : maxOrderNumber++;
+        maxOrderNumber = maxOrderNumber == null ? 0 : (maxOrderNumber + 1);
         ReportFormEntity reportFormEntity = new ReportFormEntity();
         reportFormEntity.setOrderNumber(maxOrderNumber);
         reportFormEntity.setContent(content);
