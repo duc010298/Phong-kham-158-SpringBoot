@@ -10,8 +10,6 @@ public interface ReportFormRepository extends JpaRepository<ReportFormEntity, In
 
     List<ReportFormEntity> findAllByOrderByOrderNumberAsc();
 
-    List<ReportFormEntity> findAllByOrderByIdAsc();
-
     ReportFormEntity findById(int id);
 
     @Query("SELECT MAX(rf.orderNumber) FROM ReportFormEntity rf")

@@ -23,7 +23,7 @@ public class HomeController {
     @GetMapping("/")
     public String initHome(ModelMap modelMap, Principal principal) {
         modelMap.addAttribute("username", principal.getName());
-        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByIdAsc());
+        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
         modelMap.addAttribute("title", "Phòng khám 158");
         modelMap.addAttribute("content", "<h1>Chưa có nội dung để hiển thị</h1>");
         return "index";

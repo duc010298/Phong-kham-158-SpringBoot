@@ -23,7 +23,7 @@ public class ReportController {
     @GetMapping
     public String getReport(ModelMap modelMap, Principal principal) {
         modelMap.addAttribute("username", principal.getName());
-        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByIdAsc());
+        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
         return "report";
     }
 }
