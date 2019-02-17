@@ -39,8 +39,8 @@ public class CustomerHiddenController {
     }
 
     @GetMapping(path = "/Search")
-    public String getResultSearchHidden(@RequestParam("dayVisit") Date dayVisit, ModelMap modelMap) {
-        modelMap.addAttribute("customers", customerHiddenRepository.findAllByDayVisitOrderByDayVisit(dayVisit));
+    public String getResultSearchHidden(@RequestParam("fromDate") Date fromDate, @RequestParam("toDate") Date toDate, ModelMap modelMap) {
+        modelMap.addAttribute("customers", customerHiddenRepository.findAllByDayVisitBetweenOrderByDayVisit(fromDate, toDate));
         return "resultHidden";
     }
 
@@ -63,6 +63,4 @@ public class CustomerHiddenController {
         modelMap.addAttribute("content", content);
         return "reportDetail";
     }
-
-//    TODO search by month and search by day to day
 }

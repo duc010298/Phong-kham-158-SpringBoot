@@ -44,9 +44,53 @@
 </nav>
 <div class="container-custom">
     <div class="jumbotron  jumbotron-custom-2">
-        <div class="form-group">
-            <h3>Nhập ngày cần xem:</h3>
-            <input type="text" class="form-control" id="date" placeholder="dd/mm/yyyy">
+        <h3>Chọn ngày cần xem:</h3>
+        <hr>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="today">Hôm nay
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="3daysago">3 ngày gần đây
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="thisweek">Tuần này
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="thismonth">Tháng này
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="3monthsago">3 tháng gần đây
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="thisyear">Năm nay
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="chooseDate" value="lastyear">Năm ngoái
+            </label>
+        </div>
+        <hr>
+        <div class="grid-2">
+            <div class="form-group">
+                <label for="fromDate">Từ ngày:</label>
+                <input type="text" class="form-control" id="fromDate" placeholder="dd/mm/yyyy">
+            </div>
+            <div class="form-group">
+                <label for="toDate">Đến ngày:</label>
+                <input type="text" class="form-control" id="toDate" placeholder="dd/mm/yyyy">
+            </div>
         </div>
         <button type="button" class="btn btn-hidden">.</button>
         <button type="button" id="btn-reload" class="btn btn-danger btn-custom float-right"><i
@@ -57,7 +101,7 @@
         </button>
     </div>
     <div class="message">
-        <h5>Danh sách các ca đã in nhưng không được lưu ngày: <span id="MsgDate">...</span></h5>
+        <h5>Danh sách các ca đã in nhưng không được lưu <span id="MsgDate">...</span></h5>
         <h5>Tổng số ca: <span id="MsgTotal">...</span></h5>
     </div>
     <div class="table-result" id="display-result"></div>
@@ -66,6 +110,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script th:src="@{/resources/js/cleave.min.js}"></script>
+<script th:src="@{/resources/js/moment.js}"></script>
 <script>
     function notify(title, message) {
         $("#notifyModal .modal-title").html(title);
@@ -91,36 +136,141 @@
         }
     }
 
-    new Cleave('#date', {
+    new Cleave('#fromDate', {
+        date: true,
+        datePattern: ['d', 'm', 'Y']
+    });
+
+    new Cleave('#toDate', {
         date: true,
         datePattern: ['d', 'm', 'Y']
     });
 
     $("#btn-reload").on('click', function () {
-        $("#date").val("");
+        $("#fromDate").val("");
+        $("#toDate").val("");
+        $("input[name='chooseDate']").prop("checked", false);
     });
 
+   $("input[name='chooseDate']").on('click', function () {
+       var value = $(this).val();
+       var d = new Date(),
+           month = '' + (d.getMonth() + 1),
+           day = '' + d.getDate(),
+           year = d.getFullYear();
+       switch(value) {
+           case "today":
+               var today = [day, month, year].join('/');
+               $("#fromDate").val(today);
+               $("#toDate").val(today);
+               break;
+           case "3daysago":
+               var fromDate = new Date();
+               fromDate.setDate(fromDate.getDate() - 2);
+               var monthF = '' + (fromDate.getMonth() + 1),
+                   dayF = '' + fromDate.getDate(),
+                   yearF = fromDate.getFullYear();
+               $("#fromDate").val([dayF, monthF, yearF].join('/'));
+               $("#toDate").val([day, month, year].join('/'));
+               break;
+           case "thisweek":
+               var dayMon = d.getDay();
+               var diff = d.getDate() - dayMon + (dayMon == 0 ? -6:1);
+               var monday = new Date(d.setDate(diff)),
+                   monthM = '' + (monday.getMonth() + 1),
+                   dayM = '' + monday.getDate(),
+                   yearM = monday.getFullYear();
+
+               $("#fromDate").val([dayM, monthM, yearM].join('/'));
+               $("#toDate").val([day, month, year].join('/'));
+               break;
+           case "thismonth":
+               $("#fromDate").val([1, month, year].join('/'));
+               $("#toDate").val([day, month, year].join('/'));
+               break;
+           case "3monthsago":
+               var fromDate = new Date();
+               fromDate.setMonth(fromDate.getMonth() - 2);
+               var monthF = '' + (fromDate.getMonth() + 1),
+                   dayF = '' + fromDate.getDate(),
+                   yearF = fromDate.getFullYear();
+               $("#fromDate").val([dayF, monthF, yearF].join('/'));
+               $("#toDate").val([day, month, year].join('/'));
+               break;
+           case "thisyear":
+               $("#fromDate").val([1, 1, year].join('/'));
+               $("#toDate").val([day, month, year].join('/'));
+               break;
+           case "lastyear":
+               $("#fromDate").val([1, 1, year-1].join('/'));
+               $("#toDate").val([31, 12, year-1].join('/'));
+               break;
+
+       }
+   });
+
+    function isValidDate(str) {
+        var d = moment(str,'D/M/YYYY');
+        if(d == null || !d.isValid()) return false;
+
+        return str.indexOf(d.format('D/M/YYYY')) >= 0
+            || str.indexOf(d.format('DD/MM/YYYY')) >= 0;
+    }
+
     $("#btn-search").on('click', function () {
-        var dayVisit = $("#date").val();
-        if (dayVisit == "") {
+        var fromDate = $("#fromDate").val();
+        var toDate = $("#toDate").val();
+        if (fromDate == "" || toDate == "") {
             $(".modal-body").css("background-color", "red");
             notify("Thông báo", "Không được bỏ trống ô nhập ngày");
             return;
         }
-        if (dayVisit.length != 10) {
+        if (!(isValidDate(fromDate) && isValidDate(toDate))) {
             $(".modal-body").css("background-color", "red");
             notify("Thông báo", "Ngày không được nhập chính xác");
             return;
         }
-        $("#MsgDate").html(dayVisit);
-        var parts = dayVisit.split("/");
-        dayVisit = new Date(parts[2], parts[1] - 1, parts[0]);
+        var radio = $("input[name='chooseDate']:checked").val();
+        if(radio === undefined) {
+            $("#MsgDate").html("từ ngày " + fromDate + " đến ngày " + toDate);
+        } else {
+            switch(radio) {
+                case "today":
+                    $("#MsgDate").html("trong hôm nay");
+                    break;
+                case "3daysago":
+                    $("#MsgDate").html("trong 3 ngày gần đây nhất");
+                    break;
+                case "thisweek":
+                    $("#MsgDate").html("trong tuần này");
+                    break;
+                case "thismonth":
+                    $("#MsgDate").html("trong tháng nay");
+                    break;
+                case "3monthsago":
+                    $("#MsgDate").html("trong 3 tháng gần đây nhất");
+                    break;
+                case "thisyear":
+                    $("#MsgDate").html("trong năm nay");
+                    break;
+                case "lastyear":
+                    var d = new Date(),
+                        year = d.getFullYear();
+                    $("#MsgDate").html("trong năm " + (year - 1));
+                    break;
+            }
+        }
+        var parts = fromDate.split("/");
+        fromDate = new Date(parts[2], parts[1] - 1, parts[0]);
+        parts = toDate.split("/");
+        toDate = new Date(parts[2], parts[1] - 1, parts[0]);
         $.ajax({
             url: document.location.origin + "/customerHidden/Search",
             type: 'GET',
             dataType: 'html',
             data: {
-                dayVisit: dayVisit
+                fromDate: fromDate,
+                toDate: toDate
             },
             error: function () {
                 $(".modal-body").css("background-color", "red");

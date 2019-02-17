@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CustomerHiddenRepository extends JpaRepository<CustomerHiddenEntity, Integer> {
 
-    List<CustomerHiddenEntity> findAllByDayVisitOrderByDayVisit(Date dayVisit);
+    List<CustomerHiddenEntity> findAllByDayVisitBetweenOrderByDayVisit(Date fromDate, Date toDate);
 
     @Query("SELECT c.report FROM CustomerHiddenEntity c WHERE c.id = ?1")
     String getReport(Integer id);
