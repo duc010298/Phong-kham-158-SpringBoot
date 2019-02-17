@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,9 +50,11 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/Search")
-    public String searchCustomers(@RequestParam("nameSearch") String nameSearch, @RequestParam("yob") String yobStr,
-                                  @RequestParam("addressSearch") String addressSearch,
+    public String searchCustomers(@RequestParam("mode") String mode, @RequestParam("nameSearch") String nameSearch,
+                                  @RequestParam("yob") String yobStr, @RequestParam("addressSearch") String addressSearch,
                                   @RequestParam("dayVisit") @DateTimeFormat(pattern = "dd/MM/yyyy") Date dayVisit,
+                                  @RequestParam("fromDate") @DateTimeFormat(pattern = "dd/MM/yyyy") Date fromDate,
+                                  @RequestParam("toDate") @DateTimeFormat(pattern = "dd/MM/yyyy") Date toDate,
                                   ModelMap modelMap) {
         int yob;
         try {
@@ -59,15 +62,27 @@ public class CustomerController {
         } catch (NumberFormatException e) {
             yob = 0;
         }
-        List<CustomerEntity> customerEntities;
-        if (dayVisit == null && yob != 0) {
-            customerEntities = customerRepository.searchTop100CustomerWithoutDayVisit(nameSearch, yob, addressSearch);
-        } else if (dayVisit == null && yob == 0) {
-            customerEntities = customerRepository.searchTop100CustomerWithoutYobAndDayVisit(nameSearch, addressSearch);
-        } else if (dayVisit != null && yob != 0) {
-            customerEntities = customerRepository.searchTop100Customer(nameSearch, yob, addressSearch, dayVisit);
-        } else {
-            customerEntities = customerRepository.searchTop100CustomerWithoutYob(nameSearch, addressSearch, dayVisit);
+        List<CustomerEntity> customerEntities = new ArrayList<>();
+        if(mode.equals("ByDay")) {
+            if (dayVisit == null && yob != 0) {
+                customerEntities = customerRepository.searchTop100CustomerWithoutDayVisit(nameSearch, yob, addressSearch);
+            } else if (dayVisit == null && yob == 0) {
+                customerEntities = customerRepository.searchTop100CustomerWithoutYobAndDayVisit(nameSearch, addressSearch);
+            } else if (dayVisit != null && yob != 0) {
+                customerEntities = customerRepository.searchTop100CustomerModeByDay(nameSearch, yob, addressSearch, dayVisit);
+            } else {
+                customerEntities = customerRepository.searchTop100CustomerWithoutYobModeByDay(nameSearch, addressSearch, dayVisit);
+            }
+        } else if(mode.equals("FromDay")) {
+            if (fromDate == null && yob != 0) {
+                customerEntities = customerRepository.searchTop100CustomerWithoutDayVisit(nameSearch, yob, addressSearch);
+            } else if (fromDate == null && yob == 0) {
+                customerEntities = customerRepository.searchTop100CustomerWithoutYobAndDayVisit(nameSearch, addressSearch);
+            } else if (fromDate != null && yob != 0) {
+                customerEntities = customerRepository.searchTop100CustomerModeFromDay(nameSearch, yob, addressSearch, fromDate, toDate);
+            } else {
+                customerEntities = customerRepository.searchTop100CustomerWithoutYobModeFromDay(nameSearch, addressSearch, fromDate, toDate);
+            }
         }
         modelMap.addAttribute("customers", customerEntities);
         return "result";

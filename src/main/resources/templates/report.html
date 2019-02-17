@@ -75,10 +75,58 @@
                         <input type="text" class="form-control" id="inputAddress" placeholder="Nhập địa chỉ">
                         <div id="auto-inputAddress" class="autoInput"></div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group fromTo">
+                        <label for="fromDate">Từ ngày:</label>
+                        <input type="text" class="form-control" id="fromDate" placeholder="dd/MM/yyyy">
+                    </div>
+                    <div class="form-group fromTo">
+                        <label for="toDate">Đến ngày:</label>
+                        <input type="text" class="form-control" id="toDate" placeholder="dd/MM/yyyy">
+                    </div>
+                    <div class="form-group fromDay">
                         <label for="inputDayVisit">Ngày đến khám:</label>
                         <input type="text" class="form-control" id="inputDayVisit" placeholder="dd/MM/yyyy">
                     </div>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="fromDay" checked>Theo ngày
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="today">Hôm nay
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="3daysago">3 ngày gần đây
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="thisweek">Tuần này
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="thismonth">Tháng này
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="3monthsago">3 tháng gần đây
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="thisyear">Năm nay
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="chooseDate" value="lastyear">Năm ngoái
+                    </label>
                 </div>
                 <hr>
                 <button type="button" class="btn btn-hidden">.</button>
@@ -98,4 +146,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script th:src="@{/resources/js/cleave.min.js}"></script>
 <script th:src="@{/resources/js/report.js}"></script>
+<script th:src="@{/resources/js/moment.js}"></script>
 </html>

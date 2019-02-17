@@ -156,8 +156,22 @@ $(".grid input").on("keydown", function (event) {
 });
 
 $("#btn-reload").on('click', function () {
-    $("input").val("");
+    $("#inputName").val("");
+    $("#inputAge").val("");
+    $("#inputAddress").val("");
+    $("#fromDate").val("");
+    $("#toDate").val("");
+    $("#inputDayVisit").val("");
+    $("input[value='fromDay']").click();
 });
+
+function isValidDate(str) {
+    var d = moment(str,'D/M/YYYY');
+    if(d == null || !d.isValid()) return false;
+
+    return str.indexOf(d.format('D/M/YYYY')) >= 0
+        || str.indexOf(d.format('DD/MM/YYYY')) >= 0;
+}
 
 $("#btn-search").on("click", function () {
     var Name = $("#inputName").val();
@@ -169,22 +183,47 @@ $("#btn-search").on("click", function () {
     }
     var AddressCus = $("#inputAddress").val();
     var AddressCusS = removeSignAndLowerCase(AddressCus.trim());
-    var DayVisitStr = $("#inputDayVisit").val();
-    if(DayVisitStr != "" && DayVisitStr.length != 10) {
-        $(".modal-body").css("background-color", "red");
-        notify("Lỗi", "Ngày không được nhập chính xác");
-        return;
+    var value = $('input[name=chooseDate]:checked').val();
+    var mode,
+        DayVisit,
+        fromDate,
+        toDate;
+    if(value === "fromDay" || value === "today") {
+        var DayVisitStr = $("#inputDayVisit").val();
+        if (!isValidDate(DayVisitStr) && DayVisitStr.length !== 0) {
+            $(".modal-body").css("background-color", "red");
+            notify("Lỗi", "Ngày không được nhập chính xác");
+            return;
+        }
+        DayVisit = DayVisitStr === "" ? null : DayVisitStr;
+        fromDate = null;
+        toDate = null;
+        mode = "ByDay";
+    } else {
+        DayVisit = null;
+        var fromDateStr = $("#fromDate").val();
+        var toDateStr = $("#toDate").val();
+        if ((!isValidDate(fromDateStr) || !isValidDate(toDateStr)) && (fromDateStr.length !== 0 || toDateStr.length !== 0)) {
+            $(".modal-body").css("background-color", "red");
+            notify("Lỗi", "Ngày không được nhập chính xác");
+            return;
+        }
+        fromDate = fromDateStr === "" ? null : fromDateStr;
+        toDate = toDateStr === "" ? null : toDateStr;
+        mode = "FromDay";
     }
-    var DayVisit = DayVisitStr == "" ? null : DayVisitStr;
     $.ajax({
         url: document.location.origin + "/customer/Search",
         type: 'GET',
         dataType: 'html',
         data: {
+            mode: mode,
             nameSearch: NameS,
             yob: YOB,
             addressSearch: AddressCusS,
-            dayVisit: DayVisit
+            dayVisit: DayVisit,
+            fromDate: fromDate,
+            toDate: toDate
         },
         error: function(){
             $(".modal-body").css("background-color", "red");
@@ -217,3 +256,71 @@ function PopupCenter(url, title, w, h) {
         newWindow.focus();
     }
 }
+
+$("input[name='chooseDate']").on('click', function () {
+    var value = $(this).val();
+    if(value === "fromDay" || value === "today") {
+        $(".grid").css("grid-template-columns","auto auto auto auto");
+        $(".fromTo").fadeOut("fast");
+        $(".fromTo").val("");
+        $(".fromDay").fadeIn("fast");
+    } else {
+        $(".grid").css("grid-template-columns","auto auto auto auto auto");
+        $(".fromTo").fadeIn("fast");
+        $(".fromDay").fadeOut("fast");
+        $(".fromDay").val("");
+    }
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+    switch(value) {
+        case "fromDay":
+            $("#inputDayVisit").val("");
+            break;
+        case "today":
+            $("#inputDayVisit").val([day, month, year].join('/'));
+            break;
+        case "3daysago":
+            var fromDate = new Date();
+            fromDate.setDate(fromDate.getDate() - 2);
+            var monthF = '' + (fromDate.getMonth() + 1),
+                dayF = '' + fromDate.getDate(),
+                yearF = fromDate.getFullYear();
+            $("#fromDate").val([dayF, monthF, yearF].join('/'));
+            $("#toDate").val([day, month, year].join('/'));
+            break;
+        case "thisweek":
+            var dayMon = d.getDay();
+            var diff = d.getDate() - dayMon + (dayMon == 0 ? -6:1);
+            var monday = new Date(d.setDate(diff)),
+                monthM = '' + (monday.getMonth() + 1),
+                dayM = '' + monday.getDate(),
+                yearM = monday.getFullYear();
+
+            $("#fromDate").val([dayM, monthM, yearM].join('/'));
+            $("#toDate").val([day, month, year].join('/'));
+            break;
+        case "thismonth":
+            $("#fromDate").val([1, month, year].join('/'));
+            $("#toDate").val([day, month, year].join('/'));
+            break;
+        case "3monthsago":
+            var fromDate = new Date();
+            fromDate.setMonth(fromDate.getMonth() - 2);
+            var monthF = '' + (fromDate.getMonth() + 1),
+                dayF = '' + fromDate.getDate(),
+                yearF = fromDate.getFullYear();
+            $("#fromDate").val([dayF, monthF, yearF].join('/'));
+            $("#toDate").val([day, month, year].join('/'));
+            break;
+        case "thisyear":
+            $("#fromDate").val([1, 1, year].join('/'));
+            $("#toDate").val([day, month, year].join('/'));
+            break;
+        case "lastyear":
+            $("#fromDate").val([1, 1, year-1].join('/'));
+            $("#toDate").val([31, 12, year-1].join('/'));
+            break;
+    }
+});

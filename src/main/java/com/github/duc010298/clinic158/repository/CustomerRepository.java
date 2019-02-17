@@ -57,15 +57,23 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
     @Query("FROM CustomerEntity c WHERE c.nameSearch LIKE ?1 AND c.addressSearch LIKE ?2 AND c.dayVisit BETWEEN ?3 AND ?4 ORDER BY c.dayVisit ASC")
     List<CustomerEntity> searchCustomerWithoutYob(String nameSearch, String addressSearch, Date startDate, Date endDate, Pageable pageable);
 
-    default List<CustomerEntity> searchTop100CustomerWithoutYob(String nameSearch, String addressSearch, Date startDate) {
+    default List<CustomerEntity> searchTop100CustomerWithoutYobModeByDay(String nameSearch, String addressSearch, Date startDate) {
         return searchCustomerWithoutYob('%' + nameSearch + '%', '%' + addressSearch + '%', startDate, new Date(), new PageRequest(0, 100));
+    }
+
+    default List<CustomerEntity> searchTop100CustomerWithoutYobModeFromDay(String nameSearch, String addressSearch, Date fromDate, Date toDate) {
+        return searchCustomerWithoutYob('%' + nameSearch + '%', '%' + addressSearch + '%', fromDate, toDate, new PageRequest(0, 100));
     }
 
     @Query("FROM CustomerEntity c WHERE c.nameSearch LIKE ?1 AND str(c.yob) LIKE ?2 AND c.addressSearch LIKE ?3 AND c.dayVisit BETWEEN ?4 AND ?5 ORDER BY c.dayVisit ASC")
     List<CustomerEntity> searchCustomer(String nameSearch, String yob, String addressSearch, Date startDate, Date endDate, Pageable pageable);
 
-    default List<CustomerEntity> searchTop100Customer(String nameSearch, Integer yob, String addressSearch, Date startDate) {
+    default List<CustomerEntity> searchTop100CustomerModeByDay(String nameSearch, Integer yob, String addressSearch, Date startDate) {
         return searchCustomer('%' + nameSearch + '%', '%' + yob.toString() + '%','%' + addressSearch + '%', startDate, new Date(), new PageRequest(0, 100));
+    }
+
+    default List<CustomerEntity> searchTop100CustomerModeFromDay(String nameSearch, Integer yob, String addressSearch, Date fromDate, Date toDate) {
+        return searchCustomer('%' + nameSearch + '%', '%' + yob.toString() + '%','%' + addressSearch + '%', fromDate, toDate, new PageRequest(0, 100));
     }
 
     @Query("SELECT c.report FROM CustomerEntity c WHERE c.id = ?1")

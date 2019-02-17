@@ -222,3 +222,7 @@ tbody>tr:hover {
 .ExpectedDOB {
     width: 170px;
 }
+
+.fromTo {
+    display: none;
+}
