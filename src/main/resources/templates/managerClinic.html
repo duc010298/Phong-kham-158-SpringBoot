@@ -230,36 +230,6 @@
             notify("Thông báo", "Ngày không được nhập chính xác");
             return;
         }
-        var radio = $("input[name='chooseDate']:checked").val();
-        if(radio === undefined) {
-            $("#MsgDate").html("từ ngày " + fromDate + " đến ngày " + toDate);
-        } else {
-            switch(radio) {
-                case "today":
-                    $("#MsgDate").html("trong hôm nay");
-                    break;
-                case "3daysago":
-                    $("#MsgDate").html("trong 3 ngày gần đây nhất");
-                    break;
-                case "thisweek":
-                    $("#MsgDate").html("trong tuần này");
-                    break;
-                case "thismonth":
-                    $("#MsgDate").html("trong tháng nay");
-                    break;
-                case "3monthsago":
-                    $("#MsgDate").html("trong 3 tháng gần đây nhất");
-                    break;
-                case "thisyear":
-                    $("#MsgDate").html("trong năm nay");
-                    break;
-                case "lastyear":
-                    var d = new Date(),
-                        year = d.getFullYear();
-                    $("#MsgDate").html("trong năm " + (year - 1));
-                    break;
-            }
-        }
         var parts = fromDate.split("/");
         fromDate = new Date(parts[2], parts[1] - 1, parts[0]);
         parts = toDate.split("/");
@@ -278,6 +248,36 @@
             }
         }).done(function (result) {
             $("#display-result").html(result);
+            var radio = $("input[name='chooseDate']:checked").val();
+            if(radio === undefined) {
+                $("#MsgDate").html("từ ngày " + fromDate + " đến ngày " + toDate);
+            } else {
+                switch(radio) {
+                    case "today":
+                        $("#MsgDate").html("trong hôm nay");
+                        break;
+                    case "3daysago":
+                        $("#MsgDate").html("trong 3 ngày gần đây nhất");
+                        break;
+                    case "thisweek":
+                        $("#MsgDate").html("trong tuần này");
+                        break;
+                    case "thismonth":
+                        $("#MsgDate").html("trong tháng nay");
+                        break;
+                    case "3monthsago":
+                        $("#MsgDate").html("trong 3 tháng gần đây nhất");
+                        break;
+                    case "thisyear":
+                        $("#MsgDate").html("trong năm nay");
+                        break;
+                    case "lastyear":
+                        var d = new Date(),
+                            year = d.getFullYear();
+                        $("#MsgDate").html("trong năm " + (year - 1));
+                        break;
+                }
+            }
             var MsgTotal = $("#display-result tbody tr").length;
             $("#MsgTotal").html(MsgTotal);
             $(".message").fadeIn("fast");
