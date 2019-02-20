@@ -83,4 +83,9 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
     @Modifying
     @Query("DELETE FROM CustomerEntity c WHERE c.dayVisit <= ?1")
     void deleteCustomerBeforeDay(Date date);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM CustomerEntity c WHERE c.expectedDob <= ?1")
+    void deleteCustomerExpectedDateBeforeDay(Date date);
 }

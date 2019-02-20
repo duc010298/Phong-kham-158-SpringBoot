@@ -22,14 +22,21 @@ public class ScheduledTasks {
         this.customerRepository = customerRepository;
     }
 
-    //delete customers who visited 1 year ago
-    //At 23:00:00pm, on every Tuesday, every month
-    @Scheduled(cron = "0 0 23 ? * FRI")
+    //delete customers who visited 1 year ago and have expected birth 3 month ago
+    //At 01:00:00am, on every Wednesday, every month
+    @Scheduled(cron = "0 0 1 ? * WED")
     public void deleteOldCustomer() {
         Date currentDate = new Date();
         long millisecondsInOneYear = (long) 365 * 24 * 60 * 60 * 1000;
         Date oneYearBefore = new Date(currentDate.getTime() - millisecondsInOneYear);
         customerRepository.deleteCustomerBeforeDay(oneYearBefore);
+
+        long millisecondsInThreeMonth = (long) 30 * 3 * 24 * 60 * 60 * 1000;
+        Date threeMonthBefore = new Date(currentDate.getTime() - millisecondsInThreeMonth);
+        customerRepository.deleteCustomerExpectedDateBeforeDay(threeMonthBefore);
+
+        System.out.println("One Year Before: " + oneYearBefore);
+        System.out.println("Three Month Before: " + threeMonthBefore);
     }
 
     //change Token

@@ -15,6 +15,6 @@ public class ConfigStaticPath implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
-                .addResourceLocations("classpath:/static/").setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));;
+                .addResourceLocations("classpath:/static/").setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
     }
 }
