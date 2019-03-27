@@ -28,6 +28,8 @@ IDE: IntelliJ IDEA
 
 ![preview](https://i.imgur.com/u0aZfMx.png)
 
+![preview](https://i.imgur.com/RHhnWUB.png)
+
 ![preview](https://i.imgur.com/iWdgSIL.png)
 
 ![preview](https://i.imgur.com/7aHrNPY.png)
