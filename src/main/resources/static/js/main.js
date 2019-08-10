@@ -47,3 +47,11 @@ let removeSignAndLowerCase = (str) => {
     str = str.toLowerCase();
     return str;
 }; //remove sign and lower case string
+
+document.getElementById('btn-print').onclick = () => {
+    //TODO disable col resize
+    $("#print").printThis({importCSS: false});
+    setTimeout(function () {
+        //TODO enable col resize
+    }, 500);
+}; //print report

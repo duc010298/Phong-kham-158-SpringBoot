@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    background: #D4DFE6;
+    background: #D4DFE6 !important;
 }
 
 #wrapper {
@@ -133,4 +133,14 @@ body {
 
 #menu-toggle a:hover {
     cursor: pointer !important;
+}
+
+.paper-container {
+    width: 745px;
+    min-height: 1100px;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #7F7979;
+    font-family: "Times New Roman", Times, serif;
 }

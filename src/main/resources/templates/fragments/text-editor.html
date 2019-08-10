@@ -1,0 +1,65 @@
+<div id="context-menu" class="context-menu">
+    <ul class='context-menu-items'>
+        <li id="insert-row-above">Chèn hàng trên</li>
+        <li id="insert-row-below">Chèn hàng dưới</li>
+    </ul>
+    <hr />
+    <ul class="context-menu-items">
+        <li id="insert-col-right">Chèn cột phải</li>
+        <li id="insert-col-left">Chèn cột trái</li>
+    </ul>
+    <hr />
+    <ul class="context-menu-items">
+        <li id="delete-row">Xóa hàng</li>
+        <li id="delete-col">Xóa cột</li>
+    </ul>
+</div>
+<div class="toolbar-text-editor">
+    <div class="print-save">
+        <button><span id="btn-print" class="icon-print"></span></button>
+        <button><span class="icon-save"></span></button>
+    </div>
+    <select id="select-font" class="font">
+        <option class="tnr-font" value="Times New Roman">Times New Roman</option>
+        <option class="arial-font" value="Arial">Arial</option>
+    </select>
+    <select id="select-font-size" class="size">
+        <option value="3">3</option>
+        <option value="4" selected>4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select>
+    <div class="table-dropdown">
+        <button id="insert-table" class="insert-table"><span class="icon-table-grid"></span></button>
+        <input type="hidden" value="5" name="col">
+        <input type="hidden" value="5" name="row">
+        <div id="table-dropdown-content">
+            <p id="display-size">Insert Table</p>
+            <div id="select-table-size"></div>
+        </div>
+    </div>
+    <button id="merge-table" class="merge-table"><span class="icon-merge"></span></button>
+    <div class="font-style">
+        <button id="bold"><span class="icon-bold"></span></button>
+        <button id="italic"><span class="icon-italic"></span></button>
+        <button id="underline"><span class="icon-underline"></span></button>
+    </div>
+    <div class="align">
+        <button id="align-left" class="button-active"><span class="icon-left-alignment"></span></button>
+        <button id="align-center"><span class="icon-center-alignment"></span></button>
+        <button id="align-right"><span class="icon-right-alignment"></span></button>
+    </div>
+    <div class="dropdown">
+        <button id="line-spacing" class="line-spacing"><span class="icon-line-spacing"></span></button>
+        <ul id="dropdown-content">
+            <li><span>1.0</span><span class="icon-check-symbol"></span></li>
+            <li><span>1.1</span></li>
+            <li><span>1.2</span></li>
+            <li><span>1.3</span></li>
+            <li><span>1.4</span></li>
+            <li><span>1.5</span></li>
+            <li><span>2.0</span></li>
+        </ul>
+    </div>
+</div>
