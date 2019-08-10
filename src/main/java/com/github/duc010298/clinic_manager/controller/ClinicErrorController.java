@@ -35,6 +35,9 @@ public class ClinicErrorController implements ErrorController {
             } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
                 message_header = "Method not allowed";
                 message_content = "Truy cập không được phép";
+            } else if (statusCode == HttpStatus.BAD_REQUEST.value()) {
+                message_header = "Bad Request";
+                message_content = "Đường dẫn không đúng";
             }
         }
 

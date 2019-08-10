@@ -28,3 +28,22 @@ let notify = (title, message, alert) => {
     $("#notifyModal .modal-body").html(message);
     $("#notifyModal").modal({backdrop: "static"});
 }; // Show notify modal
+
+let removeSignAndLowerCase = (str) => {
+    str = str.replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, "a");
+    str = str.replace(/[èéẹẻẽêềếệểễ]/g, "e");
+    str = str.replace(/[ìíịỉĩ]/g, "i");
+    str = str.replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, "o");
+    str = str.replace(/[ùúụủũưừứựửữ]/g, "u");
+    str = str.replace(/[ỳýỵỷỹ]/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/[ÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴ]/g, "a");
+    str = str.replace(/[ÈÉẸẺẼÊỀẾỆỂỄ]/g, "e");
+    str = str.replace(/[ÌÍỊỈĨ]/g, "i");
+    str = str.replace(/[ÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠ]/g, "o");
+    str = str.replace(/[ÙÚỤỦŨƯỪỨỰỬỮ]/g, "u");
+    str = str.replace(/[ỲÝỴỶỸ]/g, "y");
+    str = str.replace(/Đ/g, "d");
+    str = str.toLowerCase();
+    return str;
+}; //remove sign and lower case string
