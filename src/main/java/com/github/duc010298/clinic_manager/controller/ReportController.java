@@ -33,6 +33,7 @@ public class ReportController {
     public String getReportFormContent(@PathVariable("id") String id, ModelMap modelMap, Principal principal) {
         AppUserEntity currentUser = appUserRepository.findByUserName(principal.getName());
         modelMap.addAttribute("fullName", currentUser.getFullName());
+        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
 
         try {
             Optional<ReportFormEntity> optionalCurrentReport = reportFormRepository.findById(UUID.fromString(id));

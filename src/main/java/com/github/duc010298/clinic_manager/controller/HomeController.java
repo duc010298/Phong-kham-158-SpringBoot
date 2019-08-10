@@ -28,9 +28,7 @@ public class HomeController {
     public String initHome(ModelMap modelMap, Principal principal) {
         AppUserEntity currentUser = appUserRepository.findByUserName(principal.getName());
         modelMap.addAttribute("fullName", currentUser.getFullName());
-
         modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
-
         modelMap.addAttribute("activeReportId", null);
         modelMap.addAttribute("content", null);
         return "index";
