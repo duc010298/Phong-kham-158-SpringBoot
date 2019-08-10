@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.duc010298</groupId>
-    <artifactId>clinic158</artifactId>
+    <artifactId>clinic_manager</artifactId>
     <version>4.0</version>
-    <name>clinic158</name>
+    <name>clinic_manager</name>
     <description>The project was built for management UltraSound Clinic</description>
 
     <properties>

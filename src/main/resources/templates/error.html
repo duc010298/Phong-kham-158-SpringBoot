@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${message_header}">Error</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/resources/images/favicon.png}"/>
+    <link th:href="@{/resources/css/error.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<h1 th:text="${errorCode}"></h1>
+<h2 th:text="${message_content}"></h2>
+<div class="gears">
+    <div class="gear one">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="gear two">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="gear three">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
+</body>
+</html>

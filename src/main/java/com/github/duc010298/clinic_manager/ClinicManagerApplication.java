@@ -1,13 +1,13 @@
-package com.github.duc010298.clinic158;
+package com.github.duc010298.clinic_manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Clinic158Application {
+public class ClinicManagerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Clinic158Application.class, args);
+        SpringApplication.run(ClinicManagerApplication.class, args);
     }
 
 }
