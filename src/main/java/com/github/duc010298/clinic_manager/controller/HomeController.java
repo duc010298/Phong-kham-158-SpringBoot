@@ -10,5 +10,6 @@ public class HomeController {
 
     @GetMapping
     public String abc() {
+        return "Aa";
     }
 }
