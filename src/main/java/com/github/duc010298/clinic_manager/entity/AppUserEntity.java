@@ -11,7 +11,6 @@ public class AppUserEntity {
     private String userName;
     private String encryptedPassword;
     private String fullName;
-    private ClinicEntity clinicByClinicId;
     private Collection<AppRoleEntity> appRoleEntities;
 
     @Id
@@ -69,16 +68,6 @@ public class AppUserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, userName, encryptedPassword, fullName);
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clinic_id", referencedColumnName = "id")
-    public ClinicEntity getClinicByClinicId() {
-        return clinicByClinicId;
-    }
-
-    public void setClinicByClinicId(ClinicEntity clinicByClinicId) {
-        this.clinicByClinicId = clinicByClinicId;
     }
 
     @ManyToMany(fetch = FetchType.LAZY)

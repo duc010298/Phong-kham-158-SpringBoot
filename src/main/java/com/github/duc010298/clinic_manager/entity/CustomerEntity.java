@@ -21,7 +21,6 @@ public class CustomerEntity {
     private String result;
     private String note;
     private String report;
-    private ClinicEntity clinicByClinicId;
 
     @Id
     @Column(name = "id")
@@ -156,15 +155,5 @@ public class CustomerEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, nameSearch, yearOfBirth, address, addressSearch, dayVisit, expectedDateOfBirth, result, note, report);
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clinic_id", referencedColumnName = "id", nullable = false)
-    public ClinicEntity getClinicByClinicId() {
-        return clinicByClinicId;
-    }
-
-    public void setClinicByClinicId(ClinicEntity clinicByClinicId) {
-        this.clinicByClinicId = clinicByClinicId;
     }
 }

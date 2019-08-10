@@ -13,7 +13,6 @@ public class ReportFormEntity {
     private String reportName;
     private int orderNumber;
     private String content;
-    private ClinicEntity clinicByClinicId;
 
     @Id
     @Column(name = "id")
@@ -71,15 +70,5 @@ public class ReportFormEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, reportName, orderNumber, content);
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clinic_id", referencedColumnName = "id", nullable = false)
-    public ClinicEntity getClinicByClinicId() {
-        return clinicByClinicId;
-    }
-
-    public void setClinicByClinicId(ClinicEntity clinicByClinicId) {
-        this.clinicByClinicId = clinicByClinicId;
     }
 }

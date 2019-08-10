@@ -1,7 +1,6 @@
 package com.github.duc010298.clinic_manager.controller;
 
 import com.github.duc010298.clinic_manager.entity.AppUserEntity;
-import com.github.duc010298.clinic_manager.entity.ClinicEntity;
 import com.github.duc010298.clinic_manager.repository.AppUserRepository;
 import com.github.duc010298.clinic_manager.repository.ReportFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +29,8 @@ public class HomeController {
         AppUserEntity currentUser = appUserRepository.findByUserName(principal.getName());
         modelMap.addAttribute("fullName", currentUser.getFullName());
 
-        ClinicEntity currentClinic = currentUser.getClinicByClinicId();
-        if (currentClinic == null) {
-            modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
-        } else {
-            modelMap.addAttribute("reportForms", reportFormRepository.findAllByClinicByClinicIdOrderByOrderNumberAsc(currentClinic));
-        }
+        modelMap.addAttribute("reportForms", reportFormRepository.findAllByOrderByOrderNumberAsc());
+
         modelMap.addAttribute("activeReportId", null);
         modelMap.addAttribute("content", null);
         return "index";
