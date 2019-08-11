@@ -87,18 +87,16 @@
             <div th:replace="fragments/text-editor"></div>
         </div>
         <div th:if="${content} != null">
-            <div class="paper-container">
-                <div id="print">
-                    <style>
-                        .editor {
-                            outline: none;
-                            font-family: "Times New Roman",Times,serif;
-                            font-size: 18px;
-                            margin: 30px 45px;
-                        }
-                    </style>
-                    <div id="editor" class="editor" th:utext="${content}"></div>
-                </div>
+            <div id="print" class="paper-container">
+                <style>
+                    .editor {
+                        outline: none;
+                        font-family: "Times New Roman", Times, serif;
+                        font-size: 18px;
+                        padding: 30px 45px;
+                    }
+                </style>
+                <div id="editor" class="editor" th:utext="${content}"></div>
             </div>
         </div>
     </div>
