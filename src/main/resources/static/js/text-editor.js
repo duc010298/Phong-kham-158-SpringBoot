@@ -11,7 +11,8 @@ let lastPos;
 let tempNodeTable;
 
 editor.onmousedown = (event) => {
-    if (event.target.nodeName !== "TD") {
+    let target = event.target;
+    if (target.nodeName !== "TD") {
         highlightFlag = false;
         let listTd = document.getElementsByTagName("TD");
         for (let td of listTd) {
@@ -19,13 +20,13 @@ editor.onmousedown = (event) => {
             td.classList.remove('highlight');
         }
     }
-}
+};
 
-document.getElementById('line-spacing').onclick = (event) => {
+document.getElementById('line-spacing').onclick = () => {
     document.getElementById('dropdown-content').classList.toggle('show');
-}
+};
 
-document.getElementById('insert-table').onclick = (event) => {
+document.getElementById('insert-table').onclick = () => {
     selectSizeTable.innerHTML = '';
     document.querySelector('.table-dropdown input[name=row]').value = 5;
     document.querySelector('.table-dropdown input[name=col]').value = 5;
@@ -38,29 +39,30 @@ document.getElementById('insert-table').onclick = (event) => {
     selectSizeTable.style.gridTemplateColumns = 'auto auto auto auto auto';
 
     document.getElementById('table-dropdown-content').classList.toggle('show');
-}
+};
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = (event) => {
-    if (!event.target.matches('.line-spacing') && !event.target.matches('.icon-line-spacing')) {
+    let target = event.target;
+    if (!target.matches('.line-spacing') && !target.matches('.icon-line-spacing')) {
         document.getElementById("dropdown-content").classList.remove('show');
     }
-    if (!event.target.matches('.insert-table') && !event.target.matches('.icon-table-grid')) {
+    if (!target.matches('.insert-table') && !target.matches('.icon-table-grid')) {
         document.getElementById("table-dropdown-content").classList.remove('show');
     }
-}
+};
 
 let getCarretNode = () => {
     let selection;
     if (window.getSelection) {
         selection = window.getSelection();
-    } else if (document.selection && document.selection.type != "Control") {
+    } else if (document.selection && document.selection.type !== "Control") {
         selection = document.selection;
     }
     let anchorNode = selection.anchorNode;
     if (anchorNode === null) return null;
     return anchorNode.nodeType === 3 ? anchorNode.parentNode : anchorNode;
-}
+};
 
 let detectPosition = (td) => {
     let col = 0;
@@ -100,7 +102,7 @@ let detectPosition = (td) => {
         if (trNode === tempTr) break;
     }
     return [col, row, colspan, rowspan];
-}
+};
 
 let resetHighlight = (td) => {
     let tBodyNode = td.parentNode;
@@ -108,12 +110,12 @@ let resetHighlight = (td) => {
         if (tBodyNode.nodeName === "TBODY") break;
         tBodyNode = tBodyNode.parentNode;
     }
-    listTd = tBodyNode.getElementsByTagName("TD");
+    let listTd = tBodyNode.getElementsByTagName("TD");
     for (let td of listTd) {
         td.style.backgroundColor = null;
         td.classList.remove('highlight');
     }
-}
+};
 
 let addEventToTd = (td) => {
     td.onmousedown = (event) => {
@@ -121,11 +123,11 @@ let addEventToTd = (td) => {
         firstPos = detectPosition(event.target);
         lastPos = firstPos;
         highlightFlag = true;
-    }
+    };
     td.onmousemove = (event) => {
         if (highlightFlag) {
             let currentPos = detectPosition(event.target);
-            if (JSON.stringify(currentPos) != JSON.stringify(lastPos)) {
+            if (JSON.stringify(currentPos) !== JSON.stringify(lastPos)) {
                 resetHighlight(event.target);
                 lastPos = currentPos;
 
@@ -158,7 +160,7 @@ let addEventToTd = (td) => {
                 }
             }
         }
-    }
+    };
     td.oncontextmenu = (event) => {
         tempNodeTable = event.target;
         event.preventDefault();
@@ -167,14 +169,14 @@ let addEventToTd = (td) => {
         contextMenu.style.display = 'block';
         startFocusOut();
     }
-}
+};
 
 let startFocusOut = () => {
     $(document).on("click", function () {
         contextMenu.style.display = 'none';
         $(document).off("click");
     });
-}
+};
 
 let addEventToSpan = (span) => {
     span.onclick = (event) => {
@@ -194,7 +196,6 @@ let addEventToSpan = (span) => {
                     }
                 }
 
-                let row = Number(document.querySelector('.table-dropdown input[name=row]').value);
                 let col = Number(document.querySelector('.table-dropdown input[name=col]').value);
                 let indexRow = Math.ceil(indexSpan / col);
                 let indexCol = indexSpan - (col * (indexRow - 1));
@@ -241,12 +242,12 @@ let addEventToSpan = (span) => {
                     draggingClass: "dragging"
                 });
 
-                table.onmouseup = (event) => {
+                table.onmouseup = () => {
                     highlightFlag = false;
                 }
             }
         }
-    }
+    };
 
     span.onmouseover = (event) => {
         for (let span of selectSizeTableSpanList) {
@@ -310,9 +311,9 @@ let addEventToSpan = (span) => {
                 return;
             }
         }
-    }
+    };
 
-    span.onmouseout = (event) => {
+    span.onmouseout = () => {
         let isHoverSelectSize = false;
         if (selectSizeTable.parentElement.querySelector(':hover') === selectSizeTable) {
             isHoverSelectSize = true;
@@ -324,7 +325,7 @@ let addEventToSpan = (span) => {
             document.getElementById('display-size').innerHTML = 'Insert Table';
         }
     }
-}
+};
 
 //main function
 editor.contentEditable = true;
@@ -334,53 +335,53 @@ document.execCommand('fontSize', false, 4); //set default font size
 document.getElementById('select-font').onchange = (event) => {
     let value = event.target.value;
     document.execCommand('fontName', false, value);
-}
+};
 
 document.getElementById('select-font-size').onchange = (event) => {
     let value = event.target.value;
     document.execCommand('fontSize', false, value);
-}
+};
 
-document.getElementById('bold').onclick = (event) => {
+document.getElementById('bold').onclick = () => {
     document.execCommand('bold', false, null);
     document.getElementById('bold').classList.toggle('button-active');
-}
+};
 
-document.getElementById('italic').onclick = (event) => {
+document.getElementById('italic').onclick = () => {
     document.execCommand('italic', false, null);
     document.getElementById('italic').classList.toggle('button-active');
-}
+};
 
-document.getElementById('underline').onclick = (event) => {
+document.getElementById('underline').onclick = () => {
     document.execCommand('underline', false, null);
     document.getElementById('underline').classList.toggle('button-active');
-}
+};
 
-document.getElementById('align-left').onclick = (event) => {
+document.getElementById('align-left').onclick = () => {
     document.execCommand('justifyLeft', false, null);
     document.getElementById('align-left').classList.add('button-active');
     document.getElementById('align-center').classList.remove('button-active');
     document.getElementById('align-right').classList.remove('button-active');
-}
+};
 
-document.getElementById('align-center').onclick = (event) => {
+document.getElementById('align-center').onclick = () => {
     document.execCommand('justifyCenter', false, null);
     document.getElementById('align-left').classList.remove('button-active');
     document.getElementById('align-center').classList.add('button-active');
     document.getElementById('align-right').classList.remove('button-active');
-}
+};
 
-document.getElementById('align-right').onclick = (event) => {
+document.getElementById('align-right').onclick = () => {
     document.execCommand('justifyRight', false, null);
     document.getElementById('align-left').classList.remove('button-active');
     document.getElementById('align-center').classList.remove('button-active');
     document.getElementById('align-right').classList.add('button-active');
-}
+};
 
 let detectStyleOnCaret = () => {
     let carretNode = getCarretNode();
     highLightButtonStyle(carretNode, false, false, false, false, false, false);
-}
+};
 
 let highLightButtonStyle = (node, isChangedFontStyle, isChangedFontSize,
     isBold, isItalic, isUnderline, isAlign) => {
@@ -464,7 +465,7 @@ let highLightButtonStyle = (node, isChangedFontStyle, isChangedFontSize,
 
     highLightButtonStyle(nodeParent, isChangedFontStyle, isChangedFontSize,
         isBold, isItalic, isUnderline, isAlign);
-}
+};
 
 editor.onmouseup = detectStyleOnCaret;
 editor.onkeyup = detectStyleOnCaret;
@@ -472,8 +473,10 @@ editor.onkeyup = detectStyleOnCaret;
 for (let li of lineSpaceDropdown.getElementsByTagName('li')) {
     li.onclick = (event) => {
         let liTag;
-        if (event.target.tagName === 'SPAN') {
-            liTag = event.target.parentNode;
+        let target = event.target;
+        if (target.tagName === 'SPAN') {
+            let targetTemp = event.target;
+            liTag = targetTemp.parentNode;
         } else {
             liTag = event.target;
         }
@@ -496,7 +499,7 @@ for (let li of lineSpaceDropdown.getElementsByTagName('li')) {
     }
 }
 
-document.getElementById('merge-table').onclick = (event) => {
+document.getElementById('merge-table').onclick = () => {
     let fCol, fRow, lCol, lRow;
     let temp1 = [firstPos[0], lastPos[0], firstPos[0] + firstPos[2] - 1, lastPos[0] + lastPos[2] - 1];
     fCol = Math.min(...temp1);
@@ -511,7 +514,7 @@ document.getElementById('merge-table').onclick = (event) => {
         if (tBody.nodeName === 'TBODY') break;
         tBody = tBody.parentNode;
     }
-    listTrTag = tBody.getElementsByTagName("TR");
+    let listTrTag = tBody.getElementsByTagName("TR");
 
     let isFirst = true;
     for (let i = fRow; i <= lRow; i++) {
@@ -547,9 +550,9 @@ document.getElementById('merge-table').onclick = (event) => {
             listTdTag[j].hidden = true;
         }
     }
-}
+};
 
-document.getElementById('insert-row-above').onclick = (event) => {
+document.getElementById('insert-row-above').onclick = () => {
     let pos = detectPosition(tempNodeTable);
     let tBody = tempNodeTable.parentNode;
     while (true) {
@@ -576,9 +579,9 @@ document.getElementById('insert-row-above').onclick = (event) => {
         liveDrag: true,
         draggingClass: "dragging"
     });
-}
+};
 
-document.getElementById('insert-row-below').onclick = (event) => {
+document.getElementById('insert-row-below').onclick = () => {
     let pos = detectPosition(tempNodeTable);
     let tBody = tempNodeTable.parentNode;
     while (true) {
@@ -605,9 +608,9 @@ document.getElementById('insert-row-below').onclick = (event) => {
         liveDrag: true,
         draggingClass: "dragging"
     });
-}
+};
 
-document.getElementById('insert-col-left').onclick = (event) => {
+document.getElementById('insert-col-left').onclick = () => {
     let pos = detectPosition(tempNodeTable);
     let tBody = tempNodeTable.parentNode;
     while (true) {
@@ -618,7 +621,7 @@ document.getElementById('insert-col-left').onclick = (event) => {
 
     for (let i = 0; i < listTrTag.length; i++) {
         let col;
-        if (i == 0) {
+        if (i === 0) {
             let listThTag = listTrTag[0].getElementsByTagName("TH");
             let th = listThTag[pos[0] - 1];
             let temp = th.style.width;
@@ -645,9 +648,9 @@ document.getElementById('insert-col-left').onclick = (event) => {
         liveDrag: true,
         draggingClass: "dragging"
     });
-}
+};
 
-document.getElementById('insert-col-right').onclick = (event) => {
+document.getElementById('insert-col-right').onclick = () => {
     let pos = detectPosition(tempNodeTable);
     pos = [pos[0] + pos[2]];
     let tBody = tempNodeTable.parentNode;
@@ -659,7 +662,7 @@ document.getElementById('insert-col-right').onclick = (event) => {
 
     for (let i = 0; i < listTrTag.length; i++) {
         let col;
-        if (i == 0) {
+        if (i === 0) {
             let listThTag = listTrTag[0].getElementsByTagName("TH");
             let th = listThTag[pos[0] - 1];
             let temp = th.style.width;
@@ -686,9 +689,9 @@ document.getElementById('insert-col-right').onclick = (event) => {
         liveDrag: true,
         draggingClass: "dragging"
     });
-}
+};
 
-document.getElementById('delete-row').onclick = (event) => {
+document.getElementById('delete-row').onclick = () => {
     let pos = detectPosition(tempNodeTable);
     let tBody = tempNodeTable.parentNode;
     while (true) {
@@ -708,9 +711,9 @@ document.getElementById('delete-row').onclick = (event) => {
         liveDrag: true,
         draggingClass: "dragging"
     });
-}
+};
 
-document.getElementById('delete-col').onclick = (event) => {
+document.getElementById('delete-col').onclick = () => {
     let pos = detectPosition(tempNodeTable);
     let tBody = tempNodeTable.parentNode;
     while (true) {
@@ -720,7 +723,7 @@ document.getElementById('delete-col').onclick = (event) => {
     for (let i = 0; i < pos[2]; i++) {
         let listTrTag = tBody.getElementsByTagName("TR");
         for (let i = 0; i < listTrTag.length; i++) {
-            if (i == 0) {
+            if (i === 0) {
                 let listThTag = listTrTag[0].getElementsByTagName("TH");
                 let thDelete = listThTag[pos[0] - 1];
                 let temp = thDelete.style.width;
@@ -747,4 +750,4 @@ document.getElementById('delete-col').onclick = (event) => {
         liveDrag: true,
         draggingClass: "dragging"
     });
-}
+};
