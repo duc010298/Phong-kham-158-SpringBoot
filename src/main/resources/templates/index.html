@@ -14,20 +14,7 @@
     <title th:text="${title} == null ? 'Quản lý phòng khám' : ${title}">...</title>
 </head>
 <body>
-<div class="modal fade" id="notify-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">...</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-            </div>
-        </div>
-    </div>
-</div>
+<div th:replace="fragments/notify"></div>
 <div class="modal fade" id="save-notify">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -75,7 +62,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li><a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-                    <li><a class="nav-link" th:href="@{/setting/manager-form}"><i class="fas fa-cog"></i> Cài đặt</a>
+                    <li><a class="nav-link" th:href="@{/setting}"><i class="fas fa-cog"></i> Cài đặt</a>
                     </li>
                 </ul>
             </div>
