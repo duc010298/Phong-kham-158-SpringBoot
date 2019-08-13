@@ -1,0 +1,17 @@
+.jumbotron-custom-home {
+    padding: 25px 20px;
+}
+
+.jumbotron-custom-home:hover {
+    background: #a09a9a;
+    cursor: pointer;
+}
+
+.jumbotron-custom-home a {
+    color: #000;
+}
+
+.jumbotron-custom-home a:hover {
+    color: #000;
+    text-decoration: none;
+}

@@ -45,5 +45,6 @@ create table if not exists report_form
     id           uuid         not null primary key,
     report_name  varchar(100) not null,
     order_number int          not null,
-    content      text         not null
+    content      text         not null,
+    last_edit    timestamp    not null
 );

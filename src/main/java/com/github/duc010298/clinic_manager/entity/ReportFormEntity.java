@@ -3,6 +3,7 @@ package com.github.duc010298.clinic_manager.entity;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -13,6 +14,7 @@ public class ReportFormEntity {
     private String reportName;
     private int orderNumber;
     private String content;
+    private Timestamp lastEdit;
 
     @Id
     @Column(name = "id")
@@ -56,6 +58,16 @@ public class ReportFormEntity {
         this.content = content;
     }
 
+    @Basic
+    @Column(name = "last_edit")
+    public Timestamp getLastEdit() {
+        return lastEdit;
+    }
+
+    public void setLastEdit(Timestamp lastEdit) {
+        this.lastEdit = lastEdit;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,11 +76,12 @@ public class ReportFormEntity {
         return orderNumber == that.orderNumber &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(reportName, that.reportName) &&
-                Objects.equals(content, that.content);
+                Objects.equals(content, that.content) &&
+                Objects.equals(lastEdit, that.lastEdit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, reportName, orderNumber, content);
+        return Objects.hash(id, reportName, orderNumber, content, lastEdit);
     }
 }
