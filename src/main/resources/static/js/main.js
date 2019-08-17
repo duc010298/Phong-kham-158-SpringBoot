@@ -24,9 +24,9 @@ let notify = (title, message, alert) => {
         $("#notify-modal .modal-body").css("background-color", "");
         $("#notify-modal .modal-footer").css("background-color", "");
     }
-    $("#notifyModal .modal-title").html(title);
-    $("#notifyModal .modal-body").html(message);
-    $("#notifyModal").modal({backdrop: "static"});
+    $("#notify-modal .modal-title").html(title);
+    $("#notify-modal .modal-body").html(message);
+    $("#notify-modal").modal({backdrop: "static"});
 }; // Show notify modal
 
 let removeSignAndLowerCase = (str) => {

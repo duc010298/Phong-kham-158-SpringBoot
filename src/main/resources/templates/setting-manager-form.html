@@ -6,14 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/png" th:href="@{/resources/images/favicon.png}"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
-          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css"
+          integrity="sha384-wxqG4glGB3nlqX0bi23nmgwCSjWIW13BdLUEYC4VIMehfbcro/ATkyDsF/AbIOVe" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/resources/css/setting.css}">
     <title>Quản lý báo cáo</title>
 </head>
 <body>
-<div th:replace="fragments/notify"></div>
+<div th:replace="fragments/notify :: notify"></div>
+<div th:replace="fragments/notify :: notify-confirm"></div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
@@ -27,6 +28,8 @@
 </nav>
 <br>
 <div class="container-fluid">
+    <button type="button" class="btn btn-primary float-right"><i class="fas fa-folder-plus"></i> Thêm mẫu báo cáo mới
+    </button>
     <h3>Danh sách báo cáo</h3>
     <hr>
     <table class="table table-bordered table-hover table-light table-list-report">
@@ -44,13 +47,20 @@
             <td th:text="${iter.count}">...</td>
             <td th:text="${report.getReportName()}">...</td>
             <td th:text="${#dates.format(report.getLastEdit(), 'dd/MM/yyyy h:mm:ss')}">...</td>
-            <td><button class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</button></td>
-            <td><button class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button></td>
+            <td>
+                <button class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</button>
+            </td>
+            <td>
+                <button th:attr="data-report-id=${report.getId()}" class="btn-delete btn btn-danger"><i
+                        class="fas fa-trash"></i> Xóa
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script th:src="@{/resources/js/setting-manager-form.js}"></script>
 </html>

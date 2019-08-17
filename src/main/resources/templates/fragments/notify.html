@@ -1,14 +1,51 @@
-<div class="modal fade" id="notify-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">...</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<body>
+<div th:fragment="notify">
+    <div class="modal fade" id="notify-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">...</h4>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button id="notify-ok" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div th:fragment="notify-confirm">
+    <div class="modal fade" id="notify-modal-confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">...</h4>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirm-cancel" type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                    <button id="confirm-ok" type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="notify-prompt">
+    <div class="modal fade" id="notify-modal-prompt">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">...</h4>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button id="prompt-cancel" type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                    <button id="prompt-ok" type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
