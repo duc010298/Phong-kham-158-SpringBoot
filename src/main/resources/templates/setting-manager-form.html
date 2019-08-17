@@ -46,13 +46,14 @@
         <tr th:each="report, iter : ${reportList}">
             <td th:text="${iter.count}">...</td>
             <td th:text="${report.getReportName()}">...</td>
-            <td th:text="${#dates.format(report.getLastEdit(), 'dd/MM/yyyy h:mm:ss')}">...</td>
+            <td th:text="${#dates.format(report.getLastEdit(), 'dd/MM/yyyy H:mm:ss')}">...</td>
             <td>
-                <button class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</button>
+                <a th:href="@{|/setting/manager-form/edit/${report.getId()}|}" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Sửa</a>
             </td>
             <td>
-                <button th:attr="data-report-id=${report.getId()}" class="btn-delete btn btn-danger"><i
-                        class="fas fa-trash"></i> Xóa
+                <button th:attr="data-report-id=${report.getId()}" class="btn-delete btn btn-danger">
+                    <i class="fas fa-trash"></i> Xóa
                 </button>
             </td>
         </tr>

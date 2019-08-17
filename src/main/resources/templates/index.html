@@ -24,7 +24,7 @@
             </li>
             <li th:each="reportForm:${reportForms}"
                 th:class="(${reportForm.getId()} == ${activeReportId}) ? 'active' : ''">
-                <a th:href="|/report/${reportForm.getId()}|" th:text="${reportForm.getReportName()}">...</a>
+                <a th:href="@{|/report/${reportForm.getId()}|}" th:text="${reportForm.getReportName()}">...</a>
             </li>
         </ul>
     </div>
@@ -48,6 +48,7 @@
     <div id="page-content-wrapper">
         <div class="container-fluid" th:if="${content} == null"><h1>Không có nội dung để hiển thị</h1></div>
         <div th:if="${content} != null">
+            <div th:replace="fragments/right-tool-bar"></div>
             <div th:replace="fragments/text-editor"></div>
         </div>
         <div th:if="${content} != null">

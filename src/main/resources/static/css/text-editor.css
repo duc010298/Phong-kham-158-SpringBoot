@@ -117,7 +117,6 @@
     height: 30px;
     padding: 5px;
     width: 180px;
-    margin-left: 10px
 }
 
 .toolbar-text-editor .font:focus {
@@ -323,29 +322,6 @@
     background: rgba(0, 152, 247, 0.3);
     border-color: #0098f7;
     cursor: pointer;
-}
-
-.toolbar-text-editor .print-save {
-    display: inline;
-}
-
-.toolbar-text-editor .print-save button {
-    border: 1px solid #D2D2D2;
-    height: 30px;
-    width: 30px;
-    font-size: 16px;
-    margin-left: 2px;
-    padding: 4px;
-}
-
-.toolbar-text-editor .print-save button:hover {
-    background-color: #C5C5C5;
-    border-color: #969696;
-    cursor: pointer;
-}
-
-.toolbar-text-editor .print-save button:focus {
-    outline: none;
 }
 
 .toolbar-text-editor .merge-table {

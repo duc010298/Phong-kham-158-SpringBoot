@@ -3,6 +3,13 @@ body {
     background: #D4DFE6 !important;
 }
 
+.tool {
+    z-index: 1;
+    position: fixed;
+    top: 200px;
+    right: 0;
+}
+
 .btn-modal {
     width: 100px;
 }
