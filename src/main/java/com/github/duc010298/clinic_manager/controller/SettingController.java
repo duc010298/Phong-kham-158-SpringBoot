@@ -1,7 +1,6 @@
 package com.github.duc010298.clinic_manager.controller;
 
 import com.github.duc010298.clinic_manager.entity.AppUserEntity;
-import com.github.duc010298.clinic_manager.entity.ReportFormEntity;
 import com.github.duc010298.clinic_manager.repository.AppUserRepository;
 import com.github.duc010298.clinic_manager.repository.CustomerRepository;
 import com.github.duc010298.clinic_manager.repository.ReportFormRepository;
@@ -10,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping(path = "/setting")
@@ -41,13 +38,8 @@ public class SettingController {
     public String settingManagerForm(ModelMap modelMap, Principal principal) {
         AppUserEntity currentUser = appUserRepository.findByUserName(principal.getName());
         modelMap.addAttribute("fullName", currentUser.getFullName());
+        modelMap.addAttribute("reportList", reportFormRepository.findAllByOrderByOrderNumberAsc());
 
         return "setting-manager-form";
-    }
-
-    @GetMapping("/manager-form/list")
-    public @ResponseBody
-    List<ReportFormEntity> settingManagerForm() {
-        return reportFormRepository.findAllByOrderByOrderNumberAsc();
     }
 }

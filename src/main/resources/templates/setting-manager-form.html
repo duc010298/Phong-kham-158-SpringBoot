@@ -29,17 +29,25 @@
 <div class="container-fluid">
     <h3>Danh sách báo cáo</h3>
     <hr>
-    <table class="table table-bordered table-hover table-light">
-        <thead>
-        <tr class="info">
-            <th></th>
+    <table class="table table-bordered table-hover table-light table-list-report">
+        <thead class="thead-light">
+        <tr>
+            <th>STT</th>
             <th>Tên báo cáo</th>
             <th>Lần sửa cuối</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
-        <tbody id="table-list-report-form"></tbody>
+        <tbody>
+        <tr th:each="report, iter : ${reportList}">
+            <td th:text="${iter.count}">...</td>
+            <td th:text="${report.getReportName()}">...</td>
+            <td th:text="${#dates.format(report.getLastEdit(), 'dd/MM/yyyy h:mm:ss')}">...</td>
+            <td><button class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</button></td>
+            <td><button class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button></td>
+        </tr>
+        </tbody>
     </table>
 </div>
 </body>
