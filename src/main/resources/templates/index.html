@@ -15,30 +15,7 @@
 </head>
 <body>
 <div th:replace="fragments/notify :: notify"></div>
-<div class="modal fade" id="save-notify">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Bổ sung thông tin trước khi lưu</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="expected">Ngày sinh dự kiến:</label>
-                    <input type="text" class="form-control" id="expected" placeholder="dd/mm/yyyy">
-                </div>
-                <div class="form-group">
-                    <label for="Note">Ghi chú:</label>
-                    <input type="text" class="form-control" id="Note" placeholder="Nhập ghi chú">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-modal btn btn-danger" data-dismiss="modal">Đóng</button>
-                <button id="BtnAcceptSave" type="button" class="btn-modal btn btn-primary" data-dismiss="modal">Lưu
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<div th:replace="fragments/notify :: notify-save"></div>
 <div id="wrapper" class="toggled">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
