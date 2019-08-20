@@ -28,19 +28,43 @@
     </div>
 </nav>
 <br>
-<div class="container-fluid">
-    <div th:replace="fragments/right-tool-bar"></div>
-    <div th:replace="fragments/text-editor"></div>
-    <div id="print" class="paper-container">
-        <style>
-            .editor {
-                outline: none;
-                font-family: "Times New Roman", Times, serif;
-                font-size: 18px;
-                padding: 30px 45px;
-            }
-        </style>
-        <div id="editor" class="editor" th:utext="${report.getContent()}"></div>
+<div class="row">
+    <div class="col-sm-4">
+        <button type="button" id="btn-print" class="btn btn-primary btn-lg btn-setting-command"><span
+                class="icon-print"></span></button>
+        <button type="button" class="btn btn-success btn-lg btn-setting-command"><span class="icon-save"></span>
+        </button>
+        <br>
+        <hr>
+        <div class="jumbotron jumbotron-custom-home" title="Sử dụng khung thông tin bệnh nhân này giúp hệ thống có thể nhận diện
+được các thông tin cơ bản như tên, tuổi và địa chỉ giúp cho việc tìm kiếm">
+            <h5>Thêm khung thông tin bệnh nhân <span class="badge badge-primary"><i
+                    class="fas fa-grip-lines"></i></span></h5>
+            <img class="img-fluid" th:src="@{/resources/images/label-1.png}" alt="Khung thông tin">
+        </div>
+        <div class="jumbotron jumbotron-custom-home" title="Sử dụng khung này giúp hệ thống nhận biết được
+kết quả của báo cáo giúp cho việc lưu trữ tốt hơn">
+            <h5>Thêm khung kết quả <span class="badge badge-primary"><i class="fas fa-grip-lines"></i></span></h5>
+            <img class="img-fluid" th:src="@{/resources/images/label-2.png}" alt="Khung kết quả">
+        </div>
+        <div class="jumbotron jumbotron-custom-home" title="Sử dụng chức năng này để tạo ra ngày tự động tăng">
+            <h5>Thêm ngày tự động tăng <span class="badge badge-primary"><i class="fas fa-grip-lines"></i></span></h5>
+            <img class="img-fluid" th:src="@{/resources/images/label-3.png}" alt="Ngày tự động tăng">
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div th:replace="fragments/text-editor"></div>
+        <div id="print" class="paper-container">
+            <style>
+                .editor {
+                    outline: none;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 18px;
+                    padding: 30px 45px;
+                }
+            </style>
+            <div id="editor" class="editor" th:utext="${report.getContent()}"></div>
+        </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

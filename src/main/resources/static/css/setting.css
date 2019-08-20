@@ -54,3 +54,8 @@ body {
     box-shadow: 5px 5px 5px #7F7979;
     font-family: "Times New Roman", Times, serif;
 }
+
+.btn-setting-command {
+    width: 49%;
+    margin-bottom: 10px;
+}
