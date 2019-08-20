@@ -3,6 +3,7 @@ package com.github.duc010298.clinic_manager.controller;
 import com.github.duc010298.clinic_manager.entity.AppUserEntity;
 import com.github.duc010298.clinic_manager.entity.ReportFormEntity;
 import com.github.duc010298.clinic_manager.exception.BadRequestException;
+import com.github.duc010298.clinic_manager.exception.NotFoundException;
 import com.github.duc010298.clinic_manager.repository.AppUserRepository;
 import com.github.duc010298.clinic_manager.repository.CustomerRepository;
 import com.github.duc010298.clinic_manager.repository.ReportFormRepository;
@@ -55,7 +56,7 @@ public class SettingController {
         try {
             UUID reportId = UUID.fromString(id);
             Optional<ReportFormEntity> report = reportFormRepository.findById(reportId);
-            if(report.isPresent()) {
+            if (report.isPresent()) {
                 reportFormRepository.delete(report.get());
             } else {
                 throw new BadRequestException();
@@ -64,5 +65,24 @@ public class SettingController {
             throw new BadRequestException();
         }
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/manager-form/edit/{id}")
+    public String editForm(@PathVariable("id") String id, ModelMap modelMap, Principal principal) {
+        UUID reportId = null;
+        try {
+            reportId = UUID.fromString(id);
+        } catch (Exception e) {
+            throw new BadRequestException();
+        }
+        Optional<ReportFormEntity> report = reportFormRepository.findById(reportId);
+        if (report.isPresent()) {
+            modelMap.addAttribute("report", report.get());
+        } else {
+            throw new NotFoundException();
+        }
+        AppUserEntity currentUser = appUserRepository.findByUserName(principal.getName());
+        modelMap.addAttribute("fullName", currentUser.getFullName());
+        return "setting-manager-form-edit";
     }
 }

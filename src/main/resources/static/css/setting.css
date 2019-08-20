@@ -31,3 +31,26 @@
 .table-list-report th:nth-child(5) {
     width: 100px;
 }
+
+/*style for add edit form*/
+body {
+    overflow-x: hidden;
+    background: #D4DFE6 !important;
+}
+
+.tool {
+    z-index: 1;
+    position: fixed;
+    top: 200px;
+    right: 0;
+}
+
+.paper-container {
+    width: 745px;
+    min-height: 1100px;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #7F7979;
+    font-family: "Times New Roman", Times, serif;
+}
