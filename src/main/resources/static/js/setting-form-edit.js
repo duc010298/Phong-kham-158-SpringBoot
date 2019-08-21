@@ -2,6 +2,10 @@ let disableResizeAllTable = () => {
     let editor = document.getElementById('editor');
     let listTable = editor.getElementsByTagName('table');
     for (let table of listTable) {
+        let attr = table.getAttribute("data-type");
+        if(attr === "form-info" || attr === 'form-result') {
+            continue;
+        }
         $(table).colResizable({
             disable: true
         });
@@ -12,6 +16,10 @@ let enableResizeAllTable = () => {
     let editor = document.getElementById('editor');
     let listTable = editor.getElementsByTagName('table');
     for (let table of listTable) {
+        let attr = table.getAttribute("data-type");
+        if(attr === "form-info" || attr === 'form-result') {
+            continue;
+        }
         $(table).colResizable({
             liveDrag: true,
             draggingClass: "dragging"
@@ -26,3 +34,7 @@ document.getElementById('btn-print').onclick = () => {
         enableResizeAllTable();
     }, 500);
 }; //print report
+
+document.getElementById('add-form-info').onclick = () => {
+    addFormInfo();
+};

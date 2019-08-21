@@ -90,6 +90,17 @@ kết quả của báo cáo giúp cho việc lưu trữ tốt hơn">
                     font-size: 18px;
                     padding: 30px 45px;
                 }
+                table {
+                    border-collapse: collapse;
+                    border: 1px dotted #000;
+                    width: 100%;
+                    table-layout: fixed;
+                }
+                td {
+                    border-collapse: collapse;
+                    border: 1px dotted #000;
+                    word-wrap: break-word;
+                }
             </style>
             <div id="editor" class="editor" th:utext="${report.getContent()}"></div>
         </div>

@@ -201,11 +201,6 @@ let addEventToSpan = (span) => {
                 let indexCol = indexSpan - (col * (indexRow - 1));
 
                 let table = document.createElement('table');
-                table.style.borderCollapse = 'collapse';
-                table.style.border = '1px dotted #000';
-                table.style.width = '100%';
-                table.style.tableLayout = 'fixed';
-
                 let tableBody = document.createElement('tbody');
 
                 let tableHeader = document.createElement('tr');
@@ -220,9 +215,6 @@ let addEventToSpan = (span) => {
                     let tr = document.createElement('tr');
                     for (let j = 0; j < indexCol; j++) {
                         let td = document.createElement('td');
-                        td.style.borderCollapse = 'collapse';
-                        td.style.border = '1px dotted #000';
-                        td.style.wordWrap = 'break-word';
                         addEventToTd(td);
                         tr.appendChild(td);
                     }
@@ -564,9 +556,6 @@ document.getElementById('insert-row-above').onclick = () => {
     let tr = document.createElement("tr");
     for (let i = 0; i < totalCol; i++) {
         let td = document.createElement("td");
-        td.style.borderCollapse = 'collapse';
-        td.style.border = '1px dotted #000';
-        td.style.wordWrap = 'break-word';
         addEventToTd(td);
         tr.appendChild(td);
     }
@@ -593,9 +582,6 @@ document.getElementById('insert-row-below').onclick = () => {
     let tr = document.createElement("tr");
     for (let i = 0; i < totalCol; i++) {
         let td = document.createElement("td");
-        td.style.borderCollapse = 'collapse';
-        td.style.border = '1px dotted #000';
-        td.style.wordWrap = 'break-word';
         addEventToTd(td);
         tr.appendChild(td);
     }
@@ -634,9 +620,6 @@ document.getElementById('insert-col-left').onclick = () => {
         }
         let listTdTag = listTrTag[i].getElementsByTagName("TD");
         col = document.createElement('td');
-        col.style.borderCollapse = 'collapse';
-        col.style.border = '1px dotted #000';
-        col.style.wordWrap = 'break-word';
         addEventToTd(col);
         listTrTag[i].insertBefore(col, listTdTag[pos[0] - 1]);
     }
@@ -675,9 +658,6 @@ document.getElementById('insert-col-right').onclick = () => {
         }
         let listTdTag = listTrTag[i].getElementsByTagName("TD");
         col = document.createElement('td');
-        col.style.borderCollapse = 'collapse';
-        col.style.border = '1px dotted #000';
-        col.style.wordWrap = 'break-word';
         addEventToTd(col);
         listTrTag[i].insertBefore(col, listTdTag[pos[0] - 1]);
     }
@@ -762,4 +742,64 @@ document.getElementById('delete-table').onclick = () => {
         disable: true
     });
     table.parentNode.removeChild(table);
+};
+
+let addEventTdTableInfoResult = (td) => {
+    td.oncontextmenu = (event) => {
+        tempNodeTable = event.target;
+        event.preventDefault();
+        contextMenu.style.left = event.pageX + 'px';
+        contextMenu.style.top = event.pageY + 'px';
+        contextMenu.style.display = 'block';
+        startFocusOut();
+    }
+};
+
+let addFormInfo = () => {
+    let table = document.createElement("TABLE");
+    table.style.width = "100%";
+    table.setAttribute("data-type", "form-info");
+    let tbody = document.createElement("TBODY");
+    let tr = document.createElement("TR");
+    let td1 = document.createElement("TD");
+    td1.innerHTML = "Họ và tên: ";
+    td1.style.width = "78px";
+    tr.appendChild(td1);
+    addEventTdTableInfoResult(td1);
+    let td2 = document.createElement("TD");
+    tr.appendChild(td2);
+    addEventTdTableInfoResult(td2);
+    let td3 = document.createElement("TD");
+    td3.style.width = "54px";
+    td3.innerHTML = "Tuổi: ";
+    tr.appendChild(td3);
+    addEventTdTableInfoResult(td3);
+    let td4 = document.createElement("TD");
+    tr.appendChild(td4);
+    addEventTdTableInfoResult(td4);
+    tbody.appendChild(tr);
+    let tr2 = document.createElement("TR");
+    let td5 = document.createElement("TD");
+    td5.innerHTML = "Địa chỉ: ";
+    tr2.appendChild(td5);
+    addEventTdTableInfoResult(td5);
+    let td6 = document.createElement("TD");
+    td6.setAttribute("colspan", "3");
+    tr2.appendChild(td6);
+    addEventTdTableInfoResult(td6);
+    tbody.appendChild(tr2);
+    table.appendChild(tbody);
+
+    let carretNode = getCarretNode();
+    if (carretNode === null) {
+        carretNode = editor;
+    } else {
+        let temp = carretNode;
+        while (true) {
+            if (temp === editor) break;
+            if (temp === document) return;
+            temp = temp.parentNode;
+        }
+    }
+    carretNode.appendChild(table);
 };
