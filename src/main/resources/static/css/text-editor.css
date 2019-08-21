@@ -365,7 +365,9 @@
 }
 
 .context-menu hr {
-    width: 90%; 
+    width: 90%;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-color:#bababa;
 }
 

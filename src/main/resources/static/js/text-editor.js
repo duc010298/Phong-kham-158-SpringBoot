@@ -751,3 +751,15 @@ document.getElementById('delete-col').onclick = () => {
         draggingClass: "dragging"
     });
 };
+
+document.getElementById('delete-table').onclick = () => {
+    let table = tempNodeTable.parentNode;
+    while (true) {
+        if (table.nodeName === "TABLE") break;
+        table = table.parentNode;
+    }
+    $(table).colResizable({
+        disable: true
+    });
+    table.parentNode.removeChild(table);
+};
