@@ -56,6 +56,15 @@ body {
 }
 
 .btn-setting-command {
-    width: 49%;
+    width: 100%;
     margin-bottom: 10px;
+}
+
+.jumbotron-custom-edit {
+    padding: 25px 20px;
+}
+
+.btn-add-info {
+    margin-right: -20px;
+    margin-top: -25px;
 }
