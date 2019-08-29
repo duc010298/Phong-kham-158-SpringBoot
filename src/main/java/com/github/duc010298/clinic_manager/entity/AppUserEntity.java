@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "app_user", schema = "public", catalog = "postgres")
+@Table(name = "app_user", catalog = "postgres")
 public class AppUserEntity {
     private int id;
     private String userName;
