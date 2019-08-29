@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "customer", catalog = "postgres")
+@Table(name = "customer", schema = "public", catalog = "postgres")
 public class CustomerEntity {
     private UUID id;
     private String name;
